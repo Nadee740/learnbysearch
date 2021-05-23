@@ -1,0 +1,88 @@
+
+ .sigin-content{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     
+ }
+ 
+.signin-image{
+padding: 5% 0 0 5%;
+width: 40%;
+height: 75%;
+   
+}
+.signin-image img{
+    height: 90%;
+    width: 90%;
+
+}
+
+.singin-form{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+     justify-content: center;
+
+  
+    
+}
+ .singin-form h2{
+     color: #2F3061;
+    font-family: 'Stint Ultra Condensed', cursive;
+    font-size: 60px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 54px;
+    letter-spacing: 0.2em;
+  
+    
+
+}
+
+.form-group{
+    padding-top: 8px;
+    width: 500px;
+}
+
+.form-group input{
+    width:100% ;
+    height: 47px;
+    padding-left: 2px;
+    border: 1px solid #000000;
+box-sizing: border-box;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 10px;
+}
+.zmdi {
+    padding: 2px 2px 2px 2px;
+    color: #2F3061;
+    Font-size: 1.8rem;
+}
+
+
+.loginbtn{
+    width: 266px;
+    height: 56px;
+  padding-left: 20%;
+    padding-top: 50px;
+}
+.loginbtn input{
+    width: 246px;
+height: 56px;
+background: #2F3061;
+border-radius: 10px;
+font-size: 25px;
+font-family: 'Times New Roman', Times, serif;
+color: #fff;
+}   
+
+@media screen and (max-width: 768px) {
+    .sigin-content{
+flex-direction: column;
+    }
+  }
+ 
