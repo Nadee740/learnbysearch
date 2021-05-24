@@ -23,7 +23,7 @@
   .navbar-logo {
     color: #fff;
     justify-self: start;
-    margin-left: 20px;
+    margin-left: -30px;
     cursor: pointer;
     text-decoration: none;
     font-weight: bold;

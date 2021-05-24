@@ -92,5 +92,11 @@
     .singup-form {
       padding: 10px;
     }
+    .loginbtn {
+      display: flex;
+      align-items: left;
+      justify-content: left;
+      margin: 40px;
+    }
   }
   
