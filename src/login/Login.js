@@ -24,7 +24,7 @@ const Login = () => {
                      <input type="password" name="password" id="password" placeholder="Password" autoComplete="off"></input>
                  </div>
                  <div className="loginbtn">
-                     <input type="button" value='BUTTON'></input>
+                     <input type="button" value='LOGIN'></input>
                  </div>
 
                 </form>
