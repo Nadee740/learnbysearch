@@ -61,12 +61,12 @@ const Login = () => {
                     type="password"
                     name="confirmpassword"
                     id="confirmpassword"
-                    placeholder="confirmpassword"
+                    placeholder="confirm password"
                     autoComplete="off"
                   ></input>
                 </div>
                 <div className="loginbtn">
-                  <input type="button" value="BUTTON"></input>
+                  <input type="button" value="SIGN UP"></input>
                 </div>
               </form>
             </div>

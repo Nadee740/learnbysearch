@@ -32,7 +32,8 @@
   }
   .singup-form h2 {
     color: #2f3061;
-    font-family: "Stint Ultra Condensed", cursive;
+    font-family: 'Chela One', cursive;
+    /* font-family: "Stint Ultra Condensed", cursive; */
     font-size: 60px;
     font-style: italic;
     font-weight: bold;
@@ -73,7 +74,7 @@
     background: #2f3061;
     border-radius: 10px;
     font-size: 25px;
-    font-family: "Times New Roman", Times, serif;
+    font-family: 'Bree Serif', serif;
     color: #fff;
   }
   
@@ -81,7 +82,7 @@
 
     .singup-form h2 {
       color: #2f3061;
-      font-family: "Stint Ultra Condensed", cursive;
+      font-family: 'Chela One', cursive;
       font-size: 45px;
       font-style: italic;
       font-weight: bold;

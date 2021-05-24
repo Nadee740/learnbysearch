@@ -32,7 +32,7 @@
   }
   .singin-form h2 {
     color: #2f3061;
-    font-family: "Stint Ultra Condensed", cursive;
+    font-family: 'Chela One', cursive;
     font-size: 60px;
     font-style: italic;
     font-weight: bold;
@@ -68,12 +68,15 @@
     justify-content: center;
     margin: 40px;
   }
+  ::placeholder {
+    font-family: 'Bree Serif', serif;
+  }
   .loginbtn input {
+    font-family: 'Bree Serif', serif;
     padding: 10px 20px;
     background: #2f3061;
     border-radius: 10px;
     font-size: 25px;
-    font-family: "Times New Roman", Times, serif;
     color: #fff;
   }
   
@@ -92,5 +95,18 @@
     .singin-form {
       padding: 10px;
     }
+    .singin-form h2 {
+      color: #2f3061;
+      font-family: 'Chela One', cursive;
+      font-size: 45px;
+      font-style: italic;
+      font-weight: bold;
+      line-height: 54px;
+      letter-spacing: 0.2em;
+    }
+    .form-group {
+        text-align: center;
+ 
+     }
   }
   
