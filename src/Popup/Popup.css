@@ -1,0 +1,23 @@
+.popupscreen{
+height: 100vh;
+background-image:url( "../images/bgimage.png");
+}
+
+.popup{
+     padding: 10% 0 0 0;
+    text-align: center;
+}
+
+.popup h1{
+    color:#2F3061 ;
+    font-family: 'Chela One', cursive;
+}
+
+.popup a{
+    font-family: 'Bree Serif', serif;
+    text-decoration: none;
+}
+
+.popup p{
+    font-family: 'Bree Serif', serif;
+}
