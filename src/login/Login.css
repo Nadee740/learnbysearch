@@ -56,6 +56,15 @@
     outline: none;
     margin: 10px;
   }
+
+  label{
+    color: red;
+    padding-left: 40px;
+    font-family: 'Bree Serif', serif;
+    font-style: italic;
+    font-size: 12px;
+      
+  }
   .zmdi {
     padding: 2px 2px 2px 2px;
     color: #2f3061;
@@ -111,5 +120,8 @@
         text-align: center;
  
      }
+     .form-group label{
+      padding-right: 50vw;
+    }
   }
   

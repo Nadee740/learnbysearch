@@ -1,7 +1,7 @@
 import {useState} from "react"
 import SendPost from "../Backend/Sendpost";
 import "./Signup.css";
-const Login = () => {
+const Signup = () => {
  const [name,setName]=useState("")
  const [username,setUser]=useState("")
  const [email,setEmail]=useState("")
@@ -14,7 +14,14 @@ const Login = () => {
  const [phoneerror,setphoneerror]=useState()
  const [confirmpasserror,setconfirmpassrerror]=useState()
 
+   
 
+ const stylefunction=(color,id)=>{
+
+   document.getElementById(id).style.border=color;
+
+
+ }
 
 
  const output=async(e)=>{
@@ -27,10 +34,21 @@ setemailerror()
 setusererror()
 setpassrerror()
 
+stylefunction("none","username")
+stylefunction("none","email")
+stylefunction("none","phone")
+stylefunction("none","password")
 
+let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/
+        
+if(re.test(password))
+{
 if(confirmpass!=password){
+
+
+
 setconfirmpassrerror("Noooki type cheyada ")
-  
+stylefunction("0.2px outset red","password")
 }
 else{
  
@@ -42,7 +60,7 @@ else{
 
 
 const {message:messagee} =await SendPost('http://localhost:8000/api/register', reg_data)
-console.log(messagee)
+
   if(messagee.includes("verification"))
   {
     window.location.reload()
@@ -52,27 +70,36 @@ console.log(messagee)
 
   else if (messagee.includes("email")){
     setemailerror(messagee)
+    stylefunction("0.2px outset red","email")
 
   }
   else if (messagee.includes("password"))
   {
     setpassrerror(messagee)
+    stylefunction("0.2px outset red","password")
   }
-  else if (messagee.includes("Username"))
+  else if (messagee.includes("username"))
   {
-
+    stylefunction("0.2px outset red","")
     setusererror(messagee)
   }
 
   else if (messagee.includes("Phone"))
   {
-
+    stylefunction("0.2px outset red","phone")
     setphoneerror(messagee)
    
   }
   
 
  }
+}
+else{
+  setpassrerror("Please tpe a strong password")
+  stylefunction("0.2px outset red","password")
+
+}
+
  }
   return (
     <>
@@ -173,6 +200,7 @@ console.log(messagee)
                   
                   
                   <input
+                    
                     type="password"
                     name="password"
                     value={password}
@@ -195,11 +223,31 @@ console.log(messagee)
                 <div className="form-group">
                  
                   <input
+                   onBlur={()=>{
+                    stylefunction("none","confirmpassword")
+                   }}
+                    onFocus={()=>{
+                      if(confirmpass===password)
+                      {
+                        stylefunction("none","confirmpassword")
+                      }
+                      else{
+                        stylefunction("0.2px outset red","confirmpassword");
+                      }
+                    }}
                     type="password"
+                    id="confirmpassword"
                     name="confirmpassword"
                     value={confirmpass}
                     onChange={(e)=> {
                       setConfrpass(e.target.value)
+                      if(e.target.value===password)
+                      {
+                        stylefunction("none","confirmpassword")
+                      }
+                      else{
+                        stylefunction("0.2px outset red","confirmpassword");
+                      }
                       
                     }}
                     id="confirmpassword"
@@ -213,7 +261,7 @@ console.log(messagee)
 
 
                 <div className="loginbtn">
-                  <input type="submit" value="SIGN UP" ></input>
+                  <input type="submit" value="SIGN UP" id="sbmtbttn" ></input>
                 </div>
 
 
@@ -226,7 +274,7 @@ console.log(messagee)
   );
 };
 
-export default Login;
+export default Signup;
 
 
 
