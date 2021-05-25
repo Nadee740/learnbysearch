@@ -46,7 +46,7 @@ console.log(messagee)
   if(messagee.includes("verification"))
   {
     window.location.reload()
-    window.location="/"
+    window.location="/verification"
    
   }
 
