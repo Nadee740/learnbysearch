@@ -4,6 +4,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Login from './login/Login';
 import Signup from './Signup/Signup';
 import Examples from './Popup/Popup';
+import LandingPage from './LandingPage/LandingPage';
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
      
        <Router>
        <Navbar/>
-       <Route path="/" exact component={Signup} />
+       <Route path="/" exact component={LandingPage} />
        <Route path='/login' component={Login} />
+       <Route path='/signup' component={Signup} />
        <Route path='/verification' component={Examples} />
        </Router>
       
