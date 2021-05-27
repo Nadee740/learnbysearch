@@ -9,7 +9,16 @@ const Navbar = () => {
     const [button,setButton]=useState(true);
 
 const handleClick =()=>{
+    // if(!click){
+    
+    //     document.getElementById('test').style.display="flex"
+
+    // }
+    // else
+    // document.getElementById('test').style.display="none"
+    console.log(click)
     setClick(!click)
+    console.log(click)
 }
 const closeMobileMenu=()=>{
     setClick(false);
@@ -36,7 +45,7 @@ window.addEventListener('resize',showButton)
 <div className="menu-icon" onClick={handleClick}>
     <i className={click? 'fas fa-times':'fas fa-bars'}/>
 </div>
-<ul className={click ? 'nav-menu active' :'nav-menu'}>
+<ul className={click ? 'nav-menu active' :'nav-menu'} id='test'>
 <li className="nav-item">
     <Link to="/" className='nav-links' onClick={closeMobileMenu} >
         Home

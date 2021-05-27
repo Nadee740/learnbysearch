@@ -75,6 +75,61 @@ const LandingPage = () => {
 
             </div>
         </section>
+        <section className="gain">
+        <div className="gain-container">
+            <div className="gain-content">
+<h2>
+What will you gain when you complete your Research Work?
+</h2>
+</div>
+<div className="gain-box-color">
+<div className="content-1">
+    <p>Technical And Soft Skills<i class='fas fa-angle-down'></i></p>
+    
+</div>
+<div className="line">
+
+</div>
+<div className="content-1">
+    <p>Research Paper Completion<i class='fas fa-angle-down'></i></p>
+    
+</div>
+<div className="line">
+    
+</div>
+<div className="content-1">
+    <p>Network and Focused Community<i class='fas fa-angle-down'></i></p>
+    
+</div>
+<div className="line">
+    
+</div>
+<div className="content-1">
+    <p>Certificate of Research Completion<i class='fas fa-angle-down'></i></p>
+    
+</div>
+</div>
+<div className="gain-colorless-box">
+    <p>Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.</p>
+</div>
+            </div>
+        </section>
+        <section className="apple"> 
+        <div className="apply-container">
+            <div className="apply-first">
+                <div className="apply-left-side">
+                    <h2>Why you must apply?</h2>
+                    <p>You will not like to hear this but you will totally agree, that in the current situation Education has become a business, and startups are flooding parents and students with the fear of missing out!</p>
+                </div>
+                <div className="apply-right-side">
+                    <img src="../images/gain.png" alt="" />
+                </div>
+            </div>
+            <div className="apply-second">
+                <p>From the time of our birth, we have learned millions of things and 80% of them were taught by our experience of trial-error and experimentation. Today's generation is now at a point that they have all the resources available online for free but they don't have a guide to help them during the experimental phase. That's why we are here to help you connect with the best guides and work your way up to learning with a research-based approach.</p>
+            </div>
+        </div>
+        </section>
   
 
         </>
