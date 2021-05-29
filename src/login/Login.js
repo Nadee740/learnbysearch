@@ -1,11 +1,28 @@
-import {useState} from "react"
+import axios from "axios"
+import {useEffect, useState} from "react"
+import reactDom from "react-dom"
+import { Link } from "react-router-dom"
+import { useSession } from "react-session-persist/lib"
 import SendPost from "../Backend/Sendpost"
+import Navbar from "../NavBar/Navbar"
 import "./Login.css"
 const Login = () => {
 
     const [username,setUser]=useState("")
     const [password,setPass]=useState("")
     const [passerror,setpassrerror]=useState()
+    const [user, setUserprof] = useState()
+  const { authenticated, saveSession } = useSession();
+   useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      
+      console.log(loggedInUser)
+      
+      
+    }
+      
+   }, [])
 
     const stylefunction=(color,id)=>{
 
@@ -18,6 +35,7 @@ const Login = () => {
 e.preventDefault();
 stylefunction("none","password")
 stylefunction("none","username")
+setpassrerror()
         const reg_data = {
             username,password
           }
@@ -28,18 +46,27 @@ if(!(messagee.includes("logged in"))){
     setpassrerror(messagee)
 }
 else{
-
+     
+     window.location="/page1"
+      localStorage.setItem('user',username)
+      
+      sessionStorage.setItem('user', username);
+      
     alert('verified')
+    
     setUser("")
     setPass("")
 }
 
 
     }
-    
+    if(user){
+        return <div>{user.name} is loggged in</div>;
+    }
 
     return (  
        <>
+       
         <section className="sign-in">
     <div className="container">
         <div className="sigin-content">
@@ -69,7 +96,7 @@ else{
                  <div className="loginbtn">
                      <input type="submit" value='LOGIN'></input>
                  </div>
-
+                 <div className="alrdydone"><Link to="/signup">Not registered ? SIgnup</Link></div>
                 </form>
             </div>
         </div>
@@ -83,3 +110,19 @@ else{
 }
  
 export default Login;
+
+/*
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserGreeting />;
+  }
+  return <GuestGreeting />;
+}
+
+ReactDOM.render(
+  // Try changing to isLoggedIn={true}:
+  <Greeting isLoggedIn={false} />,
+  document.getElementById('root')
+);
+*/

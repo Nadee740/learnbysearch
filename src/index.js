@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Session from 'react-session-persist/lib';
 
 ReactDOM.render(
   <React.StrictMode>
+   <Session>
     <App />
+     </Session>
   </React.StrictMode>,
   document.getElementById('root')
 );

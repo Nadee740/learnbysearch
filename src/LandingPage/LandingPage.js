@@ -1,8 +1,14 @@
 import "./LandingPage.css"
 import {Link} from "react-router-dom"
+import Navbar from "../NavBar/Navbar";
+import { useState } from "react";
 const LandingPage = () => {
+   
+    const [para,setPara]=useState("Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
+
     return ( 
         <>
+    
         <section className="top">
     <div className="container">
         <div className="top-content">
@@ -83,34 +89,42 @@ What will you gain when you complete your Research Work?
 </h2>
 </div>
 <div className="gain-box-color">
-<div className="content-1">
+<div className="content-1" onClick={()=>{
+    setPara("Technical recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
+}}>
     <p>Technical And Soft Skills<i class='fas fa-angle-down'></i></p>
     
 </div>
 <div className="line">
 
 </div>
-<div className="content-1">
+<div className="content-1" onClick={()=>{
+    setPara("Research recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
+}}>
     <p>Research Paper Completion<i class='fas fa-angle-down'></i></p>
     
 </div>
 <div className="line">
     
 </div>
-<div className="content-1">
+<div className="content-1" onClick={()=>{
+    setPara("Network  recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
+}}>
     <p>Network and Focused Community<i class='fas fa-angle-down'></i></p>
     
 </div>
 <div className="line">
     
 </div>
-<div className="content-1">
+<div className="content-1"  onClick={()=>{
+    setPara("Nadeem recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
+}}>
     <p>Certificate of Research Completion<i class='fas fa-angle-down'></i></p>
     
 </div>
 </div>
 <div className="gain-colorless-box">
-    <p>Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.</p>
+    <p>{para}</p>
 </div>
             </div>
         </section>

@@ -4,9 +4,11 @@ import {Link} from "react-router-dom"
 import Button from "../button/button";
 import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = (props) => {
     const [click,setClick]=useState(false);
     const [button,setButton]=useState(true);
+    const [user,setUser]=useState(true);
+    const [userprof,setuserprof]=useState()
 
 const handleClick =()=>{
     // if(!click){
@@ -23,8 +25,18 @@ const handleClick =()=>{
 const closeMobileMenu=()=>{
     setClick(false);
 }
-
+const checkLOgin=()=>{
+    const loggedInUser = sessionStorage.getItem('user');
+    if(loggedInUser){
+        setUser(localStorage.getItem("user"))
+    }
+    else{
+        setUser()
+        console.log("nadem")   
+    }
+}
 const showButton=()=>{
+    console.log("Hyhyyy")
     if(window.innerWidth<=960){
         setButton(false);
     }
@@ -33,6 +45,7 @@ const showButton=()=>{
     }
 };
  useEffect(()=>{
+     checkLOgin()
 showButton()
  },[])
 window.addEventListener('resize',showButton)
@@ -67,14 +80,16 @@ window.addEventListener('resize',showButton)
     </Link>
 </li>
 <li >
-    <Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu} >
+   {user? <Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu} >
+        View Profile
+    </Link>:<Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu} >
         Sign Up
-    </Link>
+    </Link>}
 </li>
 
 
 </ul>
-{button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+{button ? user?<Link to="/editprofile"><img src="../images/kunj.jpeg" className="profimage"/> </Link> : <Button buttonStyle='btn--outline'>Sign up</Button>:""}
     </div>
 
 </nav>

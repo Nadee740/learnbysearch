@@ -1,5 +1,7 @@
 import {useState} from "react"
+import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
+import Navbar from "../NavBar/Navbar";
 import "./Signup.css";
 const Signup = () => {
  const [name,setName]=useState("")
@@ -40,14 +42,14 @@ stylefunction("none","phone")
 stylefunction("none","password")
 
 let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/
-        
+      
 if(re.test(password))
 {
 if(confirmpass!=password){
 
 
 
-setconfirmpassrerror("Noooki type cheyada ")
+setconfirmpassrerror("Password does not match ")
 stylefunction("0.2px outset red","password")
 }
 else{
@@ -78,9 +80,9 @@ const {message:messagee} =await SendPost('http://localhost:8000/api/register', r
     setpassrerror(messagee)
     stylefunction("0.2px outset red","password")
   }
-  else if (messagee.includes("username"))
+  else if (messagee.includes("Username"))
   {
-    stylefunction("0.2px outset red","")
+    stylefunction("0.2px outset red","username")
     setusererror(messagee)
   }
 
@@ -103,6 +105,7 @@ else{
  }
   return (
     <>
+    
       <section className="sign-up">
         <div className="container">
           <div className="signup-content">
@@ -263,6 +266,9 @@ else{
                 <div className="loginbtn">
                   <input type="submit" value="SIGN UP" id="sbmtbttn" ></input>
                 </div>
+                <div className="alrdydone"><Link to="/login">Already registered ? Login</Link></div>
+
+    
 
 
               </form>

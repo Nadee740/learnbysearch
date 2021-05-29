@@ -1,3 +1,17 @@
+
+.profimage{
+  
+ width: 75px;
+ height: 75px;
+border-radius: 100px; 
+
+}
+
+.profimage:hover{
+  box-shadow: 0 0 11px white; 
+  
+}
+
 .navbar {
   /* linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%) */
     background:#2F3061;
