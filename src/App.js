@@ -13,7 +13,7 @@ import EditProfile from './EditProfile/EditProfile';
 function App() {
   const [user,setUser]=useState()
   useEffect(() => {
-    
+    // sessionStorage.clear()
     const loggedInUser = sessionStorage.getItem('user')
    
     if (loggedInUser) {

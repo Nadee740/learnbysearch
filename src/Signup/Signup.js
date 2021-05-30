@@ -1,7 +1,9 @@
 import {useState} from "react"
 import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
-import Navbar from "../NavBar/Navbar";
+import React, { Component } from 'react';
+import Modal from "react-awesome-modal"
+
 import "./Signup.css";
 const Signup = () => {
  const [name,setName]=useState("")
@@ -15,6 +17,7 @@ const Signup = () => {
  const [passerror,setpassrerror]=useState()
  const [phoneerror,setphoneerror]=useState()
  const [confirmpasserror,setconfirmpassrerror]=useState()
+ const [visible,setvisible]=useState(false)
 
    
 
@@ -24,6 +27,18 @@ const Signup = () => {
 
 
  }
+ const closeModal=()=> {
+          setvisible(false)
+      }
+const clearform=()=>{
+ 
+  setName()
+  setPass()
+  setUser()
+  setEmail()
+  setPass()
+  setConfrpass()
+}
 
 
  const output=async(e)=>{
@@ -61,16 +76,17 @@ else{
 }
 
 
-const {message:messagee} =await SendPost('http://localhost:8000/api/register', reg_data)
+const {message:messagee} =await SendPost(`${window.name}register`, reg_data)
 
   if(messagee.includes("verification"))
   {
-    window.location.reload()
-    window.location="/verification"
+    document.getElementById("register-form").reset()
+    setvisible(true)
    
   }
 
   else if (messagee.includes("email")){
+    
     setemailerror(messagee)
     stylefunction("0.2px outset red","email")
 
@@ -86,7 +102,7 @@ const {message:messagee} =await SendPost('http://localhost:8000/api/register', r
     setusererror(messagee)
   }
 
-  else if (messagee.includes("Phone"))
+  else if (messagee.toLowerCase().includes("Phone"))
   {
     stylefunction("0.2px outset red","phone")
     setphoneerror(messagee)
@@ -105,6 +121,21 @@ else{
  }
   return (
     <>
+
+<div className="popupscreen" >
+
+<section className="popupscreen">
+
+
+    <Modal visible={visible} width="400" height="300" effect="fadeInUp" onClickAway={closeModal}>
+        <div className="popup">
+            <h1>LEARN BY RESEARCH</h1>
+            <p>PLEASE VERIFY YOUR EMAIL .YOUR ARE ONE STEP AHEAD OF CREATING YOUR ACCOUNT...</p>
+            <Link to="/" onClick={closeModal}>Close</Link>
+        </div>
+    </Modal>
+</section>
+</div>
     
       <section className="sign-up">
         <div className="container">
@@ -114,7 +145,7 @@ else{
             </div>
             <div className="singup-form">
               <h2 className="form-title">REGISTRATION</h2>
-              <form className="register-form" id="register-form" onSubmit={output}>
+              <form className="register-form" id="register-form" onSubmit={output} onReset={clearform} >
                 <div className="form-group">
                   
                   

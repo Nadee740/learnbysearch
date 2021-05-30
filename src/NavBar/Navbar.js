@@ -82,7 +82,7 @@ window.addEventListener('resize',showButton)
 <li >
    {user? <Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu} >
         View Profile
-    </Link>:<Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu} >
+    </Link>:<Link to="/signup" className='nav-links-mobile' onClick={closeMobileMenu} >
         Sign Up
     </Link>}
 </li>
