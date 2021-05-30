@@ -51,3 +51,25 @@
   justify-content: center;
   flex-direction: column;
 }
+.footer-col1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+@media screen and (max-width: 800px) {
+  .footer {
+    grid-template-columns: 1fr;
+    padding: 45px 35px;
+  }
+  .footer-text2 {
+    text-align: center;
+    width: 100%;
+  }
+  .footer-sec {
+    justify-content: center;
+  }
+  .footer-col1 {
+    align-items: center;
+  }
+}
