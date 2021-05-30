@@ -1,14 +1,10 @@
 import "./LandingPage.css";
 import { Link } from "react-router-dom";
-import Navbar from "../NavBar/Navbar";
-import { useState } from "react";
+import BlogSlider from "./Slider/slider";
+import Footer from "./footer/footer";
 const LandingPage = () => {
-  const [para, setPara] = useState(
-    "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
-  );
-
   return (
-    <>
+    <div className="landingpage">
       <section className="top">
         <div className="container">
           <div className="top-content">
@@ -104,53 +100,25 @@ const LandingPage = () => {
             <h2>What will you gain when you complete your Research Work?</h2>
           </div>
           <div className="gain-box-color">
-            <div
-              className="content-1"
-              onClick={() => {
-                setPara(
-                  "Technical recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
-                );
-              }}
-            >
+            <div className="content-1">
               <p>
                 Technical And Soft Skills<i class="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>
-            <div
-              className="content-1"
-              onClick={() => {
-                setPara(
-                  "Research recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
-                );
-              }}
-            >
+            <div className="content-1">
               <p>
                 Research Paper Completion<i class="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>
-            <div
-              className="content-1"
-              onClick={() => {
-                setPara(
-                  "Network  recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
-                );
-              }}
-            >
+            <div className="content-1">
               <p>
                 Network and Focused Community<i class="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>
-            <div
-              className="content-1"
-              onClick={() => {
-                setPara(
-                  "Nadeem recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
-                );
-              }}
-            >
+            <div className="content-1">
               <p>
                 Certificate of Research Completion
                 <i class="fas fa-angle-down"></i>
@@ -158,7 +126,14 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="gain-colorless-box">
-            <p>{para}</p>
+            <p>
+              Getting recognition of what you have accomplished and learned is
+              what matters the most nowadays, we just can't wait to put a post
+              highlighting what we have made, well, here you will be doing that
+              a lot. Every day you will be making something cool which you can't
+              resist posting, finally, to sum up, your social media posts we
+              award the Completion Certification.
+            </p>
           </div>
         </div>
       </section>
@@ -191,8 +166,9 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      <footer></footer>
-    </>
+      <BlogSlider />
+      <Footer />
+    </div>
   );
 };
 

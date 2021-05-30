@@ -1,0 +1,53 @@
+.footer {
+  background-color: #302e3a;
+  margin-top: 80px;
+  padding: 45px 45px;
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+}
+.footer-logo {
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-family: "Chela One", cursive;
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+}
+.footer-sec {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+.footer-text {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 10px;
+}
+.footer-text2 {
+  color: #ffffffb9;
+  width: 90%;
+}
+.socialIcn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+  height: 40px;
+  margin: 10px;
+}
+.footer-col2-1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.footer-col2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
