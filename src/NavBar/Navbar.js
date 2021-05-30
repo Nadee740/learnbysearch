@@ -28,11 +28,11 @@ const closeMobileMenu=()=>{
 const checkLOgin=()=>{
     const loggedInUser = sessionStorage.getItem('user');
     if(loggedInUser){
-        setUser(localStorage.getItem("user"))
+        setUser(loggedInUser)
     }
     else{
         setUser()
-        console.log("nadem")   
+          
     }
 }
 const showButton=()=>{

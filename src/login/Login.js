@@ -46,13 +46,9 @@ if(!(messagee.includes("logged in"))){
     setpassrerror(messagee)
 }
 else{
-     
+    sessionStorage.setItem('user', username);
      window.location="/page1"
-     sessionStorage.setItem('user', username);
-      
-    alert('verified')
-    
-    setUser("")
+     setUser("")
     setPass("")
 }
 
