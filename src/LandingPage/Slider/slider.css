@@ -1,0 +1,32 @@
+.blogSlider {
+  margin: 100px 20px 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
+.slidecontainer {
+  width: 90%;
+}
+.cardholder {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.card {
+  padding: 20px;
+
+  border-radius: 10px;
+  border: 0.2px outset #000;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.card:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+.card-img {
+  width: 100%;
+}

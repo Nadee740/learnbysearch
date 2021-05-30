@@ -1,0 +1,366 @@
+p {
+  font-weight: 500;
+}
+.top-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  height: 100%;
+}
+
+.left-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-image img {
+  width: 80%;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.right-side h2 {
+  color: #2f3061;
+  font-family: "Chela One", cursive;
+  font-size: 2.6vw;
+  font-style: italic;
+  font-weight: bold;
+  line-height: 54px;
+  letter-spacing: 0.1em;
+}
+.top-heading {
+  text-align: center;
+}
+.top-heading p {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+}
+.buttons {
+  padding: 2px 0 2px;
+}
+
+.btns {
+  width: 246px;
+  height: 40px;
+  border: 0.2px outset #fff;
+  border-radius: 10px;
+  background-color: #2f3061;
+  font-family: "Bree Serif", serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btns:hover {
+  background-color: gray;
+  transition: all 0.2s ease-out;
+}
+
+.second {
+  padding: 50px 20px 20px 20px;
+}
+
+.scnd-content {
+  padding-left: 5vw;
+  padding-right: 5vw;
+  border: 0.2px outset #000;
+  border-radius: 20px;
+}
+.scnd-content h2 {
+  color: #010103;
+  font-family: "Chela One", cursive;
+  font-size: 2vw;
+  font-style: italic;
+  line-height: 54px;
+  letter-spacing: 0.1em;
+}
+.scnd-content p {
+  font-size: 1.3vw;
+}
+.about {
+  padding: 20px 20px 20px 20px;
+}
+.about-content {
+  /* height: 1000px; */
+  padding-left: 5vw;
+  padding-right: 5vw;
+  border: 0.2px outset #000;
+  border-radius: 20px;
+}
+.about-content h2 {
+  color: #010103;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 3.6vw;
+  font-style: italic;
+  line-height: 54px;
+  letter-spacing: 0.1em;
+}
+
+.about {
+  padding-bottom: 50px;
+}
+.about-1 {
+  display: flex;
+  flex-direction: row;
+}
+.about-1 img {
+  width: 180px;
+}
+
+.about-2 {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.about-2 img {
+  width: 180px;
+}
+
+.about-3 {
+  display: flex;
+  flex-direction: row;
+}
+.about-3 img {
+  width: 180px;
+}
+
+.about-4 {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.about-4 img {
+  width: 180px;
+}
+.gain-container {
+  padding-bottom: 80px;
+}
+.gain-content {
+  padding-bottom: 20px;
+}
+.gain-content h2 {
+  font-weight: 700;
+  text-align: center;
+}
+
+.gain-box-color {
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+  background-color: #2f3061;
+  border-radius: 10px;
+  border: 0.2px outset #000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.content-1 {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 60px;
+  color: #fff;
+  font-size: 20px;
+  padding-left: 20px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-right: 30px;
+}
+.content-1 i {
+  float: right;
+  font-size: 30px;
+}
+.line {
+  height: 1px;
+  background-color: #fff;
+}
+
+.gain-colorless-box {
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+  border-radius: 10px;
+  border: 0.2px outset #000;
+}
+.gain-colorless-box p {
+  padding: 10px 15px 10px 15px;
+}
+
+.apply-container {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border: 0.2px outset #000;
+}
+
+.apply-first {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.apply-left-side {
+  padding-left: 20px;
+}
+.apply-right-side {
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apply-right-side img {
+  width: 20%;
+}
+.apply-second {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media screen and (max-width: 1030px) and (min-width: 801px) {
+  p {
+    font-size: 25px;
+  }
+
+  .apply-right-side img {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .top-content {
+    flex-direction: column;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .left-image {
+    padding: 20px;
+  }
+  .left-image img {
+    width: auto;
+    height: 200px;
+  }
+  .gain-colorless-box {
+    margin-right: auto;
+    margin-left: auto;
+    width: 70%;
+    border-radius: 10px;
+    border: 0.2px outset #000;
+  }
+
+  .gain-box-color {
+    margin-right: auto;
+    margin-left: auto;
+    width: 70%;
+    background-color: #2f3061;
+    border-radius: 10px;
+    border: 0.2px outset #000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .right-side {
+    padding: 10px;
+  }
+  .right-side h2 {
+    color: #2f3061;
+    font-family: "Chela One", cursive;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 54px;
+    letter-spacing: 0.025em;
+  }
+  .btns {
+    width: 200px;
+    height: 35px;
+    border: 0.2px outset #fff;
+    border-radius: 10px;
+    background-color: #2f3061;
+    font-family: "Bree Serif", serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .scnd-content h2 {
+    color: #010103;
+    font-family: "Chela One", cursive;
+    font-size: 5vw;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 54px;
+    letter-spacing: 0.1em;
+  }
+  .scnd-content p {
+    font-size: 15px;
+  }
+
+  .aboutright p {
+    font-size: 15px;
+  }
+
+  .about-content h2 {
+    color: #010103;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 28px;
+    font-style: italic;
+    line-height: 54px;
+    letter-spacing: 0.1em;
+  }
+  .about-1 {
+    font-size: 15px;
+    flex-direction: column;
+  }
+  .about-1 img {
+    width: 180px;
+  }
+  .about-2 {
+    font-size: 15px;
+    flex-direction: column;
+  }
+  .about-2 img {
+    width: 180px;
+  }
+  .about-3 {
+    font-size: 15px;
+    flex-direction: column;
+  }
+  .about-3 img {
+    width: 180px;
+  }
+  .about-4 {
+    font-size: 15px;
+    flex-direction: column;
+  }
+  .about-4 img {
+    width: 180px;
+  }
+  .content-1 {
+    color: #fff;
+    font-size: 15px;
+    padding-left: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 30px;
+  }
+
+  .content-1 i {
+    float: right;
+    font-size: 20px;
+  }
+  .apply-right-side img {
+    width: 80%;
+  }
+}
