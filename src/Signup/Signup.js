@@ -20,6 +20,9 @@ const Signup = () => {
  const [visible,setvisible]=useState(false)
 
    
+const setcursor=(id)=>{
+  document.getElementById(id).focus()
+}
 
  const stylefunction=(color,id)=>{
 
@@ -65,6 +68,7 @@ if(confirmpass!=password){
 
 
 setconfirmpassrerror("Password does not match ")
+setcursor("confirmpassword")
 stylefunction("0.2px outset red","password")
 }
 else{
@@ -89,23 +93,28 @@ const {message:messagee} =await SendPost(`${window.name}register`, reg_data)
     
     setemailerror(messagee)
     stylefunction("0.2px outset red","email")
+    setcursor("email")
 
   }
   else if (messagee.includes("password"))
   {
     setpassrerror(messagee)
     stylefunction("0.2px outset red","password")
+    setcursor("password")
   }
   else if (messagee.includes("Username"))
   {
     stylefunction("0.2px outset red","username")
+    
     setusererror(messagee)
+    setcursor("username")
   }
 
   else if (messagee.toLowerCase().includes("Phone"))
   {
     stylefunction("0.2px outset red","phone")
     setphoneerror(messagee)
+    setcursor("phone")
    
   }
   
@@ -115,6 +124,7 @@ const {message:messagee} =await SendPost(`${window.name}register`, reg_data)
 else{
   setpassrerror("Please tpe a strong password")
   stylefunction("0.2px outset red","password")
+  setcursor("password")
 
 }
 
@@ -212,7 +222,7 @@ else{
                   
                   
                   <input
-                    type="number"
+                    type="text"
                     name="phone"
                     value={phoneNumber}
                     onChange={(e)=> {
