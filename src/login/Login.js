@@ -36,10 +36,10 @@ e.preventDefault();
 stylefunction("none","password")
 stylefunction("none","username")
 setpassrerror()
-        const reg_data = {
+        const log_data = {
             username,password
           }
-        const {message:messagee} =await SendPost('http://localhost:8000/api/login', reg_data)
+        const {message:messagee} =await SendPost(`${window.name}login`, log_data)
 if(!(messagee.includes("logged in"))){
     stylefunction("0.2px outset red","password")
     stylefunction("0.2px outset red","username")
@@ -48,9 +48,7 @@ if(!(messagee.includes("logged in"))){
 else{
      
      window.location="/page1"
-      localStorage.setItem('user',username)
-      
-      sessionStorage.setItem('user', username);
+     sessionStorage.setItem('user', username);
       
     alert('verified')
     

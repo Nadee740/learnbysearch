@@ -75,8 +75,9 @@ color: #000;
  
   
   .btns:hover {
-    background-color: gray;
-    transition: all 0.2s ease-out;
+    transform: scale(1.02);
+  cursor: pointer;
+ 
   }
 
   
@@ -202,6 +203,11 @@ padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   padding-right: 30px;
+}
+.content-1:hover{
+  transform: scale(1.02);
+  cursor: pointer;
+
 }
 .content-1 i{
   float: right;
