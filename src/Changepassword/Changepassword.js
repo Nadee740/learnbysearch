@@ -127,8 +127,8 @@ const Changepassword = () => {
               />
             </div>
             <br></br>
+            <label htmlFor="oldpassword">{oldpasserr && oldpasserr}</label>
             <div className="textinputf">
-              <label htmlFor="oldpassword">{oldpasserr && oldpasserr}</label>
               <input
                 type="password"
                 name="password"
