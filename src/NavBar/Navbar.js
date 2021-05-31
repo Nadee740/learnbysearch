@@ -11,22 +11,14 @@ const Navbar = (props) => {
     const [userprof,setuserprof]=useState()
 
 const handleClick =()=>{
-    // if(!click){
-    
-    //     document.getElementById('test').style.display="flex"
-
-    // }
-    // else
-    // document.getElementById('test').style.display="none"
-    console.log(click)
     setClick(!click)
-    console.log(click)
+  
 }
 const closeMobileMenu=()=>{
     setClick(false);
 }
 const checkLOgin=()=>{
-    const loggedInUser = sessionStorage.getItem('user');
+    const loggedInUser = localStorage.getItem('user');
     if(loggedInUser){
         setUser(loggedInUser)
     }

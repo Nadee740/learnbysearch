@@ -27,7 +27,7 @@ import {useState,useEffect} from "react"
                       
                     }
                    
-                    console.log('error')
+                    
                 } else if(json.status === 'ok'){
                     console.log(json.msg)
                     

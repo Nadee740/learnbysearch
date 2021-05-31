@@ -6,11 +6,11 @@ const EditProfile = () => {
     <>
       <div className="container-profile">
         <div className="container-profile-col1">
-          <img
+          {/* <img
             src="/images/change.png"
             alt="Edit"
             className="container-profile-img"
-          />
+          /> */}
         </div>
         <div className="container-profile-col2 container-profile-col1">
           <h2>Edit Profile</h2>
@@ -32,6 +32,96 @@ const EditProfile = () => {
               required
             />
             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+
+<input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+             <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              autoComplete="off"
+              required
+            />
+
+             <input
               type="text"
               name="username"
               id="username"

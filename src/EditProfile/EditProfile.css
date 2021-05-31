@@ -5,7 +5,7 @@
   overflow-x: hidden;
 }
 .container-profile-img {
-  height: 65%;
+  height:15vh ;
 }
 .container-profile-col1 {
   display: flex;

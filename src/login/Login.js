@@ -1,10 +1,10 @@
-import axios from "axios"
+
 import {useEffect, useState} from "react"
-import reactDom from "react-dom"
+
 import { Link } from "react-router-dom"
 import { useSession } from "react-session-persist/lib"
 import SendPost from "../Backend/Sendpost"
-import Navbar from "../NavBar/Navbar"
+
 import "./Login.css"
 const Login = () => {
 
@@ -46,7 +46,7 @@ if(!(messagee.includes("logged in"))){
     setpassrerror(messagee)
 }
 else{
-    sessionStorage.setItem('user', username);
+    localStorage.setItem('user', username);
      window.location="/page1"
      setUser("")
     setPass("")
