@@ -12,17 +12,7 @@ const Login = () => {
     const [password,setPass]=useState("")
     const [passerror,setpassrerror]=useState()
     const [user, setUserprof] = useState()
-  const { authenticated, saveSession } = useSession();
-   useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      
-      console.log(loggedInUser)
-      
-      
-    }
-      
-   }, [])
+
 
     const stylefunction=(color,id)=>{
 

@@ -14,7 +14,7 @@ const EditProfile = () => {
   const [FirstName, setFirstName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
   const [LastName, setLastName] = useState("");
-  const [PhoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setemail] = useState("");
   const [City, setCity] = useState("");
   const [State, setState] = useState("");
@@ -52,7 +52,7 @@ const EditProfile = () => {
       MiddleName,
       LastName,
       DOB,
-      PhoneNumber,
+      phoneNumber,
       email,
       City,
       State,
@@ -179,13 +179,15 @@ const EditProfile = () => {
             />
             <div className="textinputf">
               <input
+              width="10px"
+              className="phonenumber"
                 type="text"
                 name="PhoneNumber"
                 id="PhoneNumber"
                 placeholder="Phone Number"
                 autoComplete="off"
                 required
-                value={PhoneNumber}
+                value={phoneNumber}
                 onChange={(e) => {
                   setPhoneNumber(e.target.value);
                 }}

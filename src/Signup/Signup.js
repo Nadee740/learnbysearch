@@ -78,10 +78,11 @@ else{
  const reg_data = {
   username, email, name, phoneNumber, password
 }
+console.log(reg_data)
 
 
 const {message:messagee} =await SendPost(`${window.name}register`, reg_data)
-
+console.log(messagee,"22222")
   if(messagee.includes("verification"))
   {
     document.getElementById("register-form").reset()
@@ -294,8 +295,8 @@ else{
                       }
                       
                     }}
-                    id="confirmpassword"
-                    placeholder="confirm password"
+                    
+                   placeholder="confirm password"
                     autoComplete="off"
                     required
                   ></input>
