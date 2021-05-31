@@ -24,13 +24,13 @@ const Footer = () => {
         <div className="footer-sec">
           <BsFillEnvelopeFill size="1.3em" color="#F4F4F4" />
           <a href="tel:+14123815500" className="footer-text">
-            +14123815500
+            name@email.com
           </a>
         </div>
         <div className="footer-sec">
           <IoCall size="1.3em" color="#F4F4F4" />
           <a href="mailto:name@email.com" className="footer-text">
-            name@email.com
+            +14123815500
           </a>
         </div>
       </div>
