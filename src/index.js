@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Session from 'react-session-persist/lib';
-window.name = "http://52.3.245.22/api/"
+window.name = "http://13.127.98.11/api/"
 ReactDOM.render(
   <React.StrictMode>
    <Session>
