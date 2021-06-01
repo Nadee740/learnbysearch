@@ -233,7 +233,7 @@ const EditProfile = () => {
             </div>
             <div className="textinputf">
               <input
-               readonly
+                readonly="true"
                 type="email"
                 name="email"
                 id="email"
@@ -241,9 +241,7 @@ const EditProfile = () => {
                 autoComplete="off"
                 required
                 value={email}
-                onChange={(e) => {
-                  setemail(e.target.value);
-                }}
+               
               />
               <MdDoneAll size="1.2em" className="emtick" />
             </div>
