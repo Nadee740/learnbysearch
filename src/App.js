@@ -14,7 +14,7 @@ import BlogsPage from './Blogspage/Blogspage';
 function App() {
   const [user,setUser]=useState()
   useEffect(() => {
-    localStorage.clear()
+    // localStorage.clear()
     const loggedInUser = localStorage.getItem('user')
    
     if (loggedInUser) {
@@ -31,7 +31,7 @@ setUser(loggedInUser)
       
        <Router>
        <Navbar/>
-       {user ? <Route path="/" exact component={ContactUs}  /> : <Route path="/" exact component={ContactUs}  /> }
+       {user ? <Route path="/" exact component={Page1}  /> : <Route path="/" exact component={LandingPage}  /> }
        <Route path='/login' component={Login} />
        <Route path='/signup' component={Signup} />
        <Route path='/editprofile' component={EditProfile} />
