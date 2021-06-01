@@ -1,4 +1,5 @@
 
+import Footer from "../LandingPage/footer/footer"
 import "./Contactus.css"
 const ContactUs = () => {
     return ( 
@@ -35,12 +36,12 @@ const ContactUs = () => {
 
 <form id="contactform">
 <input type="text" placeholder="name"/>
-<input type="text" placeholder="name"/>
-<input type="text" placeholder="name"/>
-<input type="text" placeholder="name"/>
+<input type="email" placeholder="email"/>
+<input type="text" placeholder="phone numer"/>
+<input type="text" placeholder="subject"/>
 <br />
 <div className="textarea">
-<textarea name="proble" id="proble"  rows="15"></textarea>
+<textarea name="proble" id="proble"  rows="15" placeholder="Message"></textarea>
 </div>
 
 
@@ -53,7 +54,7 @@ const ContactUs = () => {
 
 </section> 
 
-       
+  <Footer/> 
 </>
 
      );
