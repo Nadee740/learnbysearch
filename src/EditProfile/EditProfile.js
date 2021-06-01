@@ -27,8 +27,11 @@ const EditProfile = () => {
   const [value, setdate] = useState(new Date());
   const [visible, setvisible] = useState(false);
   const [countrycode, setcountrycode] = useState("");
-
+  const [otp,setotp]=useState("")
+  const [otpsend,setotpsend]=useState(false)
   const [emailerror, setemailerr] = useState();
+  const [phoneerror, setphoneerr] = useState();
+  const [otperror, setotperr] = useState();
 
   const options = useMemo(() => countryList().getData(), []);
 
@@ -43,6 +46,48 @@ const EditProfile = () => {
   const stylefunction = (color, id) => {
     document.getElementById(id).style.border = color;
   };
+   
+  const VERIFYPhonenumber=async()=>{
+    console.log(phoneNumber)
+  if(phoneNumber==""|| phoneNumber.length>13)
+  {setphoneerr("PLEASE TYPE A VALID PHONE NUMBER")
+  stylefunction("0.2px outset red", "PhoneNumber");
+      setcursor("PhoneNumber");  
+
+}
+else{
+    
+document.querySelector(".otpdisplay").style.display="flex";
+const veri_data={
+  "number":phoneNumber
+}
+console.log(veri_data)
+const {message:messagee} =await SendPost(`${window.name}number-verification`, veri_data)
+  if(messagee.includes("successfully")){
+    setotpsend(true)
+    setphoneerr(messagee)
+   setcursor("otp");
+
+  }
+
+
+}
+  }
+
+
+  const VerifyOtp=async()=>{
+    console.log("otpmon")
+
+    const submit_code={
+      "code": otp,
+"number": phoneNumber
+    }
+    const {message:messagee} =await SendPost(`${window.name}submit-code`, submit_code)
+
+    setotperr(messagee)
+
+  }
+
 
   const MakeChanges = async () => {
     const month = parseInt(value.getMonth()) + 1;
@@ -171,15 +216,14 @@ const EditProfile = () => {
             <br></br>
             <label htmlFor="email">{emailerror && emailerror}</label>
 
-            <DatePicker
-              onChange={(e) => {
-                setdate(e);
+<input type="date"  onChange={(e) => {
+                setdate(e.target.value);
               }}
-              value={value}
-            />
+              value={value}></input>
+            
             <div className="textinputf">
               <input
-              width="10px"
+            
               className="phonenumber"
                 type="text"
                 name="PhoneNumber"
@@ -192,8 +236,31 @@ const EditProfile = () => {
                   setPhoneNumber(e.target.value);
                 }}
               />
-              <MdClear size="1.2em" className="emtick" color="red" />
+     
+              <MdClear  size="1.2em" className="emtick" color="red" />
+              
             </div>
+            <br />
+              <label htmlFor="PhoneNumber">{phoneerror&&phoneerror}</label>
+            <button onClick={otpsend?VerifyOtp :VERIFYPhonenumber}>{otpsend?"VERIFY OTP":"VERIFY PHONE NUMBER"}</button>
+            <div className="otpfield otpdisplay">
+              <input
+                type="number"
+                name="otp"
+                id="otp"
+                placeholder="OTP"
+                autoComplete="off"
+                className="otp"
+                value={otp}
+
+            
+                onChange={(e) => {
+                  setotp(e.target.value);
+                }}
+              />
+            </div>
+            <br></br>
+            <label htmlFor="email">{otperror && otperror}</label>
             <div className="textinputf">
               <input
                 type="text"

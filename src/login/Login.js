@@ -37,7 +37,7 @@ if(!(messagee.includes("logged in"))){
 }
 else{
     localStorage.setItem('user', username);
-     window.location="/page1"
+    //  window.location="/page1"
      setUser("")
     setPass("")
 }

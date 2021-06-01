@@ -14,8 +14,8 @@ import BlogsPage from './Blogspage/Blogspage';
 function App() {
   const [user,setUser]=useState()
   useEffect(() => {
-    // localStorage.clear()
-    const loggedInUser = localStorage.getItem('user')
+   // localStorage.clear()
+    const loggedInUser = localStorage.getItem('userdata')
    
     if (loggedInUser) {
       

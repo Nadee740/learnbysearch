@@ -32,7 +32,9 @@ import {useState,useEffect} from "react"
                 } else if(json.status === 'ok'){
                     console.log(json.msg)
                     if(url.includes("login"))
-                   { localStorage.setItem('userdata', JSON.stringify(json.data))
+                   { console.log("login")
+                   console.log(json.user)
+                      localStorage.setItem('userdata', JSON.stringify(json.user))
                      console.log(JSON.parse(localStorage.getItem('userdata')))
                 }
                     console.log('success')

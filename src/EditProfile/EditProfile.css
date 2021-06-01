@@ -76,6 +76,20 @@
   transform: translateY(50%);
   color: rgb(0, 165, 55);
 }
+
+.otpfield{
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 70%;
+  padding: 0;
+  position: relative;
+}
+
+.otpdisplay{
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   .container-profile {
     grid-template-columns: repeat(1, 1fr);
