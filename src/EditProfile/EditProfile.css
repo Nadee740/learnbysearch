@@ -77,7 +77,7 @@
   color: rgb(0, 165, 55);
 }
 
-.otpfield{
+.otpfield {
   align-items: center;
   justify-content: center;
   margin: 0;
@@ -86,7 +86,7 @@
   position: relative;
 }
 
-.otpdisplay{
+.otpdisplay {
   display: none;
 }
 
@@ -110,4 +110,8 @@
     width: 100%;
     padding-bottom: 60px;
   }
+}
+.datepicker {
+  color: #2f3061;
+  font-family: inherit;
 }
