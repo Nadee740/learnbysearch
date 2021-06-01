@@ -8,14 +8,36 @@ import MyContainer from "../Calender/Calender";
 import COuntryCode from "../Countrycode/countrycode";
 import { MdDoneAll, MdClear } from "react-icons/md";
 import Footer from "../LandingPage/footer/footer";
+import { useEffect} from 'react';
 
 import "./EditProfile.css";
 const EditProfile = () => {
+  const [user,setUser]=useState("")
+  let userrr;
+
+  const getdata=async()=>{
+    const loggedInUser =await JSON.parse(localStorage.getItem('userdata'))
+  if (loggedInUser) {
+      
+      setUser(loggedInUser)
+      userrr=loggedInUser;
+      console.log(user)
+      
+          }
+  }
+
+  useEffect(() => {
+  getdata()
+  
+  
+
+}, [])
+
   const [FirstName, setFirstName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
   const [LastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("+91");
-  const [email, setemail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState(JSON.parse(localStorage.getItem('userdata')).phoneNumber);
+  const [email, setemail] = useState(JSON.parse(localStorage.getItem('userdata')).email);
   const [City, setCity] = useState("");
   const [State, setState] = useState("");
   const [Country, setCountry] = useState("");
@@ -24,16 +46,18 @@ const EditProfile = () => {
   const [CollegeName, setCollegeName] = useState("");
   const [University, setUniversity] = useState("");
   const [GraduationYear, setGraduationYear] = useState("");
-  const [value, setdate] = useState(new Date());
+  const [value, setdate] = useState();
   const [visible, setvisible] = useState(false);
-  const [countrycode, setcountrycode] = useState("");
   const [otp, setotp] = useState("");
   const [otpsend, setotpsend] = useState(false);
   const [emailerror, setemailerr] = useState();
   const [phoneerror, setphoneerr] = useState();
   const [otperror, setotperr] = useState();
+  
 
-  const options = useMemo(() => countryList().getData(), []);
+ 
+
+  
 
   const closeModal = () => {
     setvisible(false);
@@ -49,12 +73,13 @@ const EditProfile = () => {
 
   const VERIFYPhonenumber = async () => {
     console.log(phoneNumber);
-    if (phoneNumber == "" || phoneNumber.length > 13) {
+    if (phoneNumber == "" || phoneNumber.length > 13 || phoneNumber.length<6) {
       setphoneerr("PLEASE TYPE A VALID PHONE NUMBER");
       stylefunction("0.2px outset red", "PhoneNumber");
       setcursor("PhoneNumber");
+      console.log(user)
     } else {
-      document.querySelector(".otpdisplay").style.display = "flex";
+      
       const veri_data = {
         number: phoneNumber,
       };
@@ -65,9 +90,18 @@ const EditProfile = () => {
       );
       if (messagee.includes("successfully")) {
         setotpsend(true);
+        document.querySelector(".otpdisplay").style.display = "flex";
         setphoneerr(messagee);
         setcursor("otp");
       }
+
+      else{
+        setcursor("PhoneNumber")
+        setphoneerr(messagee);
+      }
+
+
+
     }
   };
 
@@ -87,8 +121,8 @@ const EditProfile = () => {
   };
 
   const MakeChanges = async () => {
-    const month = parseInt(value.getMonth()) + 1;
-    const DOB = value.getDate() + "/" + month + "/" + value.getFullYear();
+    
+    const DOB = value;
     const edit_data = {
       FirstName,
       MiddleName,
@@ -119,6 +153,8 @@ const EditProfile = () => {
       setcursor("email");
     }
   };
+
+  
 
   return (
     <>
@@ -162,6 +198,7 @@ const EditProfile = () => {
                 required
                 value={FirstName}
                 onChange={(e) => {
+                  
                   setFirstName(e.target.value);
                 }}
               />
@@ -173,8 +210,7 @@ const EditProfile = () => {
                 id="MiddleName"
                 placeholder="Middle Name"
                 autoComplete="off"
-                required
-                value={MiddleName}
+               value={MiddleName}
                 onChange={(e) => {
                   setMiddleName(e.target.value);
                 }}
@@ -197,6 +233,7 @@ const EditProfile = () => {
             </div>
             <div className="textinputf">
               <input
+               readonly
                 type="email"
                 name="email"
                 id="email"
@@ -215,9 +252,12 @@ const EditProfile = () => {
             <label htmlFor="email">{emailerror && emailerror}</label>
             <div className="textinputf">
               <input
+              placeholder="DD-MM-YYYY"
                 className="datepicker"
                 type="date"
                 onChange={(e) => {
+                  console.log(Date.parse(e.target.value))
+                  console.log(e.target.value)
                   setdate(e.target.value);
                 }}
                 value={value}

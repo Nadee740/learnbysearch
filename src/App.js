@@ -31,7 +31,7 @@ setUser(loggedInUser)
       
        <Router>
        <Navbar/>
-       {user ? <Route path="/" exact component={Page1}  /> : <Route path="/" exact component={LandingPage}  /> }
+       {user ? <Route path="/" exact component={BlogsPage}  /> : <Route path="/" exact component={LandingPage}  /> }
        <Route path='/login' component={Login} />
        <Route path='/signup' component={Signup} />
        <Route path='/editprofile' component={EditProfile} />
