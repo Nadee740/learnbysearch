@@ -31,8 +31,8 @@ import {useState,useEffect} from "react"
                     
                 } else if(json.status === 'ok'){
                     console.log(json.msg)
-                    if(url.includes("login"))
-                   { console.log("login")
+                    if(url.includes("login")||url.includes("edit-profile"))
+                   { 
                    console.log(json.user)
                       localStorage.setItem('userdata', JSON.stringify(json.user))
                      console.log(JSON.parse(localStorage.getItem('userdata')))
