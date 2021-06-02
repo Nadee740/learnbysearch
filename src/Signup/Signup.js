@@ -11,7 +11,7 @@ const Signup = () => {
  const [email,setEmail]=useState("")
  const [password,setPass]=useState("")
  const [confirmpass,setConfrpass]=useState("")
- const [phoneNumber,setPhone]=useState("")
+ const [phoneNumber,setPhone]=useState("+91")
  const [emailerror,setemailerror]=useState()
  const [usererror,setusererror]=useState()
  const [passerror,setpassrerror]=useState()
@@ -82,7 +82,7 @@ console.log(reg_data)
 
 
 const {message:messagee} =await SendPost(`${window.name}register`, reg_data)
-console.log(messagee,"22222")
+console.log(messagee)
   if(messagee.includes("verification"))
   {
     document.getElementById("register-form").reset()

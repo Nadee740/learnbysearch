@@ -29,19 +29,21 @@ import {useState,useEffect} from "react"
                     }
                    
                     
-                } else if(json.status === 'ok'){
+                } else if(json.status.toLowerCase() === 'ok'){
                     console.log(json.msg)
                     if(url.includes("login")||url.includes("edit-profile"))
                    { 
-                   console.log(json.user)
+                    
+                          console.log("nadeeem")
                       localStorage.setItem('userdata', JSON.stringify(json.user))
                      console.log(JSON.parse(localStorage.getItem('userdata')))
+                     console.log(json.user,"resdata")
                 }
                     console.log('success')
                     throw Error(json.msg);
 
                 } else{
-                    console.log(2)
+                    
                     console.log(JSON.stringify(json))
                     throw Error(JSON.stringify(json));
                 }

@@ -30,14 +30,14 @@ setpassrerror()
             username,password
           }
         const {message:messagee} =await SendPost(`${window.name}login`, log_data)
-if(!(messagee.includes("logged in"))){
+if(!(messagee.includes("successfully"))){
     stylefunction("0.2px outset red","password")
     stylefunction("0.2px outset red","username")
     setpassrerror(messagee)
 }
 else{
     localStorage.setItem('user', username);
-     window.location="/page1"
+     window.location="/"
      setUser("")
     setPass("")
 }

@@ -12,7 +12,7 @@ import { useEffect} from 'react';
 
 import "./EditProfile.css";
 const EditProfile = () => {
-  const [user,setUser]=useState("")
+  const [user,setUser]=useState(JSON.parse(localStorage.getItem('userdata')))
   let userrr;
 
   const getdata=async()=>{
@@ -21,38 +21,42 @@ const EditProfile = () => {
       
       setUser(loggedInUser)
       userrr=loggedInUser;
-      console.log(user)
+      console.log(user,444)
       
           }
   }
 
   useEffect(() => {
+    console.log(user,2222)
+    console.log(JSON.parse(localStorage.getItem('userdata')),2222)
   getdata()
   
   
 
 }, [])
 
-  const [FirstName, setFirstName] = useState("");
-  const [MiddleName, setMiddleName] = useState("");
-  const [LastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState(JSON.parse(localStorage.getItem('userdata')).phoneNumber);
-  const [email, setemail] = useState(JSON.parse(localStorage.getItem('userdata')).email);
-  const [City, setCity] = useState("");
-  const [State, setState] = useState("");
-  const [Country, setCountry] = useState("");
-  const [Degree, setDegree] = useState("");
-  const [Field, setField] = useState("");
-  const [CollegeName, setCollegeName] = useState("");
-  const [University, setUniversity] = useState("");
-  const [GraduationYear, setGraduationYear] = useState("");
-  const [value, setdate] = useState();
+  const [FirstName, setFirstName] = useState(user.FirstName);
+  const [MiddleName, setMiddleName] = useState(user.MiddleName);
+  const [LastName, setLastName] = useState(user.LastName);
+  const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
+  const [email, setemail] = useState(user.email);
+  const [City, setCity] = useState(user.City);
+  const [State, setState] = useState(user.State);
+  const [Country, setCountry] = useState(user.Country);
+  const [Degree, setDegree] = useState(user.Education.Degree);
+  const [Field, setField] = useState(user.Education.Field);
+  const [CollegeName, setCollegeName] = useState(user.Education.College);
+  const [University, setUniversity] = useState(user.Education.University);
+  const [GraduationYear, setGraduationYear] = useState(user.Education.GraduationYear);
+  const [value, setdate] = useState(user.DOB);
   const [visible, setvisible] = useState(false);
   const [otp, setotp] = useState("");
   const [otpsend, setotpsend] = useState(false);
   const [emailerror, setemailerr] = useState();
   const [phoneerror, setphoneerr] = useState();
   const [otperror, setotperr] = useState();
+
+  const[isverfied,setisverfied]=useState(JSON.parse(localStorage.getItem('userdata')).isVerified)
   
 
  
@@ -116,6 +120,11 @@ const EditProfile = () => {
       `${window.name}submit-code`,
       submit_code
     );
+
+    if(messagee.includes("verified")){
+      setisverfied(true)
+
+    }
 
     setotperr(messagee);
   };
@@ -277,13 +286,13 @@ const EditProfile = () => {
                 }}
               />
 
-              <MdClear size="1.2em" className="emtick" color="red" />
+           {isverfied?<MdDoneAll size="1.2em" className="emtick" />:<MdClear size="1.2em" className="emtick" color="red" />}   
             </div>
             <br />
             <label htmlFor="PhoneNumber">{phoneerror && phoneerror}</label>
-            <button onClick={otpsend ? VerifyOtp : VERIFYPhonenumber}>
+            {isverfied?<></>: <button onClick={otpsend ? VerifyOtp : VERIFYPhonenumber}>
               {otpsend ? "VERIFY OTP" : "VERIFY PHONE NUMBER"}
-            </button>
+            </button>}
             <div className="otpfield otpdisplay">
               <input
                 type="number"
