@@ -16,13 +16,14 @@ const ContactUs = () => {
 }
 
     const submitMssg=async(e)=>{
+        console.log("clicked")
         formdata.append("name",name)
         formdata.append("email",email)
         formdata.append("phone",phone)
         formdata.append("subject",subject)
         formdata.append("message",message)
         e.preventDefault()
-       let url="https://script.google.com/macros/s/AKfycbzMVJ1q0HunM3naHjVse8Q1HC8eTDl_sdLgvUZorLTOLuyHu1mS1OtrQCQohm7yCmD7fA/exec" 
+       let url="https://script.google.com/macros/s/AKfycbx-zFVJ-6kf6yhTm6qASuEDxgUeeXdQKEpPuJsNGI-yQpSAUc1YcpgxWPFm0MAtrGzA/exec" 
         
         
        
@@ -32,7 +33,9 @@ const ContactUs = () => {
             body: formdata
         }).then(res => res.json())
         .then(json => {
-if(json.status=="success"){
+            console.log(json.result)
+            console.log("huu")
+if(json.result=="success"){
     setvisible(true)
 }
 
