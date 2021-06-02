@@ -1,9 +1,60 @@
-
+import Modal from "react-awesome-modal"
+import { useState } from "react"
 import Footer from "../LandingPage/footer/footer"
 import "./Contactus.css"
+import { Link } from "react-router-dom"
 const ContactUs = () => {
+    const [name,setname]=useState("")
+    const [email,setemail]=useState("")
+    const [phone,setphonenumber]=useState("")
+    const [subject, setsubject] = useState("")
+    const [message, setmessage] = useState("")
+    const [visible,setvisible]=useState(false)
+ const formdata=new FormData()
+ const closeModal=()=> {
+    setvisible(false)
+}
+
+    const submitMssg=async(e)=>{
+        formdata.append("name",name)
+        formdata.append("email",email)
+        formdata.append("phone",phone)
+        formdata.append("subject",subject)
+        formdata.append("message",message)
+        e.preventDefault()
+       let url="https://script.google.com/macros/s/AKfycbzMVJ1q0HunM3naHjVse8Q1HC8eTDl_sdLgvUZorLTOLuyHu1mS1OtrQCQohm7yCmD7fA/exec" 
+        
+        
+       
+        await fetch(url, {
+            method: 'POST',
+            
+            body: formdata
+        }).then(res => res.json())
+        .then(json => {
+if(json.status=="success"){
+    setvisible(true)
+}
+
+        })
+        
+    }
     return ( 
 <>
+<div className="popupscreen" >
+
+<section className="popupscreen">
+
+
+    <Modal visible={visible} width="400" height="300" effect="fadeInUp" onClickAway={closeModal}>
+        <div className="popup">
+            <h1>LEARN BY RESEARCH</h1>
+            <p>THANKS FOR YOUR TIME WE SHALL SOON REACH TO YOU...</p>
+            <Link to="/" onClick={closeModal}>Close</Link>
+        </div>
+    </Modal>
+</section>
+</div>
 
        
        <section className="contact-us">
@@ -33,17 +84,29 @@ const ContactUs = () => {
 </div>
 <div className="contactform">
 <div className="formclass">
-
-<form id="contactform">
-<input type="text" placeholder="name"/>
-<input type="email" placeholder="email"/>
-<input type="text" placeholder="phone numer"/>
-<input type="text" placeholder="subject"/>
+{/* method="POST" */}
+{/* action=*/}
+<form id="gform"  onSubmit={submitMssg}>
+<input type="text" placeholder="name" name="name" id="name" value={name} onChange={(e)=>{
+    setname(e.target.value)
+}}/>
+<input type="email" placeholder="email" name="email" id="email" value={email} onChange={(e)=>{
+    setemail(e.target.value)
+}}/>
+<input type="text" placeholder="phone number" name="phone" id="phone" value={phone} onChange={(e)=>{
+    setphonenumber(e.target.value)
+}}/>
+<input type="text" placeholder="subject" name="subject" id="subject" value={subject} onChange={(e)=>{
+    setsubject(e.target.value)
+}}/>
 <br />
 <div className="textarea">
-<textarea name="proble" id="proble"  rows="15" placeholder="Message"></textarea>
+<textarea  id="proble"  rows="15" placeholder="Message" name="message" value={message} onChange={(e)=>{
+    setmessage(e.target.value)
+}}></textarea>
 </div>
 
+<div className="sbmt-btn"><input type="submit" value="Submit"></input></div>
 
 
 </form>

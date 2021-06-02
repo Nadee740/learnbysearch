@@ -5,7 +5,7 @@ import {useState,useEffect} from "react"
  let message="a";
     // const [erro,setErr]=useState("")
     // useEffect(()=>{
-        const abortCont=new AbortController();
+        
          await fetch(url, {
                 method: 'POST',
                 headers: {
