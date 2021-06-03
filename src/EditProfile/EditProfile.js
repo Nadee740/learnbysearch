@@ -43,11 +43,11 @@ const EditProfile = () => {
   const [City, setCity] = useState(user.City);
   const [State, setState] = useState(user.State);
   const [Country, setCountry] = useState(user.Country);
-  const [Degree, setDegree] = useState(user.Education.Degree);
-  const [Field, setField] = useState(user.Education.Field);
-  const [CollegeName, setCollegeName] = useState(user.Education.College);
-  const [University, setUniversity] = useState(user.Education.University);
-  const [GraduationYear, setGraduationYear] = useState(user.Education.GraduationYear);
+  const [Degree, setDegree] = useState(user.Education?user.Education.Degree:"");
+  const [Field, setField] = useState(user.Education?user.Education.Field:"");
+  const [CollegeName, setCollegeName] = useState(user.Education?user.Education.College:"");
+  const [University, setUniversity] = useState(user.Education?user.Education.University:"");
+  const [GraduationYear, setGraduationYear] = useState(user.Education?user.Education.GraduationYear:"");
   const [value, setdate] = useState(user.DOB);
   const [visible, setvisible] = useState(false);
   const [otp, setotp] = useState("");
@@ -56,7 +56,7 @@ const EditProfile = () => {
   const [phoneerror, setphoneerr] = useState();
   const [otperror, setotperr] = useState();
 
-  const[isverfied,setisverfied]=useState(JSON.parse(localStorage.getItem('userdata')).isVerified)
+  const[isverfied,setisverfied]=useState(JSON.parse(localStorage.getItem('userdata')).isPhoneVerified)
   
 
  
