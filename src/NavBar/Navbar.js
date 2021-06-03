@@ -81,7 +81,7 @@ window.addEventListener('resize',showButton)
 
 
 </ul>
-{button ? user?<Link to="/editprofile"><img src="../images/kunj.jpeg" className="profimage"/> </Link> : <Button buttonStyle='btn--outline'>Sign up</Button>:""}
+{button ? user?<Link to="/editprofile"><img src="../images/account.png" className="profimage"/> </Link> : <Button buttonStyle='btn--outline'>Sign up</Button>:""}
     </div>
 
 </nav>
