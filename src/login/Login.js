@@ -36,7 +36,7 @@ if(!(messagee.includes("successfully"))){
     setpassrerror(messagee)
 }
 else{
-    localStorage.setItem('user', username);
+    
      window.location="/"
      setUser("")
     setPass("")

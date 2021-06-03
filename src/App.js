@@ -12,18 +12,10 @@ import ContactUs from './Contactus/Contactus';
 import BlogsPage from './Blogspage/Blogspage';
 
 function App() {
-  const [user,setUser]=useState(localStorage.getItem('userdata'))
+  const [user,setUser]=useState(localStorage.getItem('loggedinuserid'))
   useEffect(() => {
   //  localStorage.clear()
-    const loggedInUser = localStorage.getItem('userdata')
    
-    if (loggedInUser) {
-      
-      
-
-console.log(user,"Loged in user")
-      
-    }
       
    }, [])
   

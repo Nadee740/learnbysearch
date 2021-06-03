@@ -3,8 +3,8 @@ import {useState,useEffect} from "react"
  const SendPost = async(url, data) => {
 
  let message="a";
-    // const [erro,setErr]=useState("")
-    // useEffect(()=>{
+ let retdata={};
+    
         
          await fetch(url, {
                 method: 'POST',
@@ -31,13 +31,17 @@ import {useState,useEffect} from "react"
                     
                 } else if(json.status.toLowerCase() === 'ok'){
                     console.log(json.msg)
-                    if(url.includes("login")||url.includes("edit-profile"))
+                    if(url.includes("login"))
                    { 
                     
                           console.log("nadeeem")
-                      localStorage.setItem('userdata', JSON.stringify(json.user))
-                     console.log(JSON.parse(localStorage.getItem('userdata')))
-                     console.log(json.user,"resdata")
+                          localStorage.setItem("loggedinuserid",json.user._id)
+                      
+                }
+
+                else if(url.includes("user")){
+
+                    retdata=json.user
                 }
                     console.log('success')
                     throw Error(json.msg);
@@ -61,7 +65,13 @@ import {useState,useEffect} from "react"
             
 
 // },[]); 
+
+if(url.includes("user")){
+    return {retdata}
+}
+else{
 return {message};
+}
 }
 
 export default SendPost;

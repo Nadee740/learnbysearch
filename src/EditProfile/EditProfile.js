@@ -9,46 +9,61 @@ import COuntryCode from "../Countrycode/countrycode";
 import { MdDoneAll, MdClear } from "react-icons/md";
 import Footer from "../LandingPage/footer/footer";
 import { useEffect} from 'react';
-
 import "./EditProfile.css";
-const EditProfile = () => {
-  const [user,setUser]=useState(JSON.parse(localStorage.getItem('userdata')))
-  let userrr;
 
-  const getdata=async()=>{
-    const loggedInUser =await JSON.parse(localStorage.getItem('userdata'))
-  if (loggedInUser) {
-      
-      setUser(loggedInUser)
-      userrr=loggedInUser;
-      console.log(user,444)
-      
-          }
+const EditProfile = () => {
+
+  const [userid,setUserid]=useState(localStorage.getItem('loggedinuserid'))
+  let userrr={"id":userid};
+
+
+  
+
+  const getData=async()=>{
+    
+    const {retdata:datas} =await SendPost(`${window.name}user`, userrr)
+    console.log(datas,"Enghaneelum")
+    setFirstName(datas.FirstName)
+    setMiddleName(datas.MiddleName)
+    setLastName(datas.LastName)
+    setemail(datas.email)
+    setPhoneNumber(datas.phoneNumber)
+    setdate(datas.DOB)
+    setCity(datas.City)
+    setState(datas.State)
+    setCountry(datas.Country)
+    setDegree(datas.Education?datas.Education.Degree:"")
+    setField(datas.Education?datas.Education.Field:"")
+    setCollegeName(datas.Education?datas.Education.College:"")
+    setUniversity(datas.Education?datas.Education.University:"")
+    setGraduationYear(datas.Education?datas.Education.GraduationYear:"")
+setisverfied(datas.isPhoneVerified)
+
   }
 
   useEffect(() => {
-    console.log(user,2222)
-    console.log(JSON.parse(localStorage.getItem('userdata')),2222)
-  getdata()
+  getData()
+    
+
   
   
 
 }, [])
 
-  const [FirstName, setFirstName] = useState(user.FirstName);
-  const [MiddleName, setMiddleName] = useState(user.MiddleName);
-  const [LastName, setLastName] = useState(user.LastName);
-  const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
-  const [email, setemail] = useState(user.email);
-  const [City, setCity] = useState(user.City);
-  const [State, setState] = useState(user.State);
-  const [Country, setCountry] = useState(user.Country);
-  const [Degree, setDegree] = useState(user.Education?user.Education.Degree:"");
-  const [Field, setField] = useState(user.Education?user.Education.Field:"");
-  const [CollegeName, setCollegeName] = useState(user.Education?user.Education.College:"");
-  const [University, setUniversity] = useState(user.Education?user.Education.University:"");
-  const [GraduationYear, setGraduationYear] = useState(user.Education?user.Education.GraduationYear:"");
-  const [value, setdate] = useState(user.DOB);
+  const [FirstName, setFirstName] = useState("");
+  const [MiddleName, setMiddleName] = useState("");
+  const [LastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setemail] = useState("");
+  const [City, setCity] = useState("");
+  const [State, setState] = useState("");
+  const [Country, setCountry] = useState("");
+  const [Degree, setDegree] = useState("");
+  const [Field, setField] = useState("");
+  const [CollegeName, setCollegeName] = useState("");
+  const [University, setUniversity] = useState("");
+  const [GraduationYear, setGraduationYear] = useState("");
+  const [value, setdate] = useState();
   const [visible, setvisible] = useState(false);
   const [otp, setotp] = useState("");
   const [otpsend, setotpsend] = useState(false);
@@ -56,7 +71,7 @@ const EditProfile = () => {
   const [phoneerror, setphoneerr] = useState();
   const [otperror, setotperr] = useState();
 
-  const[isverfied,setisverfied]=useState(JSON.parse(localStorage.getItem('userdata')).isPhoneVerified)
+  const[isverfied,setisverfied]=useState()
   
 
  
@@ -81,7 +96,7 @@ const EditProfile = () => {
       setphoneerr("PLEASE TYPE A VALID PHONE NUMBER");
       stylefunction("0.2px outset red", "PhoneNumber");
       setcursor("PhoneNumber");
-      console.log(user)
+      
     } else {
       
       const veri_data = {

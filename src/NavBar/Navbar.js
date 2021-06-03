@@ -18,7 +18,7 @@ const closeMobileMenu=()=>{
     setClick(false);
 }
 const checkLOgin=()=>{
-    const loggedInUser = localStorage.getItem('userdata');
+    const loggedInUser = localStorage.getItem('loggedinuserid');
     if(loggedInUser){
         setUser(loggedInUser)
     }
