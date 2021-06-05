@@ -13,6 +13,7 @@ import "./EditProfile.css";
 import Logout from "../Backend/Logout";
 import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
+import Authverifier from "../Backend/Authverifier";
 
 const EditProfile = () => {
 
@@ -46,8 +47,12 @@ setisverfied(datas.isPhoneVerified)
 
   }
 
-  useEffect(() => {
+  useEffect( async() => {
   getData()
+  setisLoading(true)
+  const {isLoggedIn:messagee} =await Authverifier("http://localhost:8000/users/me")
+  setisLoggedin(messagee) 
+  setisLoading(false)
     
 
   
@@ -75,10 +80,10 @@ setisverfied(datas.isPhoneVerified)
   const [emailerror, setemailerr] = useState();
   const [phoneerror, setphoneerr] = useState();
   const [otperror, setotperr] = useState();
-
+  const [isLoggedIn,setisLoggedin]=useState(false)
   const[isverfied,setisverfied]=useState()
   
-
+  const [isLoading,setisLoading]=useState(false)
  
   const  submit = (LogoutFromall) => {
    
@@ -103,6 +108,8 @@ setisverfied(datas.isPhoneVerified)
     ]
   });
 };
+
+
 
   const LogOut= async()=>{
 
@@ -240,6 +247,8 @@ setisverfied(datas.isPhoneVerified)
 
   return (
     <>
+   
+    
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -259,7 +268,7 @@ setisverfied(datas.isPhoneVerified)
           </Modal>
         </section>
       </div>
-      <div className="container-profile">
+     {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:isLoggedIn?<div className="container-profile">
         <div className="container-profile-col1">
           <img
             src="/images/change.png"
@@ -504,8 +513,10 @@ setisverfied(datas.isPhoneVerified)
             
           </div>
         </div>
-      </div>
+      </div>: <div className="isLoading"><h1>Please Log in</h1></div>
+     }
       <Footer />
+      
     </>
   );
 };

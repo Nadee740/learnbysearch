@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
 import Footer from "../LandingPage/footer/footer";
 import "./Changepassword.css";
+import Authverifier from "../Backend/Authverifier";
+import { useEffect } from "react";
 const Changepassword = () => {
   const [email, setEmail] = useState("");
   const [password, setOldpassword] = useState("");
@@ -14,6 +16,18 @@ const Changepassword = () => {
   const [confrmpasserr, setConfirmpasserr] = useState();
   const [visible, setvisible] = useState(false);
 
+  const [isLoggedIn,setisLoggedin]=useState(false)
+  const [isLoading,setisLoading]=useState(false)
+  useEffect(async() => {
+  //localStorage.clear()
+  setisLoading(true)
+  const {isLoggedIn:messagee} =await Authverifier("http://localhost:8000/users/me")
+  setisLoggedin(messagee) 
+  setisLoading(false)
+  console.log(messagee)
+      
+   }, [])
+  
   const stylefunction = (color, id) => {
     document.getElementById(id).style.border = color;
   };
@@ -87,7 +101,7 @@ const Changepassword = () => {
           </Modal>
         </section>
       </div>
-      <div className="container-profile">
+     {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:isLoggedIn? <div className="container-profile">
         <div className="container-profile-col1">
           <img
             src="/images/EDIT.png"
@@ -180,7 +194,8 @@ const Changepassword = () => {
             <button onClick={Changepassword}>UPDATE PASSWORD</button>
           </div>
         </div>
-      </div>
+      </div>:<div className="isLoading"><h1>Please Login</h1></div>
+     }
       <Footer />
     </>
   );
