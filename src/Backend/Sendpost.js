@@ -36,6 +36,8 @@ import {useState,useEffect} from "react"
                     
                           console.log("nadeeem")
                           localStorage.setItem("loggedinuserid",json.user._id)
+                          console.log(json.user.tokens[json.user.tokens.length-1].token)
+                          localStorage.setItem("LoggedInUserTokenID",json.user.tokens[json.user.tokens.length-1].token)
                       
                 }
 

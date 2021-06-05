@@ -1,6 +1,7 @@
 import React from "react";
 import {useState,useEffect} from "react"
 import {Link} from "react-router-dom"
+import Authverifier from "../Backend/Authverifier";
 import Button from "../button/button";
 import './Navbar.css'
 
@@ -8,6 +9,7 @@ const Navbar = (props) => {
     const [click,setClick]=useState(false);
     const [button,setButton]=useState(true);
     const [user,setUser]=useState(true);
+    const [isLoggedIn,setisLoggedin]=useState(false)
     const [userprof,setuserprof]=useState()
 
 const handleClick =()=>{
@@ -17,7 +19,10 @@ const handleClick =()=>{
 const closeMobileMenu=()=>{
     setClick(false);
 }
-const checkLOgin=()=>{
+const checkLOgin=async()=>{
+
+    const {isLoggedIn:messagee} =await Authverifier("http://localhost:8000/users/me")
+    setisLoggedin(messagee)
     const loggedInUser = localStorage.getItem('loggedinuserid');
     if(loggedInUser){
         setUser(loggedInUser)
@@ -72,7 +77,7 @@ window.addEventListener('resize',showButton)
     </Link>
 </li>
 <li >
-   {user? <Link to="/editprofile" className='nav-links-mobile' onClick={closeMobileMenu} >
+   {isLoggedIn? <Link to="/editprofile" className='nav-links-mobile' onClick={closeMobileMenu} >
         View Profile
     </Link>:<Link to="/signup" className='nav-links-mobile' onClick={closeMobileMenu} >
         Sign Up
@@ -81,7 +86,7 @@ window.addEventListener('resize',showButton)
 
 
 </ul>
-{button ? user?<Link to="/editprofile"><img src="../images/account.png" className="profimage"/> </Link> : <Button buttonStyle='btn--outline'>Sign up</Button>:""}
+{button ? isLoggedIn?<Link to="/editprofile"><img src="../images/account.png" className="profimage"/> </Link> : <Button buttonStyle='btn--outline'>Sign up</Button>:""}
     </div>
 
 </nav>

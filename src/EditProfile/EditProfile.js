@@ -10,6 +10,9 @@ import { MdDoneAll, MdClear } from "react-icons/md";
 import Footer from "../LandingPage/footer/footer";
 import { useEffect} from 'react';
 import "./EditProfile.css";
+import Logout from "../Backend/Logout";
+import { confirmAlert } from "react-confirm-alert";
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 const EditProfile = () => {
 
@@ -18,6 +21,8 @@ const EditProfile = () => {
 
 
   
+
+
 
   const getData=async()=>{
     
@@ -75,8 +80,61 @@ setisverfied(datas.isPhoneVerified)
   
 
  
+  const  submit = (LogoutFromall) => {
+   
+  confirmAlert({
+    title: 'Confirm to submit',
+    message: 'Are you sure want to logout ?',
+    buttons: [
+      {
+        label: 'Yes',
+        onClick:()=>{
+          if(LogoutFromall)
+        LogOutFromAllDevice()
+        else
+        LogOut()
 
-  
+        }
+      },
+      {
+        label: 'No',
+        onClick: {EditProfile}
+      }
+    ]
+  });
+};
+
+  const LogOut= async()=>{
+
+    const {LoggedOut:messagee} =await Logout(`${window.name}logout`)
+    if(messagee)
+    {
+      console.log(messagee,"LOGOUT")
+      localStorage.clear()
+      window.location='/'
+      
+    }
+    else{
+      console.log("SORRY")
+    }
+
+  }
+  const LogOutFromAllDevice= async()=>{
+    const {LoggedOut:messagee} =await Logout(`${window.name}logout-all`)
+    if(messagee)
+    {
+      console.log(messagee,"LOGOUT")
+      localStorage.clear()
+      window.location='/'
+      
+    }
+    else{
+      console.log("SORRY")
+    }
+
+  }
+
+
 
   const closeModal = () => {
     setvisible(false);
@@ -440,6 +498,10 @@ setisverfied(datas.isPhoneVerified)
             <Link to="/changepassword" className="changeText">
               Change Your Password
             </Link>
+            <br></br>
+            <button onClick={()=>submit(false)}>Log Out</button>
+            <button onClick={()=>submit(true)}>Log Out From All Device</button>
+            
           </div>
         </div>
       </div>
