@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Modal from "react-awesome-modal"
 
 import "./Signup.css";
+import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 const Signup = () => {
  const [name,setName]=useState("")
  const [username,setUser]=useState("")
@@ -81,7 +82,7 @@ else{
 console.log(reg_data)
 
 
-const {message:messagee} =await SendPost(`${window.name}register`, reg_data)
+const {message:messagee} =await Tokenlesssendpost(`${window.name}register`, reg_data)
 console.log(messagee)
   if(messagee.includes("verification"))
   {

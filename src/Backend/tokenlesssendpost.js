@@ -1,16 +1,15 @@
 import {useState,useEffect} from "react"
  
- const SendPost = async(url, data) => {
+ const Tokenlesssendpost = async(url, data) => {
 
  let message="a";
  let retdata={};
- let Token=localStorage.getItem('LoggedInUserTokenID')
+    
         
          await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization':`Bearer ${Token}`
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             })
@@ -77,4 +76,4 @@ return {message};
 }
 }
 
-export default SendPost;
+export default Tokenlesssendpost;
