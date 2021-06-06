@@ -93,6 +93,25 @@
 .otpdisplay {
   display: none;
 }
+.datepicker {
+  color: #2f3061;
+  font-family: inherit;
+}
+.react-confirm-alert-body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 90%;
+  padding: 20px;
+  text-align: left;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 75px rgb(0 0 0 / 13%);
+  color: #666;
+}
+.Logout-btn{
+  border-radius: 10px;
+  box-shadow: 0 20px 75px rgb(0 0 0 / 13%);
+  width: 250px;
+}
 
 @media screen and (max-width: 800px) {
   .container-profile {
@@ -114,8 +133,18 @@
     width: 100%;
     padding-bottom: 60px;
   }
+
+  confirmAlert{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 200px;
+    padding: 30px;
+    text-align: left;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 75px rgb(0 0 0 / 13%);
+    color: #666;
 }
-.datepicker {
-  color: #2f3061;
-  font-family: inherit;
+
+
 }
+

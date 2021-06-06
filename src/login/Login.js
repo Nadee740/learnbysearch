@@ -1,7 +1,7 @@
 
 import {useEffect, useState} from "react"
 
-import { Link } from "react-router-dom"
+import { BrowserRouter, Link } from "react-router-dom"
 import { useSession } from "react-session-persist/lib"
 import SendPost from "../Backend/Sendpost"
 
@@ -36,8 +36,7 @@ if(!(messagee.includes("successfully"))){
     setpassrerror(messagee)
 }
 else{
-    
-     window.location="/"
+    window.location="/"
      setUser("")
     setPass("")
 }
@@ -95,18 +94,3 @@ else{
  
 export default Login;
 
-/*
-function Greeting(props) {
-  const isLoggedIn = props.isLoggedIn;
-  if (isLoggedIn) {
-    return <UserGreeting />;
-  }
-  return <GuestGreeting />;
-}
-
-ReactDOM.render(
-  // Try changing to isLoggedIn={true}:
-  <Greeting isLoggedIn={false} />,
-  document.getElementById('root')
-);
-*/

@@ -88,6 +88,7 @@ setisverfied(datas.isPhoneVerified)
   const  submit = (LogoutFromall) => {
    
   confirmAlert({
+    
     title: 'Confirm to submit',
     message: 'Are you sure want to logout ?',
     buttons: [
@@ -103,7 +104,7 @@ setisverfied(datas.isPhoneVerified)
       },
       {
         label: 'No',
-        onClick: {EditProfile}
+        onClick:()=>{}
       }
     ]
   });
@@ -508,8 +509,8 @@ setisverfied(datas.isPhoneVerified)
               Change Your Password
             </Link>
             <br></br>
-            <button onClick={()=>submit(false)}>Log Out</button>
-            <button onClick={()=>submit(true)}>Log Out From All Device</button>
+            <button className="Logout-btn" onClick={()=>submit(false)}>Log Out</button>
+            <button className="Logout-btn" onClick={()=>submit(true)}>Log Out From All Device</button>
             
           </div>
         </div>
