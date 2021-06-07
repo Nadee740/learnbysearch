@@ -15,6 +15,7 @@ const Slidercard = () => {
           iure adipisci nostrum eum ducimus minima et numquam, ab quibusdam
           saepe........
         </p>
+        <button>READ MORE</button>
       </div>
     </div>
   );

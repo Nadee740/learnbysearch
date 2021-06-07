@@ -1,136 +1,138 @@
 .sign-in {
-    height: 100vh;
-  }
+  height: 100vh;
+}
+.sigin-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+}
+
+.signin-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signin-image img {
+  width: 70%;
+}
+.register-form {
+  width: 100%;
+}
+.singin-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+}
+.singin-form h2 {
+  color: #585858;
+
+  font-size: 56px;
+
+  font-weight: 500;
+  line-height: 54px;
+  letter-spacing: 0.2em;
+}
+
+.form-group {
+  padding-top: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-group input {
+  width: 85%;
+  padding: 20px;
+  border: none;
+  /* border: 1px solid #000000; */
+  box-sizing: border-box;
+
+  border-radius: 10px;
+  outline: none;
+  margin: 10px;
+  background: #ffffff;
+  box-shadow: 0px 4px 11px 3px rgba(192, 192, 192, 0.288) !important;
+  border-radius: 34px;
+}
+
+label {
+  color: red;
+  padding-left: 40px;
+
+  font-style: italic;
+  font-size: 12px;
+}
+.zmdi {
+  padding: 2px 2px 2px 2px;
+  color: #2f3061;
+  font-size: 1.8rem;
+}
+
+.loginbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+}
+::placeholder {
+  font-family: inherit;
+}
+.loginbtn input {
+  font-family: inherit !important;
+  padding: 10px 10px;
+
+  border: none;
+
+  /* border-radius: 10px; */
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-align: right;
+}
+
+@media screen and (max-width: 800px) {
   .sigin-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    height: 100%;
+    flex-direction: column;
+    grid-template-columns: repeat(1, 1fr);
   }
-  
   .signin-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 20px;
   }
   .signin-image img {
-    width: 70%;
-  }
-  .register-form {
-    width: 100%;
+    width: auto;
+    height: 200px;
   }
   .singin-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  
-    justify-content: center;
+    padding: 10px;
   }
   .singin-form h2 {
     color: #2f3061;
-    font-family: 'Chela One', cursive;
-    font-size: 60px;
-    font-style: italic;
+
+    font-size: 45px;
     font-weight: bold;
     line-height: 54px;
     letter-spacing: 0.2em;
   }
-  
   .form-group {
-    padding-top: 8px;
-    width: 100%;
+    text-align: center;
   }
-  
-  .form-group input {
-    width: 85%;
-    padding: 20px;
-    border: none; 
-    /* border: 1px solid #000000; */
-    box-sizing: border-box;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 10px;
-    outline: none;
-    margin: 10px;
+  .form-group label {
+    padding-right: 50vw;
   }
-
-  label{
-    color: red;
-    padding-left: 40px;
-    font-family: 'Bree Serif', serif;
-    font-style: italic;
-    font-size: 12px;
-      
-  }
-  .zmdi {
-    padding: 2px 2px 2px 2px;
-    color: #2f3061;
-    font-size: 1.8rem;
-  }
-  
-  .loginbtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 40px;
-  }
-  ::placeholder {
-    font-family: 'Bree Serif', serif;
-  }
-  .loginbtn input {
-    font-family: 'Bree Serif', serif;
-    padding: 10px 20px;
-    background: #2f3061;
-    border: none;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    /* border-radius: 10px; */
-    font-size: 25px;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    text-align: right;
-  }
-  
-  
-  @media screen and (max-width: 800px) {
-    .sigin-content {
-      flex-direction: column;
-      grid-template-columns: repeat(1, 1fr);
-    }
-    .signin-image {
-      padding: 20px;
-    }
-    .signin-image img {
-      width: auto;
-      height: 200px;
-    }
-    .singin-form {
-      padding: 10px;
-    }
-    .singin-form h2 {
-      color: #2f3061;
-      font-family: 'Chela One', cursive;
-      font-size: 45px;
-      font-style: italic;
-      font-weight: bold;
-      line-height: 54px;
-      letter-spacing: 0.2em;
-    }
-    .form-group {
-        text-align: center;
- 
-     }
-     .form-group label{
-      padding-right: 50vw;
-    }
-  }
-  
+}

@@ -7,7 +7,7 @@ const BlogsPage = () => {
       <div className="blogheader">
         <div className="blogheader-col1">
           <img
-            src="/images/blogspage.png"
+            src="/images/blog.svg"
             alt="Blog Section"
             className="blogheader-img"
           />

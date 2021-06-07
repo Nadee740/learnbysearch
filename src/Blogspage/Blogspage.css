@@ -68,8 +68,9 @@
 .blogcard {
   margin: 30px 0;
   padding: 10px;
-  border-radius: 10px;
-  border: 0.2px outset #000;
+  background: #ffffff;
+  box-shadow: 0px 4px 11px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: grid;
   grid-template-columns: 0.4fr auto;
@@ -108,10 +109,12 @@ p {
   width: 100%;
   margin: 5px 0;
   margin-top: 7px;
+  color: #585858;
 }
 .blogcard-col2 p {
   width: 100%;
   margin: 5px 0;
+  color: #818181;
 }
 .blogcard-col2-top {
   display: flex;
@@ -123,7 +126,7 @@ p {
   width: 100%;
   height: 3px;
   margin: 4px 0;
-  background-color: #000000;
+  background-color: #0000001e;
 }
 .blogcard-col2-btm {
   width: 100%;

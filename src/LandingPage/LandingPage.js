@@ -4,7 +4,9 @@ import BlogSlider from "./Slider/slider";
 import Footer from "./footer/footer";
 import { useState } from "react";
 const LandingPage = () => {
-  const [para,setPara]=useState("Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
+  const [para, setPara] = useState(
+    "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
+  );
 
   return (
     <div className="landingpage">
@@ -13,7 +15,7 @@ const LandingPage = () => {
           <div className="top-content">
             <div className="left-image">
               <figure>
-                <img src="../images/landingpage.png" alt="Login pic"></img>
+                <img src="../images/Header1.svg" alt="Login pic"></img>
               </figure>
             </div>
             <div className="right-side">
@@ -25,12 +27,12 @@ const LandingPage = () => {
                 </p>
               </div>
 
-              <div className="buttons">
-                <Link to="/signup" className="btns">
-                  Sign up
+              <div className="buttons ">
+                <Link to="/signup" className="btns button1">
+                  SIGN UP
                 </Link>
                 <br></br>
-                <Link to="/login" className="btns">
+                <Link to="/login" className="btns button2">
                   LOGIN
                 </Link>
               </div>
@@ -51,9 +53,13 @@ const LandingPage = () => {
       <section className="about">
         <div className="about-content">
           <h2>About us</h2>
-          <div className="about-1">
+          <div className="about-col">
             <figure>
-              <img src="../images/aboutus.png" alt="Login pic"></img>
+              <img
+                src="../images/about1.svg"
+                alt="Login pic"
+                className="about-col-img"
+              ></img>
             </figure>
             <p>
               LearnByResearch is a hub for innovation, research & development.
@@ -62,21 +68,29 @@ const LandingPage = () => {
               of delivering the right skillsets.
             </p>
           </div>
-          <div className="about-2">
-            <figure>
-              <img src="../images/aboutus2.png" alt="Login pic"></img>
-            </figure>
+          <div className="about-col">
             <p>
               We promote innovation, research, and entrepreneurship as part of
               the research work. LearnByResearch is dedicated to higher levels
               of interdisciplinary R&D in the fields of emerging technologies
               with the strategy to build entrepreneurs and industry leaders.
             </p>
+            <figure>
+              <img
+                src="../images/about2.svg"
+                alt="Login pic"
+                className="about-col-img"
+              ></img>
+            </figure>
           </div>
 
-          <div className="about-3">
+          <div className="about-col">
             <figure>
-              <img src="../images/aboutus3.png" alt="Login pic"></img>
+              <img
+                src="../images/about3.svg"
+                alt="Login pic"
+                className="about-col-img"
+              ></img>
             </figure>
             <p>
               Our methodology emphases on a practical learning approach with
@@ -85,15 +99,19 @@ const LandingPage = () => {
               supervision of a guide.
             </p>
           </div>
-          <div className="about-4">
-            <figure>
-              <img src="../images/aboutus4.png" alt="Login pic"></img>
-            </figure>
+          <div className="about-col">
             <p>
               At LearnByResearch, students and research guides collaborate to
               enhance their skills and knowledge as well as build life-changing
               products and services.
             </p>
+            <figure>
+              <img
+                src="../images/about4.svg"
+                alt="Login pic"
+                className="about-col-img"
+              ></img>
+            </figure>
           </div>
         </div>
       </section>
@@ -103,37 +121,53 @@ const LandingPage = () => {
             <h2>What will you gain when you complete your Research Work?</h2>
           </div>
           <div className="gain-box-color">
-            <div className="content-1" onClick={()=>{
-              setPara("Technical recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
-           
-            }}>
+            <div
+              className="content-1"
+              onClick={() => {
+                setPara(
+                  "Technical recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
+                );
+              }}
+            >
               <p>
                 Technical And Soft Skills<i class="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>
-            <div className="content-1" onClick={()=>{
-              setPara("Research recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
-           
-            }}>
+            <div
+              className="content-1"
+              onClick={() => {
+                setPara(
+                  "Research recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
+                );
+              }}
+            >
               <p>
                 Research Paper Completion<i class="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>
-            <div className="content-1" onClick={()=>{
-              setPara("Network recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
-           
-            }}>
+            <div
+              className="content-1"
+              onClick={() => {
+                setPara(
+                  "Network recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
+                );
+              }}
+            >
               <p>
                 Network and Focused Community<i class="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>
-            <div className="content-1" onClick={()=>{
-              setPara("Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification.")
-           
-            }}>
+            <div
+              className="content-1"
+              onClick={() => {
+                setPara(
+                  "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
+                );
+              }}
+            >
               <p>
                 Certificate of Research Completion
                 <i class="fas fa-angle-down"></i>
