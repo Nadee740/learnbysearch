@@ -12,12 +12,8 @@ import { useEffect } from "react";
 import "./EditProfile.css";
 import Logout from "../Backend/Logout";
 import { confirmAlert } from "react-confirm-alert";
-<<<<<<< HEAD
 import "react-confirm-alert/src/react-confirm-alert.css";
-=======
-import 'react-confirm-alert/src/react-confirm-alert.css'; 
 import Authverifier from "../Backend/Authverifier";
->>>>>>> 60f63ec44597bd79058db4c3736c1ada13537b1e
 
 const EditProfile = () => {
   const [userid, setUserid] = useState(localStorage.getItem("loggedinuserid"));
@@ -43,24 +39,15 @@ const EditProfile = () => {
     setisverfied(datas.isPhoneVerified);
   };
 
-<<<<<<< HEAD
-  useEffect(() => {
+  useEffect(async () => {
     getData();
+    setisLoading(true);
+    const { isLoggedIn: messagee } = await Authverifier(
+      "http://localhost:8000/users/me"
+    );
+    setisLoggedin(messagee);
+    setisLoading(false);
   }, []);
-=======
-  useEffect( async() => {
-  getData()
-  setisLoading(true)
-  const {isLoggedIn:messagee} =await Authverifier("http://localhost:8000/users/me")
-  setisLoggedin(messagee) 
-  setisLoading(false)
-    
-
-  
-  
-
-}, [])
->>>>>>> 60f63ec44597bd79058db4c3736c1ada13537b1e
 
   const [FirstName, setFirstName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
@@ -82,9 +69,10 @@ const EditProfile = () => {
   const [emailerror, setemailerr] = useState();
   const [phoneerror, setphoneerr] = useState();
   const [otperror, setotperr] = useState();
-<<<<<<< HEAD
-
+  const [isLoggedIn, setisLoggedin] = useState(false);
   const [isverfied, setisverfied] = useState();
+
+  const [isLoading, setisLoading] = useState(false);
 
   const submit = (LogoutFromall) => {
     confirmAlert({
@@ -100,58 +88,11 @@ const EditProfile = () => {
         },
         {
           label: "No",
-          onClick: { EditProfile },
+          onClick: () => {},
         },
       ],
     });
   };
-=======
-  const [isLoggedIn,setisLoggedin]=useState(false)
-  const[isverfied,setisverfied]=useState()
-  
-  const [isLoading,setisLoading]=useState(false)
- 
-  const  submit = (LogoutFromall) => {
-   
-  confirmAlert({
-    
-    title: 'Confirm to submit',
-    message: 'Are you sure want to logout ?',
-    buttons: [
-      {
-        label: 'Yes',
-        onClick:()=>{
-          if(LogoutFromall)
-        LogOutFromAllDevice()
-        else
-        LogOut()
-
-        }
-      },
-      {
-        label: 'No',
-        onClick:()=>{}
-      }
-    ]
-  });
-};
-
-
-
-  const LogOut= async()=>{
-
-    const {LoggedOut:messagee} =await Logout(`${window.name}logout`)
-    if(messagee)
-    {
-      console.log(messagee,"LOGOUT")
-      localStorage.clear()
-      window.location='/'
-      
-    }
-    else{
-      console.log("SORRY")
-    }
->>>>>>> 60f63ec44597bd79058db4c3736c1ada13537b1e
 
   const LogOut = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
@@ -271,8 +212,6 @@ const EditProfile = () => {
 
   return (
     <>
-   
-    
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -292,268 +231,272 @@ const EditProfile = () => {
           </Modal>
         </section>
       </div>
-     {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:isLoggedIn?<div className="container-profile">
-        <div className="container-profile-col1">
-          <img
-            src="/images/change.png"
-            alt="Edit"
-            className="container-profile-img"
-          />
+      {isLoading ? (
+        <div className="isLoading">
+          <h1>Loading...</h1>
         </div>
-        <div className="container-profile-col2 container-profile-col1">
-          <h2>Edit Profile</h2>
-          <div className="form">
-            <div className="textinputf">
-              <input
-                type="text"
-                name="Firstname"
-                id="Firstname"
-                placeholder="First name"
-                autoComplete="off"
-                required
-                value={FirstName}
-                onChange={(e) => {
-                  setFirstName(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="MiddleName"
-                id="MiddleName"
-                placeholder="Middle Name"
-                autoComplete="off"
-                value={MiddleName}
-                onChange={(e) => {
-                  setMiddleName(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="LastName"
-                id="LastName"
-                placeholder="Last Name"
-                autoComplete="off"
-                required
-                value={LastName}
-                className="input"
-                onChange={(e) => {
-                  setLastName(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                readonly="true"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-                autoComplete="off"
-                required
-                value={email}
-              />
-              <MdDoneAll size="1.2em" className="emtick" />
-            </div>
-            <br></br>
-
-            <label htmlFor="email">{emailerror && emailerror}</label>
-            <div className="textinputf">
-              <input
-                placeholder="DD-MM-YYYY"
-                className="datepicker"
-                type="date"
-                onChange={(e) => {
-                  console.log(Date.parse(e.target.value));
-                  console.log(e.target.value);
-                  setdate(e.target.value);
-                }}
-                value={value}
-              ></input>
-            </div>
-
-            <div className="textinputf">
-              <input
-                className="phonenumber"
-                type="text"
-                name="PhoneNumber"
-                id="PhoneNumber"
-                placeholder="Phone Number"
-                autoComplete="off"
-                required
-                value={phoneNumber}
-                onChange={(e) => {
-                  setPhoneNumber(e.target.value);
-                }}
-              />
-
-              {isverfied ? (
+      ) : isLoggedIn ? (
+        <div className="container-profile">
+          <div className="container-profile-col1">
+            <img
+              src="/images/change.png"
+              alt="Edit"
+              className="container-profile-img"
+            />
+          </div>
+          <div className="container-profile-col2 container-profile-col1">
+            <h2>Edit Profile</h2>
+            <div className="form">
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="Firstname"
+                  id="Firstname"
+                  placeholder="First name"
+                  autoComplete="off"
+                  required
+                  value={FirstName}
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="MiddleName"
+                  id="MiddleName"
+                  placeholder="Middle Name"
+                  autoComplete="off"
+                  value={MiddleName}
+                  onChange={(e) => {
+                    setMiddleName(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="LastName"
+                  id="LastName"
+                  placeholder="Last Name"
+                  autoComplete="off"
+                  required
+                  value={LastName}
+                  className="input"
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  readonly="true"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                  autoComplete="off"
+                  required
+                  value={email}
+                />
                 <MdDoneAll size="1.2em" className="emtick" />
+              </div>
+              <br></br>
+
+              <label htmlFor="email">{emailerror && emailerror}</label>
+              <div className="textinputf">
+                <input
+                  placeholder="DD-MM-YYYY"
+                  className="datepicker"
+                  type="date"
+                  onChange={(e) => {
+                    console.log(Date.parse(e.target.value));
+                    console.log(e.target.value);
+                    setdate(e.target.value);
+                  }}
+                  value={value}
+                ></input>
+              </div>
+
+              <div className="textinputf">
+                <input
+                  className="phonenumber"
+                  type="text"
+                  name="PhoneNumber"
+                  id="PhoneNumber"
+                  placeholder="Phone Number"
+                  autoComplete="off"
+                  required
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
+                />
+
+                {isverfied ? (
+                  <MdDoneAll size="1.2em" className="emtick" />
+                ) : (
+                  <MdClear size="1.2em" className="emtick" color="red" />
+                )}
+              </div>
+              <br />
+              <label htmlFor="PhoneNumber">{phoneerror && phoneerror}</label>
+              {isverfied ? (
+                <></>
               ) : (
-                <MdClear size="1.2em" className="emtick" color="red" />
+                <button onClick={otpsend ? VerifyOtp : VERIFYPhonenumber}>
+                  {otpsend ? "VERIFY OTP" : "VERIFY PHONE NUMBER"}
+                </button>
               )}
-            </div>
-            <br />
-            <label htmlFor="PhoneNumber">{phoneerror && phoneerror}</label>
-            {isverfied ? (
-              <></>
-            ) : (
-              <button onClick={otpsend ? VerifyOtp : VERIFYPhonenumber}>
-                {otpsend ? "VERIFY OTP" : "VERIFY PHONE NUMBER"}
+              <div className="otpfield otpdisplay">
+                <input
+                  type="number"
+                  name="otp"
+                  id="otp"
+                  placeholder="OTP"
+                  autoComplete="off"
+                  className="otp"
+                  value={otp}
+                  onChange={(e) => {
+                    setotp(e.target.value);
+                  }}
+                />
+              </div>
+              <br></br>
+              <label htmlFor="email">{otperror && otperror}</label>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="City"
+                  id="City"
+                  placeholder="City"
+                  autoComplete="off"
+                  required
+                  value={City}
+                  onChange={(e) => {
+                    setCity(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="State"
+                  id="State"
+                  placeholder="State"
+                  autoComplete="off"
+                  required
+                  value={State}
+                  onChange={(e) => {
+                    setState(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="Country"
+                  id="Country"
+                  placeholder="Country"
+                  autoComplete="off"
+                  required
+                  value={Country}
+                  onChange={(e) => {
+                    setCountry(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="Degree"
+                  id="Degree"
+                  placeholder="Degree"
+                  autoComplete="off"
+                  required
+                  value={Degree}
+                  onChange={(e) => {
+                    setDegree(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="Field"
+                  id="Field"
+                  placeholder="Field"
+                  autoComplete="off"
+                  required
+                  value={Field}
+                  onChange={(e) => {
+                    setField(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="CollegeName"
+                  id="CollegeName"
+                  placeholder="CollegeName"
+                  autoComplete="off"
+                  required
+                  value={CollegeName}
+                  onChange={(e) => {
+                    setCollegeName(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="University"
+                  id="University"
+                  placeholder="University"
+                  autoComplete="off"
+                  required
+                  value={University}
+                  onChange={(e) => {
+                    setUniversity(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="textinputf">
+                <input
+                  type="text"
+                  name="GraduationYear"
+                  id="GraduationYear"
+                  placeholder="GraduationYear"
+                  autoComplete="off"
+                  required
+                  value={GraduationYear}
+                  onChange={(e) => {
+                    setGraduationYear(e.target.value);
+                  }}
+                />
+              </div>
+              <button onClick={MakeChanges}>Make Changes</button>
+              <Link to="/changepassword" className="changeText">
+                Change Your Password
+              </Link>
+              <br></br>
+              <button className="Logout-btn" onClick={() => submit(false)}>
+                Log Out
               </button>
-            )}
-            <div className="otpfield otpdisplay">
-              <input
-                type="number"
-                name="otp"
-                id="otp"
-                placeholder="OTP"
-                autoComplete="off"
-                className="otp"
-                value={otp}
-                onChange={(e) => {
-                  setotp(e.target.value);
-                }}
-              />
+              <button className="Logout-btn" onClick={() => submit(true)}>
+                Log Out From All Device
+              </button>
             </div>
-            <br></br>
-            <label htmlFor="email">{otperror && otperror}</label>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="City"
-                id="City"
-                placeholder="City"
-                autoComplete="off"
-                required
-                value={City}
-                onChange={(e) => {
-                  setCity(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="State"
-                id="State"
-                placeholder="State"
-                autoComplete="off"
-                required
-                value={State}
-                onChange={(e) => {
-                  setState(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="Country"
-                id="Country"
-                placeholder="Country"
-                autoComplete="off"
-                required
-                value={Country}
-                onChange={(e) => {
-                  setCountry(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="Degree"
-                id="Degree"
-                placeholder="Degree"
-                autoComplete="off"
-                required
-                value={Degree}
-                onChange={(e) => {
-                  setDegree(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="Field"
-                id="Field"
-                placeholder="Field"
-                autoComplete="off"
-                required
-                value={Field}
-                onChange={(e) => {
-                  setField(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="CollegeName"
-                id="CollegeName"
-                placeholder="CollegeName"
-                autoComplete="off"
-                required
-                value={CollegeName}
-                onChange={(e) => {
-                  setCollegeName(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="University"
-                id="University"
-                placeholder="University"
-                autoComplete="off"
-                required
-                value={University}
-                onChange={(e) => {
-                  setUniversity(e.target.value);
-                }}
-              />
-            </div>
-            <div className="textinputf">
-              <input
-                type="text"
-                name="GraduationYear"
-                id="GraduationYear"
-                placeholder="GraduationYear"
-                autoComplete="off"
-                required
-                value={GraduationYear}
-                onChange={(e) => {
-                  setGraduationYear(e.target.value);
-                }}
-              />
-            </div>
-            <button onClick={MakeChanges}>Make Changes</button>
-            <Link to="/changepassword" className="changeText">
-              Change Your Password
-            </Link>
-            <br></br>
-<<<<<<< HEAD
-            <button onClick={() => submit(false)}>Log Out</button>
-            <button onClick={() => submit(true)}>
-              Log Out From All Device
-            </button>
-=======
-            <button className="Logout-btn" onClick={()=>submit(false)}>Log Out</button>
-            <button className="Logout-btn" onClick={()=>submit(true)}>Log Out From All Device</button>
-            
->>>>>>> 60f63ec44597bd79058db4c3736c1ada13537b1e
           </div>
         </div>
-      </div>: <div className="isLoading"><h1>Please Log in</h1></div>
-     }
+      ) : (
+        <div className="isLoading">
+          <h1>Please Log in</h1>
+        </div>
+      )}
       <Footer />
-      
     </>
   );
 };
