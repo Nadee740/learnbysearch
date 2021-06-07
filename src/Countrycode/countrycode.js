@@ -1,9 +1,30 @@
-import "./Countrycode.css"
-const COuntryCode = () => {
-    return (  
-        <div className="tel-box">
-            <div className="select-box">
-            <select id="country_list">
+import React, { Component } from 'react';
+import './Countrycode.css';
+export class Countrycode extends Component {
+	state = {
+		flagImg: 'https://raw.githubusercontent.com/MeRahulAhire/intl-tel-code-select/master/phone_icon.png',
+		countryCodeValue: '',
+		phone: ''
+	};
+	selectCountryHandler = (e) => {
+		this.setState({ countryCodeValue: e.target.value });
+	};
+	phoneHandler = (e) => {
+		this.setState({ phone: e.target.value });
+	};
+	countryFlagHandler = () => {
+		const select = document.querySelector('#country');
+		this.setState({
+			flagImg: `https://flagpedia.net/data/flags/h80/${select.selectedOptions[0].dataset.countrycode.toLowerCase()}.webp`
+		});
+	};
+
+	render() {
+		return (
+			<div className="page">
+				<div className="country-code">
+				<select className="select-code" id="country_list" onChange={this.selectCountryHandler}
+								defaultValue={this.state.countryCodeValue} >
                         <option value="" hidden>Select Country</option> 
                         <option data-countryCode="AF" value="93">Afghanistan (+93)</option>
                         <option data-countryCode="AL" value="355">Albania (+355)</option>
@@ -249,9 +270,13 @@ const COuntryCode = () => {
                         <option data-countryCode="ZM" value="260">Zambia (+260)</option>
                         <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
                       </select>
-            </div>
-        </div>
-    );
+				</div>
+				<div className="type-no">
+					<input></input>
+				</div>
+			</div>
+		);
+	}
 }
- 
-export default COuntryCode;
+
+export default Countrycode;
