@@ -12,7 +12,12 @@ import { useEffect } from "react";
 import "./EditProfile.css";
 import Logout from "../Backend/Logout";
 import { confirmAlert } from "react-confirm-alert";
+<<<<<<< HEAD
 import "react-confirm-alert/src/react-confirm-alert.css";
+=======
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
+import Authverifier from "../Backend/Authverifier";
+>>>>>>> 60f63ec44597bd79058db4c3736c1ada13537b1e
 
 const EditProfile = () => {
   const [userid, setUserid] = useState(localStorage.getItem("loggedinuserid"));
@@ -38,9 +43,24 @@ const EditProfile = () => {
     setisverfied(datas.isPhoneVerified);
   };
 
+<<<<<<< HEAD
   useEffect(() => {
     getData();
   }, []);
+=======
+  useEffect( async() => {
+  getData()
+  setisLoading(true)
+  const {isLoggedIn:messagee} =await Authverifier("http://localhost:8000/users/me")
+  setisLoggedin(messagee) 
+  setisLoading(false)
+    
+
+  
+  
+
+}, [])
+>>>>>>> 60f63ec44597bd79058db4c3736c1ada13537b1e
 
   const [FirstName, setFirstName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
@@ -62,6 +82,7 @@ const EditProfile = () => {
   const [emailerror, setemailerr] = useState();
   const [phoneerror, setphoneerr] = useState();
   const [otperror, setotperr] = useState();
+<<<<<<< HEAD
 
   const [isverfied, setisverfied] = useState();
 
@@ -84,6 +105,53 @@ const EditProfile = () => {
       ],
     });
   };
+=======
+  const [isLoggedIn,setisLoggedin]=useState(false)
+  const[isverfied,setisverfied]=useState()
+  
+  const [isLoading,setisLoading]=useState(false)
+ 
+  const  submit = (LogoutFromall) => {
+   
+  confirmAlert({
+    
+    title: 'Confirm to submit',
+    message: 'Are you sure want to logout ?',
+    buttons: [
+      {
+        label: 'Yes',
+        onClick:()=>{
+          if(LogoutFromall)
+        LogOutFromAllDevice()
+        else
+        LogOut()
+
+        }
+      },
+      {
+        label: 'No',
+        onClick:()=>{}
+      }
+    ]
+  });
+};
+
+
+
+  const LogOut= async()=>{
+
+    const {LoggedOut:messagee} =await Logout(`${window.name}logout`)
+    if(messagee)
+    {
+      console.log(messagee,"LOGOUT")
+      localStorage.clear()
+      window.location='/'
+      
+    }
+    else{
+      console.log("SORRY")
+    }
+>>>>>>> 60f63ec44597bd79058db4c3736c1ada13537b1e
 
   const LogOut = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
@@ -203,6 +271,8 @@ const EditProfile = () => {
 
   return (
     <>
+   
+    
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -222,7 +292,7 @@ const EditProfile = () => {
           </Modal>
         </section>
       </div>
-      <div className="container-profile">
+     {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:isLoggedIn?<div className="container-profile">
         <div className="container-profile-col1">
           <img
             src="/images/change.png"
@@ -468,14 +538,22 @@ const EditProfile = () => {
               Change Your Password
             </Link>
             <br></br>
+<<<<<<< HEAD
             <button onClick={() => submit(false)}>Log Out</button>
             <button onClick={() => submit(true)}>
               Log Out From All Device
             </button>
+=======
+            <button className="Logout-btn" onClick={()=>submit(false)}>Log Out</button>
+            <button className="Logout-btn" onClick={()=>submit(true)}>Log Out From All Device</button>
+            
+>>>>>>> 60f63ec44597bd79058db4c3736c1ada13537b1e
           </div>
         </div>
-      </div>
+      </div>: <div className="isLoading"><h1>Please Log in</h1></div>
+     }
       <Footer />
+      
     </>
   );
 };

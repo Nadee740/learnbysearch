@@ -4,16 +4,50 @@ import { Link } from "react-router-dom";
 import { useSession } from "react-session-persist/lib";
 import SendPost from "../Backend/Sendpost";
 
-import "./Login.css";
+import { BrowserRouter, Link } from "react-router-dom"
+import { useSession } from "react-session-persist/lib"
+import SendPost from "../Backend/Sendpost"
+
+import "./Login.css"
 const Login = () => {
   const [username, setUser] = useState("");
   const [password, setPass] = useState("");
   const [passerror, setpassrerror] = useState();
   const [user, setUserprof] = useState();
 
-  const stylefunction = (color, id) => {
-    document.getElementById(id).style.border = color;
-  };
+    const [username,setUser]=useState("")
+    const [password,setPass]=useState("")
+    const [passerror,setpassrerror]=useState()
+    const [user, setUserprof] = useState()
+
+
+    const stylefunction=(color,id)=>{
+
+        document.getElementById(id).style.border=color;
+     
+     
+      }
+
+    const output=async(e)=>{
+e.preventDefault();
+stylefunction("none","password")
+stylefunction("none","username")
+setpassrerror()
+        const log_data = {
+            username,password
+          }
+        const {message:messagee} =await SendPost(`${window.name}login`, log_data)
+if(!(messagee.includes("successfully"))){
+    stylefunction("0.2px outset red","password")
+    stylefunction("0.2px outset red","username")
+    setpassrerror(messagee)
+}
+else{
+    window.location="/"
+     setUser("")
+    setPass("")
+}
+
 
   const output = async (e) => {
     e.preventDefault();
@@ -104,18 +138,3 @@ const Login = () => {
 
 export default Login;
 
-/*
-function Greeting(props) {
-  const isLoggedIn = props.isLoggedIn;
-  if (isLoggedIn) {
-    return <UserGreeting />;
-  }
-  return <GuestGreeting />;
-}
-
-ReactDOM.render(
-  // Try changing to isLoggedIn={true}:
-  <Greeting isLoggedIn={false} />,
-  document.getElementById('root')
-);
-*/

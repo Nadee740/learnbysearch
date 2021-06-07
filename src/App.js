@@ -11,12 +11,14 @@ import Changepassword from './Changepassword/Changepassword';
 import ContactUs from './Contactus/Contactus';
 import BlogsPage from './Blogspage/Blogspage';
 import Authverifier from './Backend/Authverifier';
+import COuntryCode from './Countrycode/countrycode';
 
 function App() {
   const [user,setUser]=useState(localStorage.getItem('loggedinuserid'))
   const [isLoggedIn,setisLoggedin]=useState(false)
   const [isLoading,setisLoading]=useState(false)
   useEffect(async() => {
+    
   //localStorage.clear()
   setisLoading(true)
   const {isLoggedIn:messagee} =await Authverifier("http://localhost:8000/users/me")
@@ -39,6 +41,7 @@ function App() {
        <Route path='/changepassword' component={Changepassword} />
        <Route path='/contactus' component={ContactUs} />
        <Route path='/allblogs' component={BlogsPage} />
+       {/* <Route path='/country' component={COuntryCode} /> */}
        </Router>} 
       
       

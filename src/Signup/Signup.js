@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 
 import "./Signup.css";
+import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 const Signup = () => {
   const [name, setName] = useState("");
   const [username, setUser] = useState("");
@@ -97,12 +98,103 @@ const Signup = () => {
           setcursor("phone");
         }
       }
-    } else {
-      setpassrerror("Please tpe a strong password");
-      stylefunction("0.2px outset red", "password");
-      setcursor("password");
-    }
-  };
+const clearform=()=>{
+ 
+  setName()
+  setPass()
+  setUser()
+  setEmail()
+  setPass()
+  setConfrpass()
+}
+
+
+ const output=async(e)=>{
+e.preventDefault();
+
+setconfirmpassrerror()
+setphoneerror()
+setusererror()
+setemailerror()
+setusererror()
+setpassrerror()
+
+stylefunction("none","username")
+stylefunction("none","email")
+stylefunction("none","phone")
+stylefunction("none","password")
+
+let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/
+      
+if(re.test(password))
+{
+if(confirmpass!=password){
+
+
+
+setconfirmpassrerror("Password does not match ")
+setcursor("confirmpassword")
+stylefunction("0.2px outset red","password")
+}
+else{
+ 
+
+ 
+ const reg_data = {
+  username, email, name, phoneNumber, password
+}
+console.log(reg_data)
+
+
+const {message:messagee} =await Tokenlesssendpost(`${window.name}register`, reg_data)
+console.log(messagee)
+  if(messagee.includes("verification"))
+  {
+    document.getElementById("register-form").reset()
+    setvisible(true)
+   
+  }
+
+  else if (messagee.includes("email")){
+    
+    setemailerror(messagee)
+    stylefunction("0.2px outset red","email")
+    setcursor("email")
+
+  }
+  else if (messagee.includes("password"))
+  {
+    setpassrerror(messagee)
+    stylefunction("0.2px outset red","password")
+    setcursor("password")
+  }
+  else if (messagee.includes("Username"))
+  {
+    stylefunction("0.2px outset red","username")
+    
+    setusererror(messagee)
+    setcursor("username")
+  }
+
+  else if (messagee.toLowerCase().includes("Phone"))
+  {
+    stylefunction("0.2px outset red","phone")
+    setphoneerror(messagee)
+    setcursor("phone")
+   
+  }
+  
+
+ }
+}
+else{
+  setpassrerror("Please tpe a strong password")
+  stylefunction("0.2px outset red","password")
+  setcursor("password")
+
+}
+
+ }
   return (
     <>
       <div className="popupscreen">

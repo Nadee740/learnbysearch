@@ -1,6 +1,25 @@
-
-
-.select-box{
-    width: 60px;
-    height: 40px;
+.page{
+  grid-template-columns: .35fr.65fr;
+  display: grid;
+  height: 20px;
 }
+.select-code{
+  border: red;
+  border-radius: 1px;
+  display: flex;
+  width: 20px;
+  width: 100%;
+}
+
+.country-code{
+ 
+
+display: flex;
+}
+
+.type-no{
+  width: 100%;
+  display: flex;
+  
+}
+
