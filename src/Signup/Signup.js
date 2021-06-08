@@ -130,7 +130,15 @@ const Signup = () => {
       <section className="sign-up">
         <div className="container">
           <div className="signup-content">
+          
+          
             <div className="signup-image">
+                   <div className="pass-condition" >
+                     <h2>* password must be minimum 6 character</h2>
+                     <h2>* password must contain number,alpha character uppercase and lower case letter</h2>
+  
+                   </div>
+                   
               <img src="../images/reg.svg" alt="Login pic"></img>
             </div>
             <div className="singup-form">
