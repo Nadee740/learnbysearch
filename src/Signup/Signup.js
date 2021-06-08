@@ -7,7 +7,8 @@ import Modal from "react-awesome-modal";
 import "./Signup.css";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 const Signup = () => {
-  const [name, setName] = useState("");
+  const [FirstName, setFirstName] = useState("");
+  const [LastName, setLastName] = useState("");
   const [username, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
@@ -32,7 +33,8 @@ const Signup = () => {
     setvisible(false);
   };
   const clearform = () => {
-    setName();
+    setFirstName();
+    setLastName()
     setPass();
     setUser();
     setEmail();
@@ -65,8 +67,9 @@ const Signup = () => {
       } else {
         const reg_data = {
           username,
+          FirstName,
+          LastName,
           email,
-          name,
           phoneNumber,
           password,
         };
@@ -152,13 +155,28 @@ const Signup = () => {
                 <div className="form-group">
                   <input
                     type="text"
-                    name="name"
-                    id="name"
-                    value={name}
+                    name="FirstName"
+                    id="FirstName"
+                    value={FirstName}
                     onChange={(e) => {
-                      setName(e.target.value);
+                      setFirstName(e.target.value);
                     }}
-                    placeholder="Name"
+                    placeholder="FirstName"
+                    autoComplete="off"
+                    required
+                  ></input>
+                  <br />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="LastName"
+                    id="LastName"
+                    value={LastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                    placeholder="LastName"
                     autoComplete="off"
                     required
                   ></input>
