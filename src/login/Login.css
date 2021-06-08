@@ -1,12 +1,26 @@
 .sign-in {
   height: 100vh;
 }
+
+.emtick {
+  position: absolute;
+  top: 25%;
+  right: 30px;
+  transform: translateY(50%);
+  color: rgb(0, 165, 55);
+}
 .sigin-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   height: 100%;
 }
+.span-icon{
+ position: absolute;
+ z-index: 1000;
+right: 10%;
+  
 
+}
 .signin-image {
   display: flex;
   align-items: center;
@@ -55,7 +69,8 @@
   border: none;
   /* border: 1px solid #000000; */
   box-sizing: border-box;
-
+position: relative;
+z-index: 10;
   border-radius: 10px;
   outline: none;
   margin: 10px;
@@ -107,6 +122,14 @@ a {
 }
 
 @media screen and (max-width: 800px) {
+  .span-icon{
+    position: absolute;
+    z-index: 1000;
+   right: 67px;
+     
+   
+   }
+
   .sigin-content {
     flex-direction: column;
     grid-template-columns: repeat(1, 1fr);

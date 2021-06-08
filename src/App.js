@@ -19,7 +19,7 @@ function App() {
   const [isLoading,setisLoading]=useState(false)
   useEffect(async() => {
     
-  //localStorage.clear()
+  // localStorage.clear()
   setisLoading(true)
   const {isLoggedIn:messagee} =await Authverifier("http://localhost:8000/users/me")
   setisLoggedin(messagee) 

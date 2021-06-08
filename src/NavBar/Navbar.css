@@ -121,7 +121,7 @@
   }
 
   .navbar-logo {
-    color: #fff;
+    color: #000;
     justify-self: start;
     margin-left: -50px;
     cursor: pointer;
@@ -138,6 +138,7 @@
     padding: 2rem;
     width: 100%;
     display: table;
+    color: #fff;
   }
 
   .nav-item:hover {
@@ -164,7 +165,7 @@
   }
 
   .fa-times {
-    color: #fff;
+    color: #000;
     font-size: 2rem;
   }
 

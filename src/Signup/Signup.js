@@ -19,7 +19,8 @@ const Signup = () => {
   const [phoneerror, setphoneerror] = useState();
   const [confirmpasserror, setconfirmpassrerror] = useState();
   const [visible, setvisible] = useState(false);
-
+  const [passVISIBLE, setpassVISIBLE] = useState(false);
+  const [confirmpassVISIBLE, setconfirmpassVISIBLE] = useState(false);
   const setcursor = (id) => {
     document.getElementById(id).focus();
   };
@@ -71,7 +72,7 @@ const Signup = () => {
         };
         console.log(reg_data);
 
-        const { message: messagee } = await SendPost(
+        const { message: messagee } = await Tokenlesssendpost(
           `${window.name}register`,
           reg_data
         );
@@ -208,8 +209,13 @@ const Signup = () => {
                 </div>
 
                 <div className="form-group">
+                <div className="span-icon">
+                <i onClick={()=>{
+                  setpassVISIBLE(!passVISIBLE)
+                  console.log(passVISIBLE)
+                }} class={passVISIBLE?"fa fa-eye-slash":"fa fa-eye"}></i></div>
                   <input
-                    type="password"
+                    type={passVISIBLE?"text":"password"}
                     name="password"
                     value={password}
                     onChange={(e) => {
@@ -225,6 +231,11 @@ const Signup = () => {
                 </div>
 
                 <div className="form-group">
+                <div className="span-icon">
+                <i onClick={()=>{
+                  setconfirmpassVISIBLE(!confirmpassVISIBLE)
+                  
+                }} class={confirmpassVISIBLE?"fa fa-eye-slash":"fa fa-eye"}></i></div>
                   <input
                     onBlur={() => {
                       stylefunction("none", "confirmpassword");
@@ -236,7 +247,7 @@ const Signup = () => {
                         stylefunction("0.2px outset red", "confirmpassword");
                       }
                     }}
-                    type="password"
+                    type={confirmpassVISIBLE?"text":"password"}
                     id="confirmpassword"
                     name="confirmpassword"
                     value={confirmpass}

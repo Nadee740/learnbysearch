@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
-
 import { Link } from "react-router-dom";
-import { useSession } from "react-session-persist/lib";
-import SendPost from "../Backend/Sendpost";
-
+import { MdDoneAll, MdClear } from "react-icons/md";
 import { BrowserRouter } from "react-router-dom";
-
 import "./Login.css";
+
+import Tokenlesssendpost from "../Backend/tokenlesssendpost";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { Icon, IconButton, InputAdornment } from "@material-ui/core";
 const Login = () => {
   const [username, setUser] = useState("");
   const [password, setPass] = useState("");
   const [passerror, setpassrerror] = useState();
+  const [passVISIBLE, setpassVISIBLE] = useState(false);
   const [user, setUserprof] = useState();
 
   const stylefunction = (color, id) => {
     document.getElementById(id).style.border = color;
   };
+   
+   
+
 
   const output = async (e) => {
     e.preventDefault();
@@ -26,7 +30,7 @@ const Login = () => {
       username,
       password,
     };
-    const { message: messagee } = await SendPost(
+    const { message: messagee } = await Tokenlesssendpost(
       `${window.name}login`,
       log_data
     );
@@ -76,8 +80,14 @@ const Login = () => {
                   ></input>
                 </div>
                 <div className="form-group">
+                <div className="span-icon">
+                <i onClick={()=>{
+                  setpassVISIBLE(!passVISIBLE)
+                  console.log(passVISIBLE)
+                }} class={passVISIBLE?"fa fa-eye-slash":"fa fa-eye"}></i></div>
                   <input
-                    type="password"
+                
+                    type={passVISIBLE?"text":"password"}
                     name="password"
                     id="password"
                     placeholder="Password"
@@ -86,7 +96,10 @@ const Login = () => {
                     onChange={(e) => {
                       setPass(e.target.value);
                     }}
+           
                   ></input>
+                  
+              
                   <br></br>
                   <label htmlFor="password">{passerror && passerror}</label>
                 </div>

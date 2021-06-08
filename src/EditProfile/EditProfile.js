@@ -331,7 +331,9 @@ const EditProfile = () => {
                   value={phoneNumber}
                   onChange={(e) => {
                     setPhoneNumber(e.target.value);
+                    
                   }}
+                  
                 />
 
                 {isverfied ? (

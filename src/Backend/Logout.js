@@ -16,6 +16,7 @@ const Logout = async(url) => {
             .then(res => res.json())
             .then(json => {
                 if(json.error){
+                    console.log(Token)
                     LoggedOut=false
                     console.log(json.error)
                    
