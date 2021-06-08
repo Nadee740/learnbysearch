@@ -12,6 +12,9 @@ import ContactUs from './Contactus/Contactus';
 import BlogsPage from './Blogspage/Blogspage';
 import Authverifier from './Backend/Authverifier';
 import COuntryCode from './Countrycode/countrycode';
+import MyApplications from './MyApplications/MyApplications';
+import OpenProgrammes from './OpenProgrammes/OpenProgrammes';
+
 
 function App() {
   const [user,setUser]=useState(localStorage.getItem('loggedinuserid'))
@@ -41,7 +44,9 @@ function App() {
        <Route path='/changepassword' component={Changepassword} />
        <Route path='/contactus' component={ContactUs} />
        <Route path='/allblogs' component={BlogsPage} />
-       {/* <Route path='/country' component={COuntryCode} /> */}
+       <Route path='/myapplications' component={MyApplications} />
+       <Route path='/o' component={OpenProgrammes} />
+      
        </Router>} 
       
       
