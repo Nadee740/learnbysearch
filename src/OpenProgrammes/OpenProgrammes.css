@@ -1,0 +1,65 @@
+.openprograms {
+  padding: 30px 40px;
+  color: #404040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.openprogramcard-img {
+  height: 180px;
+  width: 100%;
+  object-position: center;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+.cardholder {
+  display: grid;
+  padding: 20px;
+  grid-gap: 50px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.openprogramcard {
+  background: #ffffff;
+  box-shadow: 0px 4px 11px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.openprogramcard-head {
+  color: #404040;
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.openprogramcard-text {
+  color: #818181;
+  font-weight: 400;
+  line-height: 115%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.openprogramcard-btn {
+  font-family: inherit;
+  width: 100%;
+  font-weight: 500;
+  background: #c86fc9;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.openprogramcard-btn:hover {
+  background: #ffffff;
+  color: #c86fc9;
+  cursor: pointer;
+}
+@media screen and (max-width: 960px) {
+  .cardholder {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
