@@ -1,7 +1,19 @@
 import "./OpenProgrammes.css";
-const Openprogramcard = () => {
+import { useState } from "react";
+import OpenprogrammesModel from "../ProgaramesModel/OpenprogrammesModel";
+
+function Openprogramcard(){
+  const [visible, setvisible] = useState(false);
+  
+  const closeModal = () => {
+    setvisible(false);
+  };
   return (
-    <div className="openprogramcard">
+    <>
+    <OpenprogrammesModel visible={visible} closeModal={closeModal}>
+
+    </OpenprogrammesModel>
+    <div className="openprogramcard" >
       <img
         src="https://images.unsplash.com/photo-1622890276840-8eabe803e2bb"
         alt="Card Haeder"
@@ -14,8 +26,11 @@ const Openprogramcard = () => {
         maiores explicabo, veniam hic corporis deserunt commodi voluptates
         voluptatem repudiandae laboriosam modi cum!
       </p>
-      <button className="openprogramcard-btn">KNOW MORE</button>
+      <button onClick={()=>{
+        setvisible(true)
+      }} className="openprogramcard-btn">KNOW MORE</button>
     </div>
+    </>
   );
 };
 

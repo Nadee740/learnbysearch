@@ -14,6 +14,7 @@ import Authverifier from './Backend/Authverifier';
 import COuntryCode from './Countrycode/countrycode';
 import MyApplications from './MyApplications/MyApplications';
 import OpenProgrammes from './OpenProgrammes/OpenProgrammes';
+import Open from './test/open';
 
 
 function App() {
@@ -45,7 +46,8 @@ function App() {
        <Route path='/contactus' component={ContactUs} />
        <Route path='/allblogs' component={BlogsPage} />
        <Route path='/myapplications' component={MyApplications} />
-       <Route path='/o' component={OpenProgrammes} />
+       <Route path='/openprogrammes' exact component={OpenProgrammes} />
+       <Route path='/open' component={Open} />
       
        </Router>} 
       
