@@ -4,7 +4,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Login from './login/Login';
 import Signup from './Signup/Signup';
 import LandingPage from './LandingPage/LandingPage';
-import Page1 from './Page1/Page1';
+
 import { useEffect, useState } from 'react';
 import EditProfile from './EditProfile/EditProfile';
 import Changepassword from './Changepassword/Changepassword';
@@ -15,6 +15,7 @@ import COuntryCode from './Countrycode/countrycode';
 import MyApplications from './MyApplications/MyApplications';
 import OpenProgrammes from './OpenProgrammes/OpenProgrammes';
 import Open from './test/open';
+import BlogsDetailsPage from './BlogsDetailsPage/BlogsDetailsPage';
 
 
 function App() {
@@ -41,13 +42,13 @@ function App() {
        <Route path='/login' component={Login} />
        <Route path='/signup' component={Signup} />
        <Route path='/editprofile' component={EditProfile} />
-       <Route path='/page1' component={Page1} />
        <Route path='/changepassword' component={Changepassword} />
        <Route path='/contactus' component={ContactUs} />
        <Route path='/allblogs' component={BlogsPage} />
        <Route path='/myapplications' component={MyApplications} />
        <Route path='/openprogrammes' exact component={OpenProgrammes} />
        <Route path='/open' component={Open} />
+       <Route path='/blogsdetailspage' component={BlogsDetailsPage} />
       
        </Router>} 
       

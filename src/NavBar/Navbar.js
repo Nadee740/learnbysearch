@@ -65,7 +65,7 @@ const Navbar = (props) => {
             </li>
             <li className="nav-item">
               <Link
-                to="/services"
+                to="/openprogrammes"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
@@ -74,7 +74,7 @@ const Navbar = (props) => {
             </li>
             <li className="nav-item">
               <Link
-                to="/products"
+                to="/allblogs"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
