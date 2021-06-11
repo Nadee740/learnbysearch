@@ -16,6 +16,7 @@ import MyApplications from './MyApplications/MyApplications';
 import OpenProgrammes from './OpenProgrammes/OpenProgrammes';
 import Open from './test/open';
 import BlogsDetailsPage from './BlogsDetailsPage/BlogsDetailsPage';
+import OpenProgrammesPage from './OpenProgrammesPage/OpenProgrammesPage';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
        <Route path='/openprogrammes' exact component={OpenProgrammes} />
        <Route path='/open' component={Open} />
        <Route path='/blogsdetailspage' component={BlogsDetailsPage} />
+       <Route path='/openprogrammespage' exact component={OpenProgrammesPage} />
       
        </Router>} 
       
