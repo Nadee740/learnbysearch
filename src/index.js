@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { useCookies } from 'react-cookie';
+import { CookiesProvider } from "react-cookie";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Session from 'react-session-persist/lib';
-window.name = "http://localhost:8000/api/"
+window.name = "http://13.127.98.11/api/"
 ReactDOM.render(
   <React.StrictMode>
-   <Session>
+    <CookiesProvider>
     <App />
-     </Session>
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

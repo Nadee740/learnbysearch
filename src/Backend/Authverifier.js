@@ -3,8 +3,9 @@
  const Authverifier = async(url) => {
 
  let message="a";
+ let data={}
  let isLoggedIn=false;
- let Token=localStorage.getItem('LoggedInUserTokenID')
+ let Token=localStorage.getItem('LoggedInUserTokenID')  
     
         
          await fetch(url, {
@@ -17,6 +18,8 @@
             })
             .then(res => res.json())
             .then(json => {
+
+                
                 if(json.error){
                     isLoggedIn=false
                     console.log(json.error)
@@ -25,6 +28,9 @@
                 }  else{
                     isLoggedIn=true
                     console.log(json)
+                    data=json;
+                    console.log(data,"daa")
+                    
                 }
             })
             .catch(
@@ -42,7 +48,7 @@
 // },[]); 
 
 
-return {isLoggedIn};
+return {isLoggedIn,data};
 
 }
 

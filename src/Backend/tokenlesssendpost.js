@@ -1,7 +1,7 @@
-import {useState,useEffect} from "react"
- 
- const Tokenlesssendpost = async(url, data) => {
 
+import { useCookies } from 'react-cookie';
+ const Tokenlesssendpost = async(url, data) => {
+    // const [cookies, setCookie] = useCookies(['user']);
  let message="a";
  let retdata={};
     
@@ -38,7 +38,11 @@ import {useState,useEffect} from "react"
                           localStorage.setItem("loggedinuserid",json.user._id)
                           console.log(json.user.tokens[json.user.tokens.length-1].token)
                           localStorage.setItem("LoggedInUserTokenID",json.user.tokens[json.user.tokens.length-1].token)
-                      
+                          document.cookie=json.user.tokens[json.user.tokens.length-1].token
+                          
+                          console.log(document.cookie,"cookie")
+                        //   setCookie('TokenID', json.user.tokens[json.user.tokens.length-1].token, { path: '/' });
+                        // console.log(cookies.TokenID,"Cooki");
                 }
 
                 else if(url.includes("user")){

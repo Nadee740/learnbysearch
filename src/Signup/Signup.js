@@ -60,6 +60,7 @@ const Signup = () => {
     let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/;
 
     if (re.test(password)) {
+
       if (confirmpass != password) {
         setconfirmpassrerror("Password does not match ");
         setcursor("confirmpassword");
@@ -102,6 +103,9 @@ const Signup = () => {
           setcursor("phone");
         }
       }
+    }
+    else{
+      alert("Password should contain uppercase,lowercase,digit,alpha characters")
     }
   };
 

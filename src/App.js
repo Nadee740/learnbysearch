@@ -17,6 +17,7 @@ import OpenProgrammes from './OpenProgrammes/OpenProgrammes';
 import Open from './test/open';
 import BlogsDetailsPage from './BlogsDetailsPage/BlogsDetailsPage';
 import OpenProgrammesPage from './OpenProgrammesPage/OpenProgrammesPage';
+import ForgotPassword from './ForgotPassword/ForgotPassword';
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
     
   // localStorage.clear()
   setisLoading(true)
-  const {isLoggedIn:messagee} =await Authverifier("http://localhost:8000/users/me")
+  const {isLoggedIn:messagee} =await Authverifier("http://13.127.98.11/users/me")
   setisLoggedin(messagee) 
   setisLoading(false)
   console.log(messagee)
@@ -45,6 +46,7 @@ function App() {
        <Route path='/editprofile' component={EditProfile} />
        <Route path='/changepassword' component={Changepassword} />
        <Route path='/contactus' component={ContactUs} />
+       <Route path='/api/forgot-password/:id/:token' component={ForgotPassword} />
        <Route path='/allblogs' component={BlogsPage} />
        <Route path='/myapplications' component={MyApplications} />
        <Route path='/openprogrammes' exact component={OpenProgrammes} />

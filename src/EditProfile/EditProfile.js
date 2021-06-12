@@ -20,7 +20,11 @@ const EditProfile = () => {
   let userrr = { id: userid };
 
   const getData = async () => {
-    const { retdata: datas } = await SendPost(`${window.name}user`, userrr);
+    setisLoading(true);
+    const { isLoggedIn: messagee,data:datas } = await Authverifier(
+      "http://localhost:8000/users/me"
+    );
+    setisLoggedin(messagee);
     console.log(datas, "Enghaneelum");
     setFirstName(datas.FirstName);
     setMiddleName(datas.MiddleName);
@@ -37,16 +41,15 @@ const EditProfile = () => {
     setUniversity(datas.Education ? datas.Education.University : "");
     setGraduationYear(datas.Education ? datas.Education.GraduationYear : "");
     setisverfied(datas.isPhoneVerified);
+    setisLoading(false);
   };
 
   useEffect(async () => {
     getData();
-    setisLoading(true);
-    const { isLoggedIn: messagee } = await Authverifier(
-      "http://localhost:8000/users/me"
-    );
-    setisLoggedin(messagee);
-    setisLoading(false);
+    
+   
+    
+    
   }, []);
 
   const [FirstName, setFirstName] = useState("");

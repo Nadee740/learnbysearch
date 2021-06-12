@@ -20,15 +20,10 @@ const Navbar = (props) => {
   };
   const checkLOgin = async () => {
     const { isLoggedIn: messagee } = await Authverifier(
-      "http://localhost:8000/users/me"
+      "http://13.127.98.11/users/me"
     );
     setisLoggedin(messagee);
-    const loggedInUser = localStorage.getItem("loggedinuserid");
-    if (loggedInUser) {
-      setUser(loggedInUser);
-    } else {
-      setUser();
-    }
+   
   };
   const showButton = () => {
     console.log("Hyhyyy");
