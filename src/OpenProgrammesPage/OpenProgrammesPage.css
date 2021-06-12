@@ -98,3 +98,22 @@
     display: block;
   }
 }
+.mentors {
+  margin-top: 100px;
+}
+.mentors-item {
+  padding: 30px;
+  background-color: #8181811f;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.mentors-item-text {
+  display: block;
+  color: #585858;
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding: 0;
+}
+.mentors-item-img {
+  border-radius: 50%;
+}

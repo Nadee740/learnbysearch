@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../LandingPage/footer/footer";
 import { BsCalendarFill, BsFillBellFill } from "react-icons/bs";
+import { FaLinkedin } from "react-icons/fa";
 import "./OpenProgrammesPage.css";
 function OpenProgrammesPage() {
   return (
@@ -146,7 +147,46 @@ function OpenProgrammesPage() {
                 </p>
               </div>
             </div>
+            <div className="mentors">
+              <p className="openprogrammespage-head">Mentors</p>
+              <div className="mentors-item">
+                <img
+                  src="https://randomuser.me/api/portraits/men/42.jpg"
+                  alt="User"
+                  className="mentors-item-img"
+                />
+                <p className="vaccency-item-text mentors-item-text">
+                  <span>Chris Sander</span>
+                </p>
+                <p className="vaccency-item-text mentors-item-text">
+                  MTech in Project Management (COEP)<br></br> BTech in
+                  Electronics Engineering (SPPU) <br></br>Founder of Sakar
+                  Robotics, Gold Medalist in Mobile Robotics & Expert at
+                  WorldSkills
+                </p>
+                <FaLinkedin size="2em" color="#0077b5" />
+              </div>
+              <div className="mentors-item">
+                <img
+                  src="https://randomuser.me/api/portraits/women/4.jpg"
+                  alt="User"
+                  className="mentors-item-img"
+                />
+                <p className="vaccency-item-text mentors-item-text">
+                  <span>Rose Barrett</span>
+                </p>
+                <p className="vaccency-item-text mentors-item-text">
+                  MTech in Project Management (COEP)<br></br> BTech in
+                  Electronics Engineering (SPPU) <br></br>Founder of Sakar
+                  Robotics, Gold Medalist in Mobile Robotics & Expert at
+                  WorldSkills
+                </p>
+                <FaLinkedin size="2em" color="#0077b5" />
+              </div>
+            </div>
           </div>
+
+          <div className="line"></div>
         </div>
       </div>
       <Footer />
