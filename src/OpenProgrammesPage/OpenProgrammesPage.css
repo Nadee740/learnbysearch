@@ -1,0 +1,100 @@
+.openprogrammespage-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #ffffff;
+}
+.openprogrammespage-head {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 40px;
+
+  line-height: 100%;
+}
+.openprogrammespage-head p {
+  width: 100%;
+  color: #ffffff;
+  text-align: right;
+}
+.openprogrammespage-section {
+  padding: 20px 30px;
+}
+.openprogrammespage-head {
+  color: #585858;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.openprogrammespage-text {
+  font-size: 18px;
+  font-weight: 400;
+  color: #404040;
+}
+.openprogrammespage-holder {
+  margin-top: 20px;
+  width: 85%;
+}
+.vaccency-holder {
+  width: 70%;
+}
+
+.vaccency-item {
+  margin: 20px 10px;
+  background-color: #8181811f;
+  padding: 20px;
+}
+.vaccency-item-title {
+  color: #585858;
+  font-size: 22px;
+  font-weight: 500;
+}
+.vaccency-item-text {
+  color: #818181;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px;
+}
+.vaccency-item-text span {
+  padding-right: 10px;
+  font-weight: 500;
+}
+.openprogrammespage-feature {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.openprogrammespage-feature-col {
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.openprogrammespage-feature-col p {
+  color: #ffffff;
+  text-align: center;
+}
+.openprogrammespage-feature-title {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 20px 10px;
+}
+.openprogrammespage-feature-col2 {
+  background-color: #333333;
+}
+@media screen and (max-width: 800px) {
+  .openprogrammespage-section {
+    padding: 20px 0px;
+  }
+  .openprogrammespage-holder {
+    margin-top: 20px;
+    width: 85%;
+  }
+  .vaccency-holder {
+    width: 100%;
+  }
+  .openprogrammespage-feature {
+    display: block;
+  }
+}
