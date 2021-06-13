@@ -8,6 +8,8 @@ function Openprogramcard({blog}){
   const closeModal = () => {
     setvisible(false);
   };
+
+  const htmlpart=blog.description;
   return (
     <>
     <OpenprogrammesModel visible={visible} closeModal={closeModal}>
@@ -20,9 +22,7 @@ function Openprogramcard({blog}){
         className="openprogramcard-img"
       />
       <p className="openprogramcard-head">{blog.title}</p>
-      <p className="openprogramcard-text">
-       {blog.description}
-      </p>
+     <div dangerouslySetInnerHTML={{__html:htmlpart}}></div>
       <button onClick={()=>{
         window.location="/openprogrammespage"
       }} className="openprogramcard-btn">KNOW MORE</button>
