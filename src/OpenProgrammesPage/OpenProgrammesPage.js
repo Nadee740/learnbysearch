@@ -9,22 +9,37 @@ import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 function OpenProgrammesPage() {
   const {id}=useParams()
-
+  let arr=[]
   const[isLoading,setisLoading]=useState(true)
   const[blogsData,setblogData]=useState("")
-  const[SearchText,setsearchText]=useState("")
+  const[positions,setPosition]=useState("")
   
   const htmlpart=blogsData.description;
 
+const getPositions=async(data)=>{
+  
+data.positions.map( async(position,index)=>{
+    const { data: Datass } = await Researchpgms(`${window.name}position/${position}`)
+  console.log(Datass,"hyhyy")
+  arr.push(Datass)
+  console.log(arr,"ARayy")
+  setPosition(arr)
+  setisLoading(false)
+
+})
+}
 
   const getBlogs=async()=>{
+    
   setisLoading(true)
   const { data: Datass } = await Researchpgms(`${window.name}research-program/${id}`)
-  Datass.outcomes.map((m)=>{
-    console.log(m)
-  })
   setblogData(Datass)
-  setisLoading(false)
+   
+  await getPositions(Datass)
+
+  console.log(positions,"Ass")
+
+ 
 }
 
   useEffect(() => {
@@ -95,40 +110,30 @@ function OpenProgrammesPage() {
               Select following positions from dropdown while filling the form
               during Registration
             </p>
+            
             <div className="vaccency-holder">
-              <div className="vaccency-item">
-                <p className="vaccency-item-title">
-                  Machine Learning Researcher
-                </p>
-                <p className="vaccency-item-text">
-                  Number of Students Required: <span>2</span>
-                </p>
+            {positions.map((position,index)=>(
+              <div className="vaccency-item" key={index}>
 
-                <p className="vaccency-item-text">
-                  Eligibility Criterion:
-                  <span>
-                    Under graduate student from electronics or computer science
-                    background
-                  </span>
-                </p>
-              </div>
+             
+<p className="vaccency-item-title">
+  {position.title}
+</p>
+<p className="vaccency-item-text">
+  Number of Students Required: <span>2</span>
+</p>
 
-              <div className="vaccency-item">
-                <p className="vaccency-item-title">
-                  Machine Learning Researcher
-                </p>
-                <p className="vaccency-item-text">
-                  Number of Students Required: <span>2</span>
-                </p>
+<p className="vaccency-item-text">
+  Eligibility Criterion:
+  <span>
+    {position.criterion}
+  </span>
+</p>
+</div>
+                ))}
+              
 
-                <p className="vaccency-item-text">
-                  Eligibility Criterion:
-                  <span>
-                    Under graduate student from electronics or computer science
-                    background
-                  </span>
-                </p>
-              </div>
+              
             </div>
             <div className="openprogrammespage-feature">
               <div className="openprogrammespage-feature-col ">
