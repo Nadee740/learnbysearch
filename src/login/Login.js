@@ -101,10 +101,10 @@ const Login = () => {
           >
             <div className="popup">
               <h1>LEARN BY RESEARCH</h1>
-              <input type="email" placeholder="email" onChange={(e)=>{setemail(e.target.value)}} ></input>
+              <input type="email" placeholder="email" onChange={(e)=>{setemail(e.target.value)}} className="popup-input" ></input>
               <br></br>
               <label htmlFor="email">{emailerr && emailerr}</label>
-            <button  onClick={ResendMail}>
+            <button  onClick={ResendMail} className="popup-button">
               ResendMail
               </button>
             </div>
@@ -123,10 +123,10 @@ const Login = () => {
           >
             <div className="popup">
               <h1>LEARN BY RESEARCH</h1>
-              <input type="email" placeholder="email" onChange={(e)=>{setemail(e.target.value)}} ></input>
+              <input type="email" placeholder="email" onChange={(e)=>{setemail(e.target.value)}} className="popup-input"></input>
               <br></br>
               <label htmlFor="email">{emailerr && emailerr}</label>
-             <button  onClick={SendForgotPass}>
+             <button className="popup-button" onClick={SendForgotPass}>
              SUBMIT
               </button>
             </div>
