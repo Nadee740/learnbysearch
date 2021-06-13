@@ -34,7 +34,7 @@ const getBlogs=async()=>{
        
         
           
-          <Openprogramcard blog={blog}  />
+          <Openprogramcard blog={blog} key={index} />
        
          
          

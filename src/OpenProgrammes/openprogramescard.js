@@ -1,10 +1,12 @@
 import "./OpenProgrammes.css";
 import { useState } from "react";
 import OpenprogrammesModel from "../ProgaramesModel/OpenprogrammesModel";
+import { useParams } from "react-router-dom";
 
 function Openprogramcard({blog}){
   const [visible, setvisible] = useState(false);
-  
+  let a="/openprogrammespage/"+blog._id;
+  console.log(a)
   const closeModal = () => {
     setvisible(false);
   };
@@ -12,9 +14,7 @@ function Openprogramcard({blog}){
   const htmlpart=blog.description;
   return (
     <>
-    <OpenprogrammesModel visible={visible} closeModal={closeModal}>
-
-    </OpenprogrammesModel>
+    
     <div className="openprogramcard" >
       <img
         src={blog.imageUrl}
@@ -24,7 +24,7 @@ function Openprogramcard({blog}){
       <p className="openprogramcard-head">{blog.title}</p>
      <div dangerouslySetInnerHTML={{__html:htmlpart}}></div>
       <button onClick={()=>{
-        window.location="/openprogrammespage"
+        window.location=a
       }} className="openprogramcard-btn">KNOW MORE</button>
     </div>
     </>

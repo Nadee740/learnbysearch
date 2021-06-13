@@ -3,30 +3,63 @@ import Footer from "../LandingPage/footer/footer";
 import { BsCalendarFill, BsFillBellFill } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import "./OpenProgrammesPage.css";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import Researchpgms from "../Backend/Researchpgms";
 function OpenProgrammesPage() {
+  const {id}=useParams()
+
+  const[isLoading,setisLoading]=useState(true)
+  const[blogsData,setblogData]=useState("")
+  const[SearchText,setsearchText]=useState("")
+  
+  const htmlpart=blogsData.description;
+
+
+  const getBlogs=async()=>{
+  setisLoading(true)
+  const { data: Datass } = await Researchpgms(`${window.name}research-program/${id}`)
+  Datass.outcomes.map((m)=>{
+    console.log(m)
+  })
+  setblogData(Datass)
+  setisLoading(false)
+}
+
+  useEffect(() => {
+    
+    getBlogs()
+    
+   
+  }, [])
+
   return (
+    <>
+       {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:
     <div>
       <div className="blogdetailpage openprogrammespage">
         <div className="blogdetailpage-img">
           <div className="blogdetailpage-head openprogrammespage-head">
             <div className="blogdetailpage-top openprogrammespage-top">
               <>
-                Low-Cost LIDAR Sensor using Ultrasonic Distance Measurement & ML
+                {blogsData.title}
               </>
-
+              {blogsData.applicationStatus?
+                <p>
+                 Applications Open !<br></br>
+              </p>:
               <p>
-                Applications Closed !<br></br>
-              </p>
+                 Applications Closed !<br></br>
+              </p>}
             </div>
           </div>
         </div>
         <div className="openprogrammespage-holder">
           <div className="openprogrammespage-section">
-            <p className="openprogrammespage-head">Objective of the Research</p>
+            <p className="openprogrammespage-head"> Objective</p>
             <p className="openprogrammespage-text">
-              Build an efficient and reliable algorithm with a low cost hardware
-              setup of four directional ultrasonic distance sensors & IMU sensor
-              for SLAM applications.
+              {blogsData.objective}
             </p>
           </div>
           <div className="line"></div>
@@ -34,54 +67,22 @@ function OpenProgrammesPage() {
             <p className="openprogrammespage-head">
               Description of the Research
             </p>
-            <p className="openprogrammespage-text">
-              Currently a lot of autonomous systems including robots and self
-              driving cars heavily relay on the usage of LIDAR sensor, they are
-              very effective in mapping the environment. LIDAR is a method of
-              determining distances by targeting an object with a laser and
-              measuring the time for the reflected light to return to the
-              receiver.
-              <br></br>
-              <br></br>
-              Currently available LIDAR sensor consists of laser source,
-              receiver or laser detector system and position/navigation systems.
-              These are very simple built device with effective results. Current
-              availability is limited to industrial usage and high end
-              operations which cost a lot to procure.
-              <br></br>
-              <br></br>
-              Our work through this research is to identify current progression
-              in the development of low cost mapping systems, develop the
-              hardware setup, develop simple mapping algorithms and finally
-              utilise the power of machine learning to increase the accuracy of
-              mapping. This will bring a breakthrough in the current research
-              work and will be a crucial step for hobbyists and students to
-              develop low cost autonomous systems.
-            </p>
+            
+            <div dangerouslySetInnerHTML={{__html:htmlpart}}></div>
+            
           </div>
           <div className="line"></div>
           <div className="openprogrammespage-section">
             <p className="openprogrammespage-head">Outcome of the Research</p>
             <p className="openprogrammespage-text">
               <ul className="openprogrammespage-list">
-                <li>
-                  Publication of at least 2 scientific papers in leading
-                  journals (IEEE/Springer/MDPI/IET).
+              {blogsData.outcomes.map((outcome,index)=>(
+                <li key={index}>
+                  {outcome}
                 </li>
-                <li>
-                  Development of hardware setup for low cost LIDAR system.
-                </li>
-                <li>
-                  Open Source algorithm for mapping with the hardware setup.
-                </li>
-                <li>
-                  Generation of dataset for measured distance against actual
-                  distance.
-                </li>
-                <li>
-                  Machine Learning algorithm to increase the accuracy of current
-                  algorithm.
-                </li>
+              ))}
+                
+               
               </ul>
             </p>
           </div>
@@ -135,7 +136,7 @@ function OpenProgrammesPage() {
                 <p className="vaccency-item-title openprogrammespage-feature-title">
                   Total Duration
                 </p>
-                <p className="vaccency-item-text">Approximately 3 months</p>
+                <p className="vaccency-item-text">Approximately {blogsData.duration} years</p>
               </div>
               <div className="openprogrammespage-feature-col openprogrammespage-feature-col2">
                 <BsFillBellFill size="6em" color="#818181" />
@@ -143,7 +144,7 @@ function OpenProgrammesPage() {
                   Weekly commitment
                 </p>
                 <p className="vaccency-item-text">
-                  Approximately 6-8 hours per week
+                   {blogsData.commitment}
                 </p>
               </div>
             </div>
@@ -191,6 +192,8 @@ function OpenProgrammesPage() {
       </div>
       <Footer />
     </div>
+       }
+    </>
   );
 }
 

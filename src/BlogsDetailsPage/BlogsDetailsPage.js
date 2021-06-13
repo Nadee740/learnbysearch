@@ -1,49 +1,57 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import Researchpgms from "../Backend/Researchpgms";
 import Footer from "../LandingPage/footer/footer";
 import "./BlogsDetailsPage.css";
-function BlogsDetailsPage() {
+function BlogsDetailsPage({blog}) {
+  const[blogsData,setblogData]=useState("")
+      
+       const[isLoading,setisLoading]=useState(true)
+       const[SearchText,setsearchText]=useState("")
+  let { id } = useParams();
+  const htmlpart=blogsData.content;
+
+
+  const getBlogs=async()=>{
+  setisLoading(true)
+  const { data: Datass } = await Researchpgms(`${window.name}blog/${id}`)
+  setblogData(Datass)
+  setisLoading(false)
+}
+
+  useEffect(() => {
+    
+    getBlogs()
+    
+   
+  }, [])
+
+
   return (
+    <>
+     {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:
     <div>
       <div className="blogdetailpage">
         <div className="blogdetailpage-img">
           <div className="blogdetailpage-head">
             <div className="blogdetailpage-top">
-              <>Blog Heading</>
+              <>{blogsData.title}</>
 
               <p>
-                Author Name:Tim Cook<br></br>
-                <i>23 September 2021</i>
+                Author Name:{blogsData.author}<br></br>
+                <i>{blogsData.date}</i>
               </p>
             </div>
           </div>
         </div>
-        <p className="blogdetailpage-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-          recusandae excepturi dolorem cupiditate. Fugit nam esse sapiente,
-          optio, dignissimos minus nulla saepe ea minima aspernatur ex
-          assumenda! Quod, debitis ipsum?Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Sit recusandae excepturi dolorem cupiditate. Fugit
-          nam esse sapiente, optio, dignissimos minus nulla saepe ea minima
-          aspernatur ex assumenda! Quod, debitis ipsum?Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Sit recusandae excepturi dolorem
-          cupiditate. Fugit nam esse sapiente, optio, dignissimos minus nulla
-          saepe ea minima aspernatur ex assumenda! Quod, debitis ipsum?
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Sit recusandae excepturi
-          dolorem cupiditate. Fugit nam esse sapiente, optio, dignissimos minus
-          nulla saepe ea minima aspernatur ex assumenda! Quod, debitis
-          ipsum?Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-          recusandae excepturi dolorem cupiditate. Fugit nam esse sapiente,
-          optio, dignissimos minus nulla saepe ea minima aspernatur ex
-          assumenda! Quod, debitis ipsum?Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Sit recusandae excepturi dolorem cupiditate. Fugit
-          nam esse sapiente, optio, dignissimos minus nulla saepe ea minima
-          aspernatur ex assumenda! Quod, debitis ipsum?
-        </p>
+        <div dangerouslySetInnerHTML={{__html:htmlpart}}></div>
       </div>
       <Footer />
     </div>
+     }
+    </>
   );
 }
 
