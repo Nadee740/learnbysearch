@@ -102,10 +102,13 @@ const Login = () => {
                 onChange={(e) => {
                   setemail(e.target.value);
                 }}
+                className="popup-input"
               ></input>
               <br></br>
               <label htmlFor="email">{emailerr && emailerr}</label>
-              <button onClick={ResendMail}>ResendMail</button>
+              <button onClick={ResendMail} className="popup-button">
+                ResendMail
+              </button>
             </div>
           </Modal>
         </section>
@@ -128,10 +131,13 @@ const Login = () => {
                 onChange={(e) => {
                   setemail(e.target.value);
                 }}
+                className="popup-input"
               ></input>
               <br></br>
               <label htmlFor="email">{emailerr && emailerr}</label>
-              <button onClick={SendForgotPass}>SUBMIT</button>
+              <button className="popup-button" onClick={SendForgotPass}>
+                SUBMIT
+              </button>
             </div>
           </Modal>
         </section>
