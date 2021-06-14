@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
 import React, { Component } from "react";
 import Modal from "react-awesome-modal";
-
+import { HiEye, HiEyeOff } from "react-icons/hi";
 import "./Signup.css";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 const Signup = () => {
@@ -34,7 +34,7 @@ const Signup = () => {
   };
   const clearform = () => {
     setFirstName();
-    setLastName()
+    setLastName();
     setPass();
     setUser();
     setEmail();
@@ -60,7 +60,6 @@ const Signup = () => {
     let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/;
 
     if (re.test(password)) {
-
       if (confirmpass != password) {
         setconfirmpassrerror("Password does not match ");
         setcursor("confirmpassword");
@@ -103,9 +102,10 @@ const Signup = () => {
           setcursor("phone");
         }
       }
-    }
-    else{
-      alert("Password should contain uppercase,lowercase,digit,alpha characters")
+    } else {
+      alert(
+        "Password should contain uppercase,lowercase,digit,alpha characters"
+      );
     }
   };
 
@@ -137,174 +137,73 @@ const Signup = () => {
       <section className="sign-up">
         <div className="container">
           <div className="signup-content">
-          
-          
             <div className="signup-image">
-                   <div className="pass-condition" >
-                     <h2>* password must be minimum 6 character</h2>
-                     <h2>* password must contain number,alpha character uppercase and lower case letter</h2>
-  
-                   </div>
-                   
-              <img src="../images/reg.svg" alt="Login pic"></img>
+              <img src="../images/c.svg" alt="Login pic"></img>
             </div>
             <div className="singup-form">
               <h2 className="form-title">REGISTRATION</h2>
-              <form
-                className="register-form"
-                id="register-form"
-                onSubmit={output}
-                onReset={clearform}
-              >
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="FirstName"
-                    id="FirstName"
-                    value={FirstName}
-                    onChange={(e) => {
-                      setFirstName(e.target.value);
-                    }}
-                    placeholder="FirstName"
-                    autoComplete="off"
-                    required
-                  ></input>
-                  <br />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="LastName"
-                    id="LastName"
-                    value={LastName}
-                    onChange={(e) => {
-                      setLastName(e.target.value);
-                    }}
-                    placeholder="LastName"
-                    autoComplete="off"
-                    required
-                  ></input>
-                  <br />
+              <form>
+                <div className="inputholder">
+                  <div className="inputholder-top">
+                    <input type="text" placeholder="First Name" />
+                  </div>
                 </div>
 
-                <div className="form-group">
-                  <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => {
-                      setUser(e.target.value);
-                    }}
-                    name="username"
-                    id="username"
-                    placeholder="username"
-                    autoComplete="off"
-                    required
-                  ></input>
-                  <br></br>
-                  <label htmlFor="username">{usererror && usererror}</label>
+                <div className="inputholder">
+                  <div className="inputholder-top">
+                    <input type="text" placeholder="Last Name" />
+                  </div>
                 </div>
 
-                <div className="form-group">
-                  <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    id="email"
-                    placeholder="email"
-                    autoComplete="off"
-                    required
-                  ></input>
-                  <br></br>
-                  <label htmlFor="email">{emailerror && emailerror}</label>
+                <div className="inputholder">
+                  <div className="inputholder-top">
+                    <input type="text" placeholder="Username" />
+                  </div>
                 </div>
 
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="phone"
-                    value={phoneNumber}
-                    onChange={(e) => {
-                      setPhone(e.target.value);
-                    }}
-                    id="phone"
-                    placeholder="phone"
-                    autoComplete="off"
-                    required
-                  ></input>
-                  <br></br>
-                  <label htmlFor="phone">{phoneerror && phoneerror}</label>
+                <div className="inputholder">
+                  <div className="inputholder-top">
+                    <input type="mail" placeholder="E-Mail" />
+                  </div>
                 </div>
 
-                <div className="form-group">
-                <div className="span-icon">
-                <i onClick={()=>{
-                  setpassVISIBLE(!passVISIBLE)
-                  console.log(passVISIBLE)
-                }} class={passVISIBLE?"fa fa-eye-slash":"fa fa-eye"}></i></div>
-                  <input
-                    type={passVISIBLE?"text":"password"}
-                    name="password"
-                    value={password}
-                    onChange={(e) => {
-                      setPass(e.target.value);
-                    }}
-                    id="password"
-                    placeholder="password"
-                    autoComplete="off"
-                    required
-                  ></input>
-                  <br></br>
-                  <label htmlFor="password">{passerror && passerror}</label>
+                <div className="inputholder">
+                  <div className="inputholder-top">
+                    <input
+                      type="tel"
+                      placeholder="First Name"
+                      defaultValue="+91"
+                    />
+                  </div>
                 </div>
-
-                <div className="form-group">
-                <div className="span-icon">
-                <i onClick={()=>{
-                  setconfirmpassVISIBLE(!confirmpassVISIBLE)
-                  
-                }} class={confirmpassVISIBLE?"fa fa-eye-slash":"fa fa-eye"}></i></div>
-                  <input
-                    onBlur={() => {
-                      stylefunction("none", "confirmpassword");
-                    }}
-                    onFocus={() => {
-                      if (confirmpass === password) {
-                        stylefunction("none", "confirmpassword");
-                      } else {
-                        stylefunction("0.2px outset red", "confirmpassword");
-                      }
-                    }}
-                    type={confirmpassVISIBLE?"text":"password"}
-                    id="confirmpassword"
-                    name="confirmpassword"
-                    value={confirmpass}
-                    onChange={(e) => {
-                      setConfrpass(e.target.value);
-                      if (e.target.value === password) {
-                        stylefunction("none", "confirmpassword");
-                      } else {
-                        stylefunction("0.2px outset red", "confirmpassword");
-                      }
-                    }}
-                    placeholder="confirm password"
-                    autoComplete="off"
-                    required
-                  ></input>
-                  <br></br>
-                  <label htmlFor="confirmpassword">
-                    {confirmpasserror && confirmpasserror}
+                <div className="inputholder">
+                  <div className="inputholder-top">
+                    <input type="password" placeholder="Password" />{" "}
+                    <HiEyeOff size="1.3em" color="#404040" />
+                  </div>
+                  <label className="label" htmlFor="">
+                    Place your Label Here
                   </label>
                 </div>
 
-                <div className="loginbtn">
-                  <input type="submit" value="SIGN UP" id="sbmtbttn"></input>
+                <div className="inputholder">
+                  <div className="inputholder-top">
+                    <input type="password" placeholder="Confirm Password" />
+                    <HiEyeOff size="1.3em" color="#404040" />
+                  </div>
                 </div>
-                <div className="alrdydone">
-                  <Link to="/login">Already registered ? Login</Link>
-                </div>
+
+                <input
+                  type="submit"
+                  value="SIGN UP"
+                  placeholder="Sign Up"
+                  className="submit-btn"
+                />
+                <Link>
+                  <p className="form-btmtext form-btmtext1">
+                    Already registered ? Login
+                  </p>
+                </Link>
               </form>
             </div>
           </div>

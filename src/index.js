@@ -1,19 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { useCookies } from 'react-cookie';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+//import { useCookies } from 'react-cookie';
 import { CookiesProvider } from "react-cookie";
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Session from 'react-session-persist/lib';
-window.name = "http://13.127.98.11/api/"
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Session from "react-session-persist/lib";
+window.name = "http://13.127.98.11/api/";
 ReactDOM.render(
   <React.StrictMode>
     <CookiesProvider>
-    <App />
+      <App />
     </CookiesProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
