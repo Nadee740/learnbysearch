@@ -195,7 +195,7 @@ const Login = () => {
                 <div className="inputholder" id="pass-holder">
                   <div className="inputholder-top" >
                     <input id="password" type={passVISIBLE?'text':"password"} placeholder="Password" onChange={(e)=>{setPass(e.target.value)}}/>
-                    {passVISIBLE?<HiEyeOff size="1.3em" color="#404040" onClick={()=>{setpassVISIBLE(!passVISIBLE)}} />:<HiEye size="1.3em" color="#404040" onClick={()=>{setpassVISIBLE(!passVISIBLE)}} />}
+                    {passVISIBLE?<HiEye size="1.3em" color="#404040" onClick={()=>{setpassVISIBLE(!passVISIBLE)}}/>:<HiEyeOff size="1.3em" color="#404040" onClick={()=>{setpassVISIBLE(!passVISIBLE)}} /> }
                   </div>
                   <label className="label" htmlFor="">
                     {passerror&&passerror}
