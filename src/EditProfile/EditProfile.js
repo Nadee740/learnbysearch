@@ -51,7 +51,7 @@ const EditProfile = () => {
   const [FirstName, setFirstName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
   const [LastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("+91");
   const [email, setemail] = useState("");
   const [City, setCity] = useState("");
   const [State, setState] = useState("");
@@ -176,7 +176,8 @@ const EditProfile = () => {
     setotperr(messagee);
   };
 
-  const MakeChanges = async () => {
+  const MakeChanges = async (e) => {
+    e.preventDefault();
     const DOB = value;
     const edit_data = {
       FirstName,
@@ -234,7 +235,7 @@ const EditProfile = () => {
         <div className="isLoading">
           <h1>Loading...</h1>
         </div>
-      ) : true ? (
+      ) : isLoggedIn ? (
         <section className="sign-up editprofile">
           <div className="container">
             <div className="signup-content">
@@ -243,27 +244,58 @@ const EditProfile = () => {
               </div>
               <div className="singup-form">
                 <h2 className="form-title">EDIT PROFILE</h2>
-                <form>
+                <form onSubmit={MakeChanges}>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="text" placeholder="First Name" />
+                      <input type="text" placeholder="First Name" required
+                  value={FirstName}
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                  }} />
                     </div>
                   </div>
+
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="text" placeholder="Last Name" />
+                      <input type="text" placeholder="Middle Name"  autoComplete="off"
+                  value={MiddleName}
+                  onChange={(e) => {
+                    setMiddleName(e.target.value);
+                  }} />
                     </div>
                   </div>
+
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="text" placeholder="Username" />
+                      <input  type="text"
+                  name="LastName"
+                  id="LastName"
+                  placeholder="Last Name"
+                  autoComplete="off"
+                  required
+                  value={LastName}
+                  className="input"
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                  }} />
                     </div>
                   </div>
+                  
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="mail" placeholder="E-Mail" />
+                      <input readonly="true"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                  autoComplete="off"
+                  required
+                  value={email} />
                       <MdDoneAll size="1.3em" color="#00e676" />
                     </div>
+                    <label className="label" htmlFor="">
+                  {emailerror && emailerror}
+                  </label>
                   </div>
                   <div className="inputholder">
                     <div className="inputholder-top">
@@ -271,51 +303,141 @@ const EditProfile = () => {
                         type="date"
                         placeholder="DD-MM-YY"
                         className="inputdate"
+                        onChange={(e) => {
+                    console.log(Date.parse(e.target.value));
+                    console.log(e.target.value);
+                    setdate(e.target.value);
+                  }}
+                  value={value}
                       />
                     </div>
                   </div>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="tel" placeholder="Your Phone Number" />
-                      <MdClear size="1.4em" color="#ff1744" />
+                      <input type="tel" placeholder="Your Phone Number" autoComplete="off"
+                  required
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                    
+                  }} />
+                       {isverfied ? (
+                  <MdDoneAll size="1.2em" className="emtick" />
+                ) : (
+                  <MdClear size="1.2em" className="emtick" color="red" />
+                )}
+                    </div>
+                    <label className="label" htmlFor="">
+                  {phoneerror && phoneerror}
+                  </label>
+                  </div>
+                  {isverfied ? (
+                <></>
+              ) :(
+                  <button className="edit-profile-btn" onClick={otpsend ? VerifyOtp : VERIFYPhonenumber}>
+                  {otpsend ? "VERIFY OTP" : "VERIFY PHONE NUMBER"}
+                  </button>)}
+
+                  <div className="inputholder otpdisplay">
+                    <div className="inputholder-top">
+                      <input type="text" placeholder="OTP" autoComplete="off"
+                  className="otp"
+                  value={otp}
+                  onChange={(e) => {
+                    setotp(e.target.value);
+                  }}/>
+                    </div>
+                    <label className="label" htmlFor="">
+                  {otperror && otperror}
+                  </label>
+                  </div>
+
+                  <div className="inputholder">
+                    <div className="inputholder-top">
+                      <input type="text" placeholder="City" autoComplete="off"
+                  required
+                  value={City}
+                  onChange={(e) => {
+                    setCity(e.target.value);
+                  }} />
                     </div>
                   </div>
-                  <button className="edit-profile-btn">
-                    VERIFY PHONE NUMBER
-                  </button>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="text" placeholder="City" />
+                      <input type="text" placeholder="State"  autoComplete="off"
+                  required
+                  value={State}
+                  onChange={(e) => {
+                    setState(e.target.value);
+                  }}/>
                     </div>
                   </div>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="text" placeholder="State" />
+                    <input
+                  type="text"
+                  name="Country"
+                  id="Country"
+                  placeholder="Country"
+                  autoComplete="off"
+                  required
+                  value={Country}
+                  onChange={(e) => {
+                    setCountry(e.target.value);
+                  }}
+                />
                     </div>
                   </div>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="text" placeholder="Degree" />
-                    </div>
-                  </div>{" "}
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="Field" />
-                    </div>
-                  </div>
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="College Name" />
+                      <input type="text" placeholder="Degree" autoComplete="off"
+                  required
+                  value={Degree}
+                  onChange={(e) => {
+                    setDegree(e.target.value);
+                  }} />
                     </div>
                   </div>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="text" placeholder="University" />
+                      <input type="text" placeholder="Field" autoComplete="off"
+                  required
+                  value={Field}
+                  onChange={(e) => {
+                    setField(e.target.value);
+                  }}/>
                     </div>
                   </div>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="text" placeholder="Graduation Year" />
+                      <input type="text" placeholder="College Name" autoComplete="off"
+                  required
+                  autoComplete="off"
+                  required
+                  value={CollegeName}
+                  onChange={(e) => {
+                    setCollegeName(e.target.value);
+                  }}/>
+                    </div>
+                  </div>
+                  <div className="inputholder">
+                    <div className="inputholder-top">
+                      <input type="text" placeholder="University"  autoComplete="off"
+                  required
+                  value={University}
+                  onChange={(e) => {
+                    setUniversity(e.target.value);
+                  }} />
+                    </div>
+                  </div>
+                  <div className="inputholder">
+                    <div className="inputholder-top">
+                      <input type="text" placeholder="Graduation Year"   autoComplete="off"
+                  required
+                  value={GraduationYear}
+                  onChange={(e) => {
+                    setGraduationYear(e.target.value);
+                  }} />
                     </div>
                   </div>
                   <input

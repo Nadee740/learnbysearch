@@ -130,7 +130,7 @@ const LandingPage = () => {
               }}
             >
               <p>
-                Technical And Soft Skills<i class="fas fa-angle-down"></i>
+                Technical And Soft Skills<i className="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>
@@ -143,7 +143,7 @@ const LandingPage = () => {
               }}
             >
               <p>
-                Research Paper Completion<i class="fas fa-angle-down"></i>
+                Research Paper Completion<i className="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>
@@ -156,7 +156,7 @@ const LandingPage = () => {
               }}
             >
               <p>
-                Network and Focused Community<i class="fas fa-angle-down"></i>
+                Network and Focused Community<i className="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>

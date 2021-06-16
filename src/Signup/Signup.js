@@ -9,7 +9,7 @@ import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 const Signup = () => {
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
-  const [username, setUser] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [confirmpass, setConfrpass] = useState("");
@@ -36,7 +36,7 @@ const Signup = () => {
     setFirstName();
     setLastName();
     setPass();
-    setUser();
+    setUsername();
     setEmail();
     setPass();
     setConfrpass();
@@ -64,6 +64,7 @@ const Signup = () => {
         setconfirmpassrerror("Password does not match ");
         setcursor("confirmpassword");
         stylefunction("0.2px outset red", "password");
+        stylefunction("0.2px outset red", "confirmpassword");
       } else {
         const reg_data = {
           username,
@@ -103,6 +104,7 @@ const Signup = () => {
         }
       }
     } else {
+      stylefunction("0.2px outset red", "password");
       alert(
         "Password should contain uppercase,lowercase,digit,alpha characters"
       );
@@ -142,55 +144,91 @@ const Signup = () => {
             </div>
             <div className="singup-form">
               <h2 className="form-title">REGISTRATION</h2>
-              <form>
-                <div className="inputholder">
+              <form onSubmit={output} id='register-form'>
+                <div className="inputholder" >
                   <div className="inputholder-top">
-                    <input type="text" placeholder="First Name" />
+                    <input required type="text" placeholder="First Name" onChange={(e)=>{setFirstName(e.target.value)}} />
                   </div>
                 </div>
 
                 <div className="inputholder">
                   <div className="inputholder-top">
-                    <input type="text" placeholder="Last Name" />
+                    <input required type="text" placeholder="Last Name" onChange={(e)=>{setLastName(e.target.value)}}/>
                   </div>
                 </div>
 
-                <div className="inputholder">
+                <div className="inputholder" id="username">
                   <div className="inputholder-top">
-                    <input type="text" placeholder="Username" />
-                  </div>
-                </div>
-
-                <div className="inputholder">
-                  <div className="inputholder-top">
-                    <input type="mail" placeholder="E-Mail" />
-                  </div>
-                </div>
-
-                <div className="inputholder">
-                  <div className="inputholder-top">
-                    <input
-                      type="tel"
-                      placeholder="First Name"
-                      defaultValue="+91"
-                    />
-                  </div>
-                </div>
-                <div className="inputholder">
-                  <div className="inputholder-top">
-                    <input type="password" placeholder="Password" />{" "}
-                    <HiEyeOff size="1.3em" color="#404040" />
+                    <input required type="text" placeholder="Username" onChange={(e)=>{setUsername(e.target.value)}}/>
                   </div>
                   <label className="label" htmlFor="">
-                    Place your Label Here
+                  {usererror && usererror}
                   </label>
                 </div>
 
-                <div className="inputholder">
+                <div className="inputholder" id="email">
                   <div className="inputholder-top">
-                    <input type="password" placeholder="Confirm Password" />
-                    <HiEyeOff size="1.3em" color="#404040" />
+                    <input required type="mail" placeholder="E-Mail" onChange={(e)=>{setEmail(e.target.value)}} />
                   </div>
+                  <label className="label" htmlFor="">
+                  {emailerror && emailerror}
+                  </label>
+                </div>
+
+                <div className="inputholder" id="phone">
+                  <div className="inputholder-top">
+                    <input
+                    required
+                      type="tel"
+                      placeholder="phone number"
+                      defaultValue="+91"
+                      onChange={(e)=>{setPhone(e.target.value)}}
+                    />
+                  </div>
+                  <label className="label" htmlFor="">
+                  {phoneerror && phoneerror}
+                  </label>
+                </div>
+                <div className="inputholder" id="password">
+                  <div className="inputholder-top">
+                    <input required type={passVISIBLE?"text":"password"} placeholder="Password" onChange={(e)=>{setPass(e.target.value)}} />
+                    {passVISIBLE?<HiEye onClick={()=>{setpassVISIBLE(!passVISIBLE)}} size="1.3em" color="#404040" />:<HiEyeOff size="1.3em" color="#404040"  onClick={()=>{setpassVISIBLE(!passVISIBLE)}}/>}
+                  </div>
+                  <label className="label" htmlFor="">
+                  {passerror && passerror}
+                  </label>
+                </div>
+
+                <div className="inputholder" id="confirmpassword" >
+                  <div className="inputholder-top">
+                    <input required type={confirmpassVISIBLE?"text":"password"}  placeholder="Confirm Password" 
+                    onBlur={() => {
+                      stylefunction("none", "confirmpassword");
+                    }}
+                    onFocus={() => {
+                      if (confirmpass === password) {
+                        stylefunction("none", "confirmpassword");
+                      } else {
+                        stylefunction("0.2px outset red", "confirmpassword");
+                      }
+                    }}
+
+                    onChange={(e) => {
+                      setConfrpass(e.target.value);
+                      if (e.target.value === password) {
+                        stylefunction("none", "confirmpassword");
+                      } else {
+                        stylefunction("0.2px outset red", "confirmpassword");
+                      }
+                    }}
+
+
+                     />
+                    {confirmpassVISIBLE?<HiEye size="1.3em" color="#404040" onClick={()=>{setconfirmpassVISIBLE(!confirmpassVISIBLE)}} />:<HiEyeOff size="1.3em" color="#404040" onClick={()=>{setconfirmpassVISIBLE(!confirmpassVISIBLE)}} />}
+                  </div>
+                  <label className="label" htmlFor="">
+                  {confirmpasserror && confirmpasserror}
+                  </label>
                 </div>
 
                 <input
@@ -199,7 +237,7 @@ const Signup = () => {
                   placeholder="Sign Up"
                   className="submit-btn"
                 />
-                <Link>
+                <Link to="/login">
                   <p className="form-btmtext form-btmtext1">
                     Already registered ? Login
                   </p>

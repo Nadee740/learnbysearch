@@ -16,9 +16,9 @@ const Login = () => {
   const [resendmail, setresendmail] = useState();
   const [passVISIBLE, setpassVISIBLE] = useState(false);
   const [user, setUserprof] = useState();
-  const [cookies, setCookie] = useCookies(["pass"]);
   const [visible, setvisible] = useState(false);
   const [forgotpassvisible, setforgotpassvisible] = useState(false);
+  const [resendmailvisible, setresendmailvisible] = useState(false);
 
   const stylefunction = (color, id) => {
     document.getElementById(id).style.border = color;
@@ -26,9 +26,13 @@ const Login = () => {
 
   const closeModal = () => {
     setvisible(false);
+    setresendmailvisible(true)
   };
   const closeforgotpassModal = () => {
     setforgotpassvisible(false);
+  };
+  const closeresendmail = () => {
+    setresendmailvisible(false);
   };
 
   const ResendMail = async () => {
@@ -70,11 +74,11 @@ const Login = () => {
       log_data
     );
     if (messagee.includes("your account is not verifed")) {
-      setresendmail("Resenend Email for verification");
+      setvisible(true)
     }
     if (!messagee.includes("successfully")) {
-      stylefunction("0.2px outset red", "password");
-      stylefunction("0.2px outset red", "username");
+      stylefunction("0.2px outset red", "pass-holder");
+      stylefunction("0.2px outset red", "usernameholder");
       setpassrerror(messagee);
     } else {
       window.location = "/";
@@ -86,7 +90,8 @@ const Login = () => {
   return (
     <>
       <div className="popupscreen">
-        <section className="popupscreen">
+        <section className="popupscr
+        een">
           <Modal
             visible={visible}
             width="400"
@@ -96,7 +101,32 @@ const Login = () => {
           >
             <div className="popup">
               <h1>LEARN BY RESEARCH</h1>
+              <p>
+                PLEASE VERIFY YOUR EMAIL TO LOGIN.
+              </p>
+              <br /><br />
+              <Link  onClick={closeModal} >
+                Resend Mail
+              </Link>
+            </div>
+          </Modal>
+        </section>
+      </div>
+
+
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={resendmailvisible}
+            width="400"
+            height="300"
+            effect="fadeInUp"
+            onClickAway={closeresendmail}
+          >
+            <div className="popup">
+              <h1>LEARN BY RESEARCH</h1>
               <input
+                id="email"
                 type="email"
                 placeholder="email"
                 onChange={(e) => {
@@ -106,13 +136,15 @@ const Login = () => {
               ></input>
               <br></br>
               <label htmlFor="email">{emailerr && emailerr}</label>
-              <button onClick={ResendMail} className="popup-button">
-                ResendMail
+              <br></br>
+              <button className="popup-button" onClick={ResendMail}>
+                SUBMIT
               </button>
             </div>
           </Modal>
         </section>
       </div>
+      
 
       <div className="popupscreen">
         <section className="popupscreen">
@@ -126,6 +158,7 @@ const Login = () => {
             <div className="popup">
               <h1>LEARN BY RESEARCH</h1>
               <input
+                id="email"
                 type="email"
                 placeholder="email"
                 onChange={(e) => {
@@ -135,6 +168,7 @@ const Login = () => {
               ></input>
               <br></br>
               <label htmlFor="email">{emailerr && emailerr}</label>
+              <br></br>
               <button className="popup-button" onClick={SendForgotPass}>
                 SUBMIT
               </button>
@@ -151,20 +185,20 @@ const Login = () => {
             </div>
             <div className="singup-form">
               <h2 className="form-title">WELCOME BACK!</h2>
-              <form>
-                <div className="inputholder">
+              <form onSubmit={output}>
+                <div className="inputholder" id="usernameholder">
                   <div className="inputholder-top">
-                    <input type="text" placeholder="Username" />
+                    <input type="text" placeholder="Username" id="username"onChange={(e)=>{setUser(e.target.value)}} />
                   </div>
                 </div>
 
-                <div className="inputholder">
-                  <div className="inputholder-top">
-                    <input type="password" placeholder="Password" />{" "}
-                    <HiEyeOff size="1.3em" color="#404040" />
+                <div className="inputholder" id="pass-holder">
+                  <div className="inputholder-top" >
+                    <input id="password" type={passVISIBLE?'text':"password"} placeholder="Password" onChange={(e)=>{setPass(e.target.value)}}/>
+                    {passVISIBLE?<HiEyeOff size="1.3em" color="#404040" onClick={()=>{setpassVISIBLE(!passVISIBLE)}} />:<HiEye size="1.3em" color="#404040" onClick={()=>{setpassVISIBLE(!passVISIBLE)}} />}
                   </div>
                   <label className="label" htmlFor="">
-                    Place your Label Here
+                    {passerror&&passerror}
                   </label>
                 </div>
 
@@ -174,13 +208,13 @@ const Login = () => {
                   placeholder="Sign Up"
                   className="submit-btn"
                 />
-                <Link>
+                <Link to="/signup">
                   <p className="form-btmtext form-btmtext1">
-                    Not registered ? SIgnup
+                    Not registered ? Signup
                   </p>
                 </Link>
 
-                <Link>
+                <Link onClick={()=>{setforgotpassvisible(true)}}>
                   <p className="form-btmtext">Forgot Password</p>
                 </Link>
               </form>

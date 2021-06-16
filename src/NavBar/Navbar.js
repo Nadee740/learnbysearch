@@ -20,7 +20,7 @@ const Navbar = (props) => {
   };
   const checkLOgin = async () => {
     const { isLoggedIn: messagee } = await Authverifier(
-      "http://13.127.98.11/users/me"
+      `${window.name}users/me`
     );
     setisLoggedin(messagee);
    

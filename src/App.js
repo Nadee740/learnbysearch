@@ -28,7 +28,7 @@ function App() {
     
   // localStorage.clear()
   setisLoading(true)
-  const {isLoggedIn:messagee} =await Authverifier("http://13.127.98.11/users/me")
+  const {isLoggedIn:messagee} =await Authverifier(`${window.name}users/me`)
   setisLoggedin(messagee) 
   setisLoading(false)
   console.log(messagee)

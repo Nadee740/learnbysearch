@@ -23,7 +23,7 @@ const Blog = ({blog}) => {
             <FaUserCircle size="2.7em" className="blogcard-col2-top-1-icn" />
           </div>
           <div className="blogcard-col2-top-2">
-            <p></p>
+            <p>{blog.author}</p>
             <p>{blog.date}</p>
           </div>
         </div>
