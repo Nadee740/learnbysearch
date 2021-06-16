@@ -22,7 +22,7 @@ const EditProfile = () => {
   const getData = async () => {
     setisLoading(true);
     const { isLoggedIn: messagee, data: datas } = await Authverifier(
-      "http://localhost:8000/users/me"
+      `${window.name}users/me`
     );
     setisLoggedin(messagee);
     console.log(datas, "Enghaneelum");
@@ -158,6 +158,7 @@ const EditProfile = () => {
   };
 
   const VerifyOtp = async () => {
+    setotperr();
     console.log("otpmon");
 
     const submit_code = {
@@ -173,7 +174,7 @@ const EditProfile = () => {
       setisverfied(true);
     }
 
-    setotperr(messagee);
+    setotperr("wrong code");
   };
 
   const MakeChanges = async (e) => {
@@ -314,7 +315,9 @@ const EditProfile = () => {
                   </div>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <input type="tel" placeholder="Your Phone Number" autoComplete="off"
+                      <input 
+                      id="PhoneNumber"
+                      type="tel" placeholder="Your Phone Number" autoComplete="off"
                   required
                   value={phoneNumber}
                   onChange={(e) => {
@@ -341,6 +344,7 @@ const EditProfile = () => {
                   <div className="inputholder otpdisplay">
                     <div className="inputholder-top">
                       <input type="text" placeholder="OTP" autoComplete="off"
+                      id="otp"
                   className="otp"
                   value={otp}
                   onChange={(e) => {
@@ -450,10 +454,14 @@ const EditProfile = () => {
                       Change Password
                     </p>
                   </Link>
-                  <button className="edit-profile-btn edit-profile-lgout">
+                  <button className="edit-profile-btn edit-profile-lgout" onClick={(e) =>{
+                    e.preventDefault()
+                     submit(false)}}>
                     LOG OUT
                   </button>
-                  <button className="edit-profile-btn">
+                  <button className="edit-profile-btn" onClick={(e) =>{
+                    e.preventDefault()
+                     submit(true)}}>
                     LOGOUT FROM ALL DEVICES
                   </button>
                 </form>
