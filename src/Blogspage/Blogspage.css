@@ -75,6 +75,7 @@
   display: grid;
   grid-template-columns: 0.4fr auto;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 100%;
 }
 .blogcard:hover {
   transform: scale(1.02);
@@ -175,4 +176,10 @@ p {
   .searchbarholder {
     width: 70%;
   }
+}
+.blogtext {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
 }
