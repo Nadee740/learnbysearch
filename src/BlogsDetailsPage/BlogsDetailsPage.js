@@ -35,7 +35,7 @@ function BlogsDetailsPage({ blog }) {
           <div className="blogdetailpage">
             <div className="blogdetailpage-img">
               <img
-                src="https://images.unsplash.com/photo-1623796269182-ba63073bf927"
+                src={blogsData.imageUrl}
                 alt="Bg"
                 className="blogdetailpage-img2"
               />

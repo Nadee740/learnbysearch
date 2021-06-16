@@ -10,13 +10,17 @@ import Researchpgms from "../Backend/Researchpgms";
 function OpenProgrammesPage() {
   const { id } = useParams();
   let arr = [];
+  let array=[];
   const [isLoading, setisLoading] = useState(true);
   const [blogsData, setblogData] = useState("");
   const [positions, setPosition] = useState("");
+  const [mentors, setmentors] = useState("");
 
   const htmlpart = blogsData.description;
+  const htmlpartobjective = blogsData.objective;
 
   const getPositions = async (data) => {
+    setisLoading(true);
     data.positions.map(async (position, index) => {
       const { data: Datass } = await Researchpgms(
         `${window.name}position/${position}`
@@ -25,9 +29,30 @@ function OpenProgrammesPage() {
       arr.push(Datass);
       console.log(arr, "ARayy");
       setPosition(arr);
-      setisLoading(false);
+      
     });
   };
+
+  const getMentors=async(data)=>{
+    setisLoading(true);
+    data.mentors.map(async (mentor, index) => {
+      console.log(mentor,"mooonj");
+      const { data: Datass } = await Researchpgms(
+        `${window.name}mentor/${mentor}`
+      );
+      console.log(Datass, "hyhyy");
+      array.push(Datass);
+      console.log(array, "mentor");
+      setmentors(array);
+      setloaded();
+    });
+
+  }
+
+  const setloaded=()=>{
+setisLoading(false)
+
+  }
 
   const getBlogs = async () => {
     setisLoading(true);
@@ -37,6 +62,7 @@ function OpenProgrammesPage() {
     setblogData(Datass);
 
     await getPositions(Datass);
+    await getMentors(Datass);
 
     console.log(positions, "Ass");
   };
@@ -56,7 +82,7 @@ function OpenProgrammesPage() {
           <div className="blogdetailpage openprogrammespage">
             <div className="blogdetailpage-img">
               <img
-                src="https://images.unsplash.com/photo-1623796269182-ba63073bf927"
+                src={blogsData.imageUrl}
                 alt="Bg"
                 className="blogdetailpage-img2"
               />
@@ -79,7 +105,7 @@ function OpenProgrammesPage() {
             <div className="openprogrammespage-holder">
               <div className="openprogrammespage-section">
                 <p className="openprogrammespage-head"> Objective</p>
-                <p className="openprogrammespage-text">{blogsData.objective}</p>
+                <p className="openprogrammespage-text"><div dangerouslySetInnerHTML={{ __html: htmlpartobjective }}></div></p>
               </div>
               <div className="line"></div>
               <div className="openprogrammespage-section">
@@ -147,40 +173,25 @@ function OpenProgrammesPage() {
                 </div>
                 <div className="mentors">
                   <p className="openprogrammespage-head">Mentors</p>
-                  <div className="mentors-item">
+                 
+                 {mentors.map((mentor,index)=>(
+                  <div className="mentors-item" key={index}>
                     <img
                       src="https://randomuser.me/api/portraits/men/42.jpg"
                       alt="User"
                       className="mentors-item-img"
                     />
                     <p className="vaccency-item-text mentors-item-text">
-                      <span>Chris Sander</span>
+                      <span>{mentor.name}</span>
                     </p>
                     <p className="vaccency-item-text mentors-item-text">
-                      MTech in Project Management (COEP)<br></br> BTech in
-                      Electronics Engineering (SPPU) <br></br>Founder of Sakar
-                      Robotics, Gold Medalist in Mobile Robotics & Expert at
-                      WorldSkills
+                      {mentor.education}<br></br> {mentor.organisation} <br></br>{mentor.bio}<br></br>{mentor.position}
                     </p>
                     <FaLinkedin size="2em" color="#0077b5" />
                   </div>
-                  <div className="mentors-item">
-                    <img
-                      src="https://randomuser.me/api/portraits/women/4.jpg"
-                      alt="User"
-                      className="mentors-item-img"
-                    />
-                    <p className="vaccency-item-text mentors-item-text">
-                      <span>Rose Barrett</span>
-                    </p>
-                    <p className="vaccency-item-text mentors-item-text">
-                      MTech in Project Management (COEP)<br></br> BTech in
-                      Electronics Engineering (SPPU) <br></br>Founder of Sakar
-                      Robotics, Gold Medalist in Mobile Robotics & Expert at
-                      WorldSkills
-                    </p>
-                    <FaLinkedin size="2em" color="#0077b5" />
-                  </div>
+                  
+                 ))}
+                  
                 </div>
               </div>
 
