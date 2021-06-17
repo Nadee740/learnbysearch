@@ -6,6 +6,7 @@ import { useState } from "react";
 const OpenProgrammes = () => {
        const[blogsData,setblogData]=useState("")
        const[isLoading,setisLoading]=useState(true)
+       const [error,seterror]=useState(false);
 
 const getBlogs=async()=>{
   setisLoading(true)
@@ -27,10 +28,13 @@ const getBlogs=async()=>{
   return (
     <>
         {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:
+        error? <div className="isLoading">
+          <h1>OOOps an error occured...</h1>
+        </div>:
       <div className="openprograms">
         <h2>Open programs</h2>
         <div className="cardholder">
-        {blogsData && blogsData.map((blog,index)=>(
+        {blogsData.length>=1? blogsData.map((blog,index)=>(
        
         
           
@@ -39,7 +43,7 @@ const getBlogs=async()=>{
          
          
         
-        ))}
+        )):seterror(true)}
         </div>
       </div>
         }

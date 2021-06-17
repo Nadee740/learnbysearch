@@ -18,6 +18,7 @@ import Open from './test/open';
 import BlogsDetailsPage from './BlogsDetailsPage/BlogsDetailsPage';
 import OpenProgrammesPage from './OpenProgrammesPage/OpenProgrammesPage';
 import ForgotPassword from './ForgotPassword/ForgotPassword';
+import ApplicationForm from './ApplicationForm/ApplicationForm';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
        <Route path='/open' component={Open} />
        <Route path='/blogsdetailspage/:id' component={BlogsDetailsPage} />
        <Route path='/openprogrammespage/:id' exact component={OpenProgrammesPage} />
+       <Route path='/applicationform' exact  component={ApplicationForm} />
       
        </Router>} 
       

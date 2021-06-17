@@ -15,6 +15,7 @@ function OpenProgrammesPage() {
   const [blogsData, setblogData] = useState("");
   const [positions, setPosition] = useState("");
   const [mentors, setmentors] = useState("");
+  const [error,seterror]=useState(false);
 
   const htmlpart = blogsData.description;
   const htmlpartobjective = blogsData.objective;
@@ -44,9 +45,14 @@ function OpenProgrammesPage() {
       array.push(Datass);
       console.log(array, "mentor");
       setmentors(array);
-      setloaded();
-    });
 
+      array?seterror(false):seterror(true);
+      console.log(error)
+      
+    });
+    console.log(array,"moooonuus")
+    
+    setloaded();
   }
 
   const setloaded=()=>{
@@ -77,7 +83,9 @@ setisLoading(false)
         <div className="isLoading">
           <h1>Loading...</h1>
         </div>
-      ) : (
+      ):error? <div className="isLoading">
+          <h1>OOOps an error occured...</h1>
+        </div> : (
         <div>
           <div className="blogdetailpage openprogrammespage">
             <div className="blogdetailpage-img">
@@ -139,7 +147,7 @@ setisLoading(false)
                 </p>
 
                 <div className="vaccency-holder">
-                  {positions.map((position, index) => (
+                  {positions?positions.map((position, index) => (
                     <div className="vaccency-item" key={index}>
                       <p className="vaccency-item-title">{position.title}</p>
                       <p className="vaccency-item-text">
@@ -151,7 +159,7 @@ setisLoading(false)
                         <span>{position.criterion}</span>
                       </p>
                     </div>
-                  ))}
+                  )):seterror(true)}
                 </div>
                 <div className="openprogrammespage-feature">
                   <div className="openprogrammespage-feature-col ">
@@ -173,8 +181,10 @@ setisLoading(false)
                 </div>
                 <div className="mentors">
                   <p className="openprogrammespage-head">Mentors</p>
-                 
-                 {mentors.map((mentor,index)=>(
+              
+                 {
+                  
+                  mentors.length>=1?mentors.includes(null)?seterror(true): mentors.map((mentor,index)=>(
                   <div className="mentors-item" key={index}>
                     <img
                       src="https://randomuser.me/api/portraits/men/42.jpg"
@@ -190,7 +200,7 @@ setisLoading(false)
                     <FaLinkedin size="2em" color="#0077b5" />
                   </div>
                   
-                 ))}
+                 )):seterror(true)}
                   
                 </div>
               </div>
