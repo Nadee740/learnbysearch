@@ -117,3 +117,6 @@
 .mentors-item-img {
   border-radius: 50%;
 }
+.select-place {
+  position: relative;
+}
