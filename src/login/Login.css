@@ -1,9 +1,9 @@
-.popup-input{
+.popup-input {
   border: none;
   padding: 10px;
   box-sizing: border-box;
-position: relative;
-z-index: 10;
+  position: relative;
+  z-index: 10;
   border-radius: 10px;
   outline: none;
   margin: 10px;
@@ -12,7 +12,7 @@ z-index: 10;
   border-radius: 34px;
 }
 
-.popup-button{
+.popup-button {
   margin-top: 5px;
   padding: 5px 5px;
 
@@ -188,4 +188,103 @@ a {
 }
 .form-btmtext1 {
   margin-top: 15px;
+}
+.inputholder2 {
+  border-radius: 5px !important;
+  padding: 5px 5px !important;
+}
+.textarea {
+  border: none;
+  margin: 0;
+  width: 100%;
+  font-size: 18px;
+  padding: 0;
+  margin-bottom: 10px;
+}
+.inputp {
+  width: 100%;
+  margin: 0;
+  font-size: 18px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: 400;
+  color: #818181;
+  line-height: 115%;
+  margin: 15px;
+}
+.inputholder-top3 {
+  flex-direction: column !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.selectbx {
+  border: none !important;
+  outline: none !important;
+  font-size: 18px !important;
+  font-family: inherit !important;
+}
+
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
 }
