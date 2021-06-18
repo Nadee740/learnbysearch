@@ -68,7 +68,7 @@ const LandingPage = () => {
               of delivering the right skillsets.
             </p>
           </div>
-          <div className="about-col">
+          <div className="about-col about-col2">
             <p>
               We promote innovation, research, and entrepreneurship as part of
               the research work. LearnByResearch is dedicated to higher levels
@@ -84,7 +84,7 @@ const LandingPage = () => {
             </figure>
           </div>
 
-          <div className="about-col">
+          <div className="about-col ">
             <figure>
               <img
                 src="../images/about3.svg"
@@ -99,7 +99,7 @@ const LandingPage = () => {
               supervision of a guide.
             </p>
           </div>
-          <div className="about-col">
+          <div className="about-col about-col2">
             <p>
               At LearnByResearch, students and research guides collaborate to
               enhance their skills and knowledge as well as build life-changing
@@ -156,7 +156,8 @@ const LandingPage = () => {
               }}
             >
               <p>
-                Network and Focused Community<i className="fas fa-angle-down"></i>
+                Network and Focused Community
+                <i className="fas fa-angle-down"></i>
               </p>
             </div>
             <div className="line"></div>

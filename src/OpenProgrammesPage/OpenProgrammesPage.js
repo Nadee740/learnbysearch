@@ -12,17 +12,15 @@ import Authverifier from "../Backend/Authverifier";
 function OpenProgrammesPage() {
   const { id } = useParams();
   let arr = [];
-  let array=[];
+  let array = [];
   const [isLoading, setisLoading] = useState(true);
   const [blogsData, setblogData] = useState("");
   const [positions, setPosition] = useState("");
   const [mentors, setmentors] = useState("");
-  const [error,seterror]=useState(false);
+  const [error, seterror] = useState(false);
 
   const htmlpart = blogsData.description;
   const htmlpartobjective = blogsData.objective;
-
-
 
   const getPositions = async (data) => {
     setisLoading(true);
@@ -34,14 +32,13 @@ function OpenProgrammesPage() {
       arr.push(Datass);
       console.log(arr, "ARayy");
       setPosition(arr);
-      
     });
   };
 
-  const getMentors=async(data)=>{
+  const getMentors = async (data) => {
     setisLoading(true);
     data.mentors.map(async (mentor, index) => {
-      console.log(mentor,"mooonj");
+      console.log(mentor, "mooonj");
       const { data: Datass } = await Researchpgms(
         `${window.name}mentor/${mentor}`
       );
@@ -50,19 +47,17 @@ function OpenProgrammesPage() {
       console.log(array, "mentor");
       setmentors(array);
 
-      array?seterror(false):seterror(true);
-      console.log(error)
-      
+      array ? seterror(false) : seterror(true);
+      console.log(error);
     });
-    console.log(array,"moooonuus")
-    
+    console.log(array, "moooonuus");
+
     setloaded();
-  }
+  };
 
-  const setloaded=()=>{
-setisLoading(false)
-
-  }
+  const setloaded = () => {
+    setisLoading(false);
+  };
 
   const getBlogs = async () => {
     setisLoading(true);
@@ -77,7 +72,7 @@ setisLoading(false)
     console.log(positions, "Ass");
   };
 
-  useEffect(async() => {
+  useEffect(async () => {
     const { isLoggedIn: messagee, data: datas } = await Authverifier(
       `${window.name}users/me`
     );
@@ -90,9 +85,11 @@ setisLoading(false)
         <div className="isLoading">
           <h1>Loading...</h1>
         </div>
-      ):error? <div className="isLoading">
+      ) : error ? (
+        <div className="isLoading">
           <h1>OOOps an error occured...</h1>
-        </div> : (
+        </div>
+      ) : (
         <div>
           <div className="blogdetailpage openprogrammespage">
             <div className="blogdetailpage-img">
@@ -114,13 +111,19 @@ setisLoading(false)
                       Applications Closed !<br></br>
                     </p>
                   )}
+
+                  <button className="applybtn">APPLY NOW</button>
                 </div>
               </div>
             </div>
             <div className="openprogrammespage-holder">
               <div className="openprogrammespage-section">
                 <p className="openprogrammespage-head"> Objective</p>
-                <p className="openprogrammespage-text"><div dangerouslySetInnerHTML={{ __html: htmlpartobjective }}></div></p>
+                <p className="openprogrammespage-text">
+                  <div
+                    dangerouslySetInnerHTML={{ __html: htmlpartobjective }}
+                  ></div>
+                </p>
               </div>
               <div className="line"></div>
               <div className="openprogrammespage-section">
@@ -154,19 +157,23 @@ setisLoading(false)
                 </p>
 
                 <div className="vaccency-holder">
-                  {positions?positions.map((position, index) => (
-                    <div className="vaccency-item" key={index}>
-                      <p className="vaccency-item-title">{position.title}</p>
-                      <p className="vaccency-item-text">
-                        Number of Students Required: <span>2</span>
-                      </p>
+                  {positions
+                    ? positions.map((position, index) => (
+                        <div className="vaccency-item" key={index}>
+                          <p className="vaccency-item-title">
+                            {position.title}
+                          </p>
+                          <p className="vaccency-item-text">
+                            Number of Students Required: <span>2</span>
+                          </p>
 
-                      <p className="vaccency-item-text">
-                        Eligibility Criterion:
-                        <span>{position.criterion}</span>
-                      </p>
-                    </div>
-                  )):seterror(true)}
+                          <p className="vaccency-item-text">
+                            Eligibility Criterion:
+                            <span>{position.criterion}</span>
+                          </p>
+                        </div>
+                      ))
+                    : seterror(true)}
                 </div>
                 <div className="openprogrammespage-feature">
                   <div className="openprogrammespage-feature-col ">
@@ -188,33 +195,52 @@ setisLoading(false)
                 </div>
                 <div className="mentors">
                   <p className="openprogrammespage-head">Mentors</p>
-              
-                 {
-                  
-                  mentors.length>=1?mentors.includes(null)?seterror(true): mentors.map((mentor,index)=>{
-                    const htmlparteducation=mentor.education;
-                    const htmlpartbio=mentor.bio;
-                    const htmlorganisation=mentor.organisation;
-                    const htmlpartposition=mentor.position;
-                    return(
-                  <div className="mentors-item" key={index}>
-                  
-                    <img
-                      src="https://randomuser.me/api/portraits/men/42.jpg"
-                      alt="User"
-                      className="mentors-item-img"
-                    />
-                    <p className="vaccency-item-text mentors-item-text">
-                      <span>{mentor.name}</span>
-                    </p>
-                    <p className="vaccency-item-text mentors-item-text">
-                    <div dangerouslySetInnerHTML={{ __html: htmlparteducation }}></div><div dangerouslySetInnerHTML={{ __html: htmlorganisation }}></div> <div dangerouslySetInnerHTML={{ __html: htmlpartposition }}></div> <div dangerouslySetInnerHTML={{ __html: htmlpartbio }}></div>
-                    </p>
-                    <FaLinkedin size="2em" color="#0077b5" />
-                  </div>)
-                  
-      }):seterror(true)}
-                  
+
+                  {mentors.length >= 1
+                    ? mentors.includes(null)
+                      ? seterror(true)
+                      : mentors.map((mentor, index) => {
+                          const htmlparteducation = mentor.education;
+                          const htmlpartbio = mentor.bio;
+                          const htmlorganisation = mentor.organisation;
+                          const htmlpartposition = mentor.position;
+                          return (
+                            <div className="mentors-item" key={index}>
+                              <img
+                                src="https://randomuser.me/api/portraits/men/42.jpg"
+                                alt="User"
+                                className="mentors-item-img"
+                              />
+                              <p className="vaccency-item-text mentors-item-text">
+                                <span>{mentor.name}</span>
+                              </p>
+                              <p className="vaccency-item-text mentors-item-text">
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: htmlparteducation,
+                                  }}
+                                ></div>
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: htmlorganisation,
+                                  }}
+                                ></div>{" "}
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: htmlpartposition,
+                                  }}
+                                ></div>{" "}
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: htmlpartbio,
+                                  }}
+                                ></div>
+                              </p>
+                              <FaLinkedin size="2em" color="#0077b5" />
+                            </div>
+                          );
+                        })
+                    : seterror(true)}
                 </div>
               </div>
 
