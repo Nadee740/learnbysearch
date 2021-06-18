@@ -8,6 +8,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import Authverifier from "../Backend/Authverifier";
+import Modal from "react-awesome-modal";
+import { Link } from "react-router-dom";
 
 function OpenProgrammesPage() {
   const { id } = useParams();
@@ -18,11 +20,14 @@ function OpenProgrammesPage() {
   const [positions, setPosition] = useState("");
   const [mentors, setmentors] = useState("");
   const [error,seterror]=useState(false);
-
+  const [visible, setvisible] = useState(false);
   const htmlpart = blogsData.description;
   const htmlpartobjective = blogsData.objective;
+  const [isLoggedIn,setisLoggedin]=useState(false)
 
-
+  const closeModal = () => {
+    setvisible(false);
+  };
 
   const getPositions = async (data) => {
     setisLoading(true);
@@ -64,6 +69,15 @@ setisLoading(false)
 
   }
 
+  const applicationform=()=>{
+  if(!isLoggedIn){
+    setvisible(true);
+  }
+else{
+    window.location=`/applicationform/${id}`
+}
+  }
+
   const getBlogs = async () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(
@@ -78,14 +92,36 @@ setisLoading(false)
   };
 
   useEffect(async() => {
-    const { isLoggedIn: messagee, data: datas } = await Authverifier(
-      `${window.name}users/me`
-    );
+    const {isLoggedIn:messagee} =await Authverifier(`${window.name}users/me`)
+    setisLoggedin(messagee)
     getBlogs();
   }, []);
 
   return (
     <>
+    <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={visible}
+            width="400"
+            height="300"
+            effect="fadeInUp"
+            onClickAway={closeModal}
+          >
+            <div className="popup">
+            <img
+              src="/images/LearnByResearchLogo.png"
+              className="logo"
+              alt=""
+            />
+              <p>PLEASE LOGIN TO SUBMIT APPLICATION...</p>
+              <Link to="/" onClick={closeModal}>
+                Close
+              </Link>
+            </div>
+          </Modal>
+        </section>
+      </div>
       {isLoading ? (
         <div className="isLoading">
           <h1>Loading...</h1>
@@ -106,7 +142,7 @@ setisLoading(false)
                 <div className="blogdetailpage-top openprogrammespage-top">
                   <>{blogsData.title}</>
                   {blogsData.applicationStatus ? (
-                    <p>
+                    <p onClick={applicationform}>
                       Applications Open !<br></br>
                     </p>
                   ) : (
@@ -114,6 +150,7 @@ setisLoading(false)
                       Applications Closed !<br></br>
                     </p>
                   )}
+                  <button onClick={applicationform} className="applybtn">APPLY NOW</button>
                 </div>
               </div>
             </div>

@@ -54,7 +54,7 @@ function App() {
        <Route path='/open' component={Open} />
        <Route path='/blogsdetailspage/:id' component={BlogsDetailsPage} />
        <Route path='/openprogrammespage/:id' exact component={OpenProgrammesPage} />
-       <Route path='/applicationform' exact  component={ApplicationForm} />
+       <Route path='/applicationform/:id' exact  component={ApplicationForm} />
       
        </Router>} 
       

@@ -117,3 +117,19 @@
 .mentors-item-img {
   border-radius: 50%;
 }
+.applybtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #c86fc9;
+  font-size: 18px;
+  font-family: inherit;
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.applybtn:hover {
+  cursor: pointer;
+  background-color: #c76fc9a6;
+}

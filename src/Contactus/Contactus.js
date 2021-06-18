@@ -52,7 +52,11 @@ const ContactUs = () => {
             onClickAway={closeModal}
           >
             <div className="popup">
-              <h1>LEARN BY RESEARCH</h1>
+            <img
+              src="/images/LearnByResearchLogo.png"
+              className="logo"
+              alt=""
+            />
               <p>THANKS FOR YOUR TIME WE SHALL SOON REACH TO YOU...</p>
               <Link to="/" onClick={closeModal}>
                 Close
