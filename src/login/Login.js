@@ -100,7 +100,11 @@ const Login = () => {
             onClickAway={closeModal}
           >
             <div className="popup">
-              <h1>LEARN BY RESEARCH</h1>
+            <img
+              src="/images/LearnByResearchLogo.png"
+              className="logo"
+              alt=""
+            />
               <p>
                 PLEASE VERIFY YOUR EMAIL TO LOGIN.
               </p>
@@ -124,7 +128,11 @@ const Login = () => {
             onClickAway={closeresendmail}
           >
             <div className="popup">
-              <h1>LEARN BY RESEARCH</h1>
+            <img
+              src="/images/LearnByResearchLogo.png"
+              className="logo"
+              alt=""
+            />
               <input
                 id="email"
                 type="email"
@@ -156,7 +164,11 @@ const Login = () => {
             onClickAway={closeforgotpassModal}
           >
             <div className="popup">
-              <h1>LEARN BY RESEARCH</h1>
+            <img
+              src="/images/LearnByResearchLogo.png"
+              className="logo"
+              alt=""
+            />
               <input
                 id="email"
                 type="email"

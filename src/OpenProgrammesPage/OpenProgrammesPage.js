@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
+import Authverifier from "../Backend/Authverifier";
+
 function OpenProgrammesPage() {
   const { id } = useParams();
   let arr = [];
@@ -19,6 +21,8 @@ function OpenProgrammesPage() {
 
   const htmlpart = blogsData.description;
   const htmlpartobjective = blogsData.objective;
+
+
 
   const getPositions = async (data) => {
     setisLoading(true);
@@ -73,7 +77,10 @@ setisLoading(false)
     console.log(positions, "Ass");
   };
 
-  useEffect(() => {
+  useEffect(async() => {
+    const { isLoggedIn: messagee, data: datas } = await Authverifier(
+      `${window.name}users/me`
+    );
     getBlogs();
   }, []);
 
@@ -184,8 +191,14 @@ setisLoading(false)
               
                  {
                   
-                  mentors.length>=1?mentors.includes(null)?seterror(true): mentors.map((mentor,index)=>(
+                  mentors.length>=1?mentors.includes(null)?seterror(true): mentors.map((mentor,index)=>{
+                    const htmlparteducation=mentor.education;
+                    const htmlpartbio=mentor.bio;
+                    const htmlorganisation=mentor.organisation;
+                    const htmlpartposition=mentor.position;
+                    return(
                   <div className="mentors-item" key={index}>
+                  
                     <img
                       src="https://randomuser.me/api/portraits/men/42.jpg"
                       alt="User"
@@ -195,12 +208,12 @@ setisLoading(false)
                       <span>{mentor.name}</span>
                     </p>
                     <p className="vaccency-item-text mentors-item-text">
-                      {mentor.education}<br></br> {mentor.organisation} <br></br>{mentor.bio}<br></br>{mentor.position}
+                    <div dangerouslySetInnerHTML={{ __html: htmlparteducation }}></div><div dangerouslySetInnerHTML={{ __html: htmlorganisation }}></div> <div dangerouslySetInnerHTML={{ __html: htmlpartposition }}></div> <div dangerouslySetInnerHTML={{ __html: htmlpartbio }}></div>
                     </p>
                     <FaLinkedin size="2em" color="#0077b5" />
-                  </div>
+                  </div>)
                   
-                 )):seterror(true)}
+      }):seterror(true)}
                   
                 </div>
               </div>

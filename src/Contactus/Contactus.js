@@ -146,9 +146,14 @@ const ContactUs = () => {
                 ></textarea>
               </div>
 
-              <div className="sbmt-btn">
-                <input type="submit" value="Submit"></input>
-              </div>
+              
+              <input
+                  type="submit"
+                  value="SIGN IN"
+                  placeholder="Sign Up"
+                  className="submit-btn"
+                />
+            
             </form>
           </div>
         </div>

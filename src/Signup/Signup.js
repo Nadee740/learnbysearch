@@ -123,7 +123,11 @@ const Signup = () => {
             onClickAway={closeModal}
           >
             <div className="popup">
-              <h1>LEARN BY RESEARCH</h1>
+            <img
+              src="/images/LearnByResearchLogo.png"
+              className="logo"
+              alt=""
+            />
               <p>
                 PLEASE VERIFY YOUR EMAIL .YOUR ARE ONE STEP AHEAD OF CREATING
                 YOUR ACCOUNT...

@@ -7,6 +7,8 @@ import { useCookies } from 'react-cookie';
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import Modal from "react-awesome-modal";
 import ChangePassword from "../Backend/ChangePassword";
+import { HiEye, HiEyeOff } from "react-icons/hi";
+
 
 const ForgotPassword = () => {
   const [new_password, setnew_password] = useState("");
@@ -69,15 +71,23 @@ const GetData=async()=>{
         `${window.name}reset-password/${id}/${token}`,
         log_data
       );
-      setpassrerror(messagee)
-      console.log(messagee,"messa")
+      if(messagee.includes("successfullly"))
+      {
+      setvisible(true);
+    setnew_password("");
+    setconfirm_password("");
+      
+    }
+      else
+      setpassrerror("Ooops session expired !!")
+      
       }
       else{
-          setpassrerror("Please type a Strong Number")
+          setpassrerror("Please type a Strong Password")
       }
       }
       else
-      {  console.log("NOMa")
+      {  
           setconfrimerr("Passwords does not match")
       }
   };
@@ -95,90 +105,62 @@ const GetData=async()=>{
             onClickAway={closeModal}
           >
             <div className="popup">
-              <h1>LEARN BY RESEARCH</h1>
-              
+            <img
+              src="/images/LearnByResearchLogo.png"
+              className="logo"
+              alt=""
+            />
+              <p>
+                PASSWORD CHANGED SUCCESFULLY !
+              </p>
+              <Link to="/" onClick={closeModal}>
+                Close
+              </Link>
             </div>
           </Modal>
         </section>
       </div>
       <section className="sign-in">
         <div className="container">
-          <div className="sigin-content">
-            <div className="signin-image">
-              <figure>
-                <img src="../images/change.png" alt="Login pic"></img>
-              </figure>
+          <div className="signup-content">
+            <div className="signup-image">
+              <img src="https://i.ibb.co/nQWSbyT/fin.png"></img>
             </div>
-            <div className="singin-form">
-              <h2 className="form-title">Change Password</h2>
-              <form
-                className="register-form"
-                id="register-form"
-                onSubmit={output}
-              >
-                <div className="form-group">
-                <div className="span-icon">
-                    <i
-                      onClick={() => {
-                        setpassVISIBLE(!passVISIBLE);
-                     
-                      }}
-                      class={passVISIBLE ? "fa fa-eye-slash" : "fa fa-eye"}
-                    ></i>
+            <div className="singup-form">
+              <h2 className="form-title">CHANGE PASSWORD!</h2>
+              <form onSubmit={output}>
+              <div className="inputholder" id="pass-holder">
+                  <div className="inputholder-top" >
+                    <input id="password" type={passVISIBLE?'text':"password"} placeholder="Password" onChange={(e)=>{setnew_password(e.target.value)}}/>
+                    {passVISIBLE?<HiEye size="1.3em" color="#404040" onClick={()=>{setpassVISIBLE(!passVISIBLE)}}/>:<HiEyeOff size="1.3em" color="#404040" onClick={()=>{setpassVISIBLE(!passVISIBLE)}} /> }
                   </div>
-                  <input
-                    type={passVISIBLE ?"text":"password"}
-                    name="password"
-                    id="password"
-                    placeholder="password"
-                    autoComplete="off"
-                    value={new_password}
-                    onChange={(e) => {
-                      setnew_password(e.target.value);
-                    }}
-                  ></input>
-                 <br></br>
-                  <label htmlFor="password">{passerror && passerror}</label>
+                  <label className="label" htmlFor="">
+                    {passerror&&passerror}
+                  </label>
                 </div>
-                <div className="form-group">
-                  <div className="span-icon">
-                    <i
-                      onClick={() => {
-                        setconfirmpassVISIBLE(!confirmpassVISIBLE);
-                     
-                      }}
-                      class={confirmpassVISIBLE ? "fa fa-eye-slash" : "fa fa-eye"}
-                    ></i>
-                  </div>
-                  <input
-                    type={confirmpassVISIBLE ? "text" : "password"}
-                    name="confirmpassword"
-                    id="confirmpassword"
-                    placeholder="confirm Password"
-                    autoComplete="off"
-                    value={confirm_password}
-                    onChange={(e) => {
-                      
-                      setconfirm_password(e.target.value);
-                    }}
-                  ></input>
 
-<br></br>
-                  <label htmlFor="password">{confirmerr && confirmerr}</label>
-                  
-           
+                <div className="inputholder" id="pass-holder">
+                  <div className="inputholder-top" >
+                    <input id="password" type={confirmpassVISIBLE?'text':"password"} placeholder="confirm Password" onChange={(e)=>{setconfirm_password(e.target.value)}}/>
+                    {confirmpassVISIBLE?<HiEye size="1.3em" color="#404040" onClick={()=>{setconfirmpassVISIBLE(!confirmpassVISIBLE)}}/>:<HiEyeOff size="1.3em" color="#404040" onClick={()=>{setconfirmpassVISIBLE(!confirmpassVISIBLE)}} /> }
+                  </div>
+                  <label className="label" htmlFor="">
+                    {confirmerr&&confirmerr}
+                  </label>
                 </div>
-                <div className="loginbtn">
-                  <input type="submit" value="CHANGE PASSWORD"></input>
-                </div>
-                <div className="alrdydone">
-                  <Link to="/signup">Not registered ? SIgnup</Link>
-                </div>
+
+                <input
+                  type="submit"
+                  value="SIGN IN"
+                  placeholder="Sign Up"
+                  className="submit-btn"
+                />
+              
               </form>
             </div>
           </div>
         </div>
-      </section> 
+      </section>
     </>
   )
 };
