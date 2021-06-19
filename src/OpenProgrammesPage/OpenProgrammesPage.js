@@ -57,11 +57,11 @@ function OpenProgrammesPage() {
 
       array?seterror(false):seterror(true);
       console.log(error)
-      
+      if(array.length==data.mentors.length)
+    setloaded();
     });
     console.log(array,"moooonuus")
     
-    setloaded();
   }
 
   const setloaded=()=>{
