@@ -9,18 +9,13 @@ body {
 code {
   font-family: "Jost", sans-serif;
 }
-.isLoading {
-  color: #2f3061;
-  text-align: center;
-  height: 100vh;
-  padding-top: 50%;
-}
+
 .logo {
   height: 50px;
 }
 
 .isLoading{
-
+  color: #2f3061;
 height: 40vh;
 align-items: center;
 justify-content: center;
