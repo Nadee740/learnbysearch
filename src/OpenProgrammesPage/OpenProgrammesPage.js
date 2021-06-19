@@ -31,20 +31,24 @@ function OpenProgrammesPage() {
 
   const getPositions = async (data) => {
     setisLoading(true);
+    
     data.positions.map(async (position, index) => {
       const { data: Datass } = await Researchpgms(
         `${window.name}position/${position}`
       );
-      console.log(Datass, "hyhyy");
+     
       arr.push(Datass);
-      console.log(arr, "ARayy");
-      setPosition(arr);
       
+      setPosition(arr);
+      if(data.positions.length==arr.length)
+      await getMentors(data);
     });
+  
   };
 
   const getMentors=async(data)=>{
     setisLoading(true);
+    
     data.mentors.map(async (mentor, index) => {
       console.log(mentor,"mooonj");
       const { data: Datass } = await Researchpgms(
@@ -55,11 +59,18 @@ function OpenProgrammesPage() {
       console.log(array, "mentor");
       setmentors(array);
 
-      array?seterror(false):seterror(true);
+      
       console.log(error)
-      if(array.length==data.mentors.length)
-    setloaded();
+      if(array.length==data.mentors.length){
+        setloaded();
+        // array?seterror(false):seterror(true);
+        // if(array.includes(null))
+        // seterror(true)
+
+      }
+    
     });
+  
     console.log(array,"moooonuus")
     
   }
@@ -86,7 +97,7 @@ else{
     setblogData(Datass);
 
     await getPositions(Datass);
-    await getMentors(Datass);
+    
 
     console.log(positions, "Ass");
   };
@@ -191,7 +202,7 @@ else{
                 </p>
 
                 <div className="vaccency-holder">
-                  {positions?positions.map((position, index) => (
+                  {positions&&positions.map((position, index) => (
                     <div className="vaccency-item" key={index}>
                       <p className="vaccency-item-title">{position.title}</p>
                       <p className="vaccency-item-text">
@@ -203,7 +214,7 @@ else{
                         <span>{position.criterion}</span>
                       </p>
                     </div>
-                  )):seterror(true)}
+                  ))}
                 </div>
                 <div className="openprogrammespage-feature">
                   <div className="openprogrammespage-feature-col ">
@@ -228,7 +239,7 @@ else{
               
                  {
                   
-                  mentors.length>=1?mentors.includes(null)?seterror(true): mentors.map((mentor,index)=>{
+                  mentors&&mentors.map((mentor,index)=>{
                     const htmlparteducation=mentor.education;
                     const htmlpartbio=mentor.bio;
                     const htmlorganisation=mentor.organisation;
@@ -250,7 +261,7 @@ else{
                     <FaLinkedin size="2em" color="#0077b5" />
                   </div>)
                   
-      }):seterror(true)}
+      })}
                   
                 </div>
               </div>

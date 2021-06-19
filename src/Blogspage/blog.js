@@ -4,6 +4,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Blog = ({ blog }) => {
+  
   const htmlpart = blog.content;
   let a = "/blogsdetailspage/" + blog._id;
   return (

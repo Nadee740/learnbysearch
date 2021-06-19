@@ -7,6 +7,7 @@ import Footer from "../LandingPage/footer/footer";
 import "./BlogsDetailsPage.css";
 function BlogsDetailsPage({ blog }) {
   const [blogsData, setblogData] = useState("");
+  const [authData, setauthData] = useState("");
 
   const [isLoading, setisLoading] = useState(true);
   const [SearchText, setsearchText] = useState("");
@@ -17,6 +18,8 @@ function BlogsDetailsPage({ blog }) {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(`${window.name}blog/${id}`);
     setblogData(Datass);
+    const { data: authotDatass } = await Researchpgms(`${window.name}author/${Datass.author}`);
+    setauthData(authotDatass);
     setisLoading(false);
   };
 
