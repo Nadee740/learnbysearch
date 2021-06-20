@@ -11,12 +11,12 @@ function BlogsDetailsPage({ blog }) {
 
   const [isLoading, setisLoading] = useState(true);
   const [SearchText, setsearchText] = useState("");
-  let { id } = useParams();
+  let { slug } = useParams();
   const htmlpart = blogsData.content;
 
   const getBlogs = async () => {
     setisLoading(true);
-    const { data: Datass } = await Researchpgms(`${window.name}blog/${id}`);
+    const { data: Datass } = await Researchpgms(`${window.name}blog/${slug}`);
     setblogData(Datass);
     const { data: authotDatass } = await Researchpgms(`${window.name}author/${Datass.author}`);
     setauthData(authotDatass);

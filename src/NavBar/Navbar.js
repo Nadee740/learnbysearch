@@ -85,6 +85,15 @@ const Navbar = (props) => {
                 Contact
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                to="/myapplication"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                My Applications
+              </Link>
+            </li>
             <li>
               {isLoggedIn ? (
                 <Link

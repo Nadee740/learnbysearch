@@ -52,9 +52,11 @@ function App() {
        <Route path='/myapplications' component={MyApplications} />
        <Route path='/openprogrammes' exact component={OpenProgrammes} />
        <Route path='/open' component={Open} />
-       <Route path='/blogsdetailspage/:id' component={BlogsDetailsPage} />
+       {/* <Route path='/blogsdetailspage/:id' component={BlogsDetailsPage} /> */}
+       <Route path='/blogsdetailspage/:slug' component={BlogsDetailsPage} />
        <Route path='/openprogrammespage/:id' exact component={OpenProgrammesPage} />
        <Route path='/applicationform/:id' exact  component={ApplicationForm} />
+       <Route path='/myapplication' exact  component={MyApplications} />
       
        </Router>} 
       

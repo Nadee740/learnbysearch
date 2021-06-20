@@ -10,6 +10,7 @@ const ApplicationForm=()=> {
    
 
   const [visible, setvisible] = useState(false);
+  const [errorvisible, seterrorvisible] = useState(false);
 
  
   const { id } = useParams();
@@ -30,6 +31,9 @@ const ApplicationForm=()=> {
 
     const closeModal = () => {
       setvisible(false);
+    };
+    const closeerrorModal = () => {
+      seterrorvisible(false);
     };
 
 
@@ -101,6 +105,10 @@ console.log(data)
 
         setvisible(true)
       }
+      else{
+
+seterrorvisible(true)
+      }
 
 }
 
@@ -114,7 +122,7 @@ console.log(data)
         <section className="popupscreen">
           <Modal
             visible={visible}
-            width="400"
+            width="300"
             height="300"
             effect="fadeInUp"
             onClickAway={closeModal}
@@ -127,6 +135,29 @@ console.log(data)
             />
               <p>APPLICATION FORM SUBMITTED SUCCESSFULLY...</p>
               <Link to="/" onClick={closeModal}>
+                Close
+              </Link>
+            </div>
+          </Modal>
+        </section>
+      </div>
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={errorvisible}
+            width="400"
+            height="300"
+            effect="fadeInUp"
+            onClickAway={closeerrorModal}
+          >
+            <div className="popup">
+            <img
+              src="/images/LearnByResearchLogo.png"
+              className="logo"
+              alt=""
+            />
+              <p>PLEASE COMPLETE YOUR PROFILE TO SUBMIT THE  APPLICATION...</p>
+              <Link to="/editprofile" onClick={closeerrorModal}>
                 Close
               </Link>
             </div>

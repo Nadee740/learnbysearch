@@ -114,8 +114,8 @@ else{
         <section className="popupscreen">
           <Modal
             visible={visible}
-            width="400"
-            height="300"
+            width="350"
+            height="200"
             effect="fadeInUp"
             onClickAway={closeModal}
           >
@@ -126,7 +126,8 @@ else{
               alt=""
             />
               <p>PLEASE LOGIN TO SUBMIT APPLICATION...</p>
-              <Link to="/" onClick={closeModal}>
+              <br></br>
+              <Link  onClick={closeModal}>
                 Close
               </Link>
             </div>

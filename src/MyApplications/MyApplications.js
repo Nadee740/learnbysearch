@@ -1,7 +1,83 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import Authverifier from "../Backend/Authverifier";
+import Researchpgms from "../Backend/Researchpgms";
+import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import "./MyApplications.css";
 const MyApplications = () => {
+
+  const [userData,setuserData]=useState();
+  const [isLoggedIn,setisLoggedin]=useState(false);
+  const [isLoading,setisLoading]=useState(true);
+  const [applications,setapplication]=useState();
+  const [rpData,setrp]=useState();
+  let array=[];
+  let rparray=[];
+
+  useEffect(async()=>{
+    
+    const {isLoggedIn:messagee,data:Datass} =await Authverifier(`${window.name}users/me`)
+  setisLoggedin(messagee);
+if(messagee)
+getApplications(Datass)
+else
+setisLoading(false)
+ 
+  },[]);
+
+const getApplications=async(userdata)=>{
+
+userdata.applicationForm.map(async(application)=>{
+  const app_data = {
+    "id":application
+  };
+  const { message: messagee,retdata } = await Tokenlesssendpost(
+    `${window.name}show-application-status`,
+    app_data
+  );
+ array.push(retdata);
+ console.log(retdata.data,"kunjoo")
+ if(array.length==userdata.applicationForm.length)
+{
+  setapplication(array);
+  console.log(array,"kunjoo")
+
+getreaserch(array)
+
+}
+})
+
+
+}
+
+const getreaserch=(datas)=>{
+  datas.map(async(data)=>{
+    const { data: Datass } = await Researchpgms(
+      `${window.name}research-program/${data.rp}`
+    );
+    rparray.push(Datass);
+    if(datas.length==rparray.length){
+setrp(rparray);
+
+console.log(rparray,"moonjj");
+setisLoading(false);
+    }
+
+  })
+
+}
+
+
+
+
   return (
-    <div className="application-container">
+    <>{
+     isLoading ? (
+        <div className="isLoading">
+          <h1>Loading...</h1>
+        </div>
+      ): 
+    isLoggedIn?<div className="application-container">
       <div className="applications-heading">
         <h2>My Applications</h2>
       </div>
@@ -18,17 +94,54 @@ const MyApplications = () => {
               Status
             </p>
           </div>
+          {applications.map((application,index)=>{
+            console.log(application,"idhend");
+             let classn="",title="",classtype="myapplication-row-btn ";
+             
+            
+            switch(application.data){
+            case 4:{ 
+              classn="myapplication-row-btn-approv";
+              title="Approved";
+              break;
+            }
+            case 3:{ 
+              classn="myapplication-row-btn-rej";
+              title="Rejected";
+              break;
+            }
+            case 2:{ 
+              classn="myapplication-row-btn-pend";
+              title="Pending";
+              break;
+            }
+            case 1:{ 
+              classn="myapplication-row-btn-sub";
+              title="Submited";
+              break;
+            }
 
-          <div className="myapplication-row">
-            <p className="myapplication-row-text ">Name of Program 1</p>
+             
+            }
+            classtype=classtype+classn;
+            return(
+          
+            <div className="myapplication-row" key={index}>
+            <p className="myapplication-row-text ">{rpData[index].title}</p>
             <p className="myapplication-row-text ">2 June 2020</p>
             <p className="myapplication-row-text  ">
-              <button className="myapplication-row-btn myapplication-row-btn-pend ">
-                Pending
+            <button className={classtype}>
+              {title}
               </button>
+            { 
+           
+          }
             </p>
-          </div>
-          <div className="myapplication-row">
+          </div>)
+
+    })}
+          
+          {/* <div className="myapplication-row">
             <p className="myapplication-row-text ">Name of Program 1</p>
             <p className="myapplication-row-text ">2 June 2020</p>
             <p className="myapplication-row-text  ">
@@ -45,10 +158,15 @@ const MyApplications = () => {
                 Rejected
               </button>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
-    </div>
+    </div>:<div className="isLoading">
+          <h1>Please Log in</h1>
+        </div>
+      
+    }
+    </>
   );
 };
 
