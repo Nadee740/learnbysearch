@@ -3,13 +3,32 @@ import { Link } from "react-router-dom";
 import BlogSlider from "./Slider/slider";
 import Footer from "./footer/footer";
 import { useState } from "react";
+import { useEffect } from "react";
+import Researchpgms from "../Backend/Researchpgms";
 const LandingPage = () => {
+
+  const[blogsData,setblogData]=useState("")
+  const[isLoading,setisLoading]=useState(true)
+       
+       
+  useEffect(()=>{
+getBlogs();
+  },[])
+
+  const getBlogs=async()=>{
+  setisLoading(true)
+  const { data: Datass } = await Researchpgms(`${window.name}blog`)
+  setblogData(Datass)
+ 
+  setisLoading(false)
+}
   const [para, setPara] = useState(
     "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
   );
 
   return (
-    <div className="landingpage">
+    <>
+    {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:<div className="landingpage">
       <section className="top">
         <div className="container">
           <div className="top-content">
@@ -208,9 +227,11 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      <BlogSlider />
+      <BlogSlider blog={blogsData} />
       <Footer />
     </div>
+    }
+    </>
   );
 };
 

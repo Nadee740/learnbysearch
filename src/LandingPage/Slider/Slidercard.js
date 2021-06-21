@@ -1,21 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./slider.css";
-const Slidercard = () => {
+const Slidercard = ({blog}) => {
+  const htmlpart = blog.content;
+  let a = "/blogsdetailspage/" + blog.slug;
   return (
     <div className="cardholder2">
       <div className="card">
         <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=751&q=80"
+          src={blog.imageUrl}
           alt="Blog "
           className="card-img"
         />
-        <h3>The Art of Self Learning</h3>
+        <h3>{blog.title}</h3>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
-          iure adipisci nostrum eum ducimus minima et numquam, ab quibusdam
-          saepe........
+        <div
+          className="blogtext blogtext"
+          dangerouslySetInnerHTML={{ __html: htmlpart }}
+        ></div>
         </p>
-        <button>READ MORE</button>
+        <Link to={a}><button>READ MORE</button></Link>
       </div>
     </div>
   );
