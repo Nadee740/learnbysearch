@@ -87,7 +87,7 @@ const Navbar = (props) => {
             </li>
             <li className="nav-item">
               <Link
-                to="/myapplication"
+                to="/myapplications"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
