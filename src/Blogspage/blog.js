@@ -14,7 +14,15 @@ const Blog = ({ blog }) => {
       <div className="blogcard-col2">
         <div className="blogcard-col2-top">
           <div className="blogcard-col2-top-1">
-            <FaUserCircle size="2.7em" className="blogcard-col2-top-1-icn" />
+            <img
+              src="https://randomuser.me/api/portraits/men/64.jpg"
+              alt="Author"
+              className="blogcard-col2-top-1-icn"
+              style={{
+                width: "80px",
+                borderRadius: "50%",
+              }}
+            />
           </div>
           <div className="blogcard-col2-top-2">
             <p>{blog.author}</p>
