@@ -115,7 +115,8 @@
   padding: 0;
 }
 .mentors-item-img {
-  border-radius: 50%;
+  height: 200px;
+  object-fit: contain;
 }
 .applybtn {
   position: absolute;
@@ -132,4 +133,13 @@
 .applybtn:hover {
   cursor: pointer;
   background-color: #c76fc9a6;
+}
+.blogdetailpage-img3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }

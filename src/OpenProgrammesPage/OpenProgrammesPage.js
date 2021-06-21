@@ -14,16 +14,16 @@ import { Link } from "react-router-dom";
 function OpenProgrammesPage() {
   const { id } = useParams();
   let arr = [];
-  let array=[];
+  let array = [];
   const [isLoading, setisLoading] = useState(true);
   const [blogsData, setblogData] = useState("");
   const [positions, setPosition] = useState("");
   const [mentors, setmentors] = useState("");
-  const [error,seterror]=useState(false);
+  const [error, seterror] = useState(false);
   const [visible, setvisible] = useState(false);
   const htmlpart = blogsData.description;
   const htmlpartobjective = blogsData.objective;
-  const [isLoggedIn,setisLoggedin]=useState(false)
+  const [isLoggedIn, setisLoggedin] = useState(false);
 
   const closeModal = () => {
     setvisible(false);
@@ -31,26 +31,24 @@ function OpenProgrammesPage() {
 
   const getPositions = async (data) => {
     setisLoading(true);
-    
+
     data.positions.map(async (position, index) => {
       const { data: Datass } = await Researchpgms(
         `${window.name}position/${position}`
       );
-     
+
       arr.push(Datass);
-      
+
       setPosition(arr);
-      if(data.positions.length==arr.length)
-      await getMentors(data);
+      if (data.positions.length == arr.length) await getMentors(data);
     });
-  
   };
 
-  const getMentors=async(data)=>{
+  const getMentors = async (data) => {
     setisLoading(true);
-    
+
     data.mentors.map(async (mentor, index) => {
-      console.log(mentor,"mooonj");
+      console.log(mentor, "mooonj");
       const { data: Datass } = await Researchpgms(
         `${window.name}mentor/${mentor}`
       );
@@ -59,35 +57,29 @@ function OpenProgrammesPage() {
       console.log(array, "mentor");
       setmentors(array);
 
-      
-      console.log(error)
-      if(array.length==data.mentors.length){
+      console.log(error);
+      if (array.length == data.mentors.length) {
         setloaded();
         // array?seterror(false):seterror(true);
         // if(array.includes(null))
         // seterror(true)
-
       }
-    
     });
-  
-    console.log(array,"moooonuus")
-    
-  }
 
-  const setloaded=()=>{
-setisLoading(false)
+    console.log(array, "moooonuus");
+  };
 
-  }
+  const setloaded = () => {
+    setisLoading(false);
+  };
 
-  const applicationform=()=>{
-  if(!isLoggedIn){
-    setvisible(true);
-  }
-else{
-    window.location=`/applicationform/${id}`
-}
-  }
+  const applicationform = () => {
+    if (!isLoggedIn) {
+      setvisible(true);
+    } else {
+      window.location = `/applicationform/${id}`;
+    }
+  };
 
   const getBlogs = async () => {
     setisLoading(true);
@@ -97,20 +89,21 @@ else{
     setblogData(Datass);
 
     await getPositions(Datass);
-    
 
     console.log(positions, "Ass");
   };
 
-  useEffect(async() => {
-    const {isLoggedIn:messagee} =await Authverifier(`${window.name}users/me`)
-    setisLoggedin(messagee)
+  useEffect(async () => {
+    const { isLoggedIn: messagee } = await Authverifier(
+      `${window.name}users/me`
+    );
+    setisLoggedin(messagee);
     getBlogs();
   }, []);
 
   return (
     <>
-    <div className="popupscreen">
+      <div className="popupscreen">
         <section className="popupscreen">
           <Modal
             visible={visible}
@@ -120,11 +113,11 @@ else{
             onClickAway={closeModal}
           >
             <div className="popup">
-            <img
-              src="/images/LearnByResearchLogo.png"
-              className="logo"
-              alt=""
-            />
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
               <p>PLEASE LOGIN TO SUBMIT APPLICATION...</p>
               <Link to="/" onClick={closeModal}>
                 Close
@@ -137,16 +130,18 @@ else{
         <div className="isLoading">
           <h1>Loading...</h1>
         </div>
-      ):error? <div className="isLoading">
+      ) : error ? (
+        <div className="isLoading">
           <h1>OOOps an error occured...</h1>
-        </div> : (
+        </div>
+      ) : (
         <div>
           <div className="blogdetailpage openprogrammespage">
             <div className="blogdetailpage-img">
               <img
                 src={blogsData.imageUrl}
                 alt="Bg"
-                className="blogdetailpage-img2"
+                className="blogdetailpage-img2 blogdetailpage-img3"
               />
 
               <div className="blogdetailpage-head openprogrammespage-head">
@@ -161,14 +156,20 @@ else{
                       Applications Closed !<br></br>
                     </p>
                   )}
-                  <button onClick={applicationform} className="applybtn">APPLY NOW</button>
+                  <button onClick={applicationform} className="applybtn">
+                    APPLY NOW
+                  </button>
                 </div>
               </div>
             </div>
             <div className="openprogrammespage-holder">
               <div className="openprogrammespage-section">
                 <p className="openprogrammespage-head"> Objective</p>
-                <p className="openprogrammespage-text"><div dangerouslySetInnerHTML={{ __html: htmlpartobjective }}></div></p>
+                <p className="openprogrammespage-text">
+                  <div
+                    dangerouslySetInnerHTML={{ __html: htmlpartobjective }}
+                  ></div>
+                </p>
               </div>
               <div className="line"></div>
               <div className="openprogrammespage-section">
@@ -202,19 +203,20 @@ else{
                 </p>
 
                 <div className="vaccency-holder">
-                  {positions&&positions.map((position, index) => (
-                    <div className="vaccency-item" key={index}>
-                      <p className="vaccency-item-title">{position.title}</p>
-                      <p className="vaccency-item-text">
-                        Number of Students Required: <span>2</span>
-                      </p>
+                  {positions &&
+                    positions.map((position, index) => (
+                      <div className="vaccency-item" key={index}>
+                        <p className="vaccency-item-title">{position.title}</p>
+                        <p className="vaccency-item-text">
+                          Number of Students Required: <span>2</span>
+                        </p>
 
-                      <p className="vaccency-item-text">
-                        Eligibility Criterion:
-                        <span>{position.criterion}</span>
-                      </p>
-                    </div>
-                  ))}
+                        <p className="vaccency-item-text">
+                          Eligibility Criterion:
+                          <span>{position.criterion}</span>
+                        </p>
+                      </div>
+                    ))}
                 </div>
                 <div className="openprogrammespage-feature">
                   <div className="openprogrammespage-feature-col ">
@@ -236,33 +238,53 @@ else{
                 </div>
                 <div className="mentors">
                   <p className="openprogrammespage-head">Mentors</p>
-              
-                 {
-                  
-                  mentors&&mentors.map((mentor,index)=>{
-                    const htmlparteducation=mentor.education;
-                    const htmlpartbio=mentor.bio;
-                    const htmlorganisation=mentor.organisation;
-                    const htmlpartposition=mentor.position;
-                    return(
-                  <div className="mentors-item" key={index}>
-                  
-                    <img
-                      src="https://randomuser.me/api/portraits/men/42.jpg"
-                      alt="User"
-                      className="mentors-item-img"
-                    />
-                    <p className="vaccency-item-text mentors-item-text">
-                      <span>{mentor.name}</span>
-                    </p>
-                    <p className="vaccency-item-text mentors-item-text">
-                    <div dangerouslySetInnerHTML={{ __html: htmlparteducation }}></div><div dangerouslySetInnerHTML={{ __html: htmlorganisation }}></div> <div dangerouslySetInnerHTML={{ __html: htmlpartposition }}></div> <div dangerouslySetInnerHTML={{ __html: htmlpartbio }}></div>
-                    </p>
-                    <FaLinkedin onClick={()=>{window.location=`${mentor.linkedin}`}} size="2em" color="#0077b5" />
-                  </div>)
-                  
-      })}
-                  
+
+                  {mentors &&
+                    mentors.map((mentor, index) => {
+                      const htmlparteducation = mentor.education;
+                      const htmlpartbio = mentor.bio;
+                      const htmlorganisation = mentor.organisation;
+                      const htmlpartposition = mentor.position;
+                      return (
+                        <div className="mentors-item" key={index}>
+                          <img
+                            src={mentor.imageUrl}
+                            alt="User"
+                            className="mentors-item-img"
+                          />
+                          <p className="vaccency-item-text mentors-item-text">
+                            <span>{mentor.name}</span>
+                          </p>
+                          <p className="vaccency-item-text mentors-item-text">
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: htmlparteducation,
+                              }}
+                            ></div>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: htmlorganisation,
+                              }}
+                            ></div>{" "}
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: htmlpartposition,
+                              }}
+                            ></div>{" "}
+                            <div
+                              dangerouslySetInnerHTML={{ __html: htmlpartbio }}
+                            ></div>
+                          </p>
+                          <FaLinkedin
+                            onClick={() => {
+                              window.location = `${mentor.linkedin}`;
+                            }}
+                            size="2em"
+                            color="#0077b5"
+                          />
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
 
