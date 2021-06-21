@@ -4,7 +4,6 @@ import DatePicker from "react-date-picker";
 import { Link } from "react-router-dom";
 import countryList from "react-select-country-list";
 import SendPost from "../Backend/Sendpost";
-import MyContainer from "../Calender/Calender";
 import COuntryCode from "../Countrycode/countrycode";
 import { MdDoneAll, MdClear } from "react-icons/md";
 import Footer from "../LandingPage/footer/footer";
@@ -97,7 +96,7 @@ const EditProfile = () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
     if (messagee) {
       console.log(messagee, "LOGOUT");
-      localStorage.clear();
+      localStorage.removeItem("LoggedInUserTokenID");
       window.location = "/";
     } else {
       console.log("SORRY");
@@ -107,7 +106,7 @@ const EditProfile = () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout-all`);
     if (messagee) {
       console.log(messagee, "LOGOUT");
-      localStorage.clear();
+      localStorage.removeItem("LoggedInUserTokenID");
       window.location = "/";
     } else {
       console.log("SORRY");
@@ -217,8 +216,8 @@ const EditProfile = () => {
         <section className="popupscreen">
           <Modal
             visible={visible}
-            width="400"
-            height="300"
+            width="350"
+            height="200"
             effect="fadeInUp"
             onClickAway={closeModal}
           >

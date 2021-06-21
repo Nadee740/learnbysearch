@@ -4,12 +4,14 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import { useState } from "react";
+import { useEffect } from "react";
+import Researchpgms from "../Backend/Researchpgms";
 
 const Blog = ({ blog }) => {
   let likedblogs=[];
   let test=JSON.parse(localStorage.getItem("likedblogs"));
   console.log(test,"HY")
-  let check
+  
   if(test!=null)
  {
   
@@ -18,6 +20,15 @@ const Blog = ({ blog }) => {
  }
  const [liked,setliked]=useState(likedblogs.includes(blog._id));
  const [likes,setlikes]=useState(blog.likes);
+ const [authdata,setauthdata]=useState();
+ const [isLoading,setisLoading]=useState(true);
+
+ useEffect(async()=>{
+  const { data: Datass } = await Researchpgms(`${window.name}author/${blog.author}`)
+  setauthdata(Datass);
+  console.log(Datass,"hu")
+  setisLoading(false);
+ },[])
  
 
  
@@ -49,7 +60,8 @@ const Blog = ({ blog }) => {
 
   const htmlpart = blog.content;
   let a = "/blogsdetailspage/" + blog.slug;
-  return (
+  return (<>
+  {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:
     <div className="blogcard">
       <div className="blogcard-col1">
         <img src={blog.imageUrl} alt="Blog" className="blogcard-img" />
@@ -57,7 +69,15 @@ const Blog = ({ blog }) => {
       <div className="blogcard-col2">
         <div className="blogcard-col2-top">
           <div className="blogcard-col2-top-1">
-            <FaUserCircle size="2.7em" className="blogcard-col2-top-1-icn" />
+          <img
+              src={authdata[0].imageUrl}
+              alt="Author"
+              className="blogcard-col2-top-1-icn"
+              style={{
+                width: "80px",
+                borderRadius: "50%",
+              }}
+            />
           </div>
           <div className="blogcard-col2-top-2">
             <p>{blog.author}</p>
@@ -65,10 +85,15 @@ const Blog = ({ blog }) => {
           </div>
         </div>
         <h2>{blog.title}</h2>
+        {/* <Link> */}
         <div
           className="blogtext blogtext"
           dangerouslySetInnerHTML={{ __html: htmlpart }}
         ></div>
+        <Link to={a}>
+        <p>Know More</p>
+        </Link>
+        {/* </Link> */}
         <div className="line"></div>
         <div className="blogcard-col2-btm">
           <div className="blogcard-col2-btm-1">26 Views 0 Comments</div>
@@ -79,6 +104,8 @@ const Blog = ({ blog }) => {
         </div>
       </div>
     </div>
+  }
+    </>
   );
 };
 

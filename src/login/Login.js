@@ -94,8 +94,8 @@ const Login = () => {
         een">
           <Modal
             visible={visible}
-            width="400"
-            height="300"
+            width="350"
+            height="200"
             effect="fadeInUp"
             onClickAway={closeModal}
           >
@@ -122,8 +122,8 @@ const Login = () => {
         <section className="popupscreen">
           <Modal
             visible={resendmailvisible}
-            width="400"
-            height="300"
+            width="350"
+            height="200"
             effect="fadeInUp"
             onClickAway={closeresendmail}
           >
@@ -158,8 +158,8 @@ const Login = () => {
         <section className="popupscreen">
           <Modal
             visible={forgotpassvisible}
-            width="400"
-            height="300"
+            width="350"
+            height="200"
             effect="fadeInUp"
             onClickAway={closeforgotpassModal}
           >

@@ -1,6 +1,6 @@
 import "./OpenProgrammes.css";
 import { useState } from "react";
-import OpenprogrammesModel from "../ProgaramesModel/OpenprogrammesModel";
+
 import { useParams } from "react-router-dom";
 
 function Openprogramcard({ blog }) {

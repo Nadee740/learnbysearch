@@ -117,8 +117,8 @@ const Signup = () => {
         <section className="popupscreen">
           <Modal
             visible={visible}
-            width="400"
-            height="300"
+            width="350"
+            height="200"
             effect="fadeInUp"
             onClickAway={closeModal}
           >
