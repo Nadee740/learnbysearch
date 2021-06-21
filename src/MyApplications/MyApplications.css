@@ -49,6 +49,10 @@
 .myapplication-row-btn-rej {
   background: #f33232;
 }
+.myapplication-row-btn-sub {
+  background: #1951ca;
+}
+
 
 @media screen and (max-width: 960px) {
   .myapplication-row {

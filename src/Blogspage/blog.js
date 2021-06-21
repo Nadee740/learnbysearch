@@ -23,7 +23,7 @@ const Blog = ({ blog }) => {
         </div>
         <h2>{blog.title}</h2>
         <div
-          className="blogtext blogtext2"
+          className="blogtext blogtext"
           dangerouslySetInnerHTML={{ __html: htmlpart }}
         ></div>
         <div className="line"></div>

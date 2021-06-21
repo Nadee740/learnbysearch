@@ -3,6 +3,7 @@ import { useCookies } from 'react-cookie';
  const Tokenlesssendpost = async(url, data) => {
     // const [cookies, setCookie] = useCookies(['user']);
  let message="a";
+
  let retdata={};
     
         
@@ -15,6 +16,8 @@ import { useCookies } from 'react-cookie';
             })
             .then(res => res.json())
             .then(json => {
+                console.log(json)
+                retdata=json;
                 if(json.status === 'error'){
                     
                     if(typeof json.msg === "object"){
@@ -76,7 +79,7 @@ if(url.includes("user")){
     return {retdata}
 }
 else{
-return {message};
+return {message,retdata};
 }
 }
 

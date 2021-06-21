@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
 const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
+  const [errorvisible, seterrorvisible] = useState(false);
 
   const { id } = useParams();
   const [isLoading, setisLoading] = useState(true);
@@ -25,6 +26,9 @@ const ApplicationForm = () => {
 
   const closeModal = () => {
     setvisible(false);
+  };
+  const closeerrorModal = () => {
+    seterrorvisible(false);
   };
 
   const getPositions = async (data) => {
@@ -81,6 +85,8 @@ const ApplicationForm = () => {
       console.log(messagee, "naml nooka");
       if (messagee.includes("Application form submitted")) {
         setvisible(true);
+      } else {
+        seterrorvisible(true);
       }
     }
   };
@@ -91,7 +97,7 @@ const ApplicationForm = () => {
         <section className="popupscreen">
           <Modal
             visible={visible}
-            width="400"
+            width="300"
             height="300"
             effect="fadeInUp"
             onClickAway={closeModal}
@@ -104,6 +110,29 @@ const ApplicationForm = () => {
               />
               <p>APPLICATION FORM SUBMITTED SUCCESSFULLY...</p>
               <Link to="/" onClick={closeModal}>
+                Close
+              </Link>
+            </div>
+          </Modal>
+        </section>
+      </div>
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={errorvisible}
+            width="400"
+            height="300"
+            effect="fadeInUp"
+            onClickAway={closeerrorModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>PLEASE COMPLETE YOUR PROFILE TO SUBMIT THE APPLICATION...</p>
+              <Link to="/editprofile" onClick={closeerrorModal}>
                 Close
               </Link>
             </div>
@@ -149,7 +178,7 @@ const ApplicationForm = () => {
                     >
                       <div className="inputholder-top inputholder-top3">
                         <p className="inputp">
-                          Select the position for which you have to apply !
+                          SELECT THE POSITION FOR WHICH YOU HAVE TO APPLY !
                         </p>
                         <div className="div">
                           <select
