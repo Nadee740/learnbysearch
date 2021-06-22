@@ -117,7 +117,7 @@ const Navbar = (props) => {
           {button ? (
             isLoggedIn ? (
               <Link to="/editprofile">
-                <img src="/images/account.png" className="profimage" />{" "}
+                <img src="/images/user.png" className="profimage" />{" "}
               </Link>
             ) : (
               <Button buttonStyle="btn--outline">Sign up</Button>
