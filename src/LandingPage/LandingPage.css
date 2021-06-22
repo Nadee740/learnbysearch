@@ -243,6 +243,9 @@ p {
 }
 
 @media screen and (max-width: 800px) {
+  .about-col {
+    flex-direction: column;
+  }
   .top-content {
     flex-direction: column;
     grid-template-columns: repeat(1, 1fr);
@@ -266,7 +269,7 @@ p {
     margin-right: auto;
     margin-left: auto;
     width: 70%;
-   border-radius: 10px;
+    border-radius: 10px;
     border: 0.2px outset #000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
@@ -275,9 +278,8 @@ p {
     padding: 10px;
   }
   .right-side h2 {
-   
     font-size: 30px;
-    
+
     line-height: 54px;
     letter-spacing: 0.025em;
   }
@@ -286,7 +288,7 @@ p {
     height: 35px;
     border: 0.2px outset #fff;
     border-radius: 10px;
-   
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -295,7 +297,6 @@ p {
   }
 
   .scnd-content h2 {
-
     font-size: 5vw;
     line-height: 54px;
     letter-spacing: 0.1em;
@@ -320,5 +321,11 @@ p {
   }
   .apply-right-side img {
     width: 80%;
+  }
+  .scnd-content {
+    padding: 10px;
+  }
+  .about {
+    padding: 5px;
   }
 }

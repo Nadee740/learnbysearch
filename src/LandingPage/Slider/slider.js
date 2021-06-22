@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./slider.css";
 import Slider from "react-slick";
 import Slidercard from "./Slidercard";
-const BlogSlider = ({blog}) => {
+const BlogSlider = ({ blog }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -26,10 +26,9 @@ const BlogSlider = ({blog}) => {
       <h2>Latest Blogs</h2>
       <div className="slidecontainer">
         <Slider {...settings}>
-        {blog.map((blog,index)=>(
-          <Slidercard blog={blog} key={index} />
-      ))}
-          
+          {blog.map((blog, index) => (
+            <Slidercard blog={blog} key={index} />
+          ))}
         </Slider>
       </div>
     </div>

@@ -89,7 +89,7 @@
   flex-direction: column;
 }
 .blogcard-img {
-  height: 200px;
+  height: 90%;
   object-fit: cover;
   border-radius: 5px;
   width: 100%;
