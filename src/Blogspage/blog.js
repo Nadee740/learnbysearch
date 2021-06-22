@@ -8,6 +8,19 @@ import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 
 const Blog = ({ blog }) => {
+
+  function removeTags(str) {
+    if ((str===null) || (str===''))
+    return false;
+    else
+    str = str.toString();
+    return(str.replace("&nbsp;"," ").replace( /(<([^>]+)>)/ig, ''));
+ }
+
+ let str=removeTags(blog.content);
+   
+   if(str.length > 200) 
+    str = str.substring(0,200)+".....";
   let likedblogs=[];
   let test=JSON.parse(localStorage.getItem("likedblogs"));
   console.log(test,"HY")
@@ -85,15 +98,14 @@ const Blog = ({ blog }) => {
           </div>
         </div>
         <h2>{blog.title}</h2>
-        {/* <Link> */}
-        <div
-          className="blogtext blogtext"
-          dangerouslySetInnerHTML={{ __html: htmlpart }}
-        ></div>
+        
+        <p>
+          {str}
+        </p>
         <Link to={a}>
         <p>Know More</p>
         </Link>
-        {/* </Link> */}
+        
         <div className="line"></div>
         <div className="blogcard-col2-btm">
           <div className="blogcard-col2-btm-1">26 Views 0 Comments</div>
