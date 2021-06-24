@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 function Openprogramcard({ blog }) {
   const [visible, setvisible] = useState(false);
-  let a = "/openprogrammespage/" + blog._id;
+  let a = "/openprogrammespage/" + blog.slug;
   console.log(a);
   const closeModal = () => {
     setvisible(false);

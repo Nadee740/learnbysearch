@@ -10,14 +10,14 @@ const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
   const [errorvisible, seterrorvisible] = useState(false);
 
-  const { id } = useParams();
+  const { slug } = useParams();
   const [isLoading, setisLoading] = useState(true);
   const [q1, setq1] = useState("");
   const [q2, setq2] = useState(true);
   const [q3, setq3] = useState("");
   const [switchitm, setSwitch] = useState(true);
   const [PositionId, setPositionId] = useState("");
-  const [ResearchProgramId, setResearchProgramId] = useState(id);
+  const [ResearchProgramId, setResearchProgramId] = useState();
   const [positions, setPosition] = useState("");
   const [blogsData, setblogData] = useState("");
   const [err, seterr] = useState("");
@@ -54,10 +54,10 @@ const ApplicationForm = () => {
   const getBlogs = async () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(
-      `${window.name}research-program/${id}`
+      `${window.name}research-program/${slug}`
     );
     setblogData(Datass);
-
+   setResearchProgramId(Datass._id)
     await getPositions(Datass);
   };
 

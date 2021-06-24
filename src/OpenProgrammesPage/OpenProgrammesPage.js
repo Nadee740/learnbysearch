@@ -12,7 +12,7 @@ import Modal from "react-awesome-modal";
 import { Link } from "react-router-dom";
 
 function OpenProgrammesPage() {
-  const { id } = useParams();
+  const { slug } = useParams();
   let arr = [];
   let array = [];
   const [isLoading, setisLoading] = useState(true);
@@ -23,6 +23,7 @@ function OpenProgrammesPage() {
   const [visible, setvisible] = useState(false);
   const htmlpart = blogsData.description;
   const htmlpartobjective = blogsData.objective;
+  const htmlpartoutcomes = blogsData.outcomes;
   const [isLoggedIn, setisLoggedin] = useState(false);
 
   const closeModal = () => {
@@ -77,20 +78,20 @@ function OpenProgrammesPage() {
     if (!isLoggedIn) {
       setvisible(true);
     } else {
-      window.location = `/applicationform/${id}`;
+      window.location = `/applicationform/${slug}`;
     }
   };
 
   const getBlogs = async () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(
-      `${window.name}research-program/${id}`
+      `${window.name}research-program/${slug}`
     );
     setblogData(Datass);
 
     await getPositions(Datass);
 
-    console.log(positions, "Ass");
+   
   };
 
   useEffect(async () => {
@@ -186,11 +187,9 @@ function OpenProgrammesPage() {
                   Outcome of the Research
                 </p>
                 <p className="openprogrammespage-text">
-                  <ul className="openprogrammespage-list">
-                    {blogsData.outcomes.map((outcome, index) => (
-                      <li key={index}>{outcome}</li>
-                    ))}
-                  </ul>
+                <div
+                              dangerouslySetInnerHTML={{ __html: htmlpartoutcomes }}
+                            ></div>
                 </p>
               </div>
               <div className="line"></div>

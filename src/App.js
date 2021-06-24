@@ -65,12 +65,12 @@ function App() {
 
           <Route path="/blogsdetailspage/:slug" component={BlogsDetailsPage} />
           <Route
-            path="/openprogrammespage/:id"
+            path="/openprogrammespage/:slug"
             exact
             component={OpenProgrammesPage}
           />
           <Route
-            path="/applicationform/:id"
+            path="/applicationform/:slug"
             exact
             component={ApplicationForm}
           />
