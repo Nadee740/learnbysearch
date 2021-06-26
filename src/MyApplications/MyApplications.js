@@ -9,11 +9,12 @@ const MyApplications = () => {
   const [userData,setuserData]=useState();
   const [isLoggedIn,setisLoggedin]=useState(false);
   const [isLoading,setisLoading]=useState(true);
+  const [isempty,setisempty]=useState(false);
   const [applications,setapplication]=useState();
   const [rpData,setrp]=useState();
   let array=[];
   let rparray=[];
-
+  let count=1
   useEffect(async()=>{
     
     const {isLoggedIn:messagee,data:Datass} =await Authverifier(`${window.name}users/me`)
@@ -26,8 +27,16 @@ setisLoading(false)
   },[]);
 
 const getApplications=async(userdata)=>{
-
+ if(userdata.applicationForm.length==0)
+ {
+   
+  setisempty(true)
+  setisLoading(false)
+  console.log("hy")
+ }
+ else{
 userdata.applicationForm.map(async(application)=>{
+ 
   const app_data = {
     "id":application
   };
@@ -35,9 +44,12 @@ userdata.applicationForm.map(async(application)=>{
     `${window.name}show-application-status`,
     app_data
   );
+  //  count++;
+  //  console.log(count)
+if(retdata!=null)
  array.push(retdata);
  console.log(retdata.data,"kunjoo")
- if(array.length==userdata.applicationForm.length)
+ if(count==userdata.applicationForm.length)
 {
   setapplication(array);
   console.log(array,"kunjoo")
@@ -45,7 +57,14 @@ userdata.applicationForm.map(async(application)=>{
 getreaserch(array)
 
 }
-})
+}
+
+
+
+
+
+)
+ }
 
 
 }
@@ -53,7 +72,7 @@ getreaserch(array)
 const getreaserch=(datas)=>{
   datas.map(async(data)=>{
     const { data: Datass } = await Researchpgms(
-      `${window.name}research-program/${data.rp}`
+      `${window.name}research-program-id/${data.rp}`
     );
     rparray.push(Datass);
     if(datas.length==rparray.length){
@@ -77,7 +96,11 @@ setisLoading(false);
           <h1>Loading...</h1>
         </div>
       ): 
-    isLoggedIn?<div className="application-container">
+    isLoggedIn? isempty ? (
+        <div className="oopps">
+          <h1>Ooops nothing to show ...</h1>
+        </div>
+      ):<div className="application-container">
       <div className="applications-heading">
         <h2>My Applications</h2>
       </div>

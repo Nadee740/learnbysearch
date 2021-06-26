@@ -1,10 +1,10 @@
 import Modal from "react-awesome-modal";
 import { useMemo, useState } from "react";
-import DatePicker from "react-date-picker";
+
 import { Link } from "react-router-dom";
-import countryList from "react-select-country-list";
+
 import SendPost from "../Backend/Sendpost";
-import COuntryCode from "../Countrycode/countrycode";
+
 import { MdDoneAll, MdClear } from "react-icons/md";
 import Footer from "../LandingPage/footer/footer";
 import { useEffect } from "react";
@@ -13,6 +13,7 @@ import Logout from "../Backend/Logout";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Authverifier from "../Backend/Authverifier";
+import Tooltip from '@material-ui/core/Tooltip';
 
 const EditProfile = () => {
   const [userid, setUserid] = useState(localStorage.getItem("loggedinuserid"));
@@ -245,16 +246,20 @@ const EditProfile = () => {
               <div className="singup-form">
                 <h2 className="form-title">EDIT PROFILE</h2>
                 <form onSubmit={MakeChanges}>
+                <Tooltip title="Name">
                   <div className="inputholder">
                     <div className="inputholder-top">
+                  
                       <input type="text" placeholder="First Name" required
                   value={FirstName}
                   onChange={(e) => {
                     setFirstName(e.target.value);
                   }} />
+                  
                     </div>
                   </div>
-
+</Tooltip>
+                  <Tooltip title="Middle Name">
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input type="text" placeholder="Middle Name"  autoComplete="off"
@@ -264,7 +269,10 @@ const EditProfile = () => {
                   }} />
                     </div>
                   </div>
+                  </Tooltip>
+                    
 
+                  <Tooltip title="Last Name"> 
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input  type="text"
@@ -280,7 +288,9 @@ const EditProfile = () => {
                   }} />
                     </div>
                   </div>
-                  
+                  </Tooltip> 
+
+                  <Tooltip title="Email">
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input readonly="true"
@@ -297,6 +307,9 @@ const EditProfile = () => {
                   {emailerror && emailerror}
                   </label>
                   </div>
+</Tooltip>
+                      
+                      <Tooltip title="Date">
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input
@@ -312,8 +325,12 @@ const EditProfile = () => {
                       />
                     </div>
                   </div>
+</Tooltip>
+  
+ 
                   <div className="inputholder">
                     <div className="inputholder-top">
+                    <Tooltip title="Phone Number">
                       <input 
                       id="PhoneNumber"
                       type="tel" placeholder="Your Phone Number" autoComplete="off"
@@ -323,8 +340,9 @@ const EditProfile = () => {
                     setPhoneNumber(e.target.value);
                     
                   }} />
+                  </Tooltip>
                        {isverfied ? (
-                  <MdDoneAll size="1.2em" className="emtick" />
+                  <Tooltip title="Verifeid"><MdDoneAll size="1.2em" className="emtick" /></Tooltip>
                 ) : (
                   <MdClear size="1.2em" className="emtick" color="red" />
                 )}
@@ -333,6 +351,8 @@ const EditProfile = () => {
                   {phoneerror && phoneerror}
                   </label>
                   </div>
+
+                  
                   {isverfied ? (
                 <></>
               ) :(
@@ -355,6 +375,7 @@ const EditProfile = () => {
                   </label>
                   </div>
 
+                <Tooltip title="City">
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input type="text" placeholder="City" autoComplete="off"
@@ -365,6 +386,8 @@ const EditProfile = () => {
                   }} />
                     </div>
                   </div>
+</Tooltip>
+<Tooltip title="State">
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input type="text" placeholder="State"  autoComplete="off"
@@ -375,6 +398,8 @@ const EditProfile = () => {
                   }}/>
                     </div>
                   </div>
+</Tooltip>
+       <Tooltip title="Country">
                   <div className="inputholder">
                     <div className="inputholder-top">
                     <input
@@ -391,6 +416,10 @@ const EditProfile = () => {
                 />
                     </div>
                   </div>
+                  </Tooltip>
+<Tooltip title="Degree">
+
+
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input type="text" placeholder="Degree" autoComplete="off"
@@ -401,6 +430,8 @@ const EditProfile = () => {
                   }} />
                     </div>
                   </div>
+</Tooltip>
+<Tooltip title="Field">
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input type="text" placeholder="Field" autoComplete="off"
@@ -411,6 +442,8 @@ const EditProfile = () => {
                   }}/>
                     </div>
                   </div>
+                  </Tooltip>
+                  <Tooltip title="College Name">
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input type="text" placeholder="College Name" autoComplete="off"
@@ -423,6 +456,9 @@ const EditProfile = () => {
                   }}/>
                     </div>
                   </div>
+</Tooltip>
+
+<Tooltip title="University">
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input type="text" placeholder="University"  autoComplete="off"
@@ -433,6 +469,9 @@ const EditProfile = () => {
                   }} />
                     </div>
                   </div>
+                  </Tooltip>
+
+                  <Tooltip title="Graduation Year">
                   <div className="inputholder">
                     <div className="inputholder-top">
                       <input type="text" placeholder="Graduation Year"   autoComplete="off"
@@ -443,6 +482,7 @@ const EditProfile = () => {
                   }} />
                     </div>
                   </div>
+                  </Tooltip>
                   <input
                     type="submit"
                     value="SAVE CHANGES"

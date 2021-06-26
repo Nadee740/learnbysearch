@@ -24,6 +24,17 @@ flex-direction: column;
 
 }
 
+.oopps{
+  padding: 10px;
+  color: #2f3061;
+  height: 60vh;
+  font-size: 10px;
+  align-items: center;
+justify-content: center;
+display: flex;
+flex-direction: column;
+}
+
 
 alert{
   
