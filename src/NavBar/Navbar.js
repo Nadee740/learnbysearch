@@ -5,6 +5,8 @@ import Authverifier from "../Backend/Authverifier";
 import Button from "../button/button";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import "./Navbar.css";
+import Logout from "../Backend/Logout";
+import { confirmAlert } from "react-confirm-alert";
 
 const Navbar = (props) => {
   const [click, setClick] = useState(false);
@@ -37,6 +39,50 @@ const Navbar = (props) => {
     checkLOgin();
     showButton();
   }, []);
+
+  const submit = (LogoutFromall) => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Are you sure want to logout ?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            if (LogoutFromall) LogOutFromAllDevice();
+            else LogOut();
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {},
+        },
+      ],
+    });
+  };
+
+
+  const LogOut = async () => {
+    const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
+    if (messagee) {
+      console.log(messagee, "LOGOUT");
+      localStorage.removeItem("LoggedInUserTokenID");
+      window.location = "/";
+    } else {
+      console.log("SORRY");
+    }
+  };
+  const LogOutFromAllDevice = async () => {
+    const { LoggedOut: messagee } = await Logout(`${window.name}logout-all`);
+    if (messagee) {
+      console.log(messagee, "LOGOUT");
+      localStorage.removeItem("LoggedInUserTokenID");
+      window.location = "/";
+    } else {
+      console.log("SORRY");
+    }
+  };
+
+
   window.addEventListener("resize", showButton);
   return (
     <>
@@ -96,6 +142,7 @@ const Navbar = (props) => {
             </li>
             <li>
               {isLoggedIn ? (
+                <>
                 <Link
                   to="/editprofile"
                   className="nav-links-mobile"
@@ -103,6 +150,26 @@ const Navbar = (props) => {
                 >
                   View Profile
                 </Link>
+                <li> <Link
+                  
+                  className="nav-links-mobile"
+                  onClick={()=>{
+                    closeMobileMenu()
+                    submit(false)}}
+                >
+                  Log Out
+                </Link></li>
+                <li> <Link
+                  
+                  className="nav-links-mobile"
+                  onClick={()=>{
+                    closeMobileMenu()
+                    submit(true)}}
+                >
+     LOGOUT FROM ALL DEVICES
+                </Link></li>
+                
+                </>
               ) : (
                 <Link
                   to="/signup"
@@ -114,26 +181,30 @@ const Navbar = (props) => {
               )}
             </li>
           </ul>
-          <div className="div-dropdwn">
+          
             {button ? (
               isLoggedIn ? (
+                <div className="div-dropdwn">
                 <Link to="/editprofile">
                   <img src="/images/user.png" className="profimage" />{" "}
                 </Link>
+                <div className="dropdown">
+              <ul>
+                <li><Link>EDIT PROFILE</Link></li>
+               <li onClick={()=>{submit(false)}}><Link >LOGOUT</Link> </li>
+                <li onClick={()=>{submit(true)}}><Link >LOGOUT FROM ALL DEVICES</Link></li>
+              </ul>
+            </div>
+          </div>
+              
+              
               ) : (
                 <Button buttonStyle="btn--outline">Sign up</Button>
               )
             ) : (
               ""
             )}
-            <div className="dropdown">
-              <ul>
-                <li>EDIT PROFILE</li>
-                <li>LOGOUT</li>
-                <li>LOGOUT FROM ALL DEVICES</li>
-              </ul>
-            </div>
-          </div>
+           
         </div>
       </nav>
     </>

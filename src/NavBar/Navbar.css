@@ -139,13 +139,17 @@
   cursor: pointer;
 }
 @media screen and (max-width: 960px) {
+  /* .navbar{
+height: 100vh;
+
+  } */
   .NavbarItems {
     position: relative;
   }
 
   .nav-menu {
     display: flex;
-
+    overflow-y: auto;
     flex-direction: column;
     width: 0%;
     height: 90vh;
@@ -157,7 +161,7 @@
   }
 
   .nav-menu.active {
-    width: 85%;
+    width: 95%;
     background: #2f3061;
     left: 0;
     opacity: 1;
