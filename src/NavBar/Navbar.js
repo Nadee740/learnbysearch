@@ -23,7 +23,6 @@ const Navbar = (props) => {
       `${window.name}users/me`
     );
     setisLoggedin(messagee);
-   
   };
   const showButton = () => {
     console.log("Hyhyyy");
@@ -114,17 +113,26 @@ const Navbar = (props) => {
               )}
             </li>
           </ul>
-          {button ? (
-            isLoggedIn ? (
-              <Link to="/editprofile">
-                <img src="/images/user.png" className="profimage" />{" "}
-              </Link>
+          <div className="div-dropdwn">
+            {button ? (
+              isLoggedIn ? (
+                <Link to="/editprofile">
+                  <img src="/images/user.png" className="profimage" />{" "}
+                </Link>
+              ) : (
+                <Button buttonStyle="btn--outline">Sign up</Button>
+              )
             ) : (
-              <Button buttonStyle="btn--outline">Sign up</Button>
-            )
-          ) : (
-            ""
-          )}
+              ""
+            )}
+            <div className="dropdown">
+              <ul>
+                <li>EDIT PROFILE</li>
+                <li>LOGOUT</li>
+                <li>LOGOUT FROM ALL DEVICES</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </nav>
     </>
