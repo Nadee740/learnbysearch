@@ -52,8 +52,9 @@
 .myapplication-row-btn-sub {
   background: #1951ca;
 }
-
-
+.app-status {
+  height: 200px;
+}
 @media screen and (max-width: 960px) {
   .myapplication-row {
     padding: 10px;
@@ -69,5 +70,8 @@
   .myapplication-box {
     padding: 15px;
     margin: 0px;
+  }
+  .app-status {
+    height: 100px;
   }
 }

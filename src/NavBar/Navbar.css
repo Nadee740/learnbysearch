@@ -98,7 +98,46 @@
 .menu-icon {
   display: none;
 }
-
+.div-dropdwn {
+  position: relative;
+}
+.div-dropdwn:hover > .dropdown {
+  display: flex;
+}
+.dropdown {
+  right: 0px;
+  position: absolute;
+  z-index: 1000;
+  background: #ffffff;
+  box-shadow: 0px 0px 11px 1px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  padding: 5px;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 140px;
+}
+.dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.dropdown li {
+  font-size: 16px;
+  color: #818181;
+  margin: 0;
+  padding: 6px 7px;
+  border-radius: 6px;
+}
+.dropdown li:hover {
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #c86fc9;
+  margin: 0;
+  padding: 6px;
+  cursor: pointer;
+}
 @media screen and (max-width: 960px) {
   .NavbarItems {
     position: relative;
