@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Authverifier from "../Backend/Authverifier";
 import Button from "../button/button";
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import "./Navbar.css";
 
 const Navbar = (props) => {
@@ -116,9 +117,12 @@ const Navbar = (props) => {
           </ul>
           {button ? (
             isLoggedIn ? (
+              <>
               <Link to="/editprofile">
                 <img src="/images/user.png" className="profimage" />{" "}
               </Link>
+              <ArrowDropDownIcon className="icondown" color="white"></ArrowDropDownIcon>
+              </>
             ) : (
               <Button buttonStyle="btn--outline">Sign up</Button>
             )
