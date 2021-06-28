@@ -1,24 +1,20 @@
-.email-subscribe{
-border-radius: 2px;
-background-color: #ffffff;
-height: 5px;
-width: 25vw;
+.email-subscribe {
+  border-radius: 2px;
+  background-color: #ffffff;
+  height: 5px;
+  width: 25vw;
 }
 
-
-.footer-btn{
+.footer-btn {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-text-align: center;
-
+  text-align: center;
 }
-.subs-btn{
-align-items: center;
-
+.subs-btn {
+  align-items: center;
 }
-
 
 .footer {
   background-color: #302e3a;
@@ -98,4 +94,22 @@ align-items: center;
 .footer-logo {
   font-family: inherit;
   font-weight: 500;
+}
+.email-subscribe {
+  background-color: #ffffff;
+  padding: 15px 10px;
+  margin: 15px 0;
+  margin-bottom: 0px;
+  color: inherit;
+}
+.subs-btn {
+  padding: 5px 10px;
+  font-family: inherit;
+  text-transform: uppercase;
+  background-color: rgb(143, 143, 143);
+  border: none;
+  color: #ffffff;
+}
+.subs-btn:hover {
+  cursor: pointer;
 }

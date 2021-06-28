@@ -1,7 +1,5 @@
-.icondown{
-  
+.icondown {
   color: #000;
-
 }
 
 .profimage {
@@ -125,15 +123,15 @@
 }
 .dropdown li {
   font-size: 16px;
-  color: #818181;
+  color: #818181 !important;
   margin: 0;
-  padding: 6px 7px;
+  padding: 6px 7px !important;
   border-radius: 6px;
 }
 .dropdown li:hover {
   font-size: 16px;
-  color: #ffffff;
-  background-color: #c86fc9;
+  color: #ffffff !important;
+  background-color: #c86fc9 !important;
   margin: 0;
   padding: 6px;
   cursor: pointer;
