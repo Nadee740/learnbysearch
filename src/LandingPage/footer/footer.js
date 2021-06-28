@@ -33,6 +33,12 @@ const Footer = () => {
             +14123815500
           </a>
         </div>
+        <div className="footer-sec">
+         <input className="email-subscribe" type="text"></input>
+        </div>
+        <div className="footer-sec footer-btn">
+         <button className="subs-btn">Subscribe</button>
+        </div>
       </div>
       <div className="footer-col2">
         <div className="footer-col2-1">
