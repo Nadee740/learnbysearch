@@ -493,7 +493,7 @@ const EditProfile = () => {
                       Change Password
                     </p>
                   </Link>
-                  <button className="edit-profile-btn edit-profile-lgout" onClick={(e) =>{
+                  {/* <button className="edit-profile-btn edit-profile-lgout" onClick={(e) =>{
                     e.preventDefault()
                      submit(false)}}>
                     LOG OUT
@@ -502,7 +502,7 @@ const EditProfile = () => {
                     e.preventDefault()
                      submit(true)}}>
                     LOGOUT FROM ALL DEVICES
-                  </button>
+                  </button> */}
                 </form>
               </div>
             </div>

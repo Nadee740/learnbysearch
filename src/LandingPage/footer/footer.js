@@ -41,14 +41,15 @@ const Subscribe = async () => {
         </p>
         <div className="footer-sec">
           <BsFillEnvelopeFill size="1.3em" color="#F4F4F4" />
-          <a href="tel:+14123815500" className="footer-text">
-            name@email.com
+          <a href="mailto:info@learnbyresearch.com" className="footer-text">
+            info@learnbyresearch.com
           </a>
         </div>
         <div className="footer-sec">
           <IoCall size="1.3em" color="#F4F4F4" />
-          <a href="mailto:name@email.com" className="footer-text">
-            +14123815500
+          
+          <a href="tel:+91 7972251272" className="footer-text">
+            +91 7972251272
           </a>
         </div>
         <div className="footer-sec">
@@ -61,14 +62,14 @@ const Subscribe = async () => {
       <div className="footer-col2">
         <div className="footer-col2-1">
           <div className="socialIcn">
-            <FaFacebookF size="1.3em" color="#F4F4F4" />
+           <FaFacebookF size="1.3em" color="#F4F4F4" />
           </div>
 
           <div className="socialIcn">
-            <FaInstagram size="1.3em" color="#F4F4F4" />
+          <a href="https://www.instagram.com/learnbyresearch/"> <FaInstagram size="1.3em" color="#F4F4F4" /></a>
           </div>
           <div className="socialIcn">
-            <FaLinkedinIn size="1.3em" color="#F4F4F4" />
+            <a href="https://www.linkedin.com/company/learnbyresearch/"><FaLinkedinIn size="1.3em" color="#F4F4F4" /></a>
           </div>
           <div className="socialIcn">
             <FaTwitter size="1.3em" color="#F4F4F4" />
