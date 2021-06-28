@@ -9,7 +9,25 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { useState } from "react";
+import Tokenlesssendpost from "../../Backend/tokenlesssendpost";
+
 const Footer = () => {
+const [email,setemail]=useState();
+
+const Subscribe = async () => {
+    
+    const sub_data = {
+      email,
+    };
+    const { message: messagee } = await Tokenlesssendpost(
+      `${window.name}subscribers`,
+      sub_data
+    );
+    setemail("");
+   
+  };
+
   return (
     <footer className="footer">
       <div className="footer-col1">
@@ -34,10 +52,10 @@ const Footer = () => {
           </a>
         </div>
         <div className="footer-sec">
-         <input className="email-subscribe" type="text"></input>
+         <input className="email-subscribe" type="email" value={email} onChange={(e)=>{setemail(e.target.value)}}></input>
         </div>
         <div className="footer-sec footer-btn">
-         <button className="subs-btn">Subscribe</button>
+         <button onClick={Subscribe} className="subs-btn">Subscribe</button>
         </div>
       </div>
       <div className="footer-col2">
