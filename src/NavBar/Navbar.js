@@ -190,7 +190,7 @@ const Navbar = (props) => {
                 </Link>
                 <div className="dropdown">
               <ul>
-                <li><Link>EDIT PROFILE</Link></li>
+                <li><Link to="/editprofile">EDIT PROFILE</Link></li>
                <li onClick={()=>{submit(false)}}><Link >LOGOUT</Link> </li>
                 <li onClick={()=>{submit(true)}}><Link >LOGOUT FROM ALL DEVICES</Link></li>
               </ul>

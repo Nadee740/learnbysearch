@@ -44,11 +44,9 @@ function App() {
       ) : (
         <Router>
           <Navbar />
-          {isLoggedIn ? (
-            <Route path="/" exact component={BlogsPage} />
-          ) : (
+         
             <Route path="/" exact component={LandingPage} />
-          )}
+          
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/editprofile" component={EditProfile} />

@@ -257,6 +257,7 @@ const EditProfile = () => {
                   }} />
                   
                     </div>
+                    
                   </div>
 </Tooltip>
                   <Tooltip title="Middle Name">
@@ -493,16 +494,6 @@ const EditProfile = () => {
                       Change Password
                     </p>
                   </Link>
-                  {/* <button className="edit-profile-btn edit-profile-lgout" onClick={(e) =>{
-                    e.preventDefault()
-                     submit(false)}}>
-                    LOG OUT
-                  </button>
-                  <button className="edit-profile-btn" onClick={(e) =>{
-                    e.preventDefault()
-                     submit(true)}}>
-                    LOGOUT FROM ALL DEVICES
-                  </button> */}
                 </form>
               </div>
             </div>

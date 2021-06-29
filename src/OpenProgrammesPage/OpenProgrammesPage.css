@@ -1,3 +1,10 @@
+.extrapart{
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+}
+
+
 .openprogrammespage-top {
   display: flex;
   flex-direction: row;

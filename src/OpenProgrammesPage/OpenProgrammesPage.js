@@ -121,9 +121,31 @@ function OpenProgrammesPage() {
               />
               <p>PLEASE LOGIN TO SUBMIT APPLICATION...</p>
               <br></br>
-              <Link  onClick={closeModal}>
+              <div className="extrapart">
+              
+              <div className="signuppart">
+              <Link to="/signup" onClick={closeModal} >
+                Sign Up
+              </Link>
+              </div>
+<div>
+  <Link  onClick={closeModal}>
                 Close
               </Link>
+</div>
+
+<div className="loginpart">
+<Link  to="/login" onClick={closeModal} >
+                Login
+              </Link>
+</div>
+
+              </div>
+              
+           
+              
+              
+              
             </div>
           </Modal>
         </section>

@@ -170,7 +170,7 @@ getBlogs();
               className="content-1"
               onClick={() => {
                 setPara(
-                  "Network recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
+                  "During the research work, students will be working and engaging with fellow teammates through the weekly meetings, interaction sessions, and experimentations. This will help students to grow their network. If you want to be an entrepreneur and start building a great product maybe you can find your co-founder here!"
                 );
               }}
             >
