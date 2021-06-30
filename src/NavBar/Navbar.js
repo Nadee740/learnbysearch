@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Authverifier from "../Backend/Authverifier";
 import Button from "../button/button";
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import "./Navbar.css";
 import Logout from "../Backend/Logout";
 import { confirmAlert } from "react-confirm-alert";
@@ -60,7 +60,6 @@ const Navbar = (props) => {
     });
   };
 
-
   const LogOut = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
     if (messagee) {
@@ -81,7 +80,6 @@ const Navbar = (props) => {
       console.log("SORRY");
     }
   };
-
 
   window.addEventListener("resize", showButton);
   return (
@@ -143,32 +141,37 @@ const Navbar = (props) => {
             <li>
               {isLoggedIn ? (
                 <>
-                <Link
-                  to="/editprofile"
-                  className="nav-links-mobile"
-                  onClick={closeMobileMenu}
-                >
-                  View Profile
-                </Link>
-                <li> <Link
-                  
-                  className="nav-links-mobile"
-                  onClick={()=>{
-                    closeMobileMenu()
-                    submit(false)}}
-                >
-                  Log Out
-                </Link></li>
-                <li> <Link
-                  
-                  className="nav-links-mobile"
-                  onClick={()=>{
-                    closeMobileMenu()
-                    submit(true)}}
-                >
-     LOGOUT FROM ALL DEVICES
-                </Link></li>
-                
+                  <Link
+                    to="/editprofile"
+                    className="nav-links-mobile"
+                    onClick={closeMobileMenu}
+                  >
+                    View Profile
+                  </Link>
+                  <li>
+                    {" "}
+                    <Link
+                      className="nav-links-mobile"
+                      onClick={() => {
+                        closeMobileMenu();
+                        submit(false);
+                      }}
+                    >
+                      Log Out
+                    </Link>
+                  </li>
+                  <li>
+                    {" "}
+                    <Link
+                      className="nav-links-mobile"
+                      onClick={() => {
+                        closeMobileMenu();
+                        submit(true);
+                      }}
+                    >
+                      LOGOUT FROM ALL DEVICES
+                    </Link>
+                  </li>
                 </>
               ) : (
                 <Link
@@ -181,30 +184,43 @@ const Navbar = (props) => {
               )}
             </li>
           </ul>
-          
-            {button ? (
-              isLoggedIn ? (
-                <div className="div-dropdwn">
+
+          {button ? (
+            isLoggedIn ? (
+              <div className="div-dropdwn">
                 <Link to="/editprofile">
                   <img src="/images/user.png" className="profimage" />{" "}
                 </Link>
                 <div className="dropdown">
-              <ul>
-                <li><Link to="/editprofile">EDIT PROFILE</Link></li>
-               <li onClick={()=>{submit(false)}}><Link >LOGOUT</Link> </li>
-                <li onClick={()=>{submit(true)}}><Link >LOGOUT FROM ALL DEVICES</Link></li>
-              </ul>
-            </div>
-          </div>
-              
-              
-              ) : (
-                <Button buttonStyle="btn--outline">Sign up</Button>
-              )
+                  <ul>
+                    <li>
+                      <Link to="/editprofile" className="p-link">
+                        EDIT PROFILE
+                      </Link>
+                    </li>
+                    <li
+                      onClick={() => {
+                        submit(false);
+                      }}
+                    >
+                      <Link className="p-link">LOGOUT</Link>{" "}
+                    </li>
+                    <li
+                      onClick={() => {
+                        submit(true);
+                      }}
+                    >
+                      <Link className="p-link">LOGOUT FROM ALL DEVICES</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             ) : (
-              ""
-            )}
-           
+              <Button buttonStyle="btn--outline">Sign up</Button>
+            )
+          ) : (
+            ""
+          )}
         </div>
       </nav>
     </>

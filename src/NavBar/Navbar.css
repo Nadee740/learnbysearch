@@ -242,3 +242,7 @@ height: 100vh;
   color: #464353;
   font-family: "Jost", sans-serif !important;
 }
+.p-link {
+  color: #242424 !important;
+  text-align: center;
+}
