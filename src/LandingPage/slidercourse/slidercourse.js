@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import SliderCard from "./slider-course";
 
-const SliderCo = () => {
+const SliderCo = ({data}) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -33,10 +33,15 @@ const SliderCo = () => {
       <h2>Applications Open For</h2>
       <div className="slidecontainer">
         <Slider {...settings}>
+        {
+          data.map((pgms)=>(
+            <SliderCard data={pgms}/>
+          ))
+        }
+          {/* <SliderCard />
           <SliderCard />
           <SliderCard />
-          <SliderCard />
-          <SliderCard />
+          <SliderCard /> */}
         </Slider>
       </div>
     </div>

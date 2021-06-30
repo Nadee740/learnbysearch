@@ -1,17 +1,20 @@
 import "./slidercourse.css";
-const SliderCard = () => {
+const SliderCard = ({data}) => {
+  let a = "/openprogrammespage/" + data.slug;
   return (
     <div className="slidercard">
       <img
-        src="https://images.unsplash.com/photo-1625053376622-e462848c453f"
+        src={data.imageUrl}
         alt="Course"
         className="slidercard-img"
       />
       <div className="content-holder">
         <h2 className="slidercardtext">
-          Low-Cost LIDAR Sensor using Ultrasonic Distance Measurement & ML
+          {data.title}
         </h2>
-        <button className="slidercardbtn">KNOW MORE</button>
+        <button onClick={() => {
+            window.location = a;
+          }} className="slidercardbtn">KNOW MORE</button>
       </div>
     </div>
   );
