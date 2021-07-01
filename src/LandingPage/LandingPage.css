@@ -290,8 +290,10 @@ p {
     ),
     url("./grad.jpg");
 }
-.applydetails h2,
-p {
+.applydetails h2 {
+  color: #fff;
+}
+.applydetails p {
   color: #fff;
 }
 .applydetails h2 {
