@@ -40,7 +40,7 @@ const MyApplications = () => {
           `${window.name}show-application-status`,
           app_data
         );
-        //  count++;
+         count++;
         //  console.log(count)
         if (retdata != null) array.push(retdata);
         console.log(retdata.data, "kunjoo");
@@ -152,28 +152,11 @@ getreaserch(array);
                   );
                 })}
 
-                {/* <div className="myapplication-row">
-            <p className="myapplication-row-text ">Name of Program 1</p>
-            <p className="myapplication-row-text ">2 June 2020</p>
-            <p className="myapplication-row-text  ">
-              <button className="myapplication-row-btn myapplication-row-btn-approv ">
-                Approved
-              </button>
-            </p>
-          </div>
-          <div className="myapplication-row">
-            <p className="myapplication-row-text ">Name of Program 3</p>
-            <p className="myapplication-row-text ">2 June 2020</p>
-            <p className="myapplication-row-text  ">
-              <button className="myapplication-row-btn myapplication-row-btn-rej ">
-                Rejected
-              </button>
-            </p>
-          </div> */}
+             
               </div>
             </div>
             <div className="applications-heading">
-              <h2>Route Map</h2>
+              <h2>Selection Proccess</h2>
             </div>
             <img
               src="/images/app-status.svg"

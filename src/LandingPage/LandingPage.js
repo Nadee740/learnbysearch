@@ -9,12 +9,14 @@ import SliderCo from "./slidercourse/slidercourse";
 import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import {Helmet} from "react-helmet";
+import Authverifier from "../Backend/Authverifier";
 
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
-
+  const [isLoggedIn, setisLoggedin] = useState(false);
   const [pgmsData, setpgms] = useState("");
+ 
 
   const [error, seterror] = useState(false);
 
@@ -38,7 +40,15 @@ const LandingPage = () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(`${window.name}blog`);
     setblogData(Datass);
-    // getopenPgmgs()
+    checkLOgin()
+    
+  };
+
+  const checkLOgin = async () => {
+    const { isLoggedIn: messagee } = await Authverifier(
+      `${window.name}users/me`
+    );
+    setisLoggedin(messagee);
     setisLoading(false);
   };
   const [para, setPara] = useState(
@@ -79,7 +89,7 @@ const LandingPage = () => {
                     <p>Online Independent R&D Hub</p>
                   </div>
 
-                  <div className="buttons ">
+                {!isLoggedIn?  <div className="buttons ">
                     <Link to="/signup" className="btns button1">
                       SIGN UP
                     </Link>
@@ -87,7 +97,8 @@ const LandingPage = () => {
                     <Link to="/login" className="btns button2">
                       LOGIN
                     </Link>
-                  </div>
+                  </div>:""
+                }
                 </div>
               </div>
             </div>

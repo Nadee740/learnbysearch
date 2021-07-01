@@ -299,7 +299,7 @@ function OpenProgrammesPage() {
                           </p>
                           <div className="holder-w">
                             <a
-                              href={mentor.linkedin}
+                              onClick={()=>{ window.location = `${mentor.linkedin}`}}
                               style={{
                                 textDecoration: "none",
                                 width: "fit-content",
@@ -307,8 +307,8 @@ function OpenProgrammesPage() {
                             >
                               <FaLinkedin size="2em" color="#0077b5" />
                             </a>
-                            <a
-                              href={mentor.linkedin}
+                            <a target="_blank"
+                              href={mentor.googleScholarLink}
                               style={{
                                 textDecoration: "none",
                                 width: "fit-content",

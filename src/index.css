@@ -40,3 +40,7 @@ alert{
   
   font-size: 18px;
 }
+
+.divdisplay {
+  display: none;
+}

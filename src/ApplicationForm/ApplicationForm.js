@@ -118,7 +118,7 @@ const ApplicationForm = () => {
                 alt=""
               />
               <p>APPLICATION FORM SUBMITTED SUCCESSFULLY...</p>
-              <Link to="/" onClick={closeModal}>
+              <Link to="/myapplications" onClick={closeModal}>
                 Close
               </Link>
             </div>
@@ -216,17 +216,21 @@ const ApplicationForm = () => {
                       className="inputholder inputholder2"
                       id="usernameholder"
                     >
-                      <div className="inputholder-top inputholder-top3">
+                      <div className="inputholder-top inputholder-top3  ">
                         <p className="inputp">
                           The Program charges 5000 fees to cover the
                           research,training and resources cost.Can you afford to
                           pay the fees?( If eligible you may get financial
                           assistance to support. )
                         </p>
-                        <div className="div">
+                        <div className="div ">
                           <select
                             className="selectbx"
                             onChange={(e) => {
+                              if(e.target.value==true)
+                              document.querySelector(".divdisplay").style.display = "none";
+                              else
+                              document.querySelector(".divdisplay").style.display = "flex";
                               console.log(e.target.value);
                               console.log(q2);
                               setq2(e.target.value);
@@ -242,7 +246,7 @@ const ApplicationForm = () => {
                         </div>
                       </div>
                     </div>
-
+                       
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
@@ -262,6 +266,7 @@ const ApplicationForm = () => {
                         {err && err}
                       </label>
                     </div>
+      
 
                     <input
                       type="submit"

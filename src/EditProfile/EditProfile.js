@@ -66,6 +66,7 @@ const EditProfile = () => {
   const [GraduationYear, setGraduationYear] = useState("");
   const [value, setdate] = useState();
   const [visible, setvisible] = useState(false);
+  
   const [otp, setotp] = useState("");
   const [otpsend, setotpsend] = useState(false);
   const [emailerror, setemailerr] = useState();
@@ -120,6 +121,10 @@ const EditProfile = () => {
 
   const closeModal = () => {
     setvisible(false);
+  }; 
+  
+  const closeOtpModal = () => {
+    setotpsend(false);
   };
 
   const setcursor = (id) => {
@@ -130,7 +135,8 @@ const EditProfile = () => {
     document.getElementById(id).style.border = color;
   };
 
-  const VERIFYPhonenumber = async () => {
+  const VERIFYPhonenumber = async (e) => {
+    e.preventDefault()
     console.log(phoneNumber);
     if (
       phoneNumber == "" ||
@@ -151,7 +157,7 @@ const EditProfile = () => {
       );
       if (messagee.includes("successfully")) {
         setotpsend(true);
-        document.querySelector(".otpdisplay").style.display = "flex";
+        
         setphoneerr(messagee);
         setcursor("otp");
       } else {
@@ -175,14 +181,16 @@ const EditProfile = () => {
     );
 
     if (messagee.includes("verified")) {
+      setphoneerr("");
       setisverfied(true);
+      setotpsend(false);
     }
 
     setotperr("wrong code");
   };
 
-  const MakeChanges = async (e) => {
-    e.preventDefault();
+  const MakeChanges = async () => {
+    
     const DOB = value;
     const edit_data = {
       FirstName,
@@ -222,12 +230,47 @@ const EditProfile = () => {
                 <title>Home | EditProfile</title>
                 
             </Helmet>
+
+            <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={otpsend}
+            width="350"
+            height="250"
+            effect="fadeInUp"
+            onClickAway={closeOtpModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <input
+                id="otp"
+                type="text"
+                placeholder="OTP"
+                onChange={(e) => {
+                  setotp(e.target.value);
+                }}
+                className="popup-input"
+              ></input>
+              <br></br>
+              <label htmlFor="">{otperror && otperror}</label>
+              <br></br>
+              <button className="popup-button" onClick={VerifyOtp}>
+                SUBMIT
+              </button>
+            </div>
+          </Modal>
+        </section>
+      </div>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
             visible={visible}
             width="350"
-            height="200"
+            height="250"
             effect="fadeInUp"
             onClickAway={closeModal}
           >
@@ -339,9 +382,9 @@ const EditProfile = () => {
                     </>
                   </Tooltip>
 
-                  <Tooltip title="Date">
+                  <Tooltip title="Date of Birth">
                     <>
-                      <p className="inputtext">Date</p>
+                      <p className="inputtext">Date Of Birth</p>
                       <div className="inputholder">
                         <div className="inputholder-top">
                           <input
@@ -390,18 +433,18 @@ const EditProfile = () => {
                     </label>
                   </div>
 
-                  {isverfied ? (
+                  {isverfied  ? (
                     <></>
                   ) : (
                     <button
                       className="edit-profile-btn"
-                      onClick={otpsend ? VerifyOtp : VERIFYPhonenumber}
+                      onClick={(e)=>{VERIFYPhonenumber(e)}}
                     >
-                      {otpsend ? "VERIFY OTP" : "VERIFY PHONE NUMBER"}
+                      VERIFY PHONE NUMBER
                     </button>
                   )}
 
-                  <div className="inputholder otpdisplay">
+                  {/* <div className="inputholder otpdisplay">
                     <div className="inputholder-top">
                       <input
                         type="text"
@@ -418,7 +461,7 @@ const EditProfile = () => {
                     <label className="label" htmlFor="">
                       {otperror && otperror}
                     </label>
-                  </div>
+                  </div> */}
 
                   <Tooltip title="City">
                   <>
@@ -500,7 +543,7 @@ const EditProfile = () => {
                   </Tooltip>
                   <Tooltip title="Field">
                   <>
-                  <p className="inputtext">Field</p>
+                  <p className="inputtext">Branch/Area of Study</p>
                     <div className="inputholder">
                       <div className="inputholder-top">
                         <input
@@ -579,7 +622,8 @@ const EditProfile = () => {
                     </>
                   </Tooltip>
                   <input
-                    type="submit"
+                  onClick={MakeChanges}
+                    type="button"
                     value="SAVE CHANGES"
                     className="submit-btn"
                   />
