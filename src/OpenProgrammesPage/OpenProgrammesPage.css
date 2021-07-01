@@ -1,9 +1,8 @@
-.extrapart{
+.extrapart {
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
   display: grid;
 }
-
 
 .openprogrammespage-top {
   display: flex;
@@ -149,4 +148,10 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
+}
+.holder-w {
+  display: flex;
+  width: 10%;
+  flex-direction: row;
+  justify-content: space-between;
 }

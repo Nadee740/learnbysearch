@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../LandingPage/footer/footer";
 import { BsCalendarFill, BsFillBellFill } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
+import { SiGooglescholar } from "react-icons/si";
 import "./OpenProgrammesPage.css";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
@@ -94,8 +95,6 @@ function OpenProgrammesPage() {
     setblogData(Datass);
 
     await getPositions(Datass);
-
-   
   };
 
   useEffect(async () => {
@@ -132,37 +131,28 @@ function OpenProgrammesPage() {
               <p>PLEASE LOGIN TO SUBMIT APPLICATION...</p>
               <br></br>
               <div className="extrapart">
-              
-              <div className="signuppart">
-              <Link to="/signup" onClick={closeModal} >
-                Sign Up
-              </Link>
-              </div>
-<div>
-  <Link  onClick={closeModal}>
-                Close
-              </Link>
-</div>
+                <div className="signuppart">
+                  <Link to="/signup" onClick={closeModal}>
+                    Sign Up
+                  </Link>
+                </div>
+                <div>
+                  <Link onClick={closeModal}>Close</Link>
+                </div>
 
-<div className="loginpart">
-<Link  to="/login" onClick={closeModal} >
-                Login
-              </Link>
-</div>
-
+                <div className="loginpart">
+                  <Link to="/login" onClick={closeModal}>
+                    Login
+                  </Link>
+                </div>
               </div>
-              
-           
-              
-              
-              
             </div>
           </Modal>
         </section>
       </div>
       {isLoading ? (
         <div className="isLoading">
-        <SolarSystemLoading/>
+          <SolarSystemLoading />
         </div>
       ) : error ? (
         <div className="isLoading">
@@ -185,14 +175,16 @@ function OpenProgrammesPage() {
                     <p onClick={applicationform}>
                       Deadline - {blogsData.Deadline} !<br></br>
                     </p>
-                  ) : ""}
-                  {(blogsData.applicationStatus) ?
-                  <button onClick={applicationform} className="applybtn">
-                    APPLY NOW
-                  </button>
-                  : <button  className="applybtn">
-                    APPLICATION CLOSED
-                  </button>}
+                  ) : (
+                    ""
+                  )}
+                  {blogsData.applicationStatus ? (
+                    <button onClick={applicationform} className="applybtn">
+                      APPLY NOW
+                    </button>
+                  ) : (
+                    <button className="applybtn">APPLICATION CLOSED</button>
+                  )}
                 </div>
               </div>
             </div>
@@ -219,9 +211,9 @@ function OpenProgrammesPage() {
                   Outcome of the Research
                 </p>
                 <p className="openprogrammespage-text">
-                <div
-                              dangerouslySetInnerHTML={{ __html: htmlpartoutcomes }}
-                            ></div>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: htmlpartoutcomes }}
+                  ></div>
                 </p>
               </div>
               <div className="line"></div>
@@ -256,9 +248,7 @@ function OpenProgrammesPage() {
                     <p className="vaccency-item-title openprogrammespage-feature-title">
                       Total Duration
                     </p>
-                    <p className="vaccency-item-text">
-                     {blogsData.duration} 
-                    </p>
+                    <p className="vaccency-item-text">{blogsData.duration}</p>
                   </div>
                   <div className="openprogrammespage-feature-col openprogrammespage-feature-col2">
                     <BsFillBellFill size="6em" color="#818181" />
@@ -307,13 +297,26 @@ function OpenProgrammesPage() {
                               dangerouslySetInnerHTML={{ __html: htmlpartbio }}
                             ></div>
                           </p>
-                          <a href={mentor.linkedin}>
-                          <FaLinkedin
-                           
-                            size="2em"
-                            color="#0077b5"
-                          />
-                          </a>
+                          <div className="holder-w">
+                            <a
+                              href={mentor.linkedin}
+                              style={{
+                                textDecoration: "none",
+                                width: "fit-content",
+                              }}
+                            >
+                              <FaLinkedin size="2em" color="#0077b5" />
+                            </a>
+                            <a
+                              href={mentor.linkedin}
+                              style={{
+                                textDecoration: "none",
+                                width: "fit-content",
+                              }}
+                            >
+                              <SiGooglescholar size="2em" color="#3cba54" />
+                            </a>
+                          </div>
                         </div>
                       );
                     })}
