@@ -171,3 +171,8 @@
   padding: 8px 75px;
   margin-top: 20px;
 }
+.inputtext {
+  width: 75%;
+  color: rgba(49, 49, 49, 0.678);
+  margin-bottom: 5px;
+}
