@@ -70,7 +70,7 @@ const LandingPage = () => {
                     </h2>
 
                     <p>
-                      Worlds first online independent research & development hub
+                    Online Independent R&D Hub
                     </p>
                   </div>
 
@@ -91,15 +91,13 @@ const LandingPage = () => {
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
               <p>
-                LearnByResearch provides a platform for students to become the
-                best independent researchers who wish to pursue higher education
-                or join the innovation teams in top organizations.
+              LearnByResearch is the world's only online independent research & development hub that provides the platform for students to become the best independent researchers who wish to pursue higher education or join the innovation teams in top organizations.
               </p>
             </div>
           </section>
           <section className="about">
             <div className="about-content">
-              <h2>About us</h2>
+              <h2>About LearnByResearch</h2>
               <div className="about-col">
                 <figure>
                   <img
@@ -109,19 +107,14 @@ const LandingPage = () => {
                   ></img>
                 </figure>
                 <p>
-                  LearnByResearch is a hub for innovation, research &
-                  development. Pioneered by experienced professionals from the
-                  industry, academics & startups. LearnByResearch is unique in
-                  its methodology of delivering the right skillsets.
+                LearnByResearch is a hub for innovation, research & development. Pioneered by experienced professionals from the industry, academics & startups. LearnByResearch is unique in its methodology of delivering the right skillsets. We promote innovation, research, and entrepreneurship as part of the research work. LearnByResearch is dedicated to higher levels of interdisciplinary R&D in the fields of emerging technologies with the strategy to build entrepreneurs and industry leaders.
                 </p>
               </div>
               <div className="about-col">
                 <p>
-                  We promote innovation, research, and entrepreneurship as part
-                  of the research work. LearnByResearch is dedicated to higher
-                  levels of interdisciplinary R&D in the fields of emerging
-                  technologies with the strategy to build entrepreneurs and
-                  industry leaders.
+                Our methodology emphases on a practical learning approach with hands-on experience to inculcate the best industry standards. This approach is meant to help students face all challenges with the supervision of a guide.
+
+At LearnByResearch, students and research guides collaborate to enhance their skills and knowledge as well as build life-changing products and services.
                 </p>
                 <figure>
                   <img
@@ -132,7 +125,7 @@ const LandingPage = () => {
                 </figure>
               </div>
 
-              <div className="about-col">
+              {/* <div className="about-col">
                 <figure>
                   <img
                     src="../images/about3.svg"
@@ -146,8 +139,8 @@ const LandingPage = () => {
                   This approach is meant to help students face all challenges
                   with the supervision of a guide.
                 </p>
-              </div>
-              <div className="about-col">
+              </div> */}
+              {/* <div className="about-col">
                 <p>
                   At LearnByResearch, students and research guides collaborate
                   to enhance their skills and knowledge as well as build
@@ -160,7 +153,7 @@ const LandingPage = () => {
                     className="about-col-img"
                   ></img>
                 </figure>
-              </div>
+              </div> */}
             </div>
           </section>
           <SliderCo data={pgmsData} />
