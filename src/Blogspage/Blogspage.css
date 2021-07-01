@@ -180,6 +180,7 @@ p {
   }
   .blogcard-img {
     object-fit: cover;
+    height: 200px;
   }
   .searchbar-icn {
     position: absolute;
