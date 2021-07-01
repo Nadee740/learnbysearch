@@ -35,9 +35,7 @@ const Subscribe = async () => {
           Learn By Research
         </Link>
         <p className="footer-text2">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim dolor
-          ex mollitia officia ea nihil nemo tenetur at animi possimus rem ipsa
-          liber
+        World's first-ever platform for exploring online independent research programs of your interest and connecting with a mentor to work on break through technologies.
         </p>
         <div className="footer-sec">
           <BsFillEnvelopeFill size="1.3em" color="#F4F4F4" />

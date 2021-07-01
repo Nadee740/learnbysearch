@@ -11,6 +11,7 @@ import Authverifier from "../Backend/Authverifier";
 import Modal from "react-awesome-modal";
 import { Link } from "react-router-dom";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 
 function OpenProgrammesPage() {
   const { slug } = useParams();
@@ -153,7 +154,7 @@ function OpenProgrammesPage() {
       </div>
       {isLoading ? (
         <div className="isLoading">
-        <RotateCircleLoading/>
+        <SolarSystemLoading/>
         </div>
       ) : error ? (
         <div className="isLoading">
