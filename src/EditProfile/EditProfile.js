@@ -68,8 +68,9 @@ const EditProfile = () => {
   const [emailerror, setemailerr] = useState();
   const [phoneerror, setphoneerr] = useState();
   const [otperror, setotperr] = useState();
-  const [isLoggedIn, setisLoggedin] = useState(false);
   const [isverfied, setisverfied] = useState();
+  const [isLoggedIn, setisLoggedin] = useState(false);
+  
 
   const [isLoading, setisLoading] = useState(false);
 
@@ -336,6 +337,7 @@ const EditProfile = () => {
                       <div className="inputholder">
                         <div className="inputholder-top">
                           <input
+                          required
                             type="date"
                             placeholder="DD-MM-YY"
                             className="inputdate"
@@ -353,8 +355,7 @@ const EditProfile = () => {
                   <p className="inputtext">Phone Number</p>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      <Tooltip title="Phone Number">
-                        <>
+                      
                           <input
                             id="PhoneNumber"
                             type="tel"
@@ -366,10 +367,10 @@ const EditProfile = () => {
                               setPhoneNumber(e.target.value);
                             }}
                           />
-                        </>
-                      </Tooltip>
+                       
                       {isverfied ? (
                         <Tooltip title="Verifeid">
+                        
                           <MdDoneAll size="1.2em" className="emtick" />
                         </Tooltip>
                       ) : (
@@ -412,6 +413,8 @@ const EditProfile = () => {
                   </div>
 
                   <Tooltip title="City">
+                  <>
+                  <p className="inputtext">City</p>
                     <div className="inputholder">
                       <div className="inputholder-top">
                         <input
@@ -426,8 +429,11 @@ const EditProfile = () => {
                         />
                       </div>
                     </div>
+                    </>
                   </Tooltip>
                   <Tooltip title="State">
+                  <>
+                  <p className="inputtext">State</p>
                     <div className="inputholder">
                       <div className="inputholder-top">
                         <input
@@ -442,8 +448,11 @@ const EditProfile = () => {
                         />
                       </div>
                     </div>
+                    </>
                   </Tooltip>
                   <Tooltip title="Country">
+                  <>
+                  <p className="inputtext">Country</p>
                     <div className="inputholder">
                       <div className="inputholder-top">
                         <input
@@ -460,8 +469,11 @@ const EditProfile = () => {
                         />
                       </div>
                     </div>
+                    </>
                   </Tooltip>
                   <Tooltip title="Degree">
+                  <>
+                  <p className="inputtext">Degree</p>
                     <div className="inputholder">
                       <div className="inputholder-top">
                         <input
@@ -476,8 +488,11 @@ const EditProfile = () => {
                         />
                       </div>
                     </div>
+                    </>
                   </Tooltip>
                   <Tooltip title="Field">
+                  <>
+                  <p className="inputtext">Field</p>
                     <div className="inputholder">
                       <div className="inputholder-top">
                         <input
@@ -492,8 +507,11 @@ const EditProfile = () => {
                         />
                       </div>
                     </div>
+                    </>
                   </Tooltip>
                   <Tooltip title="College Name">
+                  <>
+                  <p className="inputtext">College Name</p>
                     <div className="inputholder">
                       <div className="inputholder-top">
                         <input
@@ -510,9 +528,12 @@ const EditProfile = () => {
                         />
                       </div>
                     </div>
+                    </>
                   </Tooltip>
 
                   <Tooltip title="University">
+                  <>
+                  <p className="inputtext">University</p>
                     <div className="inputholder">
                       <div className="inputholder-top">
                         <input
@@ -527,9 +548,12 @@ const EditProfile = () => {
                         />
                       </div>
                     </div>
+                    </>
                   </Tooltip>
 
                   <Tooltip title="Graduation Year">
+                  <>
+                  <p className="inputtext">Graduation Year</p>
                     <div className="inputholder">
                       <div className="inputholder-top">
                         <input
@@ -544,6 +568,7 @@ const EditProfile = () => {
                         />
                       </div>
                     </div>
+                    </>
                   </Tooltip>
                   <input
                     type="submit"

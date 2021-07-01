@@ -7,6 +7,7 @@ import { useCookies } from "react-cookie";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import Modal from "react-awesome-modal";
 import { HiEye, HiEyeOff } from "react-icons/hi";
+import Authverifier from "../Backend/Authverifier";
 const Login = () => {
   const [username, setUser] = useState("");
   const [password, setPass] = useState("");
@@ -19,10 +20,22 @@ const Login = () => {
   const [visible, setvisible] = useState(false);
   const [forgotpassvisible, setforgotpassvisible] = useState(false);
   const [resendmailvisible, setresendmailvisible] = useState(false);
+const [isLoggedIn, setisLoggedin] = useState(false);
+  
 
+  const [isLoading, setisLoading] = useState(false);
   const stylefunction = (color, id) => {
     document.getElementById(id).style.border = color;
   };
+
+  useEffect(async()=>{
+    setisLoading(true)
+    const { isLoggedIn: messagee, data: datas } = await Authverifier(
+      `${window.name}users/me`
+    );
+    setisLoggedin(messagee)
+    setisLoading(false);
+  },[])
 
   const closeModal = () => {
     setvisible(false);
@@ -89,6 +102,7 @@ const Login = () => {
 
   return (
     <>
+   
       <div className="popupscreen">
         <section
           className="popupscr
@@ -186,6 +200,15 @@ const Login = () => {
         </section>
       </div>
 
+      {isLoading?(
+        <div className="isLoading">
+          <h1>Loading...</h1>
+        </div>
+      ):isLoggedIn?(
+        <div className="isLoading">
+          <h1>Already Logged In</h1>
+        </div>
+      ):
       <section className="sign-in">
         <div className="container">
           <div className="signup-content">
@@ -265,6 +288,7 @@ const Login = () => {
           </div>
         </div>
       </section>
+      }
     </>
   );
 };
