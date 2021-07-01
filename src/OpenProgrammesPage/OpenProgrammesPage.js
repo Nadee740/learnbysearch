@@ -249,7 +249,7 @@ function OpenProgrammesPage() {
                       Total Duration
                     </p>
                     <p className="vaccency-item-text">
-                      {blogsData.duration} 
+                     {blogsData.duration} 
                     </p>
                   </div>
                   <div className="openprogrammespage-feature-col openprogrammespage-feature-col2">
