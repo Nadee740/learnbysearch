@@ -227,16 +227,12 @@ const ApplicationForm = () => {
                           <select
                             className="selectbx"
                             onChange={(e) => {
-                              if(e.target.value==true)
-                              document.querySelector(".divdisplay").style.display = "none";
-                              else
-                              document.querySelector(".divdisplay").style.display = "flex";
-                              console.log(e.target.value);
+                           
                               console.log(q2);
                               setq2(e.target.value);
                             }}
                           >
-                            <option value={true} className="selectbx-itm">
+                            <option  value={true} className="selectbx-itm">
                               YES
                             </option>
                             <option value={false} className="selectbx-itm">
@@ -246,9 +242,9 @@ const ApplicationForm = () => {
                         </div>
                       </div>
                     </div>
-                       
+                   {!q2?    
                     <div
-                      className="inputholder inputholder2"
+                      className="inputholder inputholder2 "
                       id="usernameholder"
                     >
                       <div className="inputholder-top ">
@@ -265,12 +261,13 @@ const ApplicationForm = () => {
                       <label className="label" htmlFor="">
                         {err && err}
                       </label>
-                    </div>
+                    </div>:""
+      }
       
 
                     <input
                       type="submit"
-                      value="APPLY NOW"
+                      value={q2}
                       placeholder="Sign Up"
                       className="submit-btn"
                     />
