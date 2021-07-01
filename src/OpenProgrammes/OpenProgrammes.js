@@ -34,7 +34,7 @@ const getBlogs=async()=>{
           <h1>OOOps an error occured...</h1>
         </div>:
       <div className="openprograms">
-        <h2>Open programs</h2>
+        <h2>Open Programs</h2>
         <div className="cardholder">
         {blogsData.length>=1? blogsData.map((blog,index)=>(
        

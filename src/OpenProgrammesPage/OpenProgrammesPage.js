@@ -299,13 +299,13 @@ function OpenProgrammesPage() {
                               dangerouslySetInnerHTML={{ __html: htmlpartbio }}
                             ></div>
                           </p>
+                          <a href={mentor.linkedin}>
                           <FaLinkedin
-                            onClick={() => {
-                              window.location = `${mentor.linkedin}`;
-                            }}
+                           
                             size="2em"
                             color="#0077b5"
                           />
+                          </a>
                         </div>
                       );
                     })}

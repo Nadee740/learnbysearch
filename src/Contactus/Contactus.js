@@ -153,7 +153,7 @@ const ContactUs = () => {
               
               <input
                   type="submit"
-                  value="SIGN IN"
+                  value="Submit"
                   placeholder="Sign Up"
                   className="submit-btn"
                 />
