@@ -123,11 +123,11 @@ const Signup = () => {
             onClickAway={closeModal}
           >
             <div className="popup">
-            <img
-              src="/images/LearnByResearchLogo.png"
-              className="logo"
-              alt=""
-            />
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
               <p>
                 PLEASE VERIFY YOUR EMAIL .YOUR ARE ONE STEP AHEAD OF CREATING
                 YOUR ACCOUNT...
@@ -144,94 +144,163 @@ const Signup = () => {
         <div className="container">
           <div className="signup-content">
             <div className="signup-image">
-              <img src="../images/c.svg" alt="Login pic"></img>
+              <img src="../images/SignUp.svg" alt="Login pic"></img>
             </div>
             <div className="singup-form">
               <h2 className="form-title">REGISTRATION</h2>
-              <form onSubmit={output} id='register-form'>
-                <div className="inputholder" >
+              <form onSubmit={output} id="register-form">
+                <div className="inputholder">
                   <div className="inputholder-top">
-                    <input required type="text" placeholder="First Name" onChange={(e)=>{setFirstName(e.target.value)}} />
+                    <input
+                      required
+                      type="text"
+                      placeholder="First Name"
+                      onChange={(e) => {
+                        setFirstName(e.target.value);
+                      }}
+                    />
                   </div>
                 </div>
 
                 <div className="inputholder">
                   <div className="inputholder-top">
-                    <input required type="text" placeholder="Last Name" onChange={(e)=>{setLastName(e.target.value)}}/>
+                    <input
+                      required
+                      type="text"
+                      placeholder="Last Name"
+                      onChange={(e) => {
+                        setLastName(e.target.value);
+                      }}
+                    />
                   </div>
                 </div>
 
                 <div className="inputholder" id="username">
                   <div className="inputholder-top">
-                    <input required type="text" placeholder="Username" onChange={(e)=>{setUsername(e.target.value)}}/>
+                    <input
+                      required
+                      type="text"
+                      placeholder="Username"
+                      onChange={(e) => {
+                        setUsername(e.target.value);
+                      }}
+                    />
                   </div>
                   <label className="label" htmlFor="">
-                  {usererror && usererror}
+                    {usererror && usererror}
                   </label>
                 </div>
 
                 <div className="inputholder" id="email">
                   <div className="inputholder-top">
-                    <input required type="mail" placeholder="E-Mail" onChange={(e)=>{setEmail(e.target.value)}} />
+                    <input
+                      required
+                      type="mail"
+                      placeholder="E-Mail"
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                    />
                   </div>
                   <label className="label" htmlFor="">
-                  {emailerror && emailerror}
+                    {emailerror && emailerror}
                   </label>
                 </div>
 
                 <div className="inputholder" id="phone">
                   <div className="inputholder-top">
                     <input
-                    required
+                      required
                       type="tel"
                       placeholder="phone number"
                       defaultValue="+91"
-                      onChange={(e)=>{setPhone(e.target.value)}}
+                      onChange={(e) => {
+                        setPhone(e.target.value);
+                      }}
                     />
                   </div>
                   <label className="label" htmlFor="">
-                  {phoneerror && phoneerror}
+                    {phoneerror && phoneerror}
                   </label>
                 </div>
                 <div className="inputholder" id="password">
                   <div className="inputholder-top">
-                    <input required type={passVISIBLE?"text":"password"} placeholder="Password" onChange={(e)=>{setPass(e.target.value)}} />
-                    {passVISIBLE?<HiEye onClick={()=>{setpassVISIBLE(!passVISIBLE)}} size="1.3em" color="#404040" />:<HiEyeOff size="1.3em" color="#404040"  onClick={()=>{setpassVISIBLE(!passVISIBLE)}}/>}
+                    <input
+                      required
+                      type={passVISIBLE ? "text" : "password"}
+                      placeholder="Password"
+                      onChange={(e) => {
+                        setPass(e.target.value);
+                      }}
+                    />
+                    {passVISIBLE ? (
+                      <HiEye
+                        onClick={() => {
+                          setpassVISIBLE(!passVISIBLE);
+                        }}
+                        size="1.3em"
+                        color="#404040"
+                      />
+                    ) : (
+                      <HiEyeOff
+                        size="1.3em"
+                        color="#404040"
+                        onClick={() => {
+                          setpassVISIBLE(!passVISIBLE);
+                        }}
+                      />
+                    )}
                   </div>
                   <label className="label" htmlFor="">
-                  {passerror && passerror}
+                    {passerror && passerror}
                   </label>
                 </div>
 
-                <div className="inputholder" id="confirmpassword" >
+                <div className="inputholder" id="confirmpassword">
                   <div className="inputholder-top">
-                    <input required type={confirmpassVISIBLE?"text":"password"}  placeholder="Confirm Password" 
-                    onBlur={() => {
-                      stylefunction("none", "confirmpassword");
-                    }}
-                    onFocus={() => {
-                      if (confirmpass === password) {
+                    <input
+                      required
+                      type={confirmpassVISIBLE ? "text" : "password"}
+                      placeholder="Confirm Password"
+                      onBlur={() => {
                         stylefunction("none", "confirmpassword");
-                      } else {
-                        stylefunction("0.2px outset red", "confirmpassword");
-                      }
-                    }}
-
-                    onChange={(e) => {
-                      setConfrpass(e.target.value);
-                      if (e.target.value === password) {
-                        stylefunction("none", "confirmpassword");
-                      } else {
-                        stylefunction("0.2px outset red", "confirmpassword");
-                      }
-                    }}
-
-
-                     />
-                    {confirmpassVISIBLE?<HiEye size="1.3em" color="#404040" onClick={()=>{setconfirmpassVISIBLE(!confirmpassVISIBLE)}} />:<HiEyeOff size="1.3em" color="#404040" onClick={()=>{setconfirmpassVISIBLE(!confirmpassVISIBLE)}} />}
+                      }}
+                      onFocus={() => {
+                        if (confirmpass === password) {
+                          stylefunction("none", "confirmpassword");
+                        } else {
+                          stylefunction("0.2px outset red", "confirmpassword");
+                        }
+                      }}
+                      onChange={(e) => {
+                        setConfrpass(e.target.value);
+                        if (e.target.value === password) {
+                          stylefunction("none", "confirmpassword");
+                        } else {
+                          stylefunction("0.2px outset red", "confirmpassword");
+                        }
+                      }}
+                    />
+                    {confirmpassVISIBLE ? (
+                      <HiEye
+                        size="1.3em"
+                        color="#404040"
+                        onClick={() => {
+                          setconfirmpassVISIBLE(!confirmpassVISIBLE);
+                        }}
+                      />
+                    ) : (
+                      <HiEyeOff
+                        size="1.3em"
+                        color="#404040"
+                        onClick={() => {
+                          setconfirmpassVISIBLE(!confirmpassVISIBLE);
+                        }}
+                      />
+                    )}
                   </div>
                   <label className="label" htmlFor="">
-                  {confirmpasserror && confirmpasserror}
+                    {confirmpasserror && confirmpasserror}
                   </label>
                 </div>
 

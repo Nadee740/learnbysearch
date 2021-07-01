@@ -13,7 +13,7 @@ import Logout from "../Backend/Logout";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Authverifier from "../Backend/Authverifier";
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from "@material-ui/core/Tooltip";
 
 const EditProfile = () => {
   const [userid, setUserid] = useState(localStorage.getItem("loggedinuserid"));
@@ -241,250 +241,309 @@ const EditProfile = () => {
           <div className="container">
             <div className="signup-content">
               <div className="signup-image">
-                <img src="../images/setting.svg" alt="Login pic"></img>
+                <img src="../images/Profile.svg" alt="Login pic"></img>
               </div>
               <div className="singup-form">
                 <h2 className="form-title">EDIT PROFILE</h2>
                 <form onSubmit={MakeChanges}>
-                <Tooltip title="Name">
-               
-                  <div className="inputholder">
-                  
-                    <div className="inputholder-top">
-                  
-                      <input type="text" placeholder="First Name" required
-                  value={FirstName}
-                  onChange={(e) => {
-                    setFirstName(e.target.value);
-                  }} />
-                  
-                    </div>
-                    
-                  </div>
-</Tooltip>
-                  <Tooltip title="Middle Name">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="Middle Name"  autoComplete="off"
-                  value={MiddleName}
-                  onChange={(e) => {
-                    setMiddleName(e.target.value);
-                  }} />
-                    </div>
-                  </div>
+                  <Tooltip title="Name">
+                    <>
+                      <p className="inputtext">First Name</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="First Name"
+                            required
+                            value={FirstName}
+                            onChange={(e) => {
+                              setFirstName(e.target.value);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </>
                   </Tooltip>
-                    
+                  <Tooltip title="Middle Name">
+                    <>
+                      <p className="inputtext">Middle Name</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="Middle Name"
+                            autoComplete="off"
+                            value={MiddleName}
+                            onChange={(e) => {
+                              setMiddleName(e.target.value);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  </Tooltip>
 
-                  <Tooltip title="Last Name"> 
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input  type="text"
-                  name="LastName"
-                  id="LastName"
-                  placeholder="Last Name"
-                  autoComplete="off"
-                  required
-                  value={LastName}
-                  className="input"
-                  onChange={(e) => {
-                    setLastName(e.target.value);
-                  }} />
-                    </div>
-                  </div>
-                  </Tooltip> 
+                  <Tooltip title="Last Name">
+                    <>
+                      <p className="inputtext">Last Name</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            name="LastName"
+                            id="LastName"
+                            placeholder="Last Name"
+                            autoComplete="off"
+                            required
+                            value={LastName}
+                            className="input"
+                            onChange={(e) => {
+                              setLastName(e.target.value);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  </Tooltip>
 
                   <Tooltip title="Email">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input readonly="true"
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email"
-                  autoComplete="off"
-                  required
-                  value={email} />
-                      <MdDoneAll size="1.3em" color="#00e676" />
-                    </div>
-                    <label className="label" htmlFor="">
-                  {emailerror && emailerror}
-                  </label>
-                  </div>
-</Tooltip>
-                      
-                      <Tooltip title="Date">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input
-                        type="date"
-                        placeholder="DD-MM-YY"
-                        className="inputdate"
-                        onChange={(e) => {
-                    console.log(Date.parse(e.target.value));
-                    console.log(e.target.value);
-                    setdate(e.target.value);
-                  }}
-                  value={value}
-                      />
-                    </div>
-                  </div>
-</Tooltip>
-  
- 
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                    <Tooltip title="Phone Number">
-                      <input 
-                      id="PhoneNumber"
-                      type="tel" placeholder="Your Phone Number" autoComplete="off"
-                  required
-                  value={phoneNumber}
-                  onChange={(e) => {
-                    setPhoneNumber(e.target.value);
-                    
-                  }} />
+                    <>
+                      <p className="inputtext">Email</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            readonly="true"
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Email"
+                            autoComplete="off"
+                            required
+                            value={email}
+                          />
+                          <MdDoneAll size="1.3em" color="#00e676" />
+                        </div>
+                        <label className="label" htmlFor="">
+                          {emailerror && emailerror}
+                        </label>
+                      </div>
+                    </>
                   </Tooltip>
-                       {isverfied ? (
-                  <Tooltip title="Verifeid"><MdDoneAll size="1.2em" className="emtick" /></Tooltip>
-                ) : (
-                  <MdClear size="1.2em" className="emtick" color="red" />
-                )}
+
+                  <Tooltip title="Date">
+                    <>
+                      <p className="inputtext">Date</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="date"
+                            placeholder="DD-MM-YY"
+                            className="inputdate"
+                            onChange={(e) => {
+                              console.log(Date.parse(e.target.value));
+                              console.log(e.target.value);
+                              setdate(e.target.value);
+                            }}
+                            value={value}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  </Tooltip>
+                  <p className="inputtext">Phone Number</p>
+                  <div className="inputholder">
+                    <div className="inputholder-top">
+                      <Tooltip title="Phone Number">
+                        <>
+                          <input
+                            id="PhoneNumber"
+                            type="tel"
+                            placeholder="Your Phone Number"
+                            autoComplete="off"
+                            required
+                            value={phoneNumber}
+                            onChange={(e) => {
+                              setPhoneNumber(e.target.value);
+                            }}
+                          />
+                        </>
+                      </Tooltip>
+                      {isverfied ? (
+                        <Tooltip title="Verifeid">
+                          <MdDoneAll size="1.2em" className="emtick" />
+                        </Tooltip>
+                      ) : (
+                        <MdClear size="1.2em" className="emtick" color="red" />
+                      )}
                     </div>
                     <label className="label" htmlFor="">
-                  {phoneerror && phoneerror}
-                  </label>
+                      {phoneerror && phoneerror}
+                    </label>
                   </div>
 
-                  
                   {isverfied ? (
-                <></>
-              ) :(
-                  <button className="edit-profile-btn" onClick={otpsend ? VerifyOtp : VERIFYPhonenumber}>
-                  {otpsend ? "VERIFY OTP" : "VERIFY PHONE NUMBER"}
-                  </button>)}
+                    <></>
+                  ) : (
+                    <button
+                      className="edit-profile-btn"
+                      onClick={otpsend ? VerifyOtp : VERIFYPhonenumber}
+                    >
+                      {otpsend ? "VERIFY OTP" : "VERIFY PHONE NUMBER"}
+                    </button>
+                  )}
 
                   <div className="inputholder otpdisplay">
                     <div className="inputholder-top">
-                      <input type="text" placeholder="OTP" autoComplete="off"
-                      id="otp"
-                  className="otp"
-                  value={otp}
-                  onChange={(e) => {
-                    setotp(e.target.value);
-                  }}/>
+                      <input
+                        type="text"
+                        placeholder="OTP"
+                        autoComplete="off"
+                        id="otp"
+                        className="otp"
+                        value={otp}
+                        onChange={(e) => {
+                          setotp(e.target.value);
+                        }}
+                      />
                     </div>
                     <label className="label" htmlFor="">
-                  {otperror && otperror}
-                  </label>
+                      {otperror && otperror}
+                    </label>
                   </div>
 
-                <Tooltip title="City">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="City" autoComplete="off"
-                  required
-                  value={City}
-                  onChange={(e) => {
-                    setCity(e.target.value);
-                  }} />
+                  <Tooltip title="City">
+                    <div className="inputholder">
+                      <div className="inputholder-top">
+                        <input
+                          type="text"
+                          placeholder="City"
+                          autoComplete="off"
+                          required
+                          value={City}
+                          onChange={(e) => {
+                            setCity(e.target.value);
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-</Tooltip>
-<Tooltip title="State">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="State"  autoComplete="off"
-                  required
-                  value={State}
-                  onChange={(e) => {
-                    setState(e.target.value);
-                  }}/>
-                    </div>
-                  </div>
-</Tooltip>
-       <Tooltip title="Country">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                    <input
-                  type="text"
-                  name="Country"
-                  id="Country"
-                  placeholder="Country"
-                  autoComplete="off"
-                  required
-                  value={Country}
-                  onChange={(e) => {
-                    setCountry(e.target.value);
-                  }}
-                />
-                    </div>
-                  </div>
                   </Tooltip>
-<Tooltip title="Degree">
-
-
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="Degree" autoComplete="off"
-                  required
-                  value={Degree}
-                  onChange={(e) => {
-                    setDegree(e.target.value);
-                  }} />
+                  <Tooltip title="State">
+                    <div className="inputholder">
+                      <div className="inputholder-top">
+                        <input
+                          type="text"
+                          placeholder="State"
+                          autoComplete="off"
+                          required
+                          value={State}
+                          onChange={(e) => {
+                            setState(e.target.value);
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-</Tooltip>
-<Tooltip title="Field">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="Field" autoComplete="off"
-                  required
-                  value={Field}
-                  onChange={(e) => {
-                    setField(e.target.value);
-                  }}/>
+                  </Tooltip>
+                  <Tooltip title="Country">
+                    <div className="inputholder">
+                      <div className="inputholder-top">
+                        <input
+                          type="text"
+                          name="Country"
+                          id="Country"
+                          placeholder="Country"
+                          autoComplete="off"
+                          required
+                          value={Country}
+                          onChange={(e) => {
+                            setCountry(e.target.value);
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
+                  </Tooltip>
+                  <Tooltip title="Degree">
+                    <div className="inputholder">
+                      <div className="inputholder-top">
+                        <input
+                          type="text"
+                          placeholder="Degree"
+                          autoComplete="off"
+                          required
+                          value={Degree}
+                          onChange={(e) => {
+                            setDegree(e.target.value);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </Tooltip>
+                  <Tooltip title="Field">
+                    <div className="inputholder">
+                      <div className="inputholder-top">
+                        <input
+                          type="text"
+                          placeholder="Field"
+                          autoComplete="off"
+                          required
+                          value={Field}
+                          onChange={(e) => {
+                            setField(e.target.value);
+                          }}
+                        />
+                      </div>
+                    </div>
                   </Tooltip>
                   <Tooltip title="College Name">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="College Name" autoComplete="off"
-                  required
-                  autoComplete="off"
-                  required
-                  value={CollegeName}
-                  onChange={(e) => {
-                    setCollegeName(e.target.value);
-                  }}/>
+                    <div className="inputholder">
+                      <div className="inputholder-top">
+                        <input
+                          type="text"
+                          placeholder="College Name"
+                          autoComplete="off"
+                          required
+                          autoComplete="off"
+                          required
+                          value={CollegeName}
+                          onChange={(e) => {
+                            setCollegeName(e.target.value);
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-</Tooltip>
+                  </Tooltip>
 
-<Tooltip title="University">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="University"  autoComplete="off"
-                  required
-                  value={University}
-                  onChange={(e) => {
-                    setUniversity(e.target.value);
-                  }} />
+                  <Tooltip title="University">
+                    <div className="inputholder">
+                      <div className="inputholder-top">
+                        <input
+                          type="text"
+                          placeholder="University"
+                          autoComplete="off"
+                          required
+                          value={University}
+                          onChange={(e) => {
+                            setUniversity(e.target.value);
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
                   </Tooltip>
 
                   <Tooltip title="Graduation Year">
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input type="text" placeholder="Graduation Year"   autoComplete="off"
-                  required
-                  value={GraduationYear}
-                  onChange={(e) => {
-                    setGraduationYear(e.target.value);
-                  }} />
+                    <div className="inputholder">
+                      <div className="inputholder-top">
+                        <input
+                          type="text"
+                          placeholder="Graduation Year"
+                          autoComplete="off"
+                          required
+                          value={GraduationYear}
+                          onChange={(e) => {
+                            setGraduationYear(e.target.value);
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
                   </Tooltip>
                   <input
                     type="submit"
