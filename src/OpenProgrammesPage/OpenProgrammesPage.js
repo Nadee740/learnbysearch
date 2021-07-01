@@ -175,7 +175,7 @@ function OpenProgrammesPage() {
                   <>{blogsData.title}</>
                   {blogsData.applicationStatus ? (
                     <p onClick={applicationform}>
-                      Applications Open !<br></br>
+                      Deadline - {blogsData.Deadline} !<br></br>
                     </p>
                   ) : ""}
                   {(blogsData.applicationStatus) ?
@@ -249,7 +249,7 @@ function OpenProgrammesPage() {
                       Total Duration
                     </p>
                     <p className="vaccency-item-text">
-                      Approximately {blogsData.duration} years
+                      Approximately {blogsData.duration} 
                     </p>
                   </div>
                   <div className="openprogrammespage-feature-col openprogrammespage-feature-col2">

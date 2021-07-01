@@ -44,10 +44,16 @@ const MyApplications = () => {
         if (retdata != null) array.push(retdata);
         console.log(retdata.data, "kunjoo");
         if (count == userdata.applicationForm.length) {
+          if(array.length>0)
+          {
           setapplication(array);
           console.log(array, "kunjoo");
-
-          getreaserch(array);
+getreaserch(array);
+          }
+          else{
+            setisempty(true);
+      setisLoading(false);
+          }
         }
       });
     }
