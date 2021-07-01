@@ -69,9 +69,7 @@ const LandingPage = () => {
                       Collaborate | Research | Learn
                     </h2>
 
-                    <p>
-                    Online Independent R&D Hub
-                    </p>
+                    <p>Online Independent R&D Hub</p>
                   </div>
 
                   <div className="buttons ">
@@ -91,7 +89,11 @@ const LandingPage = () => {
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
               <p>
-              LearnByResearch is the world's only online independent research & development hub that provides the platform for students to become the best independent researchers who wish to pursue higher education or join the innovation teams in top organizations.
+                LearnByResearch is the world's only online independent research
+                & development hub that provides the platform for students to
+                become the best independent researchers who wish to pursue
+                higher education or join the innovation teams in top
+                organizations.
               </p>
             </div>
           </section>
@@ -107,14 +109,26 @@ const LandingPage = () => {
                   ></img>
                 </figure>
                 <p>
-                LearnByResearch is a hub for innovation, research & development. Pioneered by experienced professionals from the industry, academics & startups. LearnByResearch is unique in its methodology of delivering the right skillsets. We promote innovation, research, and entrepreneurship as part of the research work. LearnByResearch is dedicated to higher levels of interdisciplinary R&D in the fields of emerging technologies with the strategy to build entrepreneurs and industry leaders.
+                  LearnByResearch is a hub for innovation, research &
+                  development. Pioneered by experienced professionals from the
+                  industry, academics & startups. LearnByResearch is unique in
+                  its methodology of delivering the right skillsets. We promote
+                  innovation, research, and entrepreneurship as part of the
+                  research work. LearnByResearch is dedicated to higher levels
+                  of interdisciplinary R&D in the fields of emerging
+                  technologies with the strategy to build entrepreneurs and
+                  industry leaders.
                 </p>
               </div>
               <div className="about-col">
                 <p>
-                Our methodology emphases on a practical learning approach with hands-on experience to inculcate the best industry standards. This approach is meant to help students face all challenges with the supervision of a guide.
-
-At LearnByResearch, students and research guides collaborate to enhance their skills and knowledge as well as build life-changing products and services.
+                  Our methodology emphases on a practical learning approach with
+                  hands-on experience to inculcate the best industry standards.
+                  This approach is meant to help students face all challenges
+                  with the supervision of a guide. At LearnByResearch, students
+                  and research guides collaborate to enhance their skills and
+                  knowledge as well as build life-changing products and
+                  services.
                 </p>
                 <figure>
                   <img
@@ -221,36 +235,25 @@ At LearnByResearch, students and research guides collaborate to enhance their sk
               </div>
             </div>
           </section>
-          <section className="apple">
-            <div className="apply-container">
-              <div className="apply-first">
-                <div className="apply-left-side">
-                  <h2>Why you must apply?</h2>
-                  <p>
-                    You will not like to hear this but you will totally agree,
-                    that in the current situation Education has become a
-                    business, and startups are flooding parents and students
-                    with the fear of missing out!
-                  </p>
-                </div>
-                <div className="apply-right-side">
-                  <img src="../images/gain.png" alt="" />
-                </div>
-              </div>
-              <div className="apply-second">
-                <p>
-                  From the time of our birth, we have learned millions of things
-                  and 80% of them were taught by our experience of trial-error
-                  and experimentation. Today's generation is now at a point that
-                  they have all the resources available online for free but they
-                  don't have a guide to help them during the experimental phase.
-                  That's why we are here to help you connect with the best
-                  guides and work your way up to learning with a research-based
-                  approach.
-                </p>
-              </div>
+
+          <div className="applydetails">
+            <div className="applydetails-col1">
+              <h2>Why you must apply?</h2>
+              <p className="applydetails-text">
+                You will not like to hear this but you will totally agree, that
+                in the current situation Education has become a business, and
+                startups are flooding parents and students with the fear of
+                missing out! From the time of our birth, we have learned
+                millions of things and 80% of them were taught by our experience
+                of trial-error and experimentation. Today's generation is now at
+                a point that they have all the resources available online for
+                free but they don't have a guide to help them during the
+                experimental phase. That's why we are here to help you connect
+                with the best guides and work your way up to learning with a
+                research-based approach.
+              </p>
             </div>
-          </section>
+          </div>
           <BlogSlider blog={blogsData} />
           <Footer />
         </div>
