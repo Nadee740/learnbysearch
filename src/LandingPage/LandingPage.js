@@ -6,43 +6,39 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import SliderCo from "./slidercourse/slidercourse";
-import { RotateCircleLoading } from 'react-loadingg';
+import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
 
+  const [pgmsData, setpgms] = useState("");
 
-  const[pgmsData,setpgms]=useState("")
-  
-  const [error,seterror]=useState(false);
+  const [error, seterror] = useState(false);
 
-const getopenPgmgs=async()=>{
-setisLoading(true)
-const { data: Datass } = await Researchpgms(`${window.name}research-programs`)
-setpgms(Datass)
-console.log(Datass.length,"Datasssss")
+  const getopenPgmgs = async () => {
+    setisLoading(true);
+    const { data: Datass } = await Researchpgms(
+      `${window.name}research-programs`
+    );
+    setpgms(Datass);
+    console.log(Datass.length, "Datasssss");
 
+    console.log(blogsData, "blogsdata");
 
-console.log(blogsData,"blogsdata")
-
-getBlogs();
-}
+    getBlogs();
+  };
   useEffect(() => {
     getopenPgmgs();
-    
   }, []);
-
-
-
 
   const getBlogs = async () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(`${window.name}blog`);
     setblogData(Datass);
     // getopenPgmgs()
-    setisLoading(false)
+    setisLoading(false);
   };
   const [para, setPara] = useState(
     "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
@@ -52,7 +48,7 @@ getBlogs();
     <>
       {isLoading ? (
         <div className="isLoading">
-        <SolarSystemLoading/>
+          <SolarSystemLoading />
         </div>
       ) : (
         <div className="landingpage">
@@ -66,8 +62,11 @@ getBlogs();
                 </div>
                 <div className="right-side">
                   <div className="top-heading">
+                    <h2 className="font-light-top">
+                      India's Largest Platform Building Student Researchers
+                    </h2>
                     <h2 className="form-title">
-                      Collaborate | Research | LEARN
+                      Collaborate | Research | Learn
                     </h2>
 
                     <p>
