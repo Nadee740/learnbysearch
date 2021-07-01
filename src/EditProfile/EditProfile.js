@@ -247,7 +247,9 @@ const EditProfile = () => {
                 <h2 className="form-title">EDIT PROFILE</h2>
                 <form onSubmit={MakeChanges}>
                 <Tooltip title="Name">
+               
                   <div className="inputholder">
+                  
                     <div className="inputholder-top">
                   
                       <input type="text" placeholder="First Name" required
