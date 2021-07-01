@@ -6,6 +6,8 @@ import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import { useState } from "react";
 import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 
 const Blog = ({ blog }) => {
 
@@ -74,12 +76,13 @@ const Blog = ({ blog }) => {
   const htmlpart = blog.content;
   let a = "/blogsdetailspage/" + blog.slug;
   return (<>
-  {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:
+  {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:
     <div className="blogcard">
       <div className="blogcard-col1">
         <img src={blog.imageUrl} alt="Blog" className="blogcard-img" />
       </div>
       <div className="blogcard-col2">
+      < >
         <div className="blogcard-col2-top">
           <div className="blogcard-col2-top-1">
           <img
@@ -107,8 +110,9 @@ const Blog = ({ blog }) => {
         </Link>
         
         <div className="line"></div>
+        </>
         <div className="blogcard-col2-btm">
-          <div className="blogcard-col2-btm-1">26 Views 0 Comments</div>
+          {/* <div className="blogcard-col2-btm-1">26 Views 0 Comments</div> */}
           <div className="blogcard-col2-btm-2">
           {liked?<AiFillHeart onClick={unlikeblog} color="red" size="2em" />:<AiOutlineHeart onClick={likeblog} color="red" size="2em" />} {likes}
             

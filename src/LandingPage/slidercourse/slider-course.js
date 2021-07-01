@@ -2,7 +2,9 @@ import "./slidercourse.css";
 const SliderCard = ({data}) => {
   let a = "/openprogrammespage/" + data.slug;
   return (
+    
     <div className="slidercard">
+    
       <img
         src={data.imageUrl}
         alt="Course"
@@ -17,6 +19,7 @@ const SliderCard = ({data}) => {
           }} className="slidercardbtn">KNOW MORE</button>
       </div>
     </div>
+    
   );
 };
 

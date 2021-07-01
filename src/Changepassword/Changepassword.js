@@ -6,6 +6,8 @@ import Footer from "../LandingPage/footer/footer";
 import "./Changepassword.css";
 import Authverifier from "../Backend/Authverifier";
 import { useEffect } from "react";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 const Changepassword = () => {
   const [email, setEmail] = useState("");
   const [password, setOldpassword] = useState("");
@@ -21,7 +23,9 @@ const Changepassword = () => {
   useEffect(async() => {
   //localStorage.clear()
   setisLoading(true)
-  const {isLoggedIn:messagee} =await Authverifier("http://localhost:8000/users/me")
+  const { isLoggedIn: messagee } = await Authverifier(
+    `${window.name}users/me`
+  );
   setisLoggedin(messagee) 
   setisLoading(false)
   console.log(messagee)
@@ -101,7 +105,7 @@ const Changepassword = () => {
           </Modal>
         </section>
       </div>
-     {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:isLoggedIn? <div className="container-profile">
+     {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:isLoggedIn? <div className="container-profile">
         <div className="container-profile-col1">
           <img
             src="/images/EDIT.png"

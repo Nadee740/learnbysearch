@@ -10,6 +10,7 @@ import Researchpgms from "../Backend/Researchpgms";
 import Authverifier from "../Backend/Authverifier";
 import Modal from "react-awesome-modal";
 import { Link } from "react-router-dom";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 
 function OpenProgrammesPage() {
   const { slug } = useParams();
@@ -152,7 +153,7 @@ function OpenProgrammesPage() {
       </div>
       {isLoading ? (
         <div className="isLoading">
-          <h1>Loading...</h1>
+        <RotateCircleLoading/>
         </div>
       ) : error ? (
         <div className="isLoading">
@@ -175,14 +176,14 @@ function OpenProgrammesPage() {
                     <p onClick={applicationform}>
                       Applications Open !<br></br>
                     </p>
-                  ) : (
-                    <p>
-                      Applications Closed !<br></br>
-                    </p>
-                  )}
+                  ) : ""}
+                  {(blogsData.applicationStatus) ?
                   <button onClick={applicationform} className="applybtn">
                     APPLY NOW
                   </button>
+                  : <button  className="applybtn">
+                    APPLICATION CLOSED
+                  </button>}
                 </div>
               </div>
             </div>

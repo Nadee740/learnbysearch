@@ -6,6 +6,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import SliderCo from "./slidercourse/slidercourse";
+import { RotateCircleLoading } from 'react-loadingg';
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -49,7 +52,7 @@ getBlogs();
     <>
       {isLoading ? (
         <div className="isLoading">
-          <h1>Loading...</h1>
+        <SolarSystemLoading/>
         </div>
       ) : (
         <div className="landingpage">

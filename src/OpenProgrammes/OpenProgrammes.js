@@ -3,6 +3,8 @@ import Openprogramcard from "./openprogramescard";
 import "./OpenProgrammes.css";
 import Researchpgms from "../Backend/Researchpgms";
 import { useState } from "react";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 const OpenProgrammes = () => {
        const[blogsData,setblogData]=useState("")
        const[isLoading,setisLoading]=useState(true)
@@ -27,7 +29,7 @@ const getBlogs=async()=>{
   }, [])
   return (
     <>
-        {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:
+        {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:
         error? <div className="isLoading">
           <h1>OOOps an error occured...</h1>
         </div>:

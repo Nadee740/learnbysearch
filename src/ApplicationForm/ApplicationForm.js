@@ -6,6 +6,8 @@ import Researchpgms from "../Backend/Researchpgms";
 import Modal from "react-awesome-modal";
 import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
+import { RotateCircleLoading } from "react-loadingg";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
   const [errorvisible, seterrorvisible] = useState(false);
@@ -141,7 +143,7 @@ const ApplicationForm = () => {
       </div>
       {isLoading ? (
         <div className="isLoading">
-          <h1>Loading...</h1>
+        <SolarSystemLoading/>
         </div>
       ) : (
         <div>

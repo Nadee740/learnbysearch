@@ -19,6 +19,8 @@ import BlogsDetailsPage from "./BlogsDetailsPage/BlogsDetailsPage";
 import OpenProgrammesPage from "./OpenProgrammesPage/OpenProgrammesPage";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import ApplicationForm from "./ApplicationForm/ApplicationForm";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import { SolarSystemLoading } from 'react-loadingg';
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem("loggedinuserid"));
@@ -39,7 +41,7 @@ function App() {
     <div className="App">
       {isLoading ? (
         <div className="isLoading">
-          <h1>Loading...</h1>
+        <SolarSystemLoading/>
         </div>
       ) : (
         <Router>

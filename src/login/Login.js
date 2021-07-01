@@ -8,6 +8,8 @@ import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import Modal from "react-awesome-modal";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import Authverifier from "../Backend/Authverifier";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 const Login = () => {
   const [username, setUser] = useState("");
   const [password, setPass] = useState("");
@@ -75,6 +77,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
   const output = async (e) => {
     e.preventDefault();
 
+    setisLoading(true)
     stylefunction("none", "password");
     stylefunction("none", "username");
     setpassrerror();
@@ -89,15 +92,17 @@ const [isLoggedIn, setisLoggedin] = useState(false);
     if (messagee.includes("your account is not verifed")) {
       setvisible(true);
     }
-    if (!messagee.includes("successfully")) {
+    else if (!messagee.includes("successfully")) {
       stylefunction("0.2px outset red", "pass-holder");
       stylefunction("0.2px outset red", "usernameholder");
       setpassrerror(messagee);
     } else {
+      
       window.location = "/";
       setUser("");
       setPass("");
     }
+    setisLoading(false);
   };
 
   return (
@@ -202,7 +207,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
 
       {isLoading?(
         <div className="isLoading">
-          <h1>Loading...</h1>
+        <SolarSystemLoading/>
         </div>
       ):isLoggedIn?(
         <div className="isLoading">

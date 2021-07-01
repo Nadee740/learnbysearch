@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { useParams } from "react-router-dom";
 import Researchpgms from "../Backend/Researchpgms";
 import Footer from "../LandingPage/footer/footer";
@@ -33,7 +35,7 @@ function BlogsDetailsPage({ blog }) {
     <>
       {isLoading ? (
         <div className="isLoading">
-          <h1>Loading...</h1>
+        <SolarSystemLoading/>
         </div>
       ) : (
         <div>

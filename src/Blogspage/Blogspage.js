@@ -3,6 +3,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 import Blog from "./blog";
 import { useEffect,useState  } from "react";
 import Researchpgms from "../Backend/Researchpgms";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 const BlogsPage = () => {
        const[blogsData,setblogData]=useState("")
        const[blogsfulldata,setblogsfulldata]=useState("")
@@ -50,7 +52,7 @@ else{
    
   }, [])
   return (<>
-    {isLoading?<div className="isLoading"><h1>Loading...</h1></div>:
+    {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:
     <div className="blogpage">
       <div className="blogheader">
         <div className="blogheader-col1">

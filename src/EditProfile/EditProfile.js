@@ -14,6 +14,8 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Authverifier from "../Backend/Authverifier";
 import Tooltip from "@material-ui/core/Tooltip";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 
 const EditProfile = () => {
   const [userid, setUserid] = useState(localStorage.getItem("loggedinuserid"));
@@ -235,7 +237,7 @@ const EditProfile = () => {
       </div>
       {isLoading ? (
         <div className="isLoading">
-          <h1>Loading...</h1>
+        <SolarSystemLoading/>
         </div>
       ) : isLoggedIn ? (
         <section className="sign-up editprofile">
@@ -575,7 +577,7 @@ const EditProfile = () => {
                     value="SAVE CHANGES"
                     className="submit-btn"
                   />
-                  <Link>
+                  <Link to="/changepassword">
                     <p className="form-btmtext form-btmtext1">
                       Change Password
                     </p>

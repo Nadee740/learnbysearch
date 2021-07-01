@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import Authverifier from "../Backend/Authverifier";
 import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
@@ -70,7 +72,7 @@ const MyApplications = () => {
     <>
       {isLoading ? (
         <div className="isLoading">
-          <h1>Loading...</h1>
+        <SolarSystemLoading/>
         </div>
       ) : isLoggedIn ? (
         isempty ? (
@@ -157,6 +159,9 @@ const MyApplications = () => {
             </p>
           </div> */}
               </div>
+            </div>
+            <div className="applications-heading">
+              <h2>Route Map</h2>
             </div>
             <img
               src="/images/app-status.svg"
