@@ -171,65 +171,60 @@ const LandingPage = () => {
                   What will you gain when you complete your Research Work?
                 </h2>
               </div>
-              <div className="gain-box-color">
-                <div
-                  className="content-1"
-                  onClick={() => {
-                    setPara(
-                      "Technical recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
-                    );
-                  }}
-                >
-                  <p>
-                    Technical And Soft Skills
-                    <i className="fas fa-angle-down"></i>
+              <div className="outcomes">
+                <div className="outcomes-col">
+                  <p className="outcomes-col-number">1</p>
+                  <p className="outcomes-col-head">Technical and Soft Skills</p>
+                  <p className="outcomes-col-text">
+                    By joining the research group you would learn and apply the
+                    relevant technical skills on your own with the support and
+                    mentoring of the research guide, as well as you will be
+                    gaining the power of written and verbal communication.
                   </p>
                 </div>
-                <div className="line"></div>
-                <div
-                  className="content-1"
-                  onClick={() => {
-                    setPara(
-                      "Research recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
-                    );
-                  }}
-                >
-                  <p>
-                    Research Paper Completion
-                    <i className="fas fa-angle-down"></i>
+                <div className="outcomes-col">
+                  <p className="outcomes-col-number">2</p>
+                  <p className="outcomes-col-head">
+                    Research Paper Publications
+                  </p>
+                  <p className="outcomes-col-text">
+                    The outcome of almost all research groups involves
+                    publishing the results and experimental work in a reputed
+                    journal scientific research journal. Here during the
+                    research work, all students will be publishing at least 2
+                    papers with the support of the team members and the research
+                    guide.
                   </p>
                 </div>
-                <div className="line"></div>
-                <div
-                  className="content-1"
-                  onClick={() => {
-                    setPara(
-                      "During the research work, students will be working and engaging with fellow teammates through the weekly meetings, interaction sessions, and experimentations. This will help students to grow their network. If you want to be an entrepreneur and start building a great product maybe you can find your co-founder here!"
-                    );
-                  }}
-                >
-                  <p>
+                <div className="outcomes-col">
+                  <p className="outcomes-col-number">3</p>
+                  <p className="outcomes-col-head">
                     Network and Focused Community
-                    <i className="fas fa-angle-down"></i>
+                  </p>
+                  <p className="outcomes-col-text">
+                    During the research work, students will be working and
+                    engaging with fellow teammates through the weekly meetings,
+                    interaction sessions, and experimentations. This will help
+                    students to grow their network. If you want to be an
+                    entrepreneur and start building a great product maybe you
+                    can find your co-founder here!
                   </p>
                 </div>
-                <div className="line"></div>
-                <div
-                  className="content-1"
-                  onClick={() => {
-                    setPara(
-                      "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
-                    );
-                  }}
-                >
-                  <p>
+                <div className="outcomes-col">
+                  <p className="outcomes-col-number">4</p>
+                  <p className="outcomes-col-head">
                     Certificate of Research Completion
-                    <i class="fas fa-angle-down"></i>
+                  </p>
+                  <p className="outcomes-col-text">
+                    Getting recognition of what you have accomplished and
+                    learned is what matters the most nowadays, we just can't
+                    wait to put a post highlighting what we have made, well,
+                    here you will be doing that a lot. Every day you will be
+                    making something cool which you can't resist posting,
+                    finally, to sum up, your social media posts we award the
+                    Completion Certification.
                   </p>
                 </div>
-              </div>
-              <div className="gain-colorless-box">
-                <p>{para}</p>
               </div>
             </div>
           </section>
