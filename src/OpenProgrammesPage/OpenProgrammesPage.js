@@ -12,6 +12,8 @@ import Modal from "react-awesome-modal";
 import { Link } from "react-router-dom";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import {Helmet} from "react-helmet";
+
 
 function OpenProgrammesPage() {
   const { slug } = useParams();
@@ -106,6 +108,12 @@ function OpenProgrammesPage() {
 
   return (
     <>
+    
+  <Helmet>
+                <meta charSet="utf-8" />
+                <title>{blogsData.title}</title>
+                
+            </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal

@@ -5,6 +5,9 @@ import Researchpgms from "../Backend/Researchpgms";
 import { useState } from "react";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import {Helmet} from "react-helmet";
+
+
 const OpenProgrammes = () => {
        const[blogsData,setblogData]=useState("")
        const[isLoading,setisLoading]=useState(true)
@@ -29,6 +32,11 @@ const getBlogs=async()=>{
   }, [])
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home | Programs</title>
+                
+            </Helmet>
         {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:
         error? <div className="isLoading">
           <h1>OOOps an error occured...</h1>

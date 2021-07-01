@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
 import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import {Helmet} from "react-helmet";
+
 const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
   const [errorvisible, seterrorvisible] = useState(false);
@@ -95,6 +97,11 @@ const ApplicationForm = () => {
 
   return (
     <>
+     <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home | Programs</title>
+                
+            </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal

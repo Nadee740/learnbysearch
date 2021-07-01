@@ -16,6 +16,7 @@ import Authverifier from "../Backend/Authverifier";
 import Tooltip from "@material-ui/core/Tooltip";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import {Helmet} from "react-helmet";
 
 const EditProfile = () => {
   const [userid, setUserid] = useState(localStorage.getItem("loggedinuserid"));
@@ -216,6 +217,11 @@ const EditProfile = () => {
 
   return (
     <>
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home | EditProfile</title>
+                
+            </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal

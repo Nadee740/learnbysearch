@@ -3,6 +3,8 @@ import { useState } from "react";
 import Footer from "../LandingPage/footer/footer";
 import "./Contactus.css";
 import { Link } from "react-router-dom";
+import {Helmet} from "react-helmet";
+
 const ContactUs = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
@@ -42,6 +44,11 @@ const ContactUs = () => {
   };
   return (
     <>
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home | ContactUs</title>
+                
+            </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal

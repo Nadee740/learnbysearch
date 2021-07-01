@@ -5,6 +5,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import Authverifier from "../Backend/Authverifier";
 import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
+import {Helmet} from "react-helmet";
 import "./MyApplications.css";
 const MyApplications = () => {
   const [userData, setuserData] = useState();
@@ -76,6 +77,11 @@ getreaserch(array);
 
   return (
     <>
+       <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home | Applications</title>
+                
+            </Helmet>
       {isLoading ? (
         <div className="isLoading">
         <SolarSystemLoading/>

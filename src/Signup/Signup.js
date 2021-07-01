@@ -6,6 +6,8 @@ import Modal from "react-awesome-modal";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import "./Signup.css";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
+import {Helmet} from "react-helmet";
+
 const Signup = () => {
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
@@ -113,6 +115,11 @@ const Signup = () => {
 
   return (
     <>
+     <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home | SignUp</title>
+                
+            </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal

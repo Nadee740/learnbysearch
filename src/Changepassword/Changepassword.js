@@ -8,6 +8,8 @@ import Authverifier from "../Backend/Authverifier";
 import { useEffect } from "react";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import {Helmet} from "react-helmet";
+
 const Changepassword = () => {
   const [email, setEmail] = useState("");
   const [password, setOldpassword] = useState("");
@@ -86,6 +88,12 @@ const Changepassword = () => {
 
   return (
     <>
+
+<Helmet>
+                <meta charSet="utf-8" />
+                <title>Home | Changepassword</title>
+                
+            </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal

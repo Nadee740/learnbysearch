@@ -8,6 +8,7 @@ import Researchpgms from "../Backend/Researchpgms";
 import SliderCo from "./slidercourse/slidercourse";
 import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import {Helmet} from "react-helmet";
 
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
@@ -46,6 +47,12 @@ const LandingPage = () => {
 
   return (
     <>
+
+<Helmet>
+                <meta charSet="utf-8" />
+                <title>Home</title>
+                
+            </Helmet>
       {isLoading ? (
         <div className="isLoading">
           <SolarSystemLoading />

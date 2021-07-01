@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-
+import {Helmet} from "react-helmet";
 const Blog = ({ blog }) => {
   function removeTags(str) {
     if (str === null || str === "") return false;
@@ -70,6 +70,7 @@ const Blog = ({ blog }) => {
   let a = "/blogsdetailspage/" + blog.slug;
   return (
     <>
+     
       {isLoading ? (
         <div className="isLoading">
           <SolarSystemLoading />

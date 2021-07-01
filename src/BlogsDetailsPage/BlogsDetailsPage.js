@@ -6,6 +6,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { useParams } from "react-router-dom";
 import Researchpgms from "../Backend/Researchpgms";
 import Footer from "../LandingPage/footer/footer";
+import {Helmet} from "react-helmet";
 import "./BlogsDetailsPage.css";
 function BlogsDetailsPage({ blog }) {
   const [blogsData, setblogData] = useState("");
@@ -33,6 +34,11 @@ function BlogsDetailsPage({ blog }) {
 
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>{blogsData.title}</title>
+                
+            </Helmet>
       {isLoading ? (
         <div className="isLoading">
         <SolarSystemLoading/>

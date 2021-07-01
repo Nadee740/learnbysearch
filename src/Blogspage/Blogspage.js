@@ -5,6 +5,9 @@ import { useEffect,useState  } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import {Helmet} from "react-helmet";
+
+
 const BlogsPage = () => {
        const[blogsData,setblogData]=useState("")
        const[blogsfulldata,setblogsfulldata]=useState("")
@@ -52,6 +55,11 @@ else{
    
   }, [])
   return (<>
+   <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home  |  Blogs</title>
+                
+            </Helmet>
     {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:
     <div className="blogpage">
       <div className="blogheader">

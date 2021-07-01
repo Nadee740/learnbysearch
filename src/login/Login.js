@@ -10,6 +10,8 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import Authverifier from "../Backend/Authverifier";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import {Helmet} from "react-helmet";
+
 const Login = () => {
   const [username, setUser] = useState("");
   const [password, setPass] = useState("");
@@ -107,6 +109,11 @@ const [isLoggedIn, setisLoggedin] = useState(false);
 
   return (
     <>
+     <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home</title>
+                
+            </Helmet>
    
       <div className="popupscreen">
         <section
