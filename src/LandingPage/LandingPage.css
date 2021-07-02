@@ -285,8 +285,8 @@ p {
   background-position: bottom;
   background-image: linear-gradient(
       70.04deg,
-      rgba(0, 0, 0, 0.63) 0%,
-      rgba(0, 0, 0, 0.711) 101.15%
+      rgba(0, 0, 0, 0.774) 0%,
+      rgba(0, 0, 0, 0.788) 101.15%
     ),
     url("./grad.jpg");
 }
@@ -319,6 +319,9 @@ p {
   margin: 10px;
 }
 @media screen and (max-width: 800px) {
+  .app-status-home {
+    width: 95% !important;
+  }
   .outcomes {
     margin: 5px 30px;
   }
