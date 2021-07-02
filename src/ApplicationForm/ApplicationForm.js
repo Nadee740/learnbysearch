@@ -228,8 +228,17 @@ const ApplicationForm = () => {
                             className="selectbx"
                             onChange={(e) => {
                            
-                              console.log(q2);
+                              console.log(e.target.value);
                               setq2(e.target.value);
+                              if(e.target.value=="true")
+                              {document.querySelector(".otpdisplay").style.display = "none";
+                              console.log('aa')
+                              }
+                              else
+                              {
+                                console.log("hy")
+                              document.querySelector(".otpdisplay").style.display = "flex";
+                              }
                             }}
                           >
                             <option  value={true} className="selectbx-itm">
@@ -242,9 +251,10 @@ const ApplicationForm = () => {
                         </div>
                       </div>
                     </div>
-                   {!q2?    
+                   {true?  
+                   (  
                     <div
-                      className="inputholder inputholder2 "
+                      className="inputholder inputholder2 otpdisplay "
                       id="usernameholder"
                     >
                       <div className="inputholder-top ">
@@ -261,7 +271,7 @@ const ApplicationForm = () => {
                       <label className="label" htmlFor="">
                         {err && err}
                       </label>
-                    </div>:""
+                    </div>):<></>
       }
       
 
