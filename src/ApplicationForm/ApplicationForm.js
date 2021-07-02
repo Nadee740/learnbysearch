@@ -77,7 +77,7 @@ const ApplicationForm = () => {
 
   const submitApplictaionform = async (e) => {
     e.preventDefault();
-    if (!q2 && q3 == "") {
+    if (q2=="false" && q3 == "") {
       seterr("Please type a valid Reason ");
     } else {
       const data = { PositionId, ResearchProgramId, q1, q2, q3 };
