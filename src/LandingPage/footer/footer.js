@@ -59,9 +59,9 @@ const Subscribe = async () => {
       </div>
       <div className="footer-col2">
         <div className="footer-col2-1">
-          <div className="socialIcn">
+          {/* <div className="socialIcn">
            <FaFacebookF size="1.3em" color="#F4F4F4" />
-          </div>
+          </div> */}
 
           <div className="socialIcn">
           <a href="https://www.instagram.com/learnbyresearch/"> <FaInstagram size="1.3em" color="#F4F4F4" /></a>
@@ -69,9 +69,9 @@ const Subscribe = async () => {
           <div className="socialIcn">
             <a href="https://www.linkedin.com/company/learnbyresearch/"><FaLinkedinIn size="1.3em" color="#F4F4F4" /></a>
           </div>
-          <div className="socialIcn">
+          {/* <div className="socialIcn">
             <FaTwitter size="1.3em" color="#F4F4F4" />
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

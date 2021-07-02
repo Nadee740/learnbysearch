@@ -164,16 +164,17 @@ const ApplicationForm = () => {
                 <div className="singup-form">
                   <h2 className="form-title">APPLICATION </h2>
                   <form onSubmit={submitApplictaionform}>
-                  <p className="inputtext">What do you want to achieve ?</p>
+                  <p className="inputtext">What do you want to achieve by joining the research program?</p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
                     >
                       <div className="inputholder-top ">
                         <textarea
-                          rows="2"
+                        maxLength={100}
+                          rows="5"
                           className="textarea"
-                          placeholder="What do you want to achieve by joining the research program?"
+                          placeholder=""
                           required
                           value={q1}
                           onChange={(e) => {
@@ -182,7 +183,7 @@ const ApplicationForm = () => {
                         ></textarea>
                       </div>
                     </div>
-                    <p className="inputtext">SELECT THE POSITION FOR WHICH YOU HAVE TO APPLY !</p>
+                    <p className="inputtext">Select the position for which you are applying :</p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
@@ -214,10 +215,9 @@ const ApplicationForm = () => {
                         </div>
                       </div>
                     </div>
-                    <p className="inputtext"> The Program charges 5000 fees to cover the
-                          research,training and resources cost.Can you afford to
-                          pay the fees?( If eligible you may get financial
-                          assistance to support. ) !</p>
+                    <p className="inputtext"> The Program charges Rs. 5000 fees to cover the
+                          research, training and resources cost. Can you afford to
+                          pay the fees? </p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
@@ -260,20 +260,21 @@ const ApplicationForm = () => {
                       </div>
                     </div>
                     
-                    {paravisible?<p className="inputtext">If You Want financial assistance please mention your annual family income and tell us how you can help LearnByResearch to support others in need of assistance like you !</p>:""}
+                    {paravisible?<p className="inputtext">If You Want financial assistance please mention your annual family income and tell us how you can help LearnByResearch to support others in need of assistance like you :</p>:""}
                       <div
                         className="inputholder inputholder2 otpdisplay "
                         id="usernameholder"
                       >
                         <div className="inputholder-top ">
                           <textarea
+                          maxLength={250}
                             value={q3}
                             onChange={(e) => {
                               setq3(e.target.value);
                             }}
-                            rows="5"
+                            rows="15"
                             className="textarea"
-                            placeholder="If You Want financial assistance please mention your annual family income and tell us how you can help LearnByResearch to support others in need of assistance like you"
+                            placeholder=""
                           ></textarea>
                         </div>
                         <label className="label" htmlFor="">
@@ -284,7 +285,7 @@ const ApplicationForm = () => {
 
                     <input
                       type="submit"
-                      value="submit"
+                      value="Submit"
                       placeholder="Sign Up"
                       className="submit-btn"
                     />
