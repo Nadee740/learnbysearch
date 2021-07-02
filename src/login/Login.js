@@ -80,8 +80,8 @@ const [isLoggedIn, setisLoggedin] = useState(false);
     e.preventDefault();
 
     setisLoading(true)
-    stylefunction("none", "password");
-    stylefunction("none", "username");
+    stylefunction("2px solid #81818128", "password");
+    stylefunction("2px solid #81818128", "username");
     setpassrerror();
     const log_data = {
       username,
@@ -96,8 +96,8 @@ const [isLoggedIn, setisLoggedin] = useState(false);
       setvisible(true);
     }
     else if (!messagee.includes("successfully")) {
-      stylefunction("0.2px outset red", "pass-holder");
-      stylefunction("0.2px outset red", "usernameholder");
+      stylefunction("2px outset red", "pass-holder");
+      stylefunction("2px outset red", "usernameholder");
       setpassrerror(messagee);
     } else {
       

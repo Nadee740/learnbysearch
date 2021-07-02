@@ -54,10 +54,10 @@ const Signup = () => {
     setusererror();
     setpassrerror();
 
-    stylefunction("none", "username");
-    stylefunction("none", "email");
-    stylefunction("none", "phone");
-    stylefunction("none", "password");
+    stylefunction("2px solid #81818128", "username");
+    stylefunction("2px solid #81818128", "email");
+    stylefunction("2px solid #81818128", "phone");
+    stylefunction("2px solid #81818128", "password");
 
     let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/;
 
@@ -65,8 +65,8 @@ const Signup = () => {
       if (confirmpass != password) {
         setconfirmpassrerror("Password does not match ");
         setcursor("confirmpassword");
-        stylefunction("0.2px outset red", "password");
-        stylefunction("0.2px outset red", "confirmpassword");
+        stylefunction("2px outset red", "password");
+        stylefunction("2px outset red", "confirmpassword");
       } else {
         const reg_data = {
           username,
@@ -88,25 +88,25 @@ const Signup = () => {
           setvisible(true);
         } else if (messagee.includes("email")) {
           setemailerror(messagee);
-          stylefunction("0.2px outset red", "email");
+          stylefunction("2px outset red", "email");
           setcursor("email");
         } else if (messagee.includes("password")) {
           setpassrerror(messagee);
-          stylefunction("0.2px outset red", "password");
+          stylefunction("2px outset red", "password");
           setcursor("password");
-        } else if (messagee.includes("Username")) {
-          stylefunction("0.2px outset red", "username");
+        } else if (messagee.toLowerCase().includes("username")) {
+          stylefunction("2px outset red", "username");
 
           setusererror(messagee);
           setcursor("username");
-        } else if (messagee.toLowerCase().includes("Phone")) {
-          stylefunction("0.2px outset red", "phone");
+        } else if (messagee.toLowerCase().includes("phone")) {
+          stylefunction("2px outset red", "phone");
           setphoneerror(messagee);
           setcursor("phone");
         }
       }
     } else {
-      stylefunction("0.2px outset red", "password");
+      stylefunction("2px outset red", "password");
       alert(
         "Password should contain uppercase,lowercase,digit,alpha characters"
       );

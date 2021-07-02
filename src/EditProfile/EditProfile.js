@@ -144,7 +144,7 @@ const EditProfile = () => {
       phoneNumber.length < 6
     ) {
       setphoneerr("PLEASE TYPE A VALID PHONE NUMBER");
-      stylefunction("0.2px outset red", "PhoneNumber");
+      stylefunction("2px outset red", "PhoneNumber");
       setcursor("PhoneNumber");
     } else {
       const veri_data = {
@@ -218,7 +218,7 @@ const EditProfile = () => {
       setvisible(true);
     } else {
       setemailerr(messagee);
-      stylefunction("0.2px outset red", "email");
+      stylefunction("2px outset red", "email");
       setcursor("email");
     }
   };
