@@ -69,6 +69,12 @@
 }
 @media screen and (max-width: 960px) {
   .cardholder {
+    padding: 20px 5px;
     grid-template-columns: repeat(1, 1fr);
+  }
+  .openprogramcard {
+  }
+  .openprograms {
+    padding: 30px 15px;
   }
 }
