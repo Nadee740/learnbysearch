@@ -163,6 +163,7 @@ const ApplicationForm = () => {
                 <div className="singup-form">
                   <h2 className="form-title">APPLICATION </h2>
                   <form onSubmit={submitApplictaionform}>
+                  <p className="inputtext">What do you want to achieve ?</p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
