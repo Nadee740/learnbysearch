@@ -16,7 +16,8 @@ const MyApplications = () => {
   const [rpData, setrp] = useState();
   let array = [];
   let rparray = [];
-  let count = 1;
+  let count = 0;
+  let checkcount=1;
   useEffect(async () => {
     const { isLoggedIn: messagee, data: Datass } = await Authverifier(
       `${window.name}users/me`
@@ -30,7 +31,7 @@ const MyApplications = () => {
     if (userdata.applicationForm.length == 0) {
       setisempty(true);
       setisLoading(false);
-      console.log("hy");
+      
     } else {
       userdata.applicationForm.map(async (application) => {
         const app_data = {
@@ -41,16 +42,17 @@ const MyApplications = () => {
           app_data
         );
          count++;
-        //  console.log(count)
-        if (retdata != null) array.push(retdata);
-        console.log(retdata.data, "kunjoo");
+       
+        if (retdata != null) 
+        array.push(retdata);
+        console.log(retdata, "kunjoo5");
         if (count == userdata.applicationForm.length) {
           if(array.length>0)
           {
           setapplication(array);
-          console.log(array, "kunjoo");
+          console.log(array, "kunjoo5");
 getreaserch(array);
-          }
+        }
           else{
             setisempty(true);
       setisLoading(false);
@@ -61,11 +63,14 @@ getreaserch(array);
   };
 
   const getreaserch = (datas) => {
+    console.log("hyy")
     datas.map(async (data) => {
       const { data: Datass } = await Researchpgms(
         `${window.name}research-program-id/${data.rp}`
       );
+      checkcount++;
       rparray.push(Datass);
+      
       if (datas.length == rparray.length) {
         setrp(rparray);
 
