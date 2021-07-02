@@ -92,6 +92,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
       log_data
     );
     if (messagee.includes("your account is not verifed")) {
+      setisLoading(false);
       setvisible(true);
     }
     else if (!messagee.includes("successfully")) {
