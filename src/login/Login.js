@@ -149,7 +149,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
           <Modal
             visible={resendmailvisible}
             width="350"
-            height="200"
+            height="250"
             effect="fadeInUp"
             onClickAway={closeresendmail}
           >
@@ -184,7 +184,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
           <Modal
             visible={forgotpassvisible}
             width="350"
-            height="200"
+            height="250"
             effect="fadeInUp"
             onClickAway={closeforgotpassModal}
           >
