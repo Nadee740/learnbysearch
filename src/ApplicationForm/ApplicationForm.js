@@ -12,6 +12,7 @@ import { Helmet } from "react-helmet";
 
 const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
+  const [paravisible, setparavisible] = useState(false);
   const [errorvisible, seterrorvisible] = useState(false);
 
   const { slug } = useParams();
@@ -181,15 +182,15 @@ const ApplicationForm = () => {
                         ></textarea>
                       </div>
                     </div>
-
+                    <p className="inputtext">SELECT THE POSITION FOR WHICH YOU HAVE TO APPLY !</p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
                     >
                       <div className="inputholder-top inputholder-top3">
-                        <p className="inputp">
+                        {/* <p className="inputp">
                           SELECT THE POSITION FOR WHICH YOU HAVE TO APPLY !
-                        </p>
+                        </p> */}
                         <div className="div">
                           <select
                             className="selectbx"
@@ -213,17 +214,21 @@ const ApplicationForm = () => {
                         </div>
                       </div>
                     </div>
+                    <p className="inputtext"> The Program charges 5000 fees to cover the
+                          research,training and resources cost.Can you afford to
+                          pay the fees?( If eligible you may get financial
+                          assistance to support. ) !</p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
                     >
                       <div className="inputholder-top inputholder-top3  ">
-                        <p className="inputp">
+                        {/* <p className="inputp">
                           The Program charges 5000 fees to cover the
                           research,training and resources cost.Can you afford to
                           pay the fees?( If eligible you may get financial
                           assistance to support. )
-                        </p>
+                        </p> */}
                         <div className="div ">
                           <select
                             className="selectbx"
@@ -231,12 +236,13 @@ const ApplicationForm = () => {
                              
                               setq2(e.target.value);
                               if (e.target.value == "true") {
+                                setparavisible(false)
                                 document.querySelector(
                                   ".otpdisplay"
                                 ).style.display = "none";
                                
                               } else {
-                                
+                                setparavisible(true)
                                 document.querySelector(
                                   ".otpdisplay"
                                 ).style.display = "flex";
@@ -253,7 +259,8 @@ const ApplicationForm = () => {
                         </div>
                       </div>
                     </div>
-                    {true ? (
+                    
+                    {paravisible?<p className="inputtext">If You Want financial assistance please mention your annual family income and tell us how you can help LearnByResearch to support others in need of assistance like you !</p>:""}
                       <div
                         className="inputholder inputholder2 otpdisplay "
                         id="usernameholder"
@@ -273,9 +280,7 @@ const ApplicationForm = () => {
                           {err && err}
                         </label>
                       </div>
-                    ) : (
-                      <></>
-                    )}
+                    
 
                     <input
                       type="submit"
