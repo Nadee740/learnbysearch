@@ -6,7 +6,7 @@ import Modal from "react-awesome-modal";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import "./Signup.css";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const Signup = () => {
   const [FirstName, setFirstName] = useState("");
@@ -115,11 +115,10 @@ const Signup = () => {
 
   return (
     <>
-     <Helmet>
-                <meta charSet="utf-8" />
-                <title>Home | SignUp</title>
-                
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home | SignUp</title>
+      </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -270,11 +269,14 @@ const Signup = () => {
                       type={confirmpassVISIBLE ? "text" : "password"}
                       placeholder="Confirm Password"
                       onBlur={() => {
-                        stylefunction("none", "confirmpassword");
+                        stylefunction("2px solid #81818128", "confirmpassword");
                       }}
                       onFocus={() => {
                         if (confirmpass === password) {
-                          stylefunction("none", "confirmpassword");
+                          stylefunction(
+                            "2px solid #81818128",
+                            "confirmpassword"
+                          );
                         } else {
                           stylefunction("0.2px outset red", "confirmpassword");
                         }
@@ -282,7 +284,10 @@ const Signup = () => {
                       onChange={(e) => {
                         setConfrpass(e.target.value);
                         if (e.target.value === password) {
-                          stylefunction("none", "confirmpassword");
+                          stylefunction(
+                            "2px solid #81818128",
+                            "confirmpassword"
+                          );
                         } else {
                           stylefunction("0.2px outset red", "confirmpassword");
                         }
