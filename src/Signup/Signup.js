@@ -278,7 +278,7 @@ const Signup = () => {
                             "confirmpassword"
                           );
                         } else {
-                          stylefunction("0.2px outset red", "confirmpassword");
+                          stylefunction("2px outset red", "confirmpassword");
                         }
                       }}
                       onChange={(e) => {
@@ -289,7 +289,7 @@ const Signup = () => {
                             "confirmpassword"
                           );
                         } else {
-                          stylefunction("0.2px outset red", "confirmpassword");
+                          stylefunction("2px outset red", "confirmpassword");
                         }
                       }}
                     />

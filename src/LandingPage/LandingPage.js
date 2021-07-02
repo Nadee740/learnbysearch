@@ -252,24 +252,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <div
-            className="holder-divv"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
-          >
-            <div className="applications-heading">
-              <h2>Selection Proccess</h2>
-            </div>
-            <img
-              src="/images/app-status.svg"
-              alt="app-status"
-              className="app-status"
-            />
-          </div>
+
           <div className="applydetails">
             <div className="applydetails-col1">
               <h2>Why you must apply?</h2>
