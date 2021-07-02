@@ -102,7 +102,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
       setisLoading(false);
     } else {
       
-      window.location = "/";
+      window.location = "/openprogrammes";
       setUser("");
       setPass("");
     }
