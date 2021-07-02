@@ -264,9 +264,11 @@ function OpenProgrammesPage() {
                   {mentors &&
                     mentors.map((mentor, index) => {
                       const htmlparteducation = mentor.education;
-                      const htmlpartbio = mentor.bio;
                       const htmlorganisation = mentor.organisation;
                       const htmlpartposition = mentor.position;
+                      
+                      const htmlpartbio =mentor.bio && mentor.bio;
+                      
                       return (
                         <div className="mentors-item" key={index}>
                           <img
@@ -293,9 +295,12 @@ function OpenProgrammesPage() {
                                 __html: htmlpartposition,
                               }}
                             ></div>{" "}
+                            {
+                              htmlpartbio&&
                             <div
                               dangerouslySetInnerHTML={{ __html: htmlpartbio }}
                             ></div>
+                            }
                           </p>
                           <div className="holder-w">
                             <a

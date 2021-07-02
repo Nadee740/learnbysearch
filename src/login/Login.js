@@ -80,8 +80,8 @@ const [isLoggedIn, setisLoggedin] = useState(false);
     e.preventDefault();
 
     setisLoading(true)
-    stylefunction("2px solid #81818128", "password");
-    stylefunction("2px solid #81818128", "username");
+    // stylefunction("2px solid #81818128", "passholder");
+    // stylefunction("2px solid #81818128", "usernameholder");
     setpassrerror();
     const log_data = {
       username,
@@ -96,9 +96,10 @@ const [isLoggedIn, setisLoggedin] = useState(false);
       setvisible(true);
     }
     else if (!messagee.includes("successfully")) {
-      stylefunction("2px outset red", "pass-holder");
-      stylefunction("2px outset red", "usernameholder");
+      // stylefunction("2px outset red", "passholder");
+      // stylefunction("2px outset red", "usernameholder");
       setpassrerror(messagee);
+      setisLoading(false);
     } else {
       
       window.location = "/";
@@ -244,7 +245,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
                   </div>
                 </div>
 
-                <div className="inputholder" id="pass-holder">
+                <div className="inputholder" id="passholder">
                   <div className="inputholder-top">
                     <input
                       id="password"

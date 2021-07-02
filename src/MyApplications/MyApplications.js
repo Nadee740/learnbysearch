@@ -143,7 +143,7 @@ const MyApplications = () => {
                       <p className="myapplication-row-text ">
                         {rpData[index].title}
                       </p>
-                      <p className="myapplication-row-text ">2 June 2020</p>
+                      <p className="myapplication-row-text ">{application.date.substring(0, 10)}</p>
                       <p className="myapplication-row-text  ">
                         <button className={classtype}>{title}</button>
                         {}

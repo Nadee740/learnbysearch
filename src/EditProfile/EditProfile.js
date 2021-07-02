@@ -189,8 +189,8 @@ const EditProfile = () => {
     setotperr("wrong code");
   };
 
-  const MakeChanges = async () => {
-    
+  const MakeChanges = async (e) => {
+    e.preventDefault();
     const DOB = value;
     const edit_data = {
       FirstName,
@@ -622,8 +622,8 @@ const EditProfile = () => {
                     </>
                   </Tooltip>
                   <input
-                  onClick={MakeChanges}
-                    type="button"
+                  // onClick={MakeChanges}
+                    type="submit"
                     value="SAVE CHANGES"
                     className="submit-btn"
                   />
