@@ -17,10 +17,12 @@ import Tooltip from "@material-ui/core/Tooltip";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import {Helmet} from "react-helmet";
+import { useHistory } from "react-router-dom";
 
 const EditProfile = () => {
   const [userid, setUserid] = useState(localStorage.getItem("loggedinuserid"));
   let userrr = { id: userid };
+  const history = useHistory();
 
   const getData = async () => {
     setisLoading(true);
@@ -113,6 +115,7 @@ const EditProfile = () => {
     if (messagee) {
       
       localStorage.removeItem("LoggedInUserTokenID");
+      
       window.location = "/";
     } else {
      
@@ -121,6 +124,7 @@ const EditProfile = () => {
 
   const closeModal = () => {
     setvisible(false);
+    history.goBack()
   }; 
   
   const closeOtpModal = () => {
@@ -277,7 +281,7 @@ const EditProfile = () => {
             <div className="popup">
               <h1>LEARN BY RESEARCH</h1>
               <p>PROFILE UPDATES SUCCESFULLY ...</p>
-              <Link to="/openprogrammes" onClick={closeModal}>
+              <Link  onClick={closeModal}>
                 Close
               </Link>
             </div>
