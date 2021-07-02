@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
 import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
@@ -61,7 +61,7 @@ const ApplicationForm = () => {
       `${window.name}research-program/${slug}`
     );
     setblogData(Datass);
-   setResearchProgramId(Datass._id)
+    setResearchProgramId(Datass._id);
     await getPositions(Datass);
   };
 
@@ -88,6 +88,7 @@ const ApplicationForm = () => {
       );
       console.log(messagee, "naml nooka");
       if (messagee.includes("Application form submitted")) {
+        setisLoading(false);
         setvisible(true);
       } else {
         seterrorvisible(true);
@@ -97,11 +98,10 @@ const ApplicationForm = () => {
 
   return (
     <>
-     <Helmet>
-                <meta charSet="utf-8" />
-                <title>Home | Programs</title>
-                
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home | Programs</title>
+      </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -150,7 +150,7 @@ const ApplicationForm = () => {
       </div>
       {isLoading ? (
         <div className="isLoading">
-        <SolarSystemLoading/>
+          <SolarSystemLoading />
         </div>
       ) : (
         <div>
@@ -227,21 +227,22 @@ const ApplicationForm = () => {
                           <select
                             className="selectbx"
                             onChange={(e) => {
-                           
                               console.log(e.target.value);
                               setq2(e.target.value);
-                              if(e.target.value=="true")
-                              {document.querySelector(".otpdisplay").style.display = "none";
-                              console.log('aa')
-                              }
-                              else
-                              {
-                                console.log("hy")
-                              document.querySelector(".otpdisplay").style.display = "flex";
+                              if (e.target.value == "true") {
+                                document.querySelector(
+                                  ".otpdisplay"
+                                ).style.display = "none";
+                                console.log("aa");
+                              } else {
+                                console.log("hy");
+                                document.querySelector(
+                                  ".otpdisplay"
+                                ).style.display = "flex";
                               }
                             }}
                           >
-                            <option  value={true} className="selectbx-itm">
+                            <option value={true} className="selectbx-itm">
                               YES
                             </option>
                             <option value={false} className="selectbx-itm">
@@ -251,33 +252,33 @@ const ApplicationForm = () => {
                         </div>
                       </div>
                     </div>
-                   {true?  
-                   (  
-                    <div
-                      className="inputholder inputholder2 otpdisplay "
-                      id="usernameholder"
-                    >
-                      <div className="inputholder-top ">
-                        <textarea
-                          value={q3}
-                          onChange={(e) => {
-                            setq3(e.target.value);
-                          }}
-                          rows="5"
-                          className="textarea"
-                          placeholder="If You Want financial assistance please mention your annual family income and tell us how you can help LearnByResearch to support others in need of assistance like you"
-                        ></textarea>
+                    {true ? (
+                      <div
+                        className="inputholder inputholder2 otpdisplay "
+                        id="usernameholder"
+                      >
+                        <div className="inputholder-top ">
+                          <textarea
+                            value={q3}
+                            onChange={(e) => {
+                              setq3(e.target.value);
+                            }}
+                            rows="5"
+                            className="textarea"
+                            placeholder="If You Want financial assistance please mention your annual family income and tell us how you can help LearnByResearch to support others in need of assistance like you"
+                          ></textarea>
+                        </div>
+                        <label className="label" htmlFor="">
+                          {err && err}
+                        </label>
                       </div>
-                      <label className="label" htmlFor="">
-                        {err && err}
-                      </label>
-                    </div>):<></>
-      }
-      
+                    ) : (
+                      <></>
+                    )}
 
                     <input
                       type="submit"
-                      value={q2}
+                      value="submit"
                       placeholder="Sign Up"
                       className="submit-btn"
                     />

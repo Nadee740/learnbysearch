@@ -5,7 +5,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import Authverifier from "../Backend/Authverifier";
 import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import "./MyApplications.css";
 const MyApplications = () => {
   const [userData, setuserData] = useState();
@@ -16,7 +16,7 @@ const MyApplications = () => {
   const [rpData, setrp] = useState();
   let array = [];
   let rparray = [];
-  let count = 1;
+  let count = 0;
   useEffect(async () => {
     const { isLoggedIn: messagee, data: Datass } = await Authverifier(
       `${window.name}users/me`
@@ -40,20 +40,18 @@ const MyApplications = () => {
           `${window.name}show-application-status`,
           app_data
         );
-         count++;
+        count++;
         //  console.log(count)
         if (retdata != null) array.push(retdata);
         console.log(retdata.data, "kunjoo");
         if (count == userdata.applicationForm.length) {
-          if(array.length>0)
-          {
-          setapplication(array);
-          console.log(array, "kunjoo");
-getreaserch(array);
-          }
-          else{
+          if (array.length > 0) {
+            setapplication(array);
+            console.log(array, "kunjoo");
+            getreaserch(array);
+          } else {
             setisempty(true);
-      setisLoading(false);
+            setisLoading(false);
           }
         }
       });
@@ -66,7 +64,7 @@ getreaserch(array);
         `${window.name}research-program-id/${data.rp}`
       );
       rparray.push(Datass);
-      if (datas.length == rparray.length) {
+      if (datas.length === rparray.length) {
         setrp(rparray);
 
         console.log(rparray, "moonjj");
@@ -77,14 +75,13 @@ getreaserch(array);
 
   return (
     <>
-       <Helmet>
-                <meta charSet="utf-8" />
-                <title>Home | Applications</title>
-                
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home | Applications</title>
+      </Helmet>
       {isLoading ? (
         <div className="isLoading">
-        <SolarSystemLoading/>
+          <SolarSystemLoading />
         </div>
       ) : isLoggedIn ? (
         isempty ? (
@@ -151,8 +148,6 @@ getreaserch(array);
                     </div>
                   );
                 })}
-
-             
               </div>
             </div>
             <div className="applications-heading">

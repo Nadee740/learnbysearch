@@ -8,7 +8,7 @@ import Researchpgms from "../Backend/Researchpgms";
 import SliderCo from "./slidercourse/slidercourse";
 import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import Authverifier from "../Backend/Authverifier";
 
 const LandingPage = () => {
@@ -16,7 +16,6 @@ const LandingPage = () => {
   const [isLoading, setisLoading] = useState(true);
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [pgmsData, setpgms] = useState("");
- 
 
   const [error, seterror] = useState(false);
 
@@ -40,8 +39,7 @@ const LandingPage = () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(`${window.name}blog`);
     setblogData(Datass);
-    checkLOgin()
-    
+    checkLOgin();
   };
 
   const checkLOgin = async () => {
@@ -57,12 +55,10 @@ const LandingPage = () => {
 
   return (
     <>
-
-<Helmet>
-                <meta charSet="utf-8" />
-                <title>Home</title>
-                
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home</title>
+      </Helmet>
       {isLoading ? (
         <div className="isLoading">
           <SolarSystemLoading />
@@ -89,16 +85,19 @@ const LandingPage = () => {
                     <p>Online Independent R&D Hub</p>
                   </div>
 
-                {!isLoggedIn?  <div className="buttons ">
-                    <Link to="/signup" className="btns button1">
-                      SIGN UP
-                    </Link>
-                    <br></br>
-                    <Link to="/login" className="btns button2">
-                      LOGIN
-                    </Link>
-                  </div>:""
-                }
+                  {!isLoggedIn ? (
+                    <div className="buttons ">
+                      <Link to="/signup" className="btns button1">
+                        SIGN UP
+                      </Link>
+                      <br></br>
+                      <Link to="/login" className="btns button2">
+                        LOGIN
+                      </Link>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             </div>
@@ -253,7 +252,24 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-
+          <div
+            className="holder-divv"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <div className="applications-heading">
+              <h2>Selection Proccess</h2>
+            </div>
+            <img
+              src="/images/app-status.svg"
+              alt="app-status"
+              className="app-status"
+            />
+          </div>
           <div className="applydetails">
             <div className="applydetails-col1">
               <h2>Why you must apply?</h2>
