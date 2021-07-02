@@ -124,7 +124,7 @@ const Signup = () => {
           <Modal
             visible={visible}
             width="350"
-            height="200"
+            height="250"
             effect="fadeInUp"
             onClickAway={closeModal}
           >
@@ -135,8 +135,8 @@ const Signup = () => {
                 alt=""
               />
               <p>
-                PLEASE VERIFY YOUR EMAIL .YOUR ARE ONE STEP AHEAD OF CREATING
-                YOUR ACCOUNT...
+                Please verify your email  .you are one step ahead of creating 
+                your account.Please Check spam folder too ! 
               </p>
               <Link to="/" onClick={closeModal}>
                 Close
