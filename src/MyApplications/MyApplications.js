@@ -110,7 +110,7 @@ const MyApplications = () => {
                   </p>
                 </div>
                 {applications.map((application, index) => {
-                  console.log(application, "idhend");
+                  
                   let classn = "",
                     title = "",
                     classtype = "myapplication-row-btn ";

@@ -45,7 +45,7 @@ const ApplicationForm = () => {
       array.push(Datass);
 
       setPosition(array);
-      console.log(array);
+     
       if (data.positions.length == array.length) {
         setisLoading(false);
         setPositionId(array[0]._id);
@@ -67,7 +67,7 @@ const ApplicationForm = () => {
 
   const handleChange = (event) => {
     setSwitch(switchitm);
-    console.log(switchitm);
+    
   };
 
   useEffect(() => {
@@ -228,15 +228,15 @@ const ApplicationForm = () => {
                           <select
                             className="selectbx"
                             onChange={(e) => {
-                              console.log(e.target.value);
+                             
                               setq2(e.target.value);
                               if (e.target.value == "true") {
                                 document.querySelector(
                                   ".otpdisplay"
                                 ).style.display = "none";
-                                console.log("aa");
+                               
                               } else {
-                                console.log("hy");
+                                
                                 document.querySelector(
                                   ".otpdisplay"
                                 ).style.display = "flex";

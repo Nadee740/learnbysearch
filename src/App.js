@@ -34,7 +34,7 @@ function App() {
     );
     setisLoggedin(messagee);
     setisLoading(false);
-    console.log(messagee);
+    
   }, []);
 
   return (
