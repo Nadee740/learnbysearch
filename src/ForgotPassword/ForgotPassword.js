@@ -39,7 +39,7 @@ const GetData=async()=>{
         url
 
       );
-      console.log(messagee)
+      
     
 }
 

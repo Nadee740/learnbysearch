@@ -1,7 +1,7 @@
 
 
  const ChangePassword = async(url) => {
-    // const [cookies, setCookie] = useCookies(['user']);
+    
  let message="";
  let retdata={};
  console.log(url)
@@ -30,8 +30,7 @@
             .catch(
             err => {
                 
-                console.log(err.message)
-                console.log(1)
+                
                 message=err.message
                 // setErr(err.message)
                 

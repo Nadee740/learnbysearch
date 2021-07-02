@@ -23,14 +23,14 @@ const Changepassword = () => {
   const [isLoggedIn,setisLoggedin]=useState(false)
   const [isLoading,setisLoading]=useState(false)
   useEffect(async() => {
-  //localStorage.clear()
+ 
   setisLoading(true)
   const { isLoggedIn: messagee } = await Authverifier(
     `${window.name}users/me`
   );
   setisLoggedin(messagee) 
   setisLoading(false)
-  console.log(messagee)
+
       
    }, [])
   

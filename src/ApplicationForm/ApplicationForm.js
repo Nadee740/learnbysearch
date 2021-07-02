@@ -41,7 +41,7 @@ const ApplicationForm = () => {
       const { data: Datass } = await Researchpgms(
         `${window.name}position/${position}`
       );
-      console.log(Datass, "hyhyy");
+     
       array.push(Datass);
 
       setPosition(array);
@@ -81,12 +81,12 @@ const ApplicationForm = () => {
       seterr("Please type a valid Reason ");
     } else {
       const data = { PositionId, ResearchProgramId, q1, q2, q3 };
-      console.log(data);
+      
       const { message: messagee } = await SendPost(
         `${window.name}application-form`,
         data
       );
-      console.log(messagee, "naml nooka");
+      
       if (messagee.includes("Application form submitted")) {
         setisLoading(false);
         setvisible(true);

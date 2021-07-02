@@ -101,21 +101,21 @@ const EditProfile = () => {
   const LogOut = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
     if (messagee) {
-      console.log(messagee, "LOGOUT");
+  
       localStorage.removeItem("LoggedInUserTokenID");
       window.location = "/";
     } else {
-      console.log("SORRY");
+  
     }
   };
   const LogOutFromAllDevice = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout-all`);
     if (messagee) {
-      console.log(messagee, "LOGOUT");
+      
       localStorage.removeItem("LoggedInUserTokenID");
       window.location = "/";
     } else {
-      console.log("SORRY");
+     
     }
   };
 
@@ -137,7 +137,7 @@ const EditProfile = () => {
 
   const VERIFYPhonenumber = async (e) => {
     e.preventDefault()
-    console.log(phoneNumber);
+   
     if (
       phoneNumber == "" ||
       phoneNumber.length > 13 ||
@@ -150,7 +150,7 @@ const EditProfile = () => {
       const veri_data = {
         number: phoneNumber,
       };
-      console.log(veri_data);
+     
       const { message: messagee } = await SendPost(
         `${window.name}number-verification`,
         veri_data
@@ -208,7 +208,7 @@ const EditProfile = () => {
       University,
       GraduationYear,
     };
-    console.log(edit_data);
+    
     const { message: messagee } = await SendPost(
       `${window.name}edit-profile`,
       edit_data

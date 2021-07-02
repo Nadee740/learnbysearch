@@ -60,7 +60,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
       `${window.name}resend-email-verification`,
       log_data
     );
-    console.log(messagee, "messa");
+  
     setemailerr(messagee);
   };
 

@@ -22,22 +22,21 @@
                 
                 if(json.error){
                     isLoggedIn=false
-                    console.log(json.error)
+                   
                    
                     
                 }  else{
                     isLoggedIn=true
-                    console.log(json)
+                   
                     data=json;
-                    console.log(data,"daa")
+                    
                     
                 }
             })
             .catch(
             err => {
                 
-                console.log(err.message)
-                console.log(1)
+                
                 message=err.message
                 // setErr(err.message)
                 

@@ -17,10 +17,9 @@ const getBlogs=async()=>{
   setisLoading(true)
   const { data: Datass } = await Researchpgms(`${window.name}research-programs`)
   setblogData(Datass)
-  console.log(Datass.length,"Datasssss")
   
   
-  console.log(blogsData,"blogsdata")
+  
   setisLoading(false)
 }
        

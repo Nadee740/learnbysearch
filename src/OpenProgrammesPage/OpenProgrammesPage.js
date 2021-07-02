@@ -54,16 +54,16 @@ function OpenProgrammesPage() {
     setisLoading(true);
 
     data.mentors.map(async (mentor, index) => {
-      console.log(mentor, "mooonj");
+      
       const { data: Datass } = await Researchpgms(
         `${window.name}mentor/${mentor}`
       );
-      console.log(Datass, "hyhyy");
+    
       array.push(Datass);
-      console.log(array, "mentor");
+     
       setmentors(array);
 
-      console.log(error);
+    
       if (array.length == data.mentors.length) {
         setloaded();
         // array?seterror(false):seterror(true);
@@ -72,7 +72,7 @@ function OpenProgrammesPage() {
       }
     });
 
-    console.log(array, "moooonuus");
+   
   };
 
   const setloaded = () => {

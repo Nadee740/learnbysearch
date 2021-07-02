@@ -43,11 +43,11 @@ const MyApplications = () => {
         count++;
 
         if (retdata != null) array.push(retdata);
-        console.log(retdata, "kunjoo5");
+        
         if (count == userdata.applicationForm.length) {
           if (array.length > 0) {
             setapplication(array);
-            console.log(array, "kunjoo5");
+            
             getreaserch(array);
           } else {
             setisempty(true);
@@ -59,7 +59,7 @@ const MyApplications = () => {
   };
 
   const getreaserch = (datas) => {
-    console.log("hyy");
+    
     datas.map(async (data) => {
       const { data: Datass } = await Researchpgms(
         `${window.name}research-program-id/${data.rp}`
@@ -70,7 +70,7 @@ const MyApplications = () => {
       if (datas.length == rparray.length) {
         setrp(rparray);
 
-        console.log(rparray, "moonjj");
+    
         setisLoading(false);
       }
     });

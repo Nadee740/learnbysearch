@@ -24,23 +24,21 @@ const BlogsPage = () => {
 }
 
  const searchMethod=(val)=>{
-   console.log(val)
+ 
    let array=blogsfulldata
    
-   console.log(array)
-   console.log("Workiing")
+
    let arr=[]
 
    array.map((blog)=>{
 if(blog.title.toLowerCase().includes(val.toLowerCase()) || blog.author.toLowerCase().includes(val.toLowerCase()))
 {
-  //fkdjsdf
-  console.log(true)
+
 arr.push(blog)
 
 }
 else{
-  console.log(false)
+  
 }
    })
 

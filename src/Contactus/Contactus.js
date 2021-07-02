@@ -18,7 +18,7 @@ const ContactUs = () => {
   };
 
   const submitMssg = async (e) => {
-    console.log("clicked");
+    
     formdata.append("name", name);
     formdata.append("email", email);
     formdata.append("phone", phone);
@@ -35,8 +35,7 @@ const ContactUs = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.result);
-        console.log("huu");
+        
         if (json.result == "success") {
           setvisible(true);
         }

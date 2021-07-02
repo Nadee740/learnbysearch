@@ -76,13 +76,13 @@ const Signup = () => {
           phoneNumber,
           password,
         };
-        console.log(reg_data);
+     
 
         const { message: messagee } = await Tokenlesssendpost(
           `${window.name}register`,
           reg_data
         );
-        console.log(messagee);
+        
         if (messagee.includes("verification")) {
           document.getElementById("register-form").reset();
           setvisible(true);

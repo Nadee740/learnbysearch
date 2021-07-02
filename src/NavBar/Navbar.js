@@ -28,7 +28,7 @@ const Navbar = (props) => {
     setisLoggedin(messagee);
   };
   const showButton = () => {
-    console.log("Hyhyyy");
+  
     if (window.innerWidth <= 960) {
       setButton(false);
     } else {
@@ -63,21 +63,21 @@ const Navbar = (props) => {
   const LogOut = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
     if (messagee) {
-      console.log(messagee, "LOGOUT");
+     
       localStorage.removeItem("LoggedInUserTokenID");
       window.location = "/";
     } else {
-      console.log("SORRY");
+      
     }
   };
   const LogOutFromAllDevice = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout-all`);
     if (messagee) {
-      console.log(messagee, "LOGOUT");
+    
       localStorage.removeItem("LoggedInUserTokenID");
       window.location = "/";
     } else {
-      console.log("SORRY");
+     
     }
   };
 

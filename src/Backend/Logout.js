@@ -16,21 +16,20 @@ const Logout = async(url) => {
             .then(res => res.json())
             .then(json => {
                 if(json.error){
-                    console.log(Token)
+                   
                     LoggedOut=false
-                    console.log(json.error)
+                    
                    
                     
                 }  else{
                     LoggedOut=true
-                    console.log(json)
+                  
                 }
             })
             .catch(
             err => {
                 
-                console.log(err.message)
-                console.log(1)
+            
                 message=err.message
                 // setErr(err.message)
                 
