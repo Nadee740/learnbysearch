@@ -6,7 +6,7 @@ import { CookiesProvider } from "react-cookie";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Session from "react-session-persist/lib";
-window.name = "http://api.learnbyresearch.com/api/";
+window.name = "https://api.learnbyresearch.com/api/";
 // http://api.learnbyresearch.com/api/
 // http://localhost:8000/api/
 ReactDOM.render(
