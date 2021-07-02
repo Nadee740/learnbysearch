@@ -135,7 +135,8 @@ const Signup = () => {
                 alt=""
               />
               <p>
-                Please verify your email.Please Check spam folder too ! 
+                Please verify your email.<br></br>
+                Please Check spam folder too ! 
               </p>
               <Link to="/" onClick={closeModal}>
                 Close
