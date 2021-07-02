@@ -285,8 +285,8 @@ p {
   background-position: bottom;
   background-image: linear-gradient(
       70.04deg,
-      rgba(0, 0, 0, 0.63) 0%,
-      rgba(0, 0, 0, 0.711) 101.15%
+      rgba(0, 0, 0, 0.774) 0%,
+      rgba(0, 0, 0, 0.788) 101.15%
     ),
     url("./grad.jpg");
 }
@@ -319,6 +319,9 @@ p {
   margin: 10px;
 }
 @media screen and (max-width: 800px) {
+  .app-status-home {
+    width: 95% !important;
+  }
   .outcomes {
     margin: 5px 30px;
   }
@@ -360,12 +363,7 @@ p {
   .right-side {
     padding: 10px;
   }
-  .right-side h2 {
-    font-size: 30px;
 
-    line-height: 54px;
-    letter-spacing: 0.025em;
-  }
   .btns {
     width: 200px;
     height: 35px;
@@ -379,11 +377,6 @@ p {
     text-align: center;
   }
 
-  .scnd-content h2 {
-    font-size: 5vw;
-    line-height: 100%;
-    letter-spacing: 0.1em;
-  }
   .scnd-content p {
     font-size: 15px;
     width: 100%;
