@@ -17,7 +17,7 @@ const MyApplications = () => {
   let array = [];
   let rparray = [];
   let count = 0;
-
+  let checkcount = 1;
   useEffect(async () => {
     const { isLoggedIn: messagee, data: Datass } = await Authverifier(
       `${window.name}users/me`
