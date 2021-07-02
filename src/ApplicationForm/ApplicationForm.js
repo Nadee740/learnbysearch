@@ -171,7 +171,7 @@ const ApplicationForm = () => {
                     >
                       <div className="inputholder-top ">
                         <textarea
-                        maxLength={100}
+                        minLength={100}
                           rows="5"
                           className="textarea"
                           placeholder=""
@@ -267,7 +267,7 @@ const ApplicationForm = () => {
                       >
                         <div className="inputholder-top ">
                           <textarea
-                          maxLength={250}
+                          minLength={250}
                             value={q3}
                             onChange={(e) => {
                               setq3(e.target.value);
