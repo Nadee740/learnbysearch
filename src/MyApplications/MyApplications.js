@@ -43,11 +43,11 @@ const MyApplications = () => {
         count++;
 
         if (retdata != null) array.push(retdata);
-        
+
         if (count == userdata.applicationForm.length) {
           if (array.length > 0) {
             setapplication(array);
-            
+
             getreaserch(array);
           } else {
             setisempty(true);
@@ -59,7 +59,6 @@ const MyApplications = () => {
   };
 
   const getreaserch = (datas) => {
-    
     datas.map(async (data) => {
       const { data: Datass } = await Researchpgms(
         `${window.name}research-program-id/${data.rp}`
@@ -70,7 +69,6 @@ const MyApplications = () => {
       if (datas.length == rparray.length) {
         setrp(rparray);
 
-    
         setisLoading(false);
       }
     });
@@ -110,7 +108,6 @@ const MyApplications = () => {
                   </p>
                 </div>
                 {applications.map((application, index) => {
-                  
                   let classn = "",
                     title = "",
                     classtype = "myapplication-row-btn ";
@@ -143,7 +140,9 @@ const MyApplications = () => {
                       <p className="myapplication-row-text ">
                         {rpData[index].title}
                       </p>
-                      <p className="myapplication-row-text ">{application.date.substring(0, 10)}</p>
+                      <p className="myapplication-row-text ">
+                        {application.date.substring(0, 10)}
+                      </p>
                       <p className="myapplication-row-text  ">
                         <button className={classtype}>{title}</button>
                         {}
@@ -153,14 +152,24 @@ const MyApplications = () => {
                 })}
               </div>
             </div>
-            <div className="applications-heading">
-              <h2>Selection Proccess</h2>
+            <div
+              className="holder-divv"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+              }}
+            >
+              <div className="applications-heading">
+                <h2>Selection Proccess</h2>
+              </div>
+              <img
+                src="/images/app-status.svg"
+                alt="app-status"
+                className="app-status app-status-home"
+              />
             </div>
-            <img
-              src="/images/app-status.svg"
-              alt="app-status"
-              className="app-status"
-            />
           </div>
         )
       ) : (

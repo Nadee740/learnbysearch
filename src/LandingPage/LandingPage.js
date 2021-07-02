@@ -267,7 +267,7 @@ const LandingPage = () => {
             <img
               src="/images/app-status.svg"
               alt="app-status"
-              className="app-status"
+              className="app-status app-status-home"
             />
           </div>
 

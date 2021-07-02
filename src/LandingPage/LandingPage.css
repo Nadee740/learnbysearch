@@ -314,7 +314,10 @@ p {
     width: 40%;
   }
 }
-
+.app-status-home {
+  width: 65% !important;
+  margin: 10px;
+}
 @media screen and (max-width: 800px) {
   .outcomes {
     margin: 5px 30px;
