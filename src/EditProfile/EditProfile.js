@@ -221,7 +221,7 @@ const EditProfile = () => {
     if (messagee.includes("updated")) {
       setvisible(true);
     } else {
-      setemailerr(messagee);
+      setemailerr(messagee.substring(0,20));
       stylefunction("2px outset red", "email");
       setcursor("email");
     }

@@ -33,6 +33,9 @@ const ApplicationForm = () => {
     setvisible(false);
   };
   const closeerrorModal = () => {
+    localStorage.setItem("q1",q1);
+    localStorage.setItem("q2",q2);
+    localStorage.setItem("q3",q3);
     seterrorvisible(false);
   };
 
@@ -73,11 +76,20 @@ const ApplicationForm = () => {
 
   useEffect(() => {
     setisLoading(true);
+    
+
+    if(localStorage.getItem("q1")!="" && localStorage.getItem("q1")!=null)
+   { 
+     setq1(localStorage.getItem("q1"));
+    setq3(localStorage.getItem("q3"));
+  }
     getBlogs();
   }, []);
 
   const submitApplictaionform = async (e) => {
     e.preventDefault();
+     localStorage.removeItem("q1");
+    localStorage.removeItem("q3");
     if (q2=="false" && q3 == "") {
       seterr("Please type a valid Reason ");
     } else {
@@ -143,7 +155,7 @@ const ApplicationForm = () => {
               />
               <p>PLEASE COMPLETE YOUR PROFILE TO SUBMIT THE APPLICATION...</p>
               <Link to="/editprofile" onClick={closeerrorModal}>
-                Close
+                Complete Profile
               </Link>
             </div>
           </Modal>
@@ -194,6 +206,7 @@ const ApplicationForm = () => {
                         </p> */}
                         <div className="div">
                           <select
+                          
                             className="selectbx"
                             onChange={(e) => {
                               setPositionId(e.target.value);
@@ -237,15 +250,11 @@ const ApplicationForm = () => {
                               setq2(e.target.value);
                               if (e.target.value == "true") {
                                 setparavisible(false)
-                                document.querySelector(
-                                  ".otpdisplay"
-                                ).style.display = "none";
+                               
                                
                               } else {
                                 setparavisible(true)
-                                document.querySelector(
-                                  ".otpdisplay"
-                                ).style.display = "flex";
+                               
                               }
                             }}
                           >
@@ -260,9 +269,9 @@ const ApplicationForm = () => {
                       </div>
                     </div>
                     
-                    {paravisible?<p className="inputtext">If You Want financial assistance please mention your annual family income and tell us how you can help LearnByResearch to support others in need of assistance like you :</p>:""}
-                      <div
-                        className="inputholder inputholder2 otpdisplay "
+                    {paravisible?(<><p className="inputtext">If You Want financial assistance please mention your annual family income and tell us how you can help LearnByResearch to support others in need of assistance like you :</p>
+                    <div
+                        className="inputholder inputholder2 "
                         id="usernameholder"
                       >
                         <div className="inputholder-top ">
@@ -281,10 +290,14 @@ const ApplicationForm = () => {
                           {err && err}
                         </label>
                       </div>
+                      </>
+                    ):""
                     
+      }
 
                     <input
-                      type="submit"
+                      type="button"
+                      onClick={submitApplictaionform}
                       value="Submit"
                       placeholder="Sign Up"
                       className="submit-btn"
