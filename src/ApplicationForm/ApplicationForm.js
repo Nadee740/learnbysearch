@@ -296,9 +296,8 @@ const ApplicationForm = () => {
       }
 
                     <input
-                      type="button"
-                      onClick={submitApplictaionform}
-                      value="Submit"
+                      type="submit"
+                     value="Submit"
                       placeholder="Sign Up"
                       className="submit-btn"
                     />
