@@ -52,7 +52,9 @@
   margin: auto;
   width: 70%;
   border-width: thin;
-
+display: flex;
+align-items: flex-start;
+justify-content: start;
   border-radius: 10px;
   padding: 0px 10px 20px 35px;
   background: #ffffff;
@@ -78,7 +80,7 @@
 input {
   padding: 10px 0 20px 0;
   margin-top: 10px;
-  width: 60%;
+  width: 50vw;
   border: 0;
   outline: 0;
   background: transparent;
@@ -88,7 +90,7 @@ input {
 
 .textarea {
   padding-top: 20px;
-  width: 90%;
+  width: 100%;
 
   font-family: inherit;
 }
