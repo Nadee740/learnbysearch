@@ -108,7 +108,7 @@ const Navbar = (props) => {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Open Programmes
+                Upcoming Research
               </Link>
             </li>
             <li className="nav-item">

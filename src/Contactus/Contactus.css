@@ -134,8 +134,7 @@ textarea {
   }
   .sbmt-btn {
     display: flex;
-    align-items: left;
-    justify-content: center;
+ 
     margin: 40px;
   }
 }
