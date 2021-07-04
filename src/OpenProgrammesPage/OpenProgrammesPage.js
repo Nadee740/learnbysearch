@@ -176,7 +176,7 @@ function OpenProgrammesPage() {
                       APPLY NOW
                     </button>
                   ) : (
-                    <button className="applybtn">APPLICATION CLOSED</button>
+                    <button>APPLICATION CLOSED</button>
                   )}
                 </div>
               </div>
@@ -232,7 +232,12 @@ function OpenProgrammesPage() {
                           Eligibility Criterion:
                           <span>{position.criterion}</span>
                         </p>
-                        <button onClick={applicationform}>Apply Now</button>
+                        <button
+                          className="applynow-btn"
+                          onClick={applicationform}
+                        >
+                          APPLY NOW
+                        </button>
                       </div>
                     ))}
                 </div>

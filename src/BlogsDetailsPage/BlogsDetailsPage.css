@@ -30,6 +30,7 @@
   width: 100%;
   object-fit: cover;
   z-index: -1;
+  height: 100%;
 }
 .blogdetailpage-head {
   color: #ffffff;
@@ -70,5 +71,25 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+  }
+  .blogdetailpage-head {
+    font-size: 24px;
+    line-height: 100%;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .blogdetailpage-img {
+    height: 200px;
+  }
+  .blogdetailpage-top p {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 100%;
+    text-align: right;
+    width: 100%;
+  }
+  .blogdetailpage-text {
+    width: 90%;
   }
 }

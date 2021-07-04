@@ -89,6 +89,15 @@
 .openprogrammespage-feature-col2 {
   background-color: #333333;
 }
+.applynow-btn {
+  padding: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: inherit;
+  width: 100%;
+  background-color: #ffffff;
+  border: none;
+}
 @media screen and (max-width: 800px) {
   .openprogrammespage-head {
     text-align: center;
