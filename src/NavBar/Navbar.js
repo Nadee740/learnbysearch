@@ -233,12 +233,36 @@ const Navbar = (props) => {
           }}
         />
         <ul className="mobnav-items">
-          <li className="mobnav-item">Home</li>
-          <li className="mobnav-item">Home</li>
-          <li className="mobnav-item">Home</li>
-          <li className="mobnav-item">Home</li>
-        </ul>{" "}
-        <button className="mob-signbtn">SIGNIN</button>
+          <li className="mobnav-item">
+          <Link>Home</Link></li>
+          <li className="mobnav-item"> 
+          <Link>Upcoming Research</Link>
+          </li>
+          <li className="mobnav-item">
+          <Link>Blogs</Link>
+          </li>
+          <li className="mobnav-item">
+          <Link>Contact</Link>
+          </li>
+          <li className="mobnav-item">
+          <Link>My Applications</Link>
+          </li>
+        </ul>
+        {isLoggedIn?<><button onClick={()=>{window.location="/editprofile"}} className="mob-signbtn">EDIT PROFILE</button>
+       
+       <button  onClick={() => {
+                         setNav(false);
+                        submit(false);
+                      }} className="mob-signbtn">LOGOUT</button>
+  
+      
+       <button  onClick={() => {
+                         setNav(false);
+                        submit(true);
+                      }} className="mob-signbtn">LOGOUT FROM ALL DEVICES</button></>:<button onClick={()=>{window.location="/login"}} className="mob-signbtn">Sign in</button>}
+        
+  
+
       </div>
     </>
   );

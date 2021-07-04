@@ -249,7 +249,7 @@ height: 100vh;
 .mobnav {
   background-color: #fafafa;
   height: 100%;
-  width: 50vw;
+  width: 60vw;
   border-left: 5px solid #c86fc9;
   position: fixed;
   z-index: 2000;
@@ -261,6 +261,7 @@ height: 100vh;
   top: 0;
   align-items: center;
   display: none;
+  overflow-y: auto;
 }
 .mobnav-items {
   list-style: none;
@@ -269,9 +270,9 @@ height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  
   width: 100%;
-  padding: 0;
+  padding-left:0;
   margin: 60px 0;
 }
 .mobnav-item {
@@ -286,7 +287,7 @@ height: 100vh;
   font-family: inherit;
   font-size: 20px;
   width: 80%;
-  padding: 5px;
+  margin-bottom: 5px;
   outline: none;
   border: none;
   color: #ffffff;
