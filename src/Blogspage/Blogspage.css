@@ -197,6 +197,15 @@ p {
   .blogtext {
     width: 70vw !important;
   }
+  .blogcard-col2 h2 {
+    line-height: 100%;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .blogcard-col2 p {
+    font-weight: 400;
+  }
 }
 .blogtext {
   overflow: hidden;
