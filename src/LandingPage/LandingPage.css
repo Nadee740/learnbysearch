@@ -331,6 +331,7 @@ p {
   }
   .about-col {
     flex-direction: column;
+    padding: 0;
   }
   .top-content {
     flex-direction: column;
@@ -378,8 +379,8 @@ p {
   }
 
   .scnd-content p {
-    font-size: 15px;
     width: 100%;
+    font-weight: 400;
   }
   .scnd-content {
     margin: 5px;
@@ -404,6 +405,7 @@ p {
   }
   .scnd-content {
     padding: 10px;
+    box-shadow: none;
   }
   .about {
     padding: 5px;

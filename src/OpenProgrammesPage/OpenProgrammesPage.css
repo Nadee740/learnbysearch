@@ -90,12 +90,31 @@
   background-color: #333333;
 }
 @media screen and (max-width: 800px) {
+  .openprogrammespage-head {
+    text-align: center;
+  }
+  .openprogrammespage-top {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .open-icn {
+    font-size: 0.51em;
+  }
+  .openprogrammespage-feature-col {
+    padding: 17px 4px;
+  }
+  .openprogrammespage-feature-col p {
+    line-height: 100%;
+    font-weight: 400;
+    font-size: 19px;
+    margin: 2px;
+  }
   .openprogrammespage-section {
     padding: 20px 0px;
   }
   .openprogrammespage-holder {
     margin-top: 20px;
-    width: 85%;
+    width: 92%;
   }
   .vaccency-holder {
     width: 100%;

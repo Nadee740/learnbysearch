@@ -13,8 +13,7 @@ import Modal from "react-awesome-modal";
 import { Link } from "react-router-dom";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-import {Helmet} from "react-helmet";
-
+import { Helmet } from "react-helmet";
 
 function OpenProgrammesPage() {
   const { slug } = useParams();
@@ -54,16 +53,14 @@ function OpenProgrammesPage() {
     setisLoading(true);
 
     data.mentors.map(async (mentor, index) => {
-      
       const { data: Datass } = await Researchpgms(
         `${window.name}mentor/${mentor}`
       );
-    
+
       array.push(Datass);
-     
+
       setmentors(array);
 
-    
       if (array.length == data.mentors.length) {
         setloaded();
         // array?seterror(false):seterror(true);
@@ -71,8 +68,6 @@ function OpenProgrammesPage() {
         // seterror(true)
       }
     });
-
-   
   };
 
   const setloaded = () => {
@@ -107,12 +102,10 @@ function OpenProgrammesPage() {
 
   return (
     <>
-    
-  <Helmet>
-                <meta charSet="utf-8" />
-                <title>{blogsData.title}</title>
-                
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{blogsData.title}</title>
+      </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -244,14 +237,22 @@ function OpenProgrammesPage() {
                 </div>
                 <div className="openprogrammespage-feature">
                   <div className="openprogrammespage-feature-col ">
-                    <BsCalendarFill size="6em" color="#818181" />
+                    <BsCalendarFill
+                      size="6em"
+                      color="#818181"
+                      className="open-icn"
+                    />
                     <p className="vaccency-item-title openprogrammespage-feature-title">
                       Total Duration
                     </p>
                     <p className="vaccency-item-text">{blogsData.duration}</p>
                   </div>
                   <div className="openprogrammespage-feature-col openprogrammespage-feature-col2">
-                    <BsFillBellFill size="6em" color="#818181" />
+                    <BsFillBellFill
+                      size="6em"
+                      color="#818181"
+                      className="open-icn"
+                    />
                     <p className="vaccency-item-title openprogrammespage-feature-title">
                       Weekly commitment
                     </p>
@@ -266,9 +267,9 @@ function OpenProgrammesPage() {
                       const htmlparteducation = mentor.education;
                       const htmlorganisation = mentor.organisation;
                       const htmlpartposition = mentor.position;
-                      
-                      const htmlpartbio =mentor.bio && mentor.bio;
-                      
+
+                      const htmlpartbio = mentor.bio && mentor.bio;
+
                       return (
                         <div className="mentors-item" key={index}>
                           <img
@@ -295,16 +296,19 @@ function OpenProgrammesPage() {
                                 __html: htmlpartposition,
                               }}
                             ></div>{" "}
-                            {
-                              htmlpartbio&&
-                            <div
-                              dangerouslySetInnerHTML={{ __html: htmlpartbio }}
-                            ></div>
-                            }
+                            {htmlpartbio && (
+                              <div
+                                dangerouslySetInnerHTML={{
+                                  __html: htmlpartbio,
+                                }}
+                              ></div>
+                            )}
                           </p>
                           <div className="holder-w">
                             <a
-                              onClick={()=>{ window.location = `${mentor.linkedin}`}}
+                              onClick={() => {
+                                window.location = `${mentor.linkedin}`;
+                              }}
                               style={{
                                 textDecoration: "none",
                                 width: "fit-content",
@@ -312,7 +316,8 @@ function OpenProgrammesPage() {
                             >
                               <FaLinkedin size="2em" color="#0077b5" />
                             </a>
-                            <a target="_blank"
+                            <a
+                              target="_blank"
                               href={mentor.googleScholarLink}
                               style={{
                                 textDecoration: "none",
