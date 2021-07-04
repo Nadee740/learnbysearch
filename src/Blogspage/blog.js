@@ -77,12 +77,12 @@ const Blog = ({ blog }) => {
         </div>
       ) : (
         <div className="blogcard">
-          <div className="blogcard-col1">
+          <div onClick={()=>{window.location=`${a}`}} className="blogcard-col1">
             <img src={blog.imageUrl} alt="Blog" className="blogcard-img" />
           </div>
           <div className="blogcard-col2">
             <>
-              <div className="blogcard-col2-top">
+              <div onClick={()=>{window.location=`${a}`}} className="blogcard-col2-top">
                 <div className="blogcard-col2-top-1">
                   <img
                     src={authdata[0].imageUrl}
@@ -101,9 +101,9 @@ const Blog = ({ blog }) => {
                   <p>{blog.date}</p>
                 </div>
               </div>
-              <h2>{blog.title}</h2>
+              <h2 onClick={()=>{window.location=`${a}`}}>{blog.title}</h2>
 
-              <p>{str}</p>
+              <p onClick={()=>{window.location=`${a}`}}>{str}</p>
               <Link to={a}>
                 <p>Know More</p>
               </Link>
