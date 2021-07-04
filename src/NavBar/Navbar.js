@@ -237,11 +237,11 @@ const Navbar = (props) => {
           <Link onClick={() => {
                          setNav(false);
                       }} to="/">Home</Link></li>
-          <li className="mobnav-item"> 
+                       <li className="mobnav-item">
           <Link onClick={() => {
                          setNav(false);
-                      }} to="/openprogrammes">Upcoming Research</Link>
-          </li>
+                      }} to="/openprogrammes">Open Programmes</Link></li>
+          
           <li className="mobnav-item">
           <Link onClick={() => {
                          setNav(false);
