@@ -337,3 +337,10 @@ const Signup = () => {
 };
 
 export default Signup;
+
+
+// The must contain the following:
+// 1. Atleast one special character
+// 2. Atleast one number
+// 3. Atleast one uppercase character 
+// 4. Must be greater than 5 characters
