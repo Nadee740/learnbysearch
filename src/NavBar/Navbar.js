@@ -7,7 +7,7 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import "./Navbar.css";
 import Logout from "../Backend/Logout";
 import { confirmAlert } from "react-confirm-alert";
-
+import { RiCloseFill } from "react-icons/ri";
 const Navbar = (props) => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -28,7 +28,6 @@ const Navbar = (props) => {
     setisLoggedin(messagee);
   };
   const showButton = () => {
-  
     if (window.innerWidth <= 960) {
       setButton(false);
     } else {
@@ -63,25 +62,22 @@ const Navbar = (props) => {
   const LogOut = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
     if (messagee) {
-     
       localStorage.removeItem("LoggedInUserTokenID");
       window.location = "/";
     } else {
-      
     }
   };
   const LogOutFromAllDevice = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout-all`);
     if (messagee) {
-    
       localStorage.removeItem("LoggedInUserTokenID");
       window.location = "/";
     } else {
-     
     }
   };
 
   window.addEventListener("resize", showButton);
+  const [nav, setNav] = useState(false);
   return (
     <>
       <nav className="navbar">
@@ -93,7 +89,12 @@ const Navbar = (props) => {
               alt=""
             />
           </Link>
-          <div className="menu-icon" onClick={handleClick}>
+          <div
+            className="menu-icon"
+            onClick={() => {
+              setNav(true);
+            }}
+          >
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"} id="test">
@@ -223,6 +224,22 @@ const Navbar = (props) => {
           )}
         </div>
       </nav>
+      <div className={nav ? "mobnav mobnav-show" : "mobnav  mobnav-hide"}>
+        <RiCloseFill
+          size="3em"
+          color="#818181"
+          onClick={() => {
+            setNav(false);
+          }}
+        />
+        <ul className="mobnav-items">
+          <li className="mobnav-item">Home</li>
+          <li className="mobnav-item">Home</li>
+          <li className="mobnav-item">Home</li>
+          <li className="mobnav-item">Home</li>
+        </ul>{" "}
+        <button className="mob-signbtn">SIGNIN</button>
+      </div>
     </>
   );
 };

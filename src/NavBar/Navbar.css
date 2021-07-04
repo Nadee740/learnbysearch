@@ -246,3 +246,66 @@ height: 100vh;
   color: #242424 !important;
   text-align: center;
 }
+.mobnav {
+  background-color: #fafafa;
+  height: 100%;
+  width: 50vw;
+  border-left: 5px solid #c86fc9;
+  position: fixed;
+  z-index: 2000;
+  right: 0;
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  align-items: center;
+  display: none;
+}
+.mobnav-items {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  padding: 0;
+  margin: 60px 0;
+}
+.mobnav-item {
+  font-size: 28px;
+  font-weight: 300;
+  padding: 5px;
+  margin: 0;
+  color: #818181;
+}
+.mob-signbtn {
+  background: #c86fc9;
+  font-family: inherit;
+  font-size: 20px;
+  width: 80%;
+  padding: 5px;
+  outline: none;
+  border: none;
+  color: #ffffff;
+}
+.mobnav-show {
+  transform: translateX(0rem);
+  transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.mobnav-hide {
+  display: flex;
+
+  transform: translateX(40rem);
+  transition: all 0.6s ease-in;
+}
+@media only screen and (max-width: 40em) {
+  .mobnav-show {
+    display: flex;
+  }
+  .mobilenav-hide {
+    display: flex;
+  }
+}

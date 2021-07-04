@@ -4,6 +4,7 @@ body {
   font-family: "Jost", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
 }
 
 code {
@@ -14,30 +15,27 @@ code {
   height: 50px;
 }
 
-.isLoading{
-color: #2f3061;
-height: 40vh;
-align-items: center;
-justify-content: center;
-display: flex;
-flex-direction: column;
-
+.isLoading {
+  color: #2f3061;
+  height: 40vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.oopps{
+.oopps {
   padding: 10px;
   color: #2f3061;
   height: 60vh;
   font-size: 10px;
   align-items: center;
-justify-content: center;
-display: flex;
-flex-direction: column;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
-
-alert{
-  
+alert {
   font-size: 18px;
 }
 
