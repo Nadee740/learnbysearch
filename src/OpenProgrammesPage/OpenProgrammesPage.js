@@ -239,6 +239,7 @@ function OpenProgrammesPage() {
                           Eligibility Criterion:
                           <span>{position.criterion}</span>
                         </p>
+                        <button onClick={applicationform}>Apply Now</button>
                       </div>
                     ))}
                 </div>
