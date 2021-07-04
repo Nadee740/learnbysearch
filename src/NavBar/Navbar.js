@@ -234,21 +234,31 @@ const Navbar = (props) => {
         />
         <ul className="mobnav-items">
           <li className="mobnav-item">
-          <Link>Home</Link></li>
+          <Link onClick={() => {
+                         setNav(false);
+                      }} to="/">Home</Link></li>
           <li className="mobnav-item"> 
-          <Link>Upcoming Research</Link>
+          <Link onClick={() => {
+                         setNav(false);
+                      }} to="/openprogrammes">Upcoming Research</Link>
           </li>
           <li className="mobnav-item">
-          <Link>Blogs</Link>
+          <Link onClick={() => {
+                         setNav(false);
+                      }} to="/allblogs">Blogs</Link>
           </li>
           <li className="mobnav-item">
-          <Link>Contact</Link>
+          <Link onClick={() => {
+                         setNav(false);
+                      }} to="/contactus">Contact</Link>
           </li>
           <li className="mobnav-item">
-          <Link>My Applications</Link>
+          <Link onClick={() => {
+                         setNav(false);
+                      }} to="/myapplications">My Applications</Link>
           </li>
         </ul>
-        {isLoggedIn?<><button onClick={()=>{window.location="/editprofile"}} className="mob-signbtn">EDIT PROFILE</button>
+        {isLoggedIn?<><Link to="/editprofile" onClick={()=>{setNav(false)}} className="mob-signbtn">EDIT PROFILE</Link>
        
        <button  onClick={() => {
                          setNav(false);
@@ -259,7 +269,7 @@ const Navbar = (props) => {
        <button  onClick={() => {
                          setNav(false);
                         submit(true);
-                      }} className="mob-signbtn">LOGOUT FROM ALL DEVICES</button></>:<button onClick={()=>{window.location="/login"}} className="mob-signbtn">Sign in</button>}
+                      }} className="mob-signbtn">LOGOUT FROM ALL DEVICES</button></>:<Link to="/login" onClick={()=>{setNav(false)}} className="mob-signbtn">Sign in</Link>}
         
   
 
