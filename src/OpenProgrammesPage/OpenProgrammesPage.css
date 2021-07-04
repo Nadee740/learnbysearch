@@ -90,12 +90,15 @@
   background-color: #333333;
 }
 .applynow-btn {
-  padding: 8px;
+  padding: 8px 15px;
   font-size: 16px;
   font-weight: 400;
+  margin-top: 5px;
   font-family: inherit;
-
+  background-color: #f79ad3;
   border: none;
+  font-weight: 400;
+  color: #ffffff;
 }
 @media screen and (max-width: 800px) {
   .openprogrammespage-head {
