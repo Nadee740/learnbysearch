@@ -297,7 +297,7 @@ height: 100vh;
 }
 .mobnav-hide {
   display: flex;
-
+  display: none;
   transform: translateX(40rem);
   transition: all 0.6s ease-in;
 }
@@ -305,7 +305,7 @@ height: 100vh;
   .mobnav-show {
     display: flex;
   }
-  .mobilenav-hide {
+  .mobnav-hide {
     display: flex;
   }
 }
