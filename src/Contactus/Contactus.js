@@ -88,7 +88,7 @@ const ContactUs = () => {
                 messages within 2 working days.
               </p>
               <br />
-              <p>Learn By Research | +91-7972251272</p>
+              <p>info@learnbyresearch.com | +91-7972251272</p>
             </div>
           </div>
         </div>
@@ -99,12 +99,11 @@ const ContactUs = () => {
         </div>
         <div className="contactform">
           <div className="formclass">
-            {/* method="POST" */}
-            {/* action=*/}
+           
             <form id="gform" onSubmit={submitMssg}>
               <input
                 type="text"
-                placeholder="name"
+                placeholder="Name"
                 name="name"
                 id="name"
                 value={name}
@@ -124,7 +123,7 @@ const ContactUs = () => {
               />
               <input
                 type="text"
-                placeholder="phone number"
+                placeholder="Phone number"
                 name="phone"
                 id="phone"
                 value={phone}
@@ -134,7 +133,7 @@ const ContactUs = () => {
               />
               <input
                 type="text"
-                placeholder="subject"
+                placeholder="Subject"
                 name="subject"
                 id="subject"
                 value={subject}
@@ -143,11 +142,13 @@ const ContactUs = () => {
                 }}
               />
               <br />
+              
               <div className="textarea">
+              <p className="inputtext">Message</p>
                 <textarea
                   id="proble"
                   rows="15"
-                  placeholder="Message"
+                  placeholder=""
                   name="message"
                   value={message}
                   onChange={(e) => {

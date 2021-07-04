@@ -108,7 +108,7 @@ const Signup = () => {
     } else {
       stylefunction("2px outset red", "password");
       alert(
-        "Password should contain uppercase,lowercase,digit,alpha characters"
+        "The must contain the following:\n1. Atleast one special character\n2. Atleast one number\n3. Atleast one uppercase character\n4. Must be greater than 5 characters"
       );
     }
   };
