@@ -162,7 +162,7 @@ const MyApplications = () => {
               }}
             >
               <div className="applications-heading">
-                <h2>Selection Proccess</h2>
+                <h2>Selection Process</h2>
               </div>
               <img
                 src="/images/app-status.svg"

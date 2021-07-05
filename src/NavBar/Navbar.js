@@ -139,7 +139,7 @@ const Navbar = (props) => {
                 My Applications
               </Link>
             </li>
-            <li>
+            {/* <li>
               {isLoggedIn ? (
                 <>
                   <Link
@@ -183,7 +183,7 @@ const Navbar = (props) => {
                   Sign Up
                 </Link>
               )}
-            </li>
+            </li> */}
           </ul>
 
           {button ? (

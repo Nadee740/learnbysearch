@@ -25,9 +25,7 @@ const LandingPage = () => {
       `${window.name}research-programs`
     );
     setpgms(Datass);
-    console.log(Datass.length, "Datasssss");
-
-    console.log(blogsData, "blogsdata");
+    
 
     getBlogs();
   };
@@ -262,7 +260,7 @@ const LandingPage = () => {
             }}
           >
             <div className="applications-heading">
-              <h2>Selection Proccess</h2>
+              <h2>Selection Process</h2>
             </div>
             <img
               src="/images/app-status.svg"
