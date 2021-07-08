@@ -240,7 +240,7 @@ const Navbar = (props) => {
                        <li className="mobnav-item">
           <Link onClick={() => {
                          setNav(false);
-                      }} to="/openprogrammes">Open Programmes</Link></li>
+                      }} to="/openprogrammes">Upcoming Research</Link></li>
           
           <li className="mobnav-item">
           <Link onClick={() => {
