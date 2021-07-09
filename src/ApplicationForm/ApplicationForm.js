@@ -20,6 +20,8 @@ const ApplicationForm = () => {
   const [q1, setq1] = useState("");
   const [q2, setq2] = useState(true);
   const [q3, setq3] = useState("");
+  const [blank, setblank] = useState("");
+
   const [switchitm, setSwitch] = useState(true);
   const [PositionId, setPositionId] = useState("");
   const [ResearchProgramId, setResearchProgramId] = useState();
@@ -93,7 +95,11 @@ const ApplicationForm = () => {
     if (q2=="false" && q3 == "") {
       seterr("Please type a valid Reason ");
     } else {
+      if(q2=="false")
       const data = { PositionId, ResearchProgramId, q1, q2, q3 };
+      else
+      const data = { PositionId, ResearchProgramId, q1, q2,blank };
+
       
       const { message: messagee } = await SendPost(
         `${window.name}application-form`,
