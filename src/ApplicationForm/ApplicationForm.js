@@ -95,11 +95,14 @@ const ApplicationForm = () => {
     if (q2=="false" && q3 == "") {
       seterr("Please type a valid Reason ");
     } else {
-      if(q2=="false")
+      
       const data = { PositionId, ResearchProgramId, q1, q2, q3 };
-      else
-      const data = { PositionId, ResearchProgramId, q1, q2,blank };
-
+      if (q2=="true"){
+       data = { PositionId, ResearchProgramId, q1, q2, blank };
+      }
+      // else if(q2=="true")
+      // const data = { PositionId, ResearchProgramId, q1, q2,blank };
+     
       
       const { message: messagee } = await SendPost(
         `${window.name}application-form`,
