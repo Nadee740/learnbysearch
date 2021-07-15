@@ -19,11 +19,11 @@ const ContactUs = () => {
 
   const submitMssg = async (e) => {
     
-    formdata.append("name", name);
-    formdata.append("email", email);
-    formdata.append("phone", phone);
-    formdata.append("subject", subject);
-    formdata.append("message", message);
+    formdata.append("name",name);
+    formdata.append("email",email);
+    formdata.append("phone",phone);
+    formdata.append("subject",subject);
+    formdata.append("message",message);
     e.preventDefault();
     let url =
       "https://script.google.com/macros/s/AKfycbx-zFVJ-6kf6yhTm6qASuEDxgUeeXdQKEpPuJsNGI-yQpSAUc1YcpgxWPFm0MAtrGzA/exec";
@@ -52,8 +52,8 @@ const ContactUs = () => {
         <section className="popupscreen">
           <Modal
             visible={visible}
-            width="400"
-            height="300"
+            width="350"
+            height="200"
             effect="fadeInUp"
             onClickAway={closeModal}
           >
@@ -64,7 +64,7 @@ const ContactUs = () => {
               alt=""
             />
               <p>THANKS FOR YOUR TIME WE SHALL SOON REACH TO YOU...</p>
-              <Link to="/" onClick={closeModal}>
+              <Link  onClick={closeModal}>
                 Close
               </Link>
             </div>
@@ -102,6 +102,7 @@ const ContactUs = () => {
            
             <form id="gform" onSubmit={submitMssg}>
               <input
+              required
                 type="text"
                 placeholder="Name"
                 name="name"
@@ -112,6 +113,7 @@ const ContactUs = () => {
                 }}
               />
               <input
+              required
                 type="email"
                 placeholder="email"
                 name="email"
@@ -122,6 +124,7 @@ const ContactUs = () => {
                 }}
               />
               <input
+              required
                 type="text"
                 placeholder="Phone number"
                 name="phone"
@@ -132,6 +135,7 @@ const ContactUs = () => {
                 }}
               />
               <input
+              required
                 type="text"
                 placeholder="Subject"
                 name="subject"

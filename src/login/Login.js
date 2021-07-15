@@ -45,6 +45,10 @@ const [isLoggedIn, setisLoggedin] = useState(false);
     setvisible(false);
     setresendmailvisible(true);
   };
+ const closeModalmailnot=()=>{
+  setvisible(false);
+ }
+
   const closeforgotpassModal = () => {
     setforgotpassvisible(false);
   };
@@ -78,7 +82,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
 
   const output = async (e) => {
     e.preventDefault();
-
+  myTrim(username)
     setisLoading(true)
     // stylefunction("2px solid #81818128", "passholder");
     // stylefunction("2px solid #81818128", "usernameholder");
@@ -106,8 +110,12 @@ const [isLoggedIn, setisLoggedin] = useState(false);
       setUser("");
       setPass("");
     }
-    setisLoading(false);
+  
   };
+
+  function myTrim(x) {
+  console.log(x.replace(/^\s+|\s+$/gm,''));
+}
 
   return (
     <>
@@ -127,7 +135,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
             width="350"
             height="200"
             effect="fadeInUp"
-            onClickAway={closeModal}
+            onClickAway={closeModalmailnot}
           >
             <div className="popup">
               <img
@@ -135,10 +143,9 @@ const [isLoggedIn, setisLoggedin] = useState(false);
                 className="logo"
                 alt=""
               />
-              <p>PLEASE VERIFY YOUR EMAIL TO LOGIN.</p>
+             <p>Verification email already sent on <br /> email address.</p>
               <br />
-              <br />
-              <Link onClick={closeModal}>Resend Mail</Link>
+              <Link onClick={closeModal}>Resend verification mail</Link>
             </div>
           </Modal>
         </section>
@@ -160,7 +167,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
                 alt=""
               />
               <input
-                id="email"
+                id="emailresendmail"
                 type="email"
                 placeholder="email"
                 onChange={(e) => {
@@ -235,6 +242,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
                 <div className="inputholder" id="usernameholder">
                   <div className="inputholder-top">
                     <input
+                    required
                       type="text"
                       placeholder="Username"
                       id="username"
@@ -248,6 +256,7 @@ const [isLoggedIn, setisLoggedin] = useState(false);
                 <div className="inputholder" id="passholder">
                   <div className="inputholder-top">
                     <input
+                    required
                       id="password"
                       type={passVISIBLE ? "text" : "password"}
                       placeholder="Password"

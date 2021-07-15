@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./footer.css";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { IoCall } from "react-icons/io5";
+import Modal from "react-awesome-modal";
 import {
   FaFacebookF,
   FaInstagram,
@@ -14,8 +15,13 @@ import Tokenlesssendpost from "../../Backend/tokenlesssendpost";
 
 const Footer = () => {
   const [email, setemail] = useState();
-
-  const Subscribe = async () => {
+  const [visible, setvisible] = useState(false);
+  const closeModal = () => {
+    setvisible(false);
+  };
+  const Subscribe = async (e) => {
+    e.preventDefault();
+    console.log(1)
     const sub_data = {
       email,
     };
@@ -23,10 +29,36 @@ const Footer = () => {
       `${window.name}subscribers`,
       sub_data
     );
+   setvisible(true)
+   
     setemail("");
   };
 
   return (
+    <>
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={visible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={closeModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>You have subcribed successfully...</p>
+              <Link onClick={closeModal}>
+                Close
+              </Link>
+            </div>
+          </Modal>
+        </section>
+      </div>
     <footer className="footer">
       <div className="footer-col1">
         <Link to="/" className="footer-logo">
@@ -57,8 +89,11 @@ const Footer = () => {
            <FaFacebookF size="1.3em" color="#F4F4F4" />
           </div> */}
           <p className="footer-text2">Subscribe To Our Newsletter</p>
+          <form onSubmit={Subscribe}>
           <div className="footer-sec">
+          
             <input
+            required
               className="email-subscribe"
               type="email"
               value={email}
@@ -66,11 +101,14 @@ const Footer = () => {
                 setemail(e.target.value);
               }}
             ></input>
-            <button onClick={Subscribe} className="subs-btn footer-btn">
+           
+            <button type="submit"  className="subs-btn footer-btn">
               Subscribe
             </button>
             <div className="footer-sec "></div>
+            
           </div>
+          </form>
           <p className="footer-text2">Follow us On Social Media</p>
           <div className="socialIcnx">
             <div className="socialIcn">
@@ -91,6 +129,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 

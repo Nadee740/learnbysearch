@@ -96,7 +96,7 @@ const ApplicationForm = () => {
       seterr("Please type a valid Reason ");
     } else {
       
-      const data = { PositionId, ResearchProgramId, q1, q2, q3 };
+      let data = { PositionId, ResearchProgramId, q1, q2, q3 };
       if (q2=="true"){
        data = { PositionId, ResearchProgramId, q1, q2, blank };
       }
