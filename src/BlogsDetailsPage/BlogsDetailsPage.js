@@ -20,6 +20,7 @@ function BlogsDetailsPage({ blog }) {
   const getBlogs = async () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(`${window.name}blog/${slug}`);
+    
     setblogData(Datass);
     const { data: authotDatass } = await Researchpgms(
       `${window.name}author/${Datass.author}`

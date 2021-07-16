@@ -18,7 +18,9 @@ const BlogsPage = () => {
   const getBlogs=async()=>{
   setisLoading(true)
   const { data: Datass } = await Researchpgms(`${window.name}blog`)
+  Datass.sort(function(a, b){return Date.parse(b.date)-Date.parse(a.date)})
   setblogData(Datass)
+  
   setblogsfulldata(Datass)
   setisLoading(false)
 }

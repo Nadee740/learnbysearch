@@ -100,8 +100,7 @@ a {
 }
 
 @media screen and (max-width: 800px) {
-  .singup-form h2 {
-  }
+ 
   .signup-content {
     flex-direction: column;
     grid-template-columns: repeat(1, 1fr);

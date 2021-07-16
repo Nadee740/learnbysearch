@@ -173,9 +173,11 @@ const MyApplications = () => {
           </div>
         )
       ) : (
+        <>
         <div className="isLoading">
           <h1>Please Log in</h1>
         </div>
+        </>
       )}
     </>
   );

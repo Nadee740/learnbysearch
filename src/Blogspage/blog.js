@@ -21,11 +21,11 @@ const Blog = ({ blog }) => {
   if (str.length > 200) str = str.substring(0, 200) + ".....";
   let likedblogs = [];
   let test = JSON.parse(localStorage.getItem("likedblogs"));
-  console.log(test, "HY");
+  
 
   if (test != null) {
     likedblogs = test;
-    console.log("Not null", likedblogs, likedblogs.length, typeof likedblogs);
+    
   }
   const [liked, setliked] = useState(likedblogs.includes(blog._id));
   const [likes, setlikes] = useState(blog.likes);
@@ -37,7 +37,7 @@ const Blog = ({ blog }) => {
       `${window.name}author/${blog.author}`
     );
     setauthdata(Datass);
-    console.log(Datass, "hu");
+    
     setisLoading(false);
   }, []);
 
@@ -55,7 +55,7 @@ const Blog = ({ blog }) => {
     return id == blog._id;
   }
   const unlikeblog = async () => {
-    console.log(likedblogs.findIndex(checkBlog));
+    
     setliked(false);
     likedblogs.splice(likedblogs.findIndex(checkBlog), 1);
     setlikes(likes - 1);
