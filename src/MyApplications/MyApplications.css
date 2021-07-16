@@ -75,3 +75,19 @@
     height: 100px;
   }
 }
+.btn2 {
+  padding: 10px 30px;
+  font-family: inherit;
+  border: none;
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffffff;
+  margin: 10px;
+}
+.btn2:hover {
+  cursor: pointer;
+}
+.flex-btn {
+  display: flex;
+  flex-direction: row;
+}

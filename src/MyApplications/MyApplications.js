@@ -174,9 +174,13 @@ const MyApplications = () => {
         )
       ) : (
         <>
-        <div className="isLoading">
-          <h1>Please Log in</h1>
-        </div>
+          <div className="isLoading">
+            <h1>Please Log in</h1>
+            <div className="flex-btn">
+              <button className="button1 btn2">LOGIN</button>
+              <button className="button1 btn2">LOGIN</button>
+            </div>
+          </div>
         </>
       )}
     </>

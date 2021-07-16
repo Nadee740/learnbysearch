@@ -28,6 +28,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 .openprogramcard p {
   overflow: hidden;
@@ -76,4 +77,16 @@
   .openprograms {
     padding: 30px 15px;
   }
+}
+.duedate {
+  margin: 0;
+  background-color: #38383857;
+  position: absolute;
+  right: 25px;
+  color: #ffffff;
+  padding: 5px;
+  top: 25px;
+  display: block;
+  line-height: 100%;
+  height: min-content;
 }

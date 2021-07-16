@@ -20,6 +20,7 @@ function Openprogramcard({ blog }) {
           alt="Card Haeder"
           className="openprogramcard-img"
         />
+        <p className="duedate">Due on 09/09/21</p>
         <p className="openprogramcard-head">{blog.title}</p>
         <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
         <button
