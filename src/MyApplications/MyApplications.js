@@ -7,6 +7,7 @@ import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import { Helmet } from "react-helmet";
 import "./MyApplications.css";
+import { Link } from "react-router-dom";
 const MyApplications = () => {
   const [userData, setuserData] = useState();
   const [isLoggedIn, setisLoggedin] = useState(false);
@@ -177,8 +178,8 @@ const MyApplications = () => {
           <div className="isLoading">
             <h1>Please Log in</h1>
             <div className="flex-btn">
-              <button className="button1 btn2">LOGIN</button>
-              <button className="button1 btn2">LOGIN</button>
+              <Link to="/signup" className="button1 btn2">Sign up</Link>
+              <Link to="/login" className="button1 btn2">Sign in</Link>
             </div>
           </div>
         </>
