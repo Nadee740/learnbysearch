@@ -97,11 +97,11 @@ const ApplicationForm = () => {
     } else {
       
       let data = { PositionId, ResearchProgramId, q1, q2, q3 };
-      if (q2=="true"){
-       data = { PositionId, ResearchProgramId, q1, q2, blank };
+      if (q2=="true" || q2==true){
+       data = { PositionId, ResearchProgramId, q1, q2, };
       }
-      // else if(q2=="true")
-      // const data = { PositionId, ResearchProgramId, q1, q2,blank };
+      console.log(data)
+
      
       
       const { message: messagee } = await SendPost(
