@@ -29,6 +29,8 @@ function OpenProgrammesPage() {
   const htmlpartobjective = blogsData.objective;
   const htmlpartoutcomes = blogsData.outcomes;
   const [isLoggedIn, setisLoggedin] = useState(false);
+  const [userdata,setuserdata]=useState()
+
 
   const closeModal = () => {
     setvisible(false);
@@ -87,13 +89,14 @@ function OpenProgrammesPage() {
     const { data: Datass } = await Researchpgms(
       `${window.name}research-program/${slug}`
     );
+    
     setblogData(Datass);
 
     await getPositions(Datass);
   };
 
   useEffect(async () => {
-    const { isLoggedIn: messagee } = await Authverifier(
+    const { isLoggedIn: messagee,data: Datass  } = await Authverifier(
       `${window.name}users/me`
     );
     setisLoggedin(messagee);
@@ -232,12 +235,15 @@ function OpenProgrammesPage() {
                           Eligibility Criterion:
                           <span>{position.criterion}</span>
                         </p>
-                        <button
+                        {blogsData.applicationStatus ? (
+                          <button
                           className="applynow-btn"
                           onClick={applicationform}
-                        >
-                          APPLY NOW
-                        </button>
+                        > 
+                      APPLY NOW
+                    </button>
+                  ) : ""}
+                        
                       </div>
                     ))}
                 </div>
