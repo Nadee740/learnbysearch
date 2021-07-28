@@ -14,17 +14,23 @@ import { Link } from "react-router-dom";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
+import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 
 function OpenProgrammesPage() {
   const { slug } = useParams();
   let arr = [];
   let array = [];
+  let rparray = [];
+  let count=0;
+  let checkcount=0;
+  const [rpData, setrp] = useState();
   const [isLoading, setisLoading] = useState(true);
   const [blogsData, setblogData] = useState("");
   const [positions, setPosition] = useState("");
   const [mentors, setmentors] = useState("");
   const [error, seterror] = useState(false);
   const [visible, setvisible] = useState(false);
+  const [appliedvisible,setappliedvisible]=useState(false)
   const htmlpart = blogsData.description;
   const htmlpartobjective = blogsData.objective;
   const htmlpartoutcomes = blogsData.outcomes;
@@ -35,7 +41,10 @@ function OpenProgrammesPage() {
   const closeModal = () => {
     setvisible(false);
   };
-
+  const closeAppliedModal = () => {
+    setappliedvisible(false);
+  };
+///////////////////////////POSITIONS OF RP////////////////////////////////
   const getPositions = async (data) => {
     setisLoading(true);
 
@@ -51,6 +60,11 @@ function OpenProgrammesPage() {
     });
   };
 
+  ////////////////////////////////////////////////////////////
+
+
+  ////////////////////////////MENTORS OF RP////////////////////////////////////
+
   const getMentors = async (data) => {
     setisLoading(true);
 
@@ -65,25 +79,92 @@ function OpenProgrammesPage() {
 
       if (array.length == data.mentors.length) {
         setloaded();
-        // array?seterror(false):seterror(true);
-        // if(array.includes(null))
-        // seterror(true)
+        
       }
     });
   };
-
+/////////////////////////////////////////////////////////////////
   const setloaded = () => {
     setisLoading(false);
   };
 
+///////////////////////FUNCSTION FOR APPLY NOW////////////////////////////////////////
   const applicationform = () => {
     if (!isLoggedIn) {
       setvisible(true);
     } else {
-      window.location = `/applicationform/${slug}`;
+      setisLoading(true)
+      getApplications(userdata)
+
+
+      // window.location = `/applicationform/${slug}`;
     }
   };
 
+  //////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+  //////////////////// FOR USERS RP DATAAAS/////////////////////////////
+
+  const getApplications = async (userdata) => {
+    if (userdata.applicationForm.length == 0) {
+          window.location = `/applicationform/${slug}`;
+      
+    } else {
+      userdata.applicationForm.map(async (application) => {
+        const app_data = {
+          id: application,
+        };
+        const { message: messagee, retdata } = await Tokenlesssendpost(
+          `${window.name}show-application-status`,
+          app_data
+        );
+        count++;
+
+        if (retdata != null) array.push(retdata);
+
+        if (count == userdata.applicationForm.length) {
+          if (array.length > 0) {
+            
+            array.map((data)=>{
+              if(data.rp==blogsData._id){
+                if(data.data!==3)
+                {
+                setisLoading(false)
+                setappliedvisible(true)
+                }
+                else{
+                window.location = `/applicationform/${slug}`;
+               }
+
+
+
+              }
+              else{
+
+                window.location = `/applicationform/${slug}`;
+              }
+             
+            })
+
+          
+          } 
+          else {
+            window.location = `/applicationform/${slug}`;
+            
+          }
+        }
+      });
+    }
+  };
+
+ ///////////////////////////// FOR USERS RP DATAAAS////////////////////////////////////
+
+  //////////////////////////////FOR GETTING THE DATA FOR RP///////////////////////////////////////
   const getBlogs = async () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(
@@ -91,15 +172,19 @@ function OpenProgrammesPage() {
     );
     
     setblogData(Datass);
+    
 
     await getPositions(Datass);
   };
+
+  //////////////////////////////////////////////////////////////////////////
 
   useEffect(async () => {
     const { isLoggedIn: messagee,data: Datass  } = await Authverifier(
       `${window.name}users/me`
     );
     setisLoggedin(messagee);
+    setuserdata(Datass);
     getBlogs();
   }, []);
 
@@ -109,6 +194,7 @@ function OpenProgrammesPage() {
         <meta charSet="utf-8" />
         <title>{blogsData.title}</title>
       </Helmet>
+      {/*////////////////////////////////// POPUP FOR NOT LOGGED IN //////////////////////////////// */}
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -146,6 +232,38 @@ function OpenProgrammesPage() {
           </Modal>
         </section>
       </div>
+      {/*/////////////////////////////////////////// POPUP FOR NOT LOGGED IN /////////////////////////////////////*/}
+
+     
+      
+      {/*//////////////// POPUP FOR ALREADY APPLIED /////////////////////////////////////*/}
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={appliedvisible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={closeAppliedModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>YOU HAVE ALREADY SUBMITTED APPLICATION.</p>
+              <Link  onClick={closeAppliedModal}>
+                Close
+              </Link>
+            </div>
+          </Modal>
+        </section>
+      </div>
+          {/*///////////////////////////// POPUP FOR ALREADY APPLIED///////////////////////////////////////// */}
+
+      
+      
       {isLoading ? (
         <div className="isLoading">
           <SolarSystemLoading />
@@ -174,7 +292,8 @@ function OpenProgrammesPage() {
                   ) : (
                     ""
                   )}
-                  {blogsData.applicationStatus ? (
+                  {/* blogsData.applicationStatus */}
+                  {blogsData.applicationStatus? (
                     <button onClick={applicationform} className="applybtn">
                       APPLY NOW
                     </button>
