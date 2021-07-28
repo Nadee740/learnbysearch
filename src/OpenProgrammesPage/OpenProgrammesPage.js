@@ -132,7 +132,7 @@ function OpenProgrammesPage() {
             
             array.map((data)=>{
               if(data.rp==blogsData._id){
-                if(data.data!==3)
+                if(data.data==1 || data.data==2 )
                 {
                 setisLoading(false)
                 setappliedvisible(true)
