@@ -114,6 +114,15 @@ const Navbar = (props) => {
             </li>
             <li className="nav-item">
               <Link
+                to="/ongoingprogrammes"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Ongoing Research
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
                 to="/allblogs"
                 className="nav-links"
                 onClick={closeMobileMenu}
@@ -241,6 +250,10 @@ const Navbar = (props) => {
           <Link onClick={() => {
                          setNav(false);
                       }} to="/openprogrammes">Upcoming Research</Link></li>
+                      <li className="mobnav-item">
+          <Link onClick={() => {
+                         setNav(false);
+                      }} to="/ongoingprogrammes">Ongoing Research</Link></li>
           
           <li className="mobnav-item">
           <Link onClick={() => {

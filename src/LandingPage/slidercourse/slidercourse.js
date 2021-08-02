@@ -34,9 +34,9 @@ const SliderCo = ({data}) => {
       <div className="slidecontainer">
         <Slider {...settings}>
         {
-          data.map((pgms)=>(
-            <SliderCard data={pgms}/>
-          ))
+          data.map((pgms)=>{
+          return pgms.applicationStatus ? ( <SliderCard data={pgms}/>):""
+          })
         }
           {/* <SliderCard />
           <SliderCard />

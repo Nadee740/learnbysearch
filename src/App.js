@@ -21,6 +21,8 @@ import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import ApplicationForm from "./ApplicationForm/ApplicationForm";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import { SolarSystemLoading } from 'react-loadingg';
+import Ongoingresearch from "./ongoingresearch/ongoingresearch";
+import OngoingresearchPage from "./ongoingresearchdetailed/ongoingresearchdetailed";
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem("loggedinuserid"));
@@ -61,6 +63,7 @@ function App() {
           <Route path="/allblogs" component={BlogsPage} />
           <Route path="/myapplications" component={MyApplications} />
           <Route path="/openprogrammes" exact component={OpenProgrammes} />
+          <Route path="/ongoingprogrammes" exact component={Ongoingresearch} />
           <Route path="/open" component={Open} />
 
           <Route path="/blogsdetailspage/:slug" component={BlogsDetailsPage} />
@@ -68,6 +71,11 @@ function App() {
             path="/openprogrammespage/:slug"
             exact
             component={OpenProgrammesPage}
+          />
+                <Route
+            path="/ongoingresearchpage/:slug"
+            exact
+            component={OngoingresearchPage}
           />
           <Route
             path="/applicationform/:slug"

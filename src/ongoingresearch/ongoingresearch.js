@@ -1,14 +1,15 @@
 import { useEffect } from "react";
-import Openprogramcard from "./openprogramescard";
-import "./OpenProgrammes.css";
+
+
 import Researchpgms from "../Backend/Researchpgms";
 import { useState } from "react";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import {Helmet} from "react-helmet";
+import Ongoingresearchcard from "./ongoinresearchcard";
 
 
-const OpenProgrammes = () => {
+const Ongoingresearch = () => {
        const[blogsData,setblogData]=useState("")
        const[isLoading,setisLoading]=useState(true)
        const [error,seterror]=useState(false);
@@ -44,11 +45,11 @@ const getBlogs=async()=>{
         <h2>Open Programs</h2>
         <div className="cardholder">
         {blogsData.length>=1? blogsData.map((blog,index)=>{
-          return blog.applicationStatus?(
+            return !blog.applicationStatus?(
        
         
           
-          <Openprogramcard blog={blog} key={index} />
+          <Ongoingresearchcard blog={blog} key={index} />
        
          
          
@@ -61,4 +62,4 @@ const getBlogs=async()=>{
   );
 };
 
-export default OpenProgrammes;
+export default Ongoingresearch;

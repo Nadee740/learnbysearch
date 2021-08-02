@@ -3,7 +3,7 @@ import Footer from "../LandingPage/footer/footer";
 import { BsCalendarFill, BsFillBellFill } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import { SiGooglescholar } from "react-icons/si";
-import "./OpenProgrammesPage.css";
+
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -16,7 +16,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 
-function OpenProgrammesPage() {
+function OngoingresearchPage() {
   const { slug } = useParams();
   let arr = [];
   let array = [];
@@ -474,4 +474,4 @@ function OpenProgrammesPage() {
   );
 }
 
-export default OpenProgrammesPage;
+export default OngoingresearchPage;
