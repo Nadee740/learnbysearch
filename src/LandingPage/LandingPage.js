@@ -25,7 +25,7 @@ const LandingPage = () => {
       `${window.name}research-programs`
     );
     setpgms(Datass);
-    console.log(Datass)
+    
     
 
     getBlogs();
