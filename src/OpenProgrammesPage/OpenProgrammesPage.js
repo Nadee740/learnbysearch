@@ -414,7 +414,7 @@ function OpenProgrammesPage() {
                           <p className="vaccency-item-text mentors-item-text">
                             <div
                               dangerouslySetInnerHTML={{
-                                __html: htmlparteducation,
+                                __html: htmlpartposition,
                               }}
                             ></div>
                             <div
@@ -422,9 +422,10 @@ function OpenProgrammesPage() {
                                 __html: htmlorganisation,
                               }}
                             ></div>{" "}
+                            
                             <div
                               dangerouslySetInnerHTML={{
-                                __html: htmlpartposition,
+                                __html: htmlparteducation,
                               }}
                             ></div>{" "}
                             {htmlpartbio && (
