@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 function Openprogramcard({ blog }) {
-  console.log(blog)
+  
   const [visible, setvisible] = useState(false);
   let a = "/openprogrammespage/" + blog.slug;
 

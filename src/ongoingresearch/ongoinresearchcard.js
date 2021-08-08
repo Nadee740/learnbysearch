@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 function Ongoingresearchcard({ blog }) {
-  console.log(blog)
+  
   const [visible, setvisible] = useState(false);
   let a = "/ongoingresearchpage/" + blog.slug;
 

@@ -5,6 +5,12 @@ import { Link } from "react-router-dom";
 
 import SendPost from "../Backend/Sendpost";
 
+import {
+  CountryDropdown,
+  RegionDropdown,
+  CountryRegionData,
+} from "react-country-region-selector";
+import { Country, State, City } from "country-state-city";
 import { MdDoneAll, MdClear } from "react-icons/md";
 import Footer from "../LandingPage/footer/footer";
 import { useEffect } from "react";
@@ -16,7 +22,7 @@ import Authverifier from "../Backend/Authverifier";
 import Tooltip from "@material-ui/core/Tooltip";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 
 const EditProfile = () => {
@@ -30,7 +36,7 @@ const EditProfile = () => {
       `${window.name}users/me`
     );
     setisLoggedin(messagee);
-    console.log(datas, "Enghaneelum");
+
     setFirstName(datas.FirstName);
     setMiddleName(datas.MiddleName);
     setLastName(datas.LastName);
@@ -48,19 +54,35 @@ const EditProfile = () => {
     setisverfied(datas.isPhoneVerified);
     setisLoading(false);
   };
+  //   currency: "INR"
+  // flag: "🇮🇳"
+  // isoCode: "IN"
+  // latitude: "20.00000000"
+  // longitude: "77.00000000"
+  // name: "India"
 
   useEffect(async () => {
+    getAllCountries();
+ 
     getData();
   }, []);
+  const getAllCountries = () => {
+    const countries = Country.getAllCountries();
+    setallCountry(countries);
+    
+  };
 
   const [FirstName, setFirstName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
   const [LastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("+91");
   const [email, setemail] = useState("");
-  const [City, setCity] = useState("");
-  const [State, setState] = useState("");
-  const [Country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [allcountry, setallCountry] = useState("");
+  const [allstate, setallState] = useState("");
+  const [allcity, setallCity] = useState("");
   const [Degree, setDegree] = useState("");
   const [Field, setField] = useState("");
   const [CollegeName, setCollegeName] = useState("");
@@ -68,7 +90,7 @@ const EditProfile = () => {
   const [GraduationYear, setGraduationYear] = useState("");
   const [value, setdate] = useState();
   const [visible, setvisible] = useState(false);
-  
+
   const [otp, setotp] = useState("");
   const [otpsend, setotpsend] = useState(false);
   const [emailerror, setemailerr] = useState();
@@ -76,7 +98,6 @@ const EditProfile = () => {
   const [otperror, setotperr] = useState();
   const [isverfied, setisverfied] = useState();
   const [isLoggedIn, setisLoggedin] = useState(false);
-  
 
   const [isLoading, setisLoading] = useState(false);
 
@@ -94,7 +115,7 @@ const EditProfile = () => {
         },
         {
           label: "No",
-          onClick: () => {},
+          onClick: () => { },
         },
       ],
     });
@@ -103,30 +124,26 @@ const EditProfile = () => {
   const LogOut = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
     if (messagee) {
-  
       localStorage.removeItem("LoggedInUserTokenID");
       window.location = "/";
     } else {
-  
     }
   };
   const LogOutFromAllDevice = async () => {
     const { LoggedOut: messagee } = await Logout(`${window.name}logout-all`);
     if (messagee) {
-      
       localStorage.removeItem("LoggedInUserTokenID");
-      
+
       window.location = "/";
     } else {
-     
     }
   };
 
   const closeModal = () => {
     setvisible(false);
-    history.goBack()
-  }; 
-  
+    history.goBack();
+  };
+
   const closeOtpModal = () => {
     setotpsend(false);
   };
@@ -140,8 +157,8 @@ const EditProfile = () => {
   };
 
   const VERIFYPhonenumber = async (e) => {
-    e.preventDefault()
-   
+    e.preventDefault();
+
     if (
       phoneNumber == "" ||
       phoneNumber.length > 13 ||
@@ -154,14 +171,14 @@ const EditProfile = () => {
       const veri_data = {
         number: phoneNumber,
       };
-     
+
       const { message: messagee } = await SendPost(
         `${window.name}number-verification`,
         veri_data
       );
       if (messagee.includes("successfully")) {
         setotpsend(true);
-        
+
         setphoneerr(messagee);
         setcursor("otp");
       } else {
@@ -173,7 +190,6 @@ const EditProfile = () => {
 
   const VerifyOtp = async () => {
     setotperr();
-    console.log("otpmon");
 
     const submit_code = {
       code: otp,
@@ -195,6 +211,11 @@ const EditProfile = () => {
 
   const MakeChanges = async (e) => {
     e.preventDefault();
+    if(city=="")
+    {
+      alert("Please choose your city")
+    }
+    else{
     const DOB = value;
     const edit_data = {
       FirstName,
@@ -203,9 +224,9 @@ const EditProfile = () => {
       DOB,
       phoneNumber,
       email,
-      City,
-      State,
-      Country,
+      city,
+      state,
+      country,
       Degree,
       Field,
       CollegeName,
@@ -213,6 +234,7 @@ const EditProfile = () => {
       GraduationYear,
     };
     
+
     const { message: messagee } = await SendPost(
       `${window.name}edit-profile`,
       edit_data
@@ -221,21 +243,21 @@ const EditProfile = () => {
     if (messagee.includes("updated")) {
       setvisible(true);
     } else {
-      setemailerr(messagee.substring(0,20));
+      setemailerr(messagee.substring(0, 20));
       stylefunction("2px outset red", "email");
       setcursor("email");
     }
+  }
   };
 
   return (
     <>
       <Helmet>
-                <meta charSet="utf-8" />
-                <title>Home | EditProfile</title>
-                
-            </Helmet>
+        <meta charSet="utf-8" />
+        <title>Home | EditProfile</title>
+      </Helmet>
 
-            <div className="popupscreen">
+      <div className="popupscreen">
         <section className="popupscreen">
           <Modal
             visible={otpsend}
@@ -281,16 +303,14 @@ const EditProfile = () => {
             <div className="popup">
               <h1>LEARN BY RESEARCH</h1>
               <p>PROFILE UPDATES SUCCESFULLY ...</p>
-              <Link  onClick={closeModal}>
-                Close
-              </Link>
+              <Link onClick={closeModal}>Close</Link>
             </div>
           </Modal>
         </section>
       </div>
       {isLoading ? (
         <div className="isLoading">
-        <SolarSystemLoading/>
+          <SolarSystemLoading />
         </div>
       ) : isLoggedIn ? (
         <section className="sign-up editprofile">
@@ -392,13 +412,11 @@ const EditProfile = () => {
                       <div className="inputholder">
                         <div className="inputholder-top">
                           <input
-                          required
+                            required
                             type="date"
                             placeholder="DD-MM-YY"
                             className="inputdate"
                             onChange={(e) => {
-                              console.log(Date.parse(e.target.value));
-                              console.log(e.target.value);
                               setdate(e.target.value);
                             }}
                             value={value}
@@ -410,22 +428,20 @@ const EditProfile = () => {
                   <p className="inputtext">Phone Number</p>
                   <div className="inputholder">
                     <div className="inputholder-top">
-                      
-                          <input
-                            id="PhoneNumber"
-                            type="tel"
-                            placeholder="Your Phone Number"
-                            autoComplete="off"
-                            required
-                            value={phoneNumber}
-                            onChange={(e) => {
-                              setPhoneNumber(e.target.value);
-                            }}
-                          />
-                       
+                      <input
+                        id="PhoneNumber"
+                        type="tel"
+                        placeholder="Your Phone Number"
+                        autoComplete="off"
+                        required
+                        value={phoneNumber}
+                        onChange={(e) => {
+                          setPhoneNumber(e.target.value);
+                        }}
+                      />
+
                       {isverfied ? (
                         <Tooltip title="Verifeid">
-                        
                           <MdDoneAll size="1.2em" className="emtick" />
                         </Tooltip>
                       ) : (
@@ -437,12 +453,14 @@ const EditProfile = () => {
                     </label>
                   </div>
 
-                  {isverfied  ? (
+                  {isverfied ? (
                     <></>
                   ) : (
                     <button
                       className="edit-profile-btn"
-                      onClick={(e)=>{VERIFYPhonenumber(e)}}
+                      onClick={(e) => {
+                        VERIFYPhonenumber(e);
+                      }}
                     >
                       VERIFY PHONE NUMBER
                     </button>
@@ -467,166 +485,226 @@ const EditProfile = () => {
                     </label>
                   </div> */}
 
-                  <Tooltip title="City">
-                  <>
-                  <p className="inputtext">City</p>
-                    <div className="inputholder">
-                      <div className="inputholder-top">
-                        <input
-                          type="text"
-                          placeholder="City"
-                          autoComplete="off"
-                          required
-                          value={City}
-                          onChange={(e) => {
-                            setCity(e.target.value);
-                          }}
-                        />
+                  {/* <Tooltip title="City">
+                    <>
+                      <p className="inputtext">City</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="City"
+                            autoComplete="off"
+                            required
+                            value={city}
+                            onChange={(e) => {
+                              setCity(e.target.value);
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </>
-                  </Tooltip>
-                  <Tooltip title="State">
-                  <>
-                  <p className="inputtext">State</p>
-                    <div className="inputholder">
-                      <div className="inputholder-top">
-                        <input
-                          type="text"
-                          placeholder="State"
-                          autoComplete="off"
-                          required
-                          value={State}
-                          onChange={(e) => {
-                            setState(e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div>
-                    </>
-                  </Tooltip>
+                  </Tooltip> */}
                   <Tooltip title="Country">
                   <>
                   <p className="inputtext">Country</p>
-                    <div className="inputholder">
-                      <div className="inputholder-top">
-                        <input
-                          type="text"
-                          name="Country"
-                          id="Country"
-                          placeholder="Country"
-                          autoComplete="off"
-                          required
-                          value={Country}
-                          onChange={(e) => {
-                            setCountry(e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div>
-                    </>
+                  <select required
+                    name="country"
+                    id="country"
+                    onChange={(e) => {
+                      
+                      const data = JSON.parse(e.target.value);
+                      setCountry(data.name)
+                      setState("")
+                      setCity("")
+                      setallCity("")
+                      const allstates = State.getStatesOfCountry(data.isoCode);
+
+                      setallState(allstates);
+                    }}
+                  >
+                    <option>{country?country:"Select country"}</option>
+                    {allcountry.map((country) => (
+                      <option value={JSON.stringify(country)}>
+                        {country.name}
+                      </option>
+                    ))}
+                  </select>
+                  </>
                   </Tooltip>
-                  <Tooltip title="Degree">
+                  <br />
+                  <Tooltip>
                   <>
-                  <p className="inputtext">Degree</p>
-                    <div className="inputholder">
-                      <div className="inputholder-top">
-                        <input
-                          type="text"
-                          placeholder="Degree"
-                          autoComplete="off"
-                          required
-                          value={Degree}
-                          onChange={(e) => {
-                            setDegree(e.target.value);
-                          }}
-                        />
+                  <p className="inputtext">State</p>
+                  <select name="state" id="state" onChange={(e) => {
+                    
+                    const data = JSON.parse(e.target.value);
+                    setState(data.name);
+                    setCity("")
+                    const allcities=City.getCitiesOfState(data.countryCode,data.isoCode)
+                    setallCity(allcities);
+                   
+                    
+                  }}>
+                    <option >{state?state:"Select state"}</option>
+                    {allstate && allstate.map((state) => (<option value={JSON.stringify(state)}>{state.name}</option>))}
+                  </select>
+                  </>
+                  </Tooltip>
+                   <br />
+                   <Tooltip>
+                   <>
+                   <p className="inputtext">City</p>
+                   <select name="city" id="city" onChange={(e)=>{
+                     
+                    const data = JSON.parse(e.target.value);
+                    setCity(data.name)
+                   }} name="city" id="city">
+                     <option >{city?city:"select city"}</option>
+                     {allcity && allcity.map((city)=>(<option value={JSON.stringify(city)} >{city.name}</option>))}
+                   </select>
+                   </>
+                   </Tooltip>
+                  {/* <Tooltip title="State">
+                    <>
+                      <p className="inputtext">State</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="State"
+                            autoComplete="off"
+                            required
+                            value={State}
+                            onChange={(e) => {
+                              setState(e.target.value);
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
+                    </>
+                  </Tooltip> */}
+                  {/* <Tooltip title="Country">
+                    <>
+                      <p className="inputtext">Country</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            name="Country"
+                            id="Country"
+                            placeholder="Country"
+                            autoComplete="off"
+                            required
+                            value={Country}
+                            onChange={(e) => {
+                              setCountry(e.target.value);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  </Tooltip> */}
+                  <Tooltip title="Degree">
+                    <>
+                      <p className="inputtext">Degree</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="Degree"
+                            autoComplete="off"
+                            required
+                            value={Degree}
+                            onChange={(e) => {
+                              setDegree(e.target.value);
+                            }}
+                          />
+                        </div>
+                      </div>
                     </>
                   </Tooltip>
                   <Tooltip title="Field">
-                  <>
-                  <p className="inputtext">Branch/Area of Study</p>
-                    <div className="inputholder">
-                      <div className="inputholder-top">
-                        <input
-                          type="text"
-                          placeholder="Field"
-                          autoComplete="off"
-                          required
-                          value={Field}
-                          onChange={(e) => {
-                            setField(e.target.value);
-                          }}
-                        />
+                    <>
+                      <p className="inputtext">Branch/Area of Study</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="Field"
+                            autoComplete="off"
+                            required
+                            value={Field}
+                            onChange={(e) => {
+                              setField(e.target.value);
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </>
                   </Tooltip>
                   <Tooltip title="College Name">
-                  <>
-                  <p className="inputtext">College Name</p>
-                    <div className="inputholder">
-                      <div className="inputholder-top">
-                        <input
-                          type="text"
-                          placeholder="College Name"
-                          autoComplete="off"
-                          required
-                          autoComplete="off"
-                          required
-                          value={CollegeName}
-                          onChange={(e) => {
-                            setCollegeName(e.target.value);
-                          }}
-                        />
+                    <>
+                      <p className="inputtext">College Name</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="College Name"
+                            autoComplete="off"
+                            required
+                            autoComplete="off"
+                            required
+                            value={CollegeName}
+                            onChange={(e) => {
+                              setCollegeName(e.target.value);
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </>
                   </Tooltip>
 
                   <Tooltip title="University">
-                  <>
-                  <p className="inputtext">University</p>
-                    <div className="inputholder">
-                      <div className="inputholder-top">
-                        <input
-                          type="text"
-                          placeholder="University"
-                          autoComplete="off"
-                          required
-                          value={University}
-                          onChange={(e) => {
-                            setUniversity(e.target.value);
-                          }}
-                        />
+                    <>
+                      <p className="inputtext">University</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="University"
+                            autoComplete="off"
+                            required
+                            value={University}
+                            onChange={(e) => {
+                              setUniversity(e.target.value);
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </>
                   </Tooltip>
 
                   <Tooltip title="Graduation Year">
-                  <>
-                  <p className="inputtext">Graduation Year</p>
-                    <div className="inputholder">
-                      <div className="inputholder-top">
-                        <input
-                          type="text"
-                          placeholder="Graduation Year"
-                          autoComplete="off"
-                          required
-                          value={GraduationYear}
-                          onChange={(e) => {
-                            setGraduationYear(e.target.value);
-                          }}
-                        />
+                    <>
+                      <p className="inputtext">Graduation Year</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="Graduation Year"
+                            autoComplete="off"
+                            required
+                            value={GraduationYear}
+                            onChange={(e) => {
+                              setGraduationYear(e.target.value);
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </>
                   </Tooltip>
                   <input
-                  // onClick={MakeChanges}
+                    // onClick={MakeChanges}
                     type="submit"
                     value="SAVE CHANGES"
                     className="submit-btn"
