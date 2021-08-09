@@ -205,3 +205,10 @@
   color: rgba(49, 49, 49, 0.678);
   margin-bottom: 5px;
 }
+.selectBox {
+  border: none;
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  outline: none;
+  margin: 0;
+}

@@ -42,7 +42,8 @@ arr.push(blog)
 else{
   
 }
-   })
+   }
+   )
 
    setblogData(arr)
 
