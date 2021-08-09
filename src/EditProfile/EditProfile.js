@@ -63,13 +63,12 @@ const EditProfile = () => {
 
   useEffect(async () => {
     getAllCountries();
- 
+
     getData();
   }, []);
   const getAllCountries = () => {
     const countries = Country.getAllCountries();
     setallCountry(countries);
-    
   };
 
   const [FirstName, setFirstName] = useState("");
@@ -115,7 +114,7 @@ const EditProfile = () => {
         },
         {
           label: "No",
-          onClick: () => { },
+          onClick: () => {},
         },
       ],
     });
@@ -211,43 +210,40 @@ const EditProfile = () => {
 
   const MakeChanges = async (e) => {
     e.preventDefault();
-    if(city=="")
-    {
-      alert("Please choose your city")
-    }
-    else{
-    const DOB = value;
-    const edit_data = {
-      FirstName,
-      MiddleName,
-      LastName,
-      DOB,
-      phoneNumber,
-      email,
-      city,
-      state,
-      country,
-      Degree,
-      Field,
-      CollegeName,
-      University,
-      GraduationYear,
-    };
-    
-
-    const { message: messagee } = await SendPost(
-      `${window.name}edit-profile`,
-      edit_data
-    );
-
-    if (messagee.includes("updated")) {
-      setvisible(true);
+    if (city == "") {
+      alert("Please choose your city");
     } else {
-      setemailerr(messagee.substring(0, 20));
-      stylefunction("2px outset red", "email");
-      setcursor("email");
+      const DOB = value;
+      const edit_data = {
+        FirstName,
+        MiddleName,
+        LastName,
+        DOB,
+        phoneNumber,
+        email,
+        city,
+        state,
+        country,
+        Degree,
+        Field,
+        CollegeName,
+        University,
+        GraduationYear,
+      };
+
+      const { message: messagee } = await SendPost(
+        `${window.name}edit-profile`,
+        edit_data
+      );
+
+      if (messagee.includes("updated")) {
+        setvisible(true);
+      } else {
+        setemailerr(messagee.substring(0, 20));
+        stylefunction("2px outset red", "email");
+        setcursor("email");
+      }
     }
-  }
   };
 
   return (
@@ -505,65 +501,104 @@ const EditProfile = () => {
                     </>
                   </Tooltip> */}
                   <Tooltip title="Country">
-                  <>
-                  <p className="inputtext">Country</p>
-                  <select required
-                    name="country"
-                    id="country"
-                    onChange={(e) => {
-                      
-                      const data = JSON.parse(e.target.value);
-                      setCountry(data.name)
-                      setState("")
-                      setCity("")
-                      setallCity("")
-                      const allstates = State.getStatesOfCountry(data.isoCode);
+                    <>
+                      <p className="inputtext">Country</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <select
+                            className="selectBox"
+                            required
+                            name="country"
+                            id="country"
+                            onChange={(e) => {
+                              const data = JSON.parse(e.target.value);
+                              setCountry(data.name);
+                              setState("");
+                              setCity("");
+                              setallCity("");
+                              const allstates = State.getStatesOfCountry(
+                                data.isoCode
+                              );
 
-                      setallState(allstates);
-                    }}
-                  >
-                    <option>{country?country:"Select country"}</option>
-                    {allcountry.map((country) => (
-                      <option value={JSON.stringify(country)}>
-                        {country.name}
-                      </option>
-                    ))}
-                  </select>
-                  </>
+                              setallState(allstates);
+                            }}
+                          >
+                            <option>
+                              {country ? country : "Select country"}
+                            </option>
+                            {allcountry.map((country) => (
+                              <option value={JSON.stringify(country)}>
+                                {country.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    </>
                   </Tooltip>
-                  <br />
+
                   <Tooltip>
-                  <>
-                  <p className="inputtext">State</p>
-                  <select name="state" id="state" onChange={(e) => {
-                    
-                    const data = JSON.parse(e.target.value);
-                    setState(data.name);
-                    setCity("")
-                    const allcities=City.getCitiesOfState(data.countryCode,data.isoCode)
-                    setallCity(allcities);
-                   
-                    
-                  }}>
-                    <option >{state?state:"Select state"}</option>
-                    {allstate && allstate.map((state) => (<option value={JSON.stringify(state)}>{state.name}</option>))}
-                  </select>
-                  </>
+                    <>
+                      <p className="inputtext">State</p>
+
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <select
+                            className="selectBox"
+                            name="state"
+                            id="state"
+                            onChange={(e) => {
+                              const data = JSON.parse(e.target.value);
+                              setState(data.name);
+                              setCity("");
+                              const allcities = City.getCitiesOfState(
+                                data.countryCode,
+                                data.isoCode
+                              );
+                              setallCity(allcities);
+                            }}
+                          >
+                            <option>{state ? state : "Select state"}</option>
+                            {allstate &&
+                              allstate.map((state) => (
+                                <option value={JSON.stringify(state)}>
+                                  {state.name}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
+                      </div>
+                    </>
                   </Tooltip>
-                   <br />
-                   <Tooltip>
-                   <>
-                   <p className="inputtext">City</p>
-                   <select name="city" id="city" onChange={(e)=>{
-                     
-                    const data = JSON.parse(e.target.value);
-                    setCity(data.name)
-                   }} name="city" id="city">
-                     <option >{city?city:"select city"}</option>
-                     {allcity && allcity.map((city)=>(<option value={JSON.stringify(city)} >{city.name}</option>))}
-                   </select>
-                   </>
-                   </Tooltip>
+
+                  <Tooltip>
+                    <>
+                      <p className="inputtext">City</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <select
+                            name="city"
+                            id="city"
+                            className="selectBox"
+                            onChange={(e) => {
+                              const data = JSON.parse(e.target.value);
+                              setCity(data.name);
+                            }}
+                            name="city"
+                            id="city"
+                          >
+                            <option>{city ? city : "select city"}</option>
+                            {allcity &&
+                              allcity.map((city) => (
+                                <option value={JSON.stringify(city)}>
+                                  {city.name}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
+                      </div>
+                    </>
+                  </Tooltip>
                   {/* <Tooltip title="State">
                     <>
                       <p className="inputtext">State</p>
