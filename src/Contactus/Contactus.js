@@ -14,17 +14,24 @@ const ContactUs = () => {
   const [visible, setvisible] = useState(false);
   const formdata = new FormData();
   const closeModal = () => {
+    setname("")
+    setemail("")
+    setphonenumber("")
+    setsubject("")
+    setmessage("")
     setvisible(false);
   };
 
   const submitMssg = async (e) => {
-    
-    formdata.append("name",name);
+    e.preventDefault();
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(re.test(String(email).toLowerCase()))
+    {formdata.append("name",name);
     formdata.append("email",email);
     formdata.append("phone",phone);
     formdata.append("subject",subject);
     formdata.append("message",message);
-    e.preventDefault();
+    
     let url =
       "https://script.google.com/macros/s/AKfycbx-zFVJ-6kf6yhTm6qASuEDxgUeeXdQKEpPuJsNGI-yQpSAUc1YcpgxWPFm0MAtrGzA/exec";
 
@@ -40,6 +47,11 @@ const ContactUs = () => {
           setvisible(true);
         }
       });
+    }
+    else{
+      alert("Please type valid mail")
+    }
+
   };
   return (
     <>

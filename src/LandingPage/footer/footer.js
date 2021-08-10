@@ -21,8 +21,9 @@ const Footer = () => {
   };
   const Subscribe = async (e) => {
     e.preventDefault();
-    console.log(1)
-    const sub_data = {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(re.test(String(email).toLowerCase()))
+    {const sub_data = {
       email,
     };
     const { message: messagee } = await Tokenlesssendpost(
@@ -32,6 +33,10 @@ const Footer = () => {
    setvisible(true)
    
     setemail("");
+  }
+  else{
+    alert("Please type a valid mail")
+  }
   };
 
   return (
