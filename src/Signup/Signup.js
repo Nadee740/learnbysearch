@@ -153,7 +153,19 @@ const Signup = () => {
               <img src="../images/SignUp.svg" alt="Login pic"></img>
             </div>
             <div className="singup-form">
-              <h2 className="form-title">REGISTRATION</h2>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Signup;
+
+
+{/* <h2 className="form-title">REGISTRATION</h2>
               <form onSubmit={output} id="register-form">
                 <div className="inputholder">
                   <div className="inputholder-top">
@@ -327,20 +339,4 @@ const Signup = () => {
                     Already registered ? Login
                   </p>
                 </Link>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-};
-
-export default Signup;
-
-
-// The must contain the following:
-// 1. Atleast one special character
-// 2. Atleast one number
-// 3. Atleast one uppercase character 
-// 4. Must be greater than 5 characters
+              </form> */}
