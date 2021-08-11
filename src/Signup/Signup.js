@@ -439,7 +439,7 @@ else
                 alt=""
               />
               <p>Your registration was successfull.</p>
-              <Link to="/" onClick={closeModal}>
+              <Link to="/login" onClick={closeModal}>
                 Close
               </Link>
             </div>
@@ -990,7 +990,7 @@ else
                               );
 
                               if (messagee) {
-                                console.log(messagee)
+                                
                                 setvisible(true);
                               } else {
                                 alert("please verify your mail");
