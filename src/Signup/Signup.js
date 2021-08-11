@@ -215,7 +215,7 @@ stylefunction("2px outset red", "graduationyear");
       const colldata={
         "college":CollegeName
       }
-      console.log(edit_data)
+      
 
       const { message: messagee } = await SendPost(
         `${window.name}edit-profile`,
