@@ -41,7 +41,13 @@ const Signup = () => {
   const [Field, setField] = useState("");
   const [CollegeName, setCollegeName] = useState("");
   const [listofCollege, setlistCollege] = useState();
-  const [selectlistofCollege, setselectlistCollege] = useState(['r15','rr310','rc200','r3','highness']);
+  const [selectlistofCollege, setselectlistCollege] = useState([
+    "r15",
+    "rr310",
+    "rc200",
+    "r3",
+    "highness",
+  ]);
   const [University, setUniversity] = useState("");
   const [GraduationYear, setGraduationYear] = useState("");
   const [value, setdate] = useState();
@@ -51,7 +57,7 @@ const Signup = () => {
   const [emailerr, setemailerr] = useState("");
   const [otp, setotp] = useState("");
   const [otpsend, setotpsend] = useState(false);
- 
+
   const [verifyvisible, setverifyvisible] = useState(false);
   const [otperror, setotperr] = useState();
   const [isverfied, setisverfied] = useState(false);
@@ -92,49 +98,41 @@ const Signup = () => {
       }
     }
   };
-  const searchMethod=(input)=>{
-  let array=listofCollege;
-  let arr=[];
-  if(array[0])
-  {
-    array.map((college)=>{
-    if(college.college.toLowerCase().includes(input.toLowerCase()))
-    {
-    
-    arr.push(college.college)
-    
+  const searchMethod = (input) => {
+    let array = listofCollege;
+    let arr = [];
+    if (array[0]) {
+      array.map((college) => {
+        if (college.college.toLowerCase().includes(input.toLowerCase())) {
+          arr.push(college.college);
+        }
+      });
+      if (arr.length > 0) {
+        setselectlistCollege(arr);
+        setshowsuggestions(true);
+      } else {
+        setshowsuggestions(false);
+      }
     }
-
-    
-    })
-    if(arr.length>0)
-    {
-      setselectlistCollege(arr)
-      setshowsuggestions(true)
-    }
-    else
-    {
-      setshowsuggestions(false)
-    }
-  }
-  
-
-  }
+  };
 
   const suggestionsListComponent = (
-      <ul class="suggestions">
-        {selectlistofCollege.map((college, index) => {
-          return (
-            <li onClick={()=>{
-              setshowsuggestions(false)
-              setCollegeName(college)}} key={index} className="suggestion-active" >
-              {college}
-            </li>
-          );
-        })}
-      </ul>
-  
-   
+    <ul class="suggestions">
+      {selectlistofCollege.map((college, index) => {
+        return (
+          <li
+            onClick={() => {
+              setshowsuggestions(false);
+              setCollegeName(college);
+            }}
+            key={index}
+            className="suggestion-active"
+          >
+            {college}
+          </li>
+        );
+      })}
+    </ul>
   );
   const stylefunction = (color, id) => {
     document.getElementById(id).style.border = color;
@@ -143,15 +141,13 @@ const Signup = () => {
     setvisible(false);
   };
 
- const closeModalmailnot = () => {
-  setverifyvisible(false);
-    
+  const closeModalmailnot = () => {
+    setverifyvisible(false);
   };
-  const closeverifyModal=()=>{
+  const closeverifyModal = () => {
     setverifyvisible(false);
     setresendmailvisible(true);
-    
-  }
+  };
   const clearform = () => {
     setFirstName();
     setLastName();
@@ -164,36 +160,37 @@ const Signup = () => {
 
   useEffect(async () => {
     getAllCountries();
-   getCOllegename()
-    
+    getCOllegename();
   }, []);
   const getAllCountries = () => {
     const countries = Country.getAllCountries();
     setallCountry(countries);
   };
 
-  const getCOllegename=async()=>{
-    const { data: Datass } = await Researchpgms(`${window.name}get-college`)
- setlistCollege(Datass)
-  }
+  const getCOllegename = async () => {
+    const { data: Datass } = await Researchpgms(`${window.name}get-college`);
+    setlistCollege(Datass);
+  };
   const MakeChanges = async () => {
     stylefunction("2px solid #81818128", "degree");
     stylefunction("2px solid #81818128", "collegename");
     stylefunction("2px solid #81818128", "field");
     stylefunction("2px solid #81818128", "university");
     stylefunction("2px solid #81818128", "graduationyear");
-   
-    if (Degree == "" || CollegeName=="" || Field=="" || University=="" ||GraduationYear=="") {
-if(Degree=="")
-stylefunction("2px outset red", "degree");
-if(CollegeName=="")
-stylefunction("2px outset red", "collegename");
-if(Field=="")
-stylefunction("2px outset red", "field");
-if(University=="")
-stylefunction("2px outset red", "university");
-if(GraduationYear=="")
-stylefunction("2px outset red", "graduationyear");      
+
+    if (
+      Degree == "" ||
+      CollegeName == "" ||
+      Field == "" ||
+      University == "" ||
+      GraduationYear == ""
+    ) {
+      if (Degree == "") stylefunction("2px outset red", "degree");
+      if (CollegeName == "") stylefunction("2px outset red", "collegename");
+      if (Field == "") stylefunction("2px outset red", "field");
+      if (University == "") stylefunction("2px outset red", "university");
+      if (GraduationYear == "")
+        stylefunction("2px outset red", "graduationyear");
     } else {
       const DOB = value;
       const edit_data = {
@@ -203,38 +200,36 @@ stylefunction("2px outset red", "graduationyear");
         DOB,
         phoneNumber,
         email,
-        "City":city,
-        "State":state,
-        "Country":country,
+        City: city,
+        State: state,
+        Country: country,
         Degree,
         Field,
         CollegeName,
         University,
         GraduationYear,
       };
-      const colldata={
-        "college":CollegeName
-      }
-      console.log(edit_data)
+      const colldata = {
+        college: CollegeName,
+      };
+      console.log(edit_data);
 
       const { message: messagee } = await SendPost(
         `${window.name}edit-profile`,
         edit_data
       );
-      
+
       const { message: messageemon } = await Tokenlesssendpost(
         `${window.name}create-college`,
         colldata
       );
 
       if (messagee.includes("updated")) {
-        SetStep(step+1)
-      } 
+        SetStep(step + 1);
+      }
     }
   };
   const output = async () => {
-    
-
     setconfirmpassrerror();
     setphoneerror();
     setusererror();
@@ -248,72 +243,74 @@ stylefunction("2px outset red", "graduationyear");
     stylefunction("2px solid #81818128", "password");
     stylefunction("2px solid #81818128", "firstname");
     stylefunction("2px solid #81818128", "lastname");
-    const reemail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(FirstName.length>2 && LastName.length>2 && reemail.test(String(email).toLowerCase()) && phoneNumber.length>6 && username.length>1){
+    const reemail =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (
+      FirstName.length > 2 &&
+      LastName.length > 2 &&
+      reemail.test(String(email).toLowerCase()) &&
+      phoneNumber.length > 6 &&
+      username.length > 1
+    ) {
+      let re =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/;
 
-    let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/;
-
-    if (re.test(password)) {
-      if (confirmpass != password) {
-        setconfirmpassrerror("Password does not match ");
-        setcursor("confirmpassword");
-        stylefunction("2px outset red", "password");
-        stylefunction("2px outset red", "confirmpassword");
-      } else {
-        const reg_data = {
-          username,
-          FirstName,
-          LastName,
-          email,
-          phoneNumber,
-          password,
-        };
-
-        const { message: messagee } = await Tokenlesssendpost(
-          `${window.name}register`,
-          reg_data
-        );
-
-        if (messagee.includes("verification")) {
-         SetStep(step+1)
-        } else if (messagee.includes("email")) {
-          setemailerror(messagee);
-          stylefunction("2px outset red", "email");
-          setcursor("email");
-        } else if (messagee.includes("password")) {
-          setpassrerror(messagee);
+      if (re.test(password)) {
+        if (confirmpass != password) {
+          setconfirmpassrerror("Password does not match ");
+          setcursor("confirmpassword");
           stylefunction("2px outset red", "password");
-          setcursor("password");
-        } else if (messagee.toLowerCase().includes("username")) {
-          stylefunction("2px outset red", "username");
+          stylefunction("2px outset red", "confirmpassword");
+        } else {
+          const reg_data = {
+            username,
+            FirstName,
+            LastName,
+            email,
+            phoneNumber,
+            password,
+          };
 
-          setusererror(messagee);
-          setcursor("username");
-        } else if (messagee.toLowerCase().includes("phone")) {
-          stylefunction("2px outset red", "phone");
-          setphoneerror(messagee);
-          setcursor("phone");
+          const { message: messagee } = await Tokenlesssendpost(
+            `${window.name}register`,
+            reg_data
+          );
+
+          if (messagee.includes("verification")) {
+            SetStep(step + 1);
+          } else if (messagee.includes("email")) {
+            setemailerror(messagee);
+            stylefunction("2px outset red", "email");
+            setcursor("email");
+          } else if (messagee.includes("password")) {
+            setpassrerror(messagee);
+            stylefunction("2px outset red", "password");
+            setcursor("password");
+          } else if (messagee.toLowerCase().includes("username")) {
+            stylefunction("2px outset red", "username");
+
+            setusererror(messagee);
+            setcursor("username");
+          } else if (messagee.toLowerCase().includes("phone")) {
+            stylefunction("2px outset red", "phone");
+            setphoneerror(messagee);
+            setcursor("phone");
+          }
         }
+      } else {
+        stylefunction("2px outset red", "password");
+        alert(
+          "The must contain the following:\n1. Atleast one special character\n2. Atleast one number\n3. Atleast one uppercase character\n4. Must be greater than 5 characters"
+        );
       }
     } else {
-      stylefunction("2px outset red", "password");
-      alert(
-        "The must contain the following:\n1. Atleast one special character\n2. Atleast one number\n3. Atleast one uppercase character\n4. Must be greater than 5 characters"
-      );
+      if (FirstName.length < 3) stylefunction("2px outset red", "firstname");
+      if (LastName.length < 3) stylefunction("2px outset red", "lastname");
+      if (!reemail.test(String(email).toLowerCase()))
+        stylefunction("2px outset red", "email");
+      if (phoneNumber.length <= 6) stylefunction("2px outset red", "phone");
+      if (username.length <= 1) stylefunction("2px outset red", "username");
     }
-  }
-  else{
-    if(FirstName.length<3)
-    stylefunction("2px outset red", "firstname");
-    if(LastName.length<3)
-    stylefunction("2px outset red", "lastname");
-    if(!reemail.test(String(email).toLowerCase()))
-    stylefunction("2px outset red", "email");
-    if(phoneNumber.length<=6)
-    stylefunction("2px outset red", "phone");
-    if(username.length<=1)
-    stylefunction("2px outset red", "username");
-  }
   };
   const closeOtpModal = () => {
     setotpsend(false);
@@ -352,7 +349,7 @@ stylefunction("2px outset red", "graduationyear");
       `${window.name}resend-email-verification`,
       log_data
     );
-  
+
     setemailerr(messagee);
   };
   //////////////////
@@ -382,7 +379,9 @@ stylefunction("2px outset red", "graduationyear");
                 className="logo"
                 alt=""
               />
-             <p>Verification email already sent on <br /> email address.</p>
+              <p>
+                Verification email already sent on <br /> email address.
+              </p>
               <br />
               <Link onClick={closeverifyModal}>Resend verification mail</Link>
             </div>
@@ -439,9 +438,7 @@ stylefunction("2px outset red", "graduationyear");
                 className="logo"
                 alt=""
               />
-              <p>
-                Your registration was successfull.
-              </p>
+              <p>Your registration was successfull.</p>
               <Link to="/" onClick={closeModal}>
                 Close
               </Link>
@@ -449,7 +446,7 @@ stylefunction("2px outset red", "graduationyear");
           </Modal>
         </section>
       </div>
-       <div className="popupscreen">
+      <div className="popupscreen">
         <section className="popupscreen">
           <Modal
             visible={otpsend}
@@ -688,267 +685,284 @@ stylefunction("2px outset red", "graduationyear");
                     </form>
                   ) : null}
 
-                  {step === 1 ? <div>   <Tooltip title="Date of Birth">
-                    <>
-                      <p className="inputtext">Date Of Birth</p>
-                      <div className="inputholder">
-                        <div className="inputholder-top">
-                          <input
-                            required
-                            type="date"
-                            placeholder="DD-MM-YY"
-                            className="inputdate"
-                            onChange={(e) => {
-                              setdate(e.target.value);
-                            }}
-                            value={value}
-                          />
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip>         <Tooltip title="Country">
-                    <>
-                      <p className="inputtext">Country</p>
-                      <div className="inputholder">
-                        <div className="inputholder-top">
-                          <select
-                            className="selectBox"
-                            required
-                            name="country"
-                            id="country"
-                            onChange={(e) => {
-                              const data = JSON.parse(e.target.value);
-                              setCountry(data.name);
-                              setState("");
-                              setCity("");
-                              setallCity("");
-                              const allstates = State.getStatesOfCountry(
-                                data.isoCode
-                              );
+                  {step === 1 ? (
+                    <div className="centeralign">
+                      {" "}
+                      <Tooltip title="Date of Birth">
+                        <>
+                          <p className="inputtext">Date Of Birth</p>
+                          <div className="inputholder">
+                            <div className="inputholder-top">
+                              <input
+                                required
+                                type="date"
+                                placeholder="DD-MM-YY"
+                                className="inputdate"
+                                onChange={(e) => {
+                                  setdate(e.target.value);
+                                }}
+                                value={value}
+                              />
+                            </div>
+                          </div>
+                        </>
+                      </Tooltip>{" "}
+                      <Tooltip title="Country">
+                        <>
+                          <p className="inputtext">Country</p>
+                          <div className="inputholder">
+                            <div className="inputholder-top">
+                              <select
+                                className="selectBox"
+                                required
+                                name="country"
+                                id="country"
+                                onChange={(e) => {
+                                  const data = JSON.parse(e.target.value);
+                                  setCountry(data.name);
+                                  setState("");
+                                  setCity("");
+                                  setallCity("");
+                                  const allstates = State.getStatesOfCountry(
+                                    data.isoCode
+                                  );
 
-                              setallState(allstates);
-                            }}
-                          >
-                            <option>
-                              {country ? country : "Select country"}
-                            </option>
-                            {allcountry && allcountry.map((country) => (
-                              <option value={JSON.stringify(country)}>
-                                {country.name}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip>
-
-                  <Tooltip>
-                    <>
-                      <p className="inputtext">State</p>
-
-                      <div className="inputholder">
-                        <div className="inputholder-top">
-                          <select
-                            className="selectBox"
-                            name="state"
-                            id="state"
-                            onChange={(e) => {
-                              const data = JSON.parse(e.target.value);
-                              setState(data.name);
-                              setCity("");
-                              const allcities = City.getCitiesOfState(
-                                data.countryCode,
-                                data.isoCode
-                              );
-                              setallCity(allcities);
-                            }}
-                          >
-                            <option>{state ? state : "Select state"}</option>
-                            {allstate &&
-                              allstate.map((state) => (
-                                <option value={JSON.stringify(state)}>
-                                  {state.name}
+                                  setallState(allstates);
+                                }}
+                              >
+                                <option>
+                                  {country ? country : "Select country"}
                                 </option>
-                              ))}
-                          </select>
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip>
+                                {allcountry &&
+                                  allcountry.map((country) => (
+                                    <option value={JSON.stringify(country)}>
+                                      {country.name}
+                                    </option>
+                                  ))}
+                              </select>
+                            </div>
+                          </div>
+                        </>
+                      </Tooltip>
+                      <Tooltip>
+                        <>
+                          <p className="inputtext">State</p>
 
-                  <Tooltip>
-                    <>
-                      <p className="inputtext">City</p>
+                          <div className="inputholder">
+                            <div className="inputholder-top">
+                              <select
+                                className="selectBox"
+                                name="state"
+                                id="state"
+                                onChange={(e) => {
+                                  const data = JSON.parse(e.target.value);
+                                  setState(data.name);
+                                  setCity("");
+                                  const allcities = City.getCitiesOfState(
+                                    data.countryCode,
+                                    data.isoCode
+                                  );
+                                  setallCity(allcities);
+                                }}
+                              >
+                                <option>
+                                  {state ? state : "Select state"}
+                                </option>
+                                {allstate &&
+                                  allstate.map((state) => (
+                                    <option value={JSON.stringify(state)}>
+                                      {state.name}
+                                    </option>
+                                  ))}
+                              </select>
+                            </div>
+                          </div>
+                        </>
+                      </Tooltip>
+                      <Tooltip>
+                        <>
+                          <p className="inputtext">City</p>
+                          <div className="inputholder">
+                            <div className="inputholder-top">
+                              <select
+                                name="city"
+                                id="city"
+                                className="selectBox"
+                                onChange={(e) => {
+                                  const data = JSON.parse(e.target.value);
+                                  setCity(data.name);
+                                }}
+                                name="city"
+                                id="city"
+                              >
+                                <option>{city ? city : "select city"}</option>
+                                {allcity &&
+                                  allcity.map((city) => (
+                                    <option value={JSON.stringify(city)}>
+                                      {city.name}
+                                    </option>
+                                  ))}
+                              </select>
+                            </div>
+                          </div>
+                        </>
+                      </Tooltip>
+                    </div>
+                  ) : null}
+                  {step === 2 ? (
+                    <div className="centeralign">
+                      {" "}
+                      <Tooltip title="Degree">
+                        <>
+                          <p className="inputtext">Degree</p>
+                          <div className="inputholder" id="degree">
+                            <div className="inputholder-top">
+                              <input
+                                type="text"
+                                placeholder="Degree"
+                                autoComplete="off"
+                                required
+                                value={Degree}
+                                onChange={(e) => {
+                                  setDegree(e.target.value);
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </>
+                      </Tooltip>
+                      <Tooltip title="Field">
+                        <>
+                          <p className="inputtext">Branch/Area of Study</p>
+                          <div className="inputholder" id="field">
+                            <div className="inputholder-top">
+                              <input
+                                type="text"
+                                placeholder="Field"
+                                autoComplete="off"
+                                required
+                                value={Field}
+                                onChange={(e) => {
+                                  setField(e.target.value);
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </>
+                      </Tooltip>
+                      <Tooltip title="College Name">
+                        <>
+                          <p className="inputtext">College Name</p>
+                          <div className="inputholder" id="collegename">
+                            <div className="inputholder-top">
+                              <input
+                                type="text"
+                                placeholder="College Name"
+                                autoComplete="off"
+                                required
+                                autoComplete="off"
+                                required
+                                value={CollegeName}
+                                onChange={(e) => {
+                                  setCollegeName(e.target.value);
+                                  searchMethod(e.target.value);
+                                }}
+                              />
+                            </div>
+                          </div>
+                          {showsuggestions ? suggestionsListComponent : ""}
+                        </>
+                      </Tooltip>
+                      <Tooltip title="University">
+                        <>
+                          <p className="inputtext">University</p>
+                          <div className="inputholder" id="university">
+                            <div className="inputholder-top">
+                              <input
+                                type="text"
+                                placeholder="University"
+                                autoComplete="off"
+                                required
+                                value={University}
+                                onChange={(e) => {
+                                  setUniversity(e.target.value);
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </>
+                      </Tooltip>
+                      <Tooltip title="Graduation Year">
+                        <>
+                          <p className="inputtext">Graduation Year</p>
+                          <div className="inputholder" id="graduationyear">
+                            <div className="inputholder-top">
+                              <input
+                                type="text"
+                                placeholder="Graduation Year"
+                                autoComplete="off"
+                                required
+                                value={GraduationYear}
+                                onChange={(e) => {
+                                  setGraduationYear(e.target.value);
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </>
+                      </Tooltip>
+                    </div>
+                  ) : null}
+                  {step === 3 ? (
+                    <div className="centeralign">
+                      <p className="inputtext">Phone Number</p>
                       <div className="inputholder">
                         <div className="inputholder-top">
-                          <select
-                            name="city"
-                            id="city"
-                            className="selectBox"
-                            onChange={(e) => {
-                              const data = JSON.parse(e.target.value);
-                              setCity(data.name);
-                            }}
-                            name="city"
-                            id="city"
-                          >
-                            <option>{city ? city : "select city"}</option>
-                            {allcity &&
-                              allcity.map((city) => (
-                                <option value={JSON.stringify(city)}>
-                                  {city.name}
-                                </option>
-                              ))}
-                          </select>
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip></div> : null}
-                  {step === 2 ? <div>  <Tooltip title="Degree">
-                    <>
-                      <p className="inputtext">Degree</p>
-                      <div className="inputholder" id="degree">
-                        <div className="inputholder-top">
                           <input
-                            type="text"
-                            placeholder="Degree"
+                            id="PhoneNumber"
+                            type="tel"
+                            placeholder="Your Phone Number"
                             autoComplete="off"
                             required
-                            value={Degree}
+                            value={phoneNumber}
                             onChange={(e) => {
-                              setDegree(e.target.value);
+                              setPhone(e.target.value);
                             }}
                           />
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip>
-                  <Tooltip title="Field">
-                    <>
-                      <p className="inputtext">Branch/Area of Study</p>
-                      <div className="inputholder" id="field">
-                        <div className="inputholder-top">
-                          <input
-                            type="text"
-                            placeholder="Field"
-                            autoComplete="off"
-                            required
-                            value={Field}
-                            onChange={(e) => {
-                              setField(e.target.value);
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip>
-                  <Tooltip title="College Name">
-                    <>
-                      <p className="inputtext">College Name</p>
-                      <div className="inputholder" id="collegename">
-                        <div className="inputholder-top">
-                          <input
-                            type="text"
-                            placeholder="College Name"
-                            autoComplete="off"
-                            required
-                            autoComplete="off"
-                            required
-                            value={CollegeName}
-                            onChange={(e) => {
-                              setCollegeName(e.target.value);
-                              searchMethod(e.target.value)
-                            }}
-                          />
-                        </div>
 
-                      </div>
-                      {showsuggestions? suggestionsListComponent:""}
-                    </>
-                  </Tooltip>
-
-                  <Tooltip title="University">
-                    <>
-                      <p className="inputtext">University</p>
-                      <div className="inputholder" id="university">
-                        <div className="inputholder-top">
-                          <input
-                            type="text"
-                            placeholder="University"
-                            autoComplete="off"
-                            required
-                            value={University}
-                            onChange={(e) => {
-                              setUniversity(e.target.value);
-                            }}
-                          />
+                          {isverfied ? (
+                            <Tooltip title="Verifeid">
+                              <MdDoneAll size="1.2em" className="emtick" />
+                            </Tooltip>
+                          ) : (
+                            <MdClear
+                              size="1.2em"
+                              className="emtick"
+                              color="red"
+                            />
+                          )}
                         </div>
+                        <label className="label" htmlFor="">
+                          {phoneerror && phoneerror}
+                        </label>
                       </div>
-                    </>
-                  </Tooltip>
-
-                  <Tooltip title="Graduation Year">
-                    <>
-                      <p className="inputtext">Graduation Year</p>
-                      <div className="inputholder" id="graduationyear">
-                        <div className="inputholder-top">
-                          <input
-                            type="text"
-                            placeholder="Graduation Year"
-                            autoComplete="off"
-                            required
-                            value={GraduationYear}
-                            onChange={(e) => {
-                              setGraduationYear(e.target.value);
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip></div> : null}
-                  {step === 3 ? <div><p className="inputtext">Phone Number</p>
-                  <div className="inputholder">
-                    <div className="inputholder-top">
-                      <input
-                        id="PhoneNumber"
-                        type="tel"
-                        placeholder="Your Phone Number"
-                        autoComplete="off"
-                        required
-                        value={phoneNumber}
-                        onChange={(e) => {
-                          setPhone(e.target.value);
-                        }}
-                      />
 
                       {isverfied ? (
-                        <Tooltip title="Verifeid">
-                          <MdDoneAll size="1.2em" className="emtick" />
-                        </Tooltip>
+                        <></>
                       ) : (
-                        <MdClear size="1.2em" className="emtick" color="red" />
+                        <button
+                          className="edit-profile-btn"
+                          onClick={(e) => {
+                            VERIFYPhonenumber(e);
+                          }}
+                        >
+                          VERIFY PHONE NUMBER
+                        </button>
                       )}
                     </div>
-                    <label className="label" htmlFor="">
-                      {phoneerror && phoneerror}
-                    </label>
-                  </div>
-
-                  {isverfied ? (
-                    <></>
-                  ) : (
-                    <button
-                      className="edit-profile-btn"
-                      onClick={(e) => {
-                        VERIFYPhonenumber(e);
-                      }}
-                    >
-                      VERIFY PHONE NUMBER
-                    </button>
-                  )}</div> : null}
+                  ) : null}
                   <div className="btnholder">
-                    {step !== 0 ? (
+                    {step > 1 ? (
                       <button
                         className="submit-btn submit-btn2"
                         onClick={() => {
@@ -961,49 +975,30 @@ stylefunction("2px outset red", "graduationyear");
 
                     <button
                       className="submit-btn submit-btn2"
-                      onClick={async() => {
+                      onClick={async () => {
                         if (step < 4) {
-                          if(step==0)
-                           output()
-                        
-                       else if(step==1)
-                        {
-                          if(city!="")
-                          SetStep(step+1)
-                        else
-                        alert("Please choose city")
+                          if (step == 0) output();
+                          else if (step == 1) {
+                            if (city != "") SetStep(step + 1);
+                            else alert("Please choose city");
+                          } else if (step == 2) MakeChanges();
+                          else if (step == 3) {
+                            if (!isverfied) {
+                              const { retdata: messagee } = await Isverified(
+                                `${window.name}is-user-verified`,
+                                { username: "Nadeem18" }
+                              );
 
-                        }
-                        else if(step==2)
-                       MakeChanges()
-                        
-                        else if(step==3)
-                        {
-                          
-                          if(!isverfied) {
-                          const { retdata:messagee  } = await Isverified(
-      `${window.name}is-user-verified`,
-      {"username":"Nadeem18"}
-    );
-  
-  if(messagee)
-  {
-    setvisible(true)
-  }
-  else{
-    alert("please verify your mail")
-  }
-                        }
-                        else{
-                          alert("please verify your phone number")
-                        }
-
-                        }
-                            else
-                          SetStep(step + 1);
-                        } 
-                    
-                        else {
+                              if (messagee) {
+                                setvisible(true);
+                              } else {
+                                alert("please verify your mail");
+                              }
+                            } else {
+                              alert("please verify your phone number");
+                            }
+                          } else SetStep(step + 1);
+                        } else {
                         }
                       }}
                     >
@@ -1026,4 +1021,3 @@ stylefunction("2px outset red", "graduationyear");
 };
 
 export default Signup;
-
