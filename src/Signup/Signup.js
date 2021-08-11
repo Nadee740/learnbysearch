@@ -7,7 +7,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import "./Signup.css";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import { Helmet } from "react-helmet";
-
+import { Stepper, Step } from "react-form-stepper";
 const Signup = () => {
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
@@ -76,13 +76,12 @@ const Signup = () => {
           phoneNumber,
           password,
         };
-     
 
         const { message: messagee } = await Tokenlesssendpost(
           `${window.name}register`,
           reg_data
         );
-        
+
         if (messagee.includes("verification")) {
           document.getElementById("register-form").reset();
           setvisible(true);
@@ -113,6 +112,9 @@ const Signup = () => {
     }
   };
 
+  //////////////////
+
+  const [step, SetStep] = useState(0);
   return (
     <>
       <Helmet>
@@ -136,7 +138,7 @@ const Signup = () => {
               />
               <p>
                 Please verify your email.<br></br>
-                Please Check spam folder too ! 
+                Please Check spam folder too !
               </p>
               <Link to="/" onClick={closeModal}>
                 Close
@@ -153,7 +155,230 @@ const Signup = () => {
               <img src="../images/SignUp.svg" alt="Login pic"></img>
             </div>
             <div className="singup-form">
-              
+              <h2 className="form-title">REGISTRATION</h2>
+              <div className="stepperdiv">
+                <Stepper
+                  activeStep={step}
+                  styleConfig={{
+                    completedBgColor: "#bd00c0",
+                    activeBgColor: "#C86FC9",
+                    inactiveBgColor: "#bdbdbd",
+                  }}
+                >
+                  <Step label="Create Account" />
+                  <Step label="Personal Details" />
+                  <Step label="Educational Qualification" />
+                  <Step label="Verification" />
+                </Stepper>
+                <div className="steppHolder">
+                  {step === 0 ? (
+                    <form onSubmit={output} id="register-form">
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            required
+                            type="text"
+                            placeholder="First Name"
+                            onChange={(e) => {
+                              setFirstName(e.target.value);
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            required
+                            type="text"
+                            placeholder="Last Name"
+                            onChange={(e) => {
+                              setLastName(e.target.value);
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="inputholder" id="username">
+                        <div className="inputholder-top">
+                          <input
+                            required
+                            type="text"
+                            placeholder="Username"
+                            onChange={(e) => {
+                              setUsername(e.target.value);
+                            }}
+                          />
+                        </div>
+                        <label className="label" htmlFor="">
+                          {usererror && usererror}
+                        </label>
+                      </div>
+
+                      <div className="inputholder" id="email">
+                        <div className="inputholder-top">
+                          <input
+                            required
+                            type="mail"
+                            placeholder="E-Mail"
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                            }}
+                          />
+                        </div>
+                        <label className="label" htmlFor="">
+                          {emailerror && emailerror}
+                        </label>
+                      </div>
+
+                      <div className="inputholder" id="phone">
+                        <div className="inputholder-top">
+                          <input
+                            required
+                            type="tel"
+                            placeholder="phone number"
+                            defaultValue="+91"
+                            onChange={(e) => {
+                              setPhone(e.target.value);
+                            }}
+                          />
+                        </div>
+                        <label className="label" htmlFor="">
+                          {phoneerror && phoneerror}
+                        </label>
+                      </div>
+                      <div className="inputholder" id="password">
+                        <div className="inputholder-top">
+                          <input
+                            required
+                            type={passVISIBLE ? "text" : "password"}
+                            placeholder="Password"
+                            onChange={(e) => {
+                              setPass(e.target.value);
+                            }}
+                          />
+                          {passVISIBLE ? (
+                            <HiEye
+                              onClick={() => {
+                                setpassVISIBLE(!passVISIBLE);
+                              }}
+                              size="1.3em"
+                              color="#404040"
+                            />
+                          ) : (
+                            <HiEyeOff
+                              size="1.3em"
+                              color="#404040"
+                              onClick={() => {
+                                setpassVISIBLE(!passVISIBLE);
+                              }}
+                            />
+                          )}
+                        </div>
+                        <label className="label" htmlFor="">
+                          {passerror && passerror}
+                        </label>
+                      </div>
+
+                      <div className="inputholder" id="confirmpassword">
+                        <div className="inputholder-top">
+                          <input
+                            required
+                            type={confirmpassVISIBLE ? "text" : "password"}
+                            placeholder="Confirm Password"
+                            onBlur={() => {
+                              stylefunction(
+                                "2px solid #81818128",
+                                "confirmpassword"
+                              );
+                            }}
+                            onFocus={() => {
+                              if (confirmpass === password) {
+                                stylefunction(
+                                  "2px solid #81818128",
+                                  "confirmpassword"
+                                );
+                              } else {
+                                stylefunction(
+                                  "2px outset red",
+                                  "confirmpassword"
+                                );
+                              }
+                            }}
+                            onChange={(e) => {
+                              setConfrpass(e.target.value);
+                              if (e.target.value === password) {
+                                stylefunction(
+                                  "2px solid #81818128",
+                                  "confirmpassword"
+                                );
+                              } else {
+                                stylefunction(
+                                  "2px outset red",
+                                  "confirmpassword"
+                                );
+                              }
+                            }}
+                          />
+                          {confirmpassVISIBLE ? (
+                            <HiEye
+                              size="1.3em"
+                              color="#404040"
+                              onClick={() => {
+                                setconfirmpassVISIBLE(!confirmpassVISIBLE);
+                              }}
+                            />
+                          ) : (
+                            <HiEyeOff
+                              size="1.3em"
+                              color="#404040"
+                              onClick={() => {
+                                setconfirmpassVISIBLE(!confirmpassVISIBLE);
+                              }}
+                            />
+                          )}
+                        </div>
+                        <label className="label" htmlFor="">
+                          {confirmpasserror && confirmpasserror}
+                        </label>
+                      </div>
+                    </form>
+                  ) : null}
+
+                  {step === 1 ? <div>Personal Details</div> : null}
+                  {step === 2 ? <div>College Details</div> : null}
+                  {step === 3 ? <div>verification</div> : null}
+                  <div className="btnholder">
+                    {step !== 0 ? (
+                      <button
+                        className="submit-btn submit-btn2"
+                        onClick={() => {
+                          SetStep(step - 1);
+                        }}
+                      >
+                        PREVIOUS STEP
+                      </button>
+                    ) : null}
+
+                    <button
+                      className="submit-btn submit-btn2"
+                      onClick={() => {
+                        if (step < 3) {
+                          SetStep(step + 1);
+                        } else {
+                        }
+                      }}
+                    >
+                      NEXT STEP
+                    </button>
+                  </div>
+                </div>
+                <Link to="/login">
+                  <p className="form-btmtext form-btmtext1">
+                    Already registered ? Login
+                  </p>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -164,8 +389,8 @@ const Signup = () => {
 
 export default Signup;
 
-
-{/* <h2 className="form-title">REGISTRATION</h2>
+{
+  /* <h2 className="form-title">REGISTRATION</h2>
               <form onSubmit={output} id="register-form">
                 <div className="inputholder">
                   <div className="inputholder-top">
@@ -339,4 +564,5 @@ export default Signup;
                     Already registered ? Login
                   </p>
                 </Link>
-              </form> */}
+              </form> */
+}
