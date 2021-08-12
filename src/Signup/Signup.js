@@ -212,7 +212,6 @@ const Signup = () => {
       const colldata = {
         college: CollegeName,
       };
-      
 
       const { message: messagee } = await SendPost(
         `${window.name}edit-profile`,
@@ -332,9 +331,7 @@ const Signup = () => {
       setphoneerr("");
       setisverfied(true);
       setotpsend(false);
-    }
-else
-    setotperr("wrong code");
+    } else setotperr("wrong code");
   };
 
   const closeresendmail = () => {
@@ -408,6 +405,9 @@ else
                 id="emailresendmail"
                 type="email"
                 placeholder="email"
+                style={{
+                  width: "80%",
+                }}
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
@@ -990,7 +990,6 @@ else
                               );
 
                               if (messagee) {
-                                
                                 setvisible(true);
                               } else {
                                 alert("please verify your mail");
