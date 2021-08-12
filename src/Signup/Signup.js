@@ -986,7 +986,7 @@ const Signup = () => {
                             if (isverfied) {
                               const { retdata: messagee } = await Isverified(
                                 `${window.name}is-user-verified`,
-                                { username: "Nadeem18" }
+                                { username: username }
                               );
 
                               if (messagee) {
