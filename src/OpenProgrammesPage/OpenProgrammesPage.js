@@ -15,6 +15,7 @@ import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
+import { Check } from "@material-ui/icons";
 
 function OpenProgrammesPage() {
   const { slug } = useParams();
@@ -129,30 +130,26 @@ function OpenProgrammesPage() {
 
         if (count == userdata.applicationForm.length) {
           if (array.length > 0) {
-            
-            array.map((data)=>{
+            let check=false;
+            array.map((data,index)=>{
               if(data.rp==blogsData._id){
                 if(data.data!==3 )
                 {
                 setisLoading(false)
+                check=true;
                 setappliedvisible(true)
+                
+                
                 }
-                else{
-                window.location = `/applicationform/${slug}`;
                }
-
-
-
-              }
-              else{
-
-                window.location = `/applicationform/${slug}`;
-              }
+               if(index==array.length-1)
+               {
+                 if(!check)
+                 window.location = `/applicationform/${slug}`
+               }
              
-            })
-
-          
-          } 
+              })
+              } 
           else {
             window.location = `/applicationform/${slug}`;
             
