@@ -64,11 +64,12 @@ const GetData=async()=>{
 
         
     const log_data = {
+      token,
         new_password,
         confirm_password
       };
       const { message: messagee } = await Tokenlesssendpost(
-        `${window.name}reset-password/${token}`,
+        `${window.name}reset-password`,
         log_data
       );
       if(messagee.includes("successfullly"))
