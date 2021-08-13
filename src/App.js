@@ -57,7 +57,7 @@ function App() {
           <Route path="/changepassword" component={Changepassword} />
           <Route path="/contactus" component={ContactUs} />
           <Route
-            path="/api/forgot-password/:id/:token"
+            path="/api/forgot-password/:token"
             component={ForgotPassword}
           />
           <Route path="/allblogs" component={BlogsPage} />

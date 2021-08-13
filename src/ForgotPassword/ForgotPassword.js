@@ -21,7 +21,7 @@ const ForgotPassword = () => {
   const [passVISIBLE,setpassVISIBLE]=useState(false)
   const [confirmpassVISIBLE,setconfirmpassVISIBLE]=useState(false)
   
-  let { id } = useParams();
+  
   let {token}=useParams()
   const stylefunction = (color, id) => {
     document.getElementById(id).style.border = color;
@@ -34,7 +34,7 @@ const ForgotPassword = () => {
 }, [])
 
 const GetData=async()=>{
-    const url=`${window.name}forgot-password/${id}/${token}`
+    const url=`${window.name}forgot-password/${token}`
       const { message: messagee } = await ChangePassword(
         url
 
@@ -68,7 +68,7 @@ const GetData=async()=>{
         confirm_password
       };
       const { message: messagee } = await Tokenlesssendpost(
-        `${window.name}reset-password/${id}/${token}`,
+        `${window.name}reset-password/${token}`,
         log_data
       );
       if(messagee.includes("successfullly"))
