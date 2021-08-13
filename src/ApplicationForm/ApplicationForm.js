@@ -35,23 +35,23 @@ const ApplicationForm = () => {
     setvisible(false);
   };
   const closeerrorModal = () => {
-    localStorage.setItem("q1",q1);
-    localStorage.setItem("q2",q2);
-    localStorage.setItem("q3",q3);
+    localStorage.setItem("q1", q1);
+    localStorage.setItem("q2", q2);
+    localStorage.setItem("q3", q3);
     seterrorvisible(false);
   };
-
+  ////////////////////get positions of rp ///////////////////////////////////////
   const getPositions = async (data) => {
     setisLoading(true);
     await data.positions.map(async (position, index) => {
       const { data: Datass } = await Researchpgms(
         `${window.name}position/${position}`
       );
-     
+
       array.push(Datass);
 
       setPosition(array);
-     
+
       if (data.positions.length == array.length) {
         setisLoading(false);
         setPositionId(array[0]._id);
@@ -60,7 +60,9 @@ const ApplicationForm = () => {
 
     // setisLoading(false);
   };
+  /////////////////////////////////////////////////////////////////////
 
+  //////////////////get rp data////////////////////////////////////////
   const getBlogs = async () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(
@@ -70,45 +72,44 @@ const ApplicationForm = () => {
     setResearchProgramId(Datass._id);
     await getPositions(Datass);
   };
+  //////////////////////////////////////////////
 
   const handleChange = (event) => {
     setSwitch(switchitm);
-    
   };
 
   useEffect(() => {
     setisLoading(true);
-    
 
-    if(localStorage.getItem("q1")!="" && localStorage.getItem("q1")!=null)
-   { 
-     setq1(localStorage.getItem("q1"));
-    setq3(localStorage.getItem("q3"));
-  }
+    if (
+      localStorage.getItem("q1") != "" &&
+      localStorage.getItem("q1") != null
+    ) {
+      setq1(localStorage.getItem("q1"));
+      setq3(localStorage.getItem("q3"));
+    }
     getBlogs();
   }, []);
 
+  ///////////////////////////////submit application////////////////////
   const submitApplictaionform = async (e) => {
     e.preventDefault();
-     localStorage.removeItem("q1");
+    localStorage.removeItem("q1");
     localStorage.removeItem("q3");
-    if (q2=="false" && q3 == "") {
+    if (q2 == "false" && q3 == "") {
       seterr("Please type a valid Reason ");
     } else {
-      
       let data = { PositionId, ResearchProgramId, q1, q2, q3 };
-      if (q2=="true" || q2==true){
-       data = { PositionId, ResearchProgramId, q1, q2, };
+      if (q2 == "true" || q2 == true) {
+        data = { PositionId, ResearchProgramId, q1, q2 };
       }
-      console.log(data)
+      console.log(data);
 
-     
-      
       const { message: messagee } = await SendPost(
         `${window.name}application-form`,
         data
       );
-      
+
       if (messagee.includes("Application form submitted")) {
         setisLoading(false);
         setvisible(true);
@@ -117,7 +118,7 @@ const ApplicationForm = () => {
       }
     }
   };
-
+  //////////////////////////////////////////////////////////////////////
   return (
     <>
       <Helmet>
@@ -185,14 +186,17 @@ const ApplicationForm = () => {
                 <div className="singup-form">
                   <h2 className="form-title">APPLICATION </h2>
                   <form onSubmit={submitApplictaionform}>
-                  <p className="inputtext">What do you want to achieve by joining the research program?</p>
+                    <p className="inputtext">
+                      What do you want to achieve by joining the research
+                      program?
+                    </p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
                     >
                       <div className="inputholder-top ">
                         <textarea
-                        minLength={100}
+                          minLength={100}
                           rows="5"
                           className="textarea"
                           placeholder=""
@@ -204,7 +208,9 @@ const ApplicationForm = () => {
                         ></textarea>
                       </div>
                     </div>
-                    <p className="inputtext">Select the position for which you are applying :</p>
+                    <p className="inputtext">
+                      Select the position for which you are applying :
+                    </p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
@@ -215,7 +221,6 @@ const ApplicationForm = () => {
                         </p> */}
                         <div className="div">
                           <select
-                          
                             className="selectbx"
                             onChange={(e) => {
                               setPositionId(e.target.value);
@@ -237,9 +242,12 @@ const ApplicationForm = () => {
                         </div>
                       </div>
                     </div>
-                    <p className="inputtext"> The Program charges Rs. 5000 fees to cover the
-                          research, training and resources cost. Can you afford to
-                          pay the fees? </p>
+                    <p className="inputtext">
+                      {" "}
+                      The Program charges Rs. 5000 fees to cover the research,
+                      training and resources cost. Can you afford to pay the
+                      fees?{" "}
+                    </p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
@@ -255,15 +263,11 @@ const ApplicationForm = () => {
                           <select
                             className="selectbx"
                             onChange={(e) => {
-                             
                               setq2(e.target.value);
                               if (e.target.value == "true") {
-                                setparavisible(false)
-                               
-                               
+                                setparavisible(false);
                               } else {
-                                setparavisible(true)
-                               
+                                setparavisible(true);
                               }
                             }}
                           >
@@ -277,36 +281,43 @@ const ApplicationForm = () => {
                         </div>
                       </div>
                     </div>
-                    
-                    {paravisible?(<><p className="inputtext">If You Want financial assistance please mention your annual family income and tell us how you can help LearnByResearch to support others in need of assistance like you :</p>
-                    <div
-                        className="inputholder inputholder2 "
-                        id="usernameholder"
-                      >
-                        <div className="inputholder-top ">
-                          <textarea
-                          minLength={250}
-                            value={q3}
-                            onChange={(e) => {
-                              setq3(e.target.value);
-                            }}
-                            rows="15"
-                            className="textarea"
-                            placeholder=""
-                          ></textarea>
+
+                    {paravisible ? (
+                      <>
+                        <p className="inputtext">
+                          If You Want financial assistance please mention your
+                          annual family income and tell us how you can help
+                          LearnByResearch to support others in need of
+                          assistance like you :
+                        </p>
+                        <div
+                          className="inputholder inputholder2 "
+                          id="usernameholder"
+                        >
+                          <div className="inputholder-top ">
+                            <textarea
+                              minLength={250}
+                              value={q3}
+                              onChange={(e) => {
+                                setq3(e.target.value);
+                              }}
+                              rows="15"
+                              className="textarea"
+                              placeholder=""
+                            ></textarea>
+                          </div>
+                          <label className="label" htmlFor="">
+                            {err && err}
+                          </label>
                         </div>
-                        <label className="label" htmlFor="">
-                          {err && err}
-                        </label>
-                      </div>
                       </>
-                    ):""
-                    
-      }
+                    ) : (
+                      ""
+                    )}
 
                     <input
                       type="submit"
-                     value="Submit"
+                      value="Submit"
                       placeholder="Sign Up"
                       className="submit-btn"
                     />

@@ -1,4 +1,4 @@
-
+//////////////////////to check if mail is verified//////////////////////
 import { useCookies } from 'react-cookie';
 const Isverified = async(url, data) => {
    // const [cookies, setCookie] = useCookies(['user']);

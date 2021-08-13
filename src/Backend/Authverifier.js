@@ -1,4 +1,4 @@
-
+////////////////////////fnction to check weather logged in or not and rtr user data/////////////
  
  const Authverifier = async(url) => {
 
@@ -45,7 +45,7 @@
             
 
 // },[]); 
-
+////////////////////data rtns user dtaa/////////////////////
 
 return {isLoggedIn,data};
 

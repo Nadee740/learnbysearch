@@ -20,7 +20,7 @@ import OpenProgrammesPage from "./OpenProgrammesPage/OpenProgrammesPage";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import ApplicationForm from "./ApplicationForm/ApplicationForm";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
-import { SolarSystemLoading } from 'react-loadingg';
+import { SolarSystemLoading } from "react-loadingg";
 import Ongoingresearch from "./ongoingresearch/ongoingresearch";
 import OngoingresearchPage from "./ongoingresearchdetailed/ongoingresearchdetailed";
 
@@ -36,30 +36,26 @@ function App() {
     );
     setisLoggedin(messagee);
     setisLoading(false);
-    
   }, []);
 
   return (
     <div className="App">
       {isLoading ? (
         <div className="isLoading">
-        <SolarSystemLoading/>
+          <SolarSystemLoading />
         </div>
       ) : (
         <Router>
           <Navbar />
-         
-            <Route path="/" exact component={LandingPage} />
-          
+
+          <Route path="/" exact component={LandingPage} />
+
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/editprofile" component={EditProfile} />
           <Route path="/changepassword" component={Changepassword} />
           <Route path="/contactus" component={ContactUs} />
-          <Route
-            path="/forgot-password/:token"
-            component={ForgotPassword}
-          />
+          <Route path="/forgot-password/:token" component={ForgotPassword} />
           <Route path="/allblogs" component={BlogsPage} />
           <Route path="/myapplications" component={MyApplications} />
           <Route path="/openprogrammes" exact component={OpenProgrammes} />
@@ -72,7 +68,7 @@ function App() {
             exact
             component={OpenProgrammesPage}
           />
-                <Route
+          <Route
             path="/ongoingresearchpage/:slug"
             exact
             component={OngoingresearchPage}

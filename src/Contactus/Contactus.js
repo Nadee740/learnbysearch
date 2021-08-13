@@ -3,7 +3,7 @@ import { useState } from "react";
 import Footer from "../LandingPage/footer/footer";
 import "./Contactus.css";
 import { Link } from "react-router-dom";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const ContactUs = () => {
   const [name, setname] = useState("");
@@ -14,52 +14,50 @@ const ContactUs = () => {
   const [visible, setvisible] = useState(false);
   const formdata = new FormData();
   const closeModal = () => {
-    setname("")
-    setemail("")
-    setphonenumber("")
-    setsubject("")
-    setmessage("")
+    setname("");
+    setemail("");
+    setphonenumber("");
+    setsubject("");
+    setmessage("");
     setvisible(false);
   };
-
+  ///////////////////fntn to perform msg submition it is submittted to google docs /////////////////
   const submitMssg = async (e) => {
     e.preventDefault();
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(re.test(String(email).toLowerCase()))
-    {formdata.append("name",name);
-    formdata.append("email",email);
-    formdata.append("phone",phone);
-    formdata.append("subject",subject);
-    formdata.append("message",message);
-    
-    let url =
-      "https://script.google.com/macros/s/AKfycbx-zFVJ-6kf6yhTm6qASuEDxgUeeXdQKEpPuJsNGI-yQpSAUc1YcpgxWPFm0MAtrGzA/exec";
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(String(email).toLowerCase())) {
+      formdata.append("name", name);
+      formdata.append("email", email);
+      formdata.append("phone", phone);
+      formdata.append("subject", subject);
+      formdata.append("message", message);
 
-    await fetch(url, {
-      method: "POST",
+      let url =
+        "https://script.google.com/macros/s/AKfycbx-zFVJ-6kf6yhTm6qASuEDxgUeeXdQKEpPuJsNGI-yQpSAUc1YcpgxWPFm0MAtrGzA/exec";
 
-      body: formdata,
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        
-        if (json.result == "success") {
-          setvisible(true);
-        }
-      });
+      await fetch(url, {
+        method: "POST",
+
+        body: formdata,
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.result == "success") {
+            setvisible(true);
+          }
+        });
+    } else {
+      alert("Please type valid mail");
     }
-    else{
-      alert("Please type valid mail")
-    }
-
   };
+  ///////////////////////////////////////////////////////
   return (
     <>
       <Helmet>
-                <meta charSet="utf-8" />
-                <title>Home | ContactUs</title>
-                
-            </Helmet>
+        <meta charSet="utf-8" />
+        <title>Home | ContactUs</title>
+      </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -70,15 +68,13 @@ const ContactUs = () => {
             onClickAway={closeModal}
           >
             <div className="popup">
-            <img
-              src="/images/LearnByResearchLogo.png"
-              className="logo"
-              alt=""
-            />
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
               <p>THANKS FOR YOUR TIME WE SHALL SOON REACH TO YOU...</p>
-              <Link  onClick={closeModal}>
-                Close
-              </Link>
+              <Link onClick={closeModal}>Close</Link>
             </div>
           </Modal>
         </section>
@@ -111,10 +107,9 @@ const ContactUs = () => {
         </div>
         <div className="contactform">
           <div className="formclass">
-           
             <form id="gform" onSubmit={submitMssg}>
               <input
-              required
+                required
                 type="text"
                 placeholder="Name"
                 name="name"
@@ -125,7 +120,7 @@ const ContactUs = () => {
                 }}
               />
               <input
-              required
+                required
                 type="email"
                 placeholder="email"
                 name="email"
@@ -136,7 +131,7 @@ const ContactUs = () => {
                 }}
               />
               <input
-              required
+                required
                 type="text"
                 placeholder="Phone number"
                 name="phone"
@@ -147,7 +142,7 @@ const ContactUs = () => {
                 }}
               />
               <input
-              required
+                required
                 type="text"
                 placeholder="Subject"
                 name="subject"
@@ -158,9 +153,9 @@ const ContactUs = () => {
                 }}
               />
               <br />
-              
+
               <div className="textarea">
-              <p className="inputtext">Message</p>
+                <p className="inputtext">Message</p>
                 <textarea
                   id="proble"
                   rows="15"
@@ -173,14 +168,12 @@ const ContactUs = () => {
                 ></textarea>
               </div>
 
-              
               <input
-                  type="submit"
-                  value="Submit"
-                  placeholder="Sign Up"
-                  className="submit-btn"
-                />
-            
+                type="submit"
+                value="Submit"
+                placeholder="Sign Up"
+                className="submit-btn"
+              />
             </form>
           </div>
         </div>

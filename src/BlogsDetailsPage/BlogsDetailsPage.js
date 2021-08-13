@@ -6,7 +6,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { useParams } from "react-router-dom";
 import Researchpgms from "../Backend/Researchpgms";
 import Footer from "../LandingPage/footer/footer";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import "./BlogsDetailsPage.css";
 function BlogsDetailsPage({ blog }) {
   const [blogsData, setblogData] = useState("");
@@ -16,11 +16,11 @@ function BlogsDetailsPage({ blog }) {
   const [SearchText, setsearchText] = useState("");
   let { slug } = useParams();
   const htmlpart = blogsData.content;
-
+  ////////////////get the details of the blog////////////////
   const getBlogs = async () => {
     setisLoading(true);
     const { data: Datass } = await Researchpgms(`${window.name}blog/${slug}`);
-    
+
     setblogData(Datass);
     const { data: authotDatass } = await Researchpgms(
       `${window.name}author/${Datass.author}`
@@ -28,6 +28,7 @@ function BlogsDetailsPage({ blog }) {
     setauthData(authotDatass);
     setisLoading(false);
   };
+  ///////////////////////////////////////////////
 
   useEffect(() => {
     getBlogs();
@@ -35,14 +36,13 @@ function BlogsDetailsPage({ blog }) {
 
   return (
     <>
-    <Helmet>
-                <meta charSet="utf-8" />
-                <title>{blogsData.title}</title>
-                
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{blogsData.title}</title>
+      </Helmet>
       {isLoading ? (
         <div className="isLoading">
-        <SolarSystemLoading/>
+          <SolarSystemLoading />
         </div>
       ) : (
         <div>

@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 const Blog = ({ blog }) => {
   function removeTags(str) {
     if (str === null || str === "") return false;
@@ -21,11 +21,9 @@ const Blog = ({ blog }) => {
   if (str.length > 200) str = str.substring(0, 200) + ".....";
   let likedblogs = [];
   let test = JSON.parse(localStorage.getItem("likedblogs"));
-  
 
   if (test != null) {
     likedblogs = test;
-    
   }
   const [liked, setliked] = useState(likedblogs.includes(blog._id));
   const [likes, setlikes] = useState(blog.likes);
@@ -37,7 +35,7 @@ const Blog = ({ blog }) => {
       `${window.name}author/${blog.author}`
     );
     setauthdata(Datass);
-    
+
     setisLoading(false);
   }, []);
 
@@ -55,7 +53,6 @@ const Blog = ({ blog }) => {
     return id == blog._id;
   }
   const unlikeblog = async () => {
-    
     setliked(false);
     likedblogs.splice(likedblogs.findIndex(checkBlog), 1);
     setlikes(likes - 1);
@@ -70,19 +67,28 @@ const Blog = ({ blog }) => {
   let a = "/blogsdetailspage/" + blog.slug;
   return (
     <>
-     
       {isLoading ? (
         <div className="isLoading">
           <SolarSystemLoading />
         </div>
       ) : (
         <div className="blogcard">
-          <div onClick={()=>{window.location=`${a}`}} className="blogcard-col1">
+          <div
+            onClick={() => {
+              window.location = `${a}`;
+            }}
+            className="blogcard-col1"
+          >
             <img src={blog.imageUrl} alt="Blog" className="blogcard-img" />
           </div>
           <div className="blogcard-col2">
             <>
-              <div onClick={()=>{window.location=`${a}`}} className="blogcard-col2-top">
+              <div
+                onClick={() => {
+                  window.location = `${a}`;
+                }}
+                className="blogcard-col2-top"
+              >
                 <div className="blogcard-col2-top-1">
                   <img
                     src={authdata[0].imageUrl}
@@ -101,9 +107,21 @@ const Blog = ({ blog }) => {
                   <p>{blog.date}</p>
                 </div>
               </div>
-              <h2 onClick={()=>{window.location=`${a}`}}>{blog.title}</h2>
+              <h2
+                onClick={() => {
+                  window.location = `${a}`;
+                }}
+              >
+                {blog.title}
+              </h2>
 
-              <p onClick={()=>{window.location=`${a}`}}>{str}</p>
+              <p
+                onClick={() => {
+                  window.location = `${a}`;
+                }}
+              >
+                {str}
+              </p>
               <Link to={a}>
                 <p>Know More</p>
               </Link>

@@ -38,7 +38,7 @@ const EditProfile = () => {
       `${window.name}users/me`
     );
     setisLoggedin(messagee);
-    console.log(datas)
+    console.log(datas);
 
     setFirstName(datas.FirstName);
     setMiddleName(datas.MiddleName);
@@ -57,28 +57,26 @@ const EditProfile = () => {
     setisverfied(datas.isPhoneVerified);
     setisLoading(false);
   };
-  //   currency: "INR"
-  // flag: "🇮🇳"
-  // isoCode: "IN"
-  // latitude: "20.00000000"
-  // longitude: "77.00000000"
-  // name: "India"
 
   useEffect(async () => {
     getAllCountries();
-   getCOllegename()
+    getCOllegename();
     getData();
   }, []);
+
+  ///////////////get the details of the country/////
   const getAllCountries = () => {
     const countries = Country.getAllCountries();
     setallCountry(countries);
   };
+  //////////////////////////////////
 
-  const getCOllegename=async()=>{
-    const { data: Datass } = await Researchpgms(`${window.name}get-college`)
- setlistCollege(Datass)
-  }
-
+  //////get the registerd college name////////////
+  const getCOllegename = async () => {
+    const { data: Datass } = await Researchpgms(`${window.name}get-college`);
+    setlistCollege(Datass);
+  };
+  ////////////////////////////////////////
   const [FirstName, setFirstName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
   const [LastName, setLastName] = useState("");
@@ -94,7 +92,13 @@ const EditProfile = () => {
   const [Field, setField] = useState("");
   const [CollegeName, setCollegeName] = useState("");
   const [listofCollege, setlistCollege] = useState();
-  const [selectlistofCollege, setselectlistCollege] = useState(['r15','rr310','rc200','r3','highness']);
+  const [selectlistofCollege, setselectlistCollege] = useState([
+    "r15",
+    "rr310",
+    "rc200",
+    "r3",
+    "highness",
+  ]);
   const [University, setUniversity] = useState("");
   const [GraduationYear, setGraduationYear] = useState("");
   const [value, setdate] = useState();
@@ -110,44 +114,6 @@ const EditProfile = () => {
   const [isLoggedIn, setisLoggedin] = useState(false);
 
   const [isLoading, setisLoading] = useState(false);
-
-  const submit = (LogoutFromall) => {
-    confirmAlert({
-      title: "Confirm to submit",
-      message: "Are you sure want to logout ?",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => {
-            if (LogoutFromall) LogOutFromAllDevice();
-            else LogOut();
-          },
-        },
-        {
-          label: "No",
-          onClick: () => {},
-        },
-      ],
-    });
-  };
-
-  const LogOut = async () => {
-    const { LoggedOut: messagee } = await Logout(`${window.name}logout`);
-    if (messagee) {
-      localStorage.removeItem("LoggedInUserTokenID");
-      window.location = "/";
-    } else {
-    }
-  };
-  const LogOutFromAllDevice = async () => {
-    const { LoggedOut: messagee } = await Logout(`${window.name}logout-all`);
-    if (messagee) {
-      localStorage.removeItem("LoggedInUserTokenID");
-
-      window.location = "/";
-    } else {
-    }
-  };
 
   const closeModal = () => {
     setvisible(false);
@@ -165,7 +131,7 @@ const EditProfile = () => {
   const stylefunction = (color, id) => {
     document.getElementById(id).style.border = color;
   };
-
+  /////////////////for verify phone number that sends otp/////////////////
   const VERIFYPhonenumber = async (e) => {
     e.preventDefault();
 
@@ -197,6 +163,9 @@ const EditProfile = () => {
       }
     }
   };
+  /////////////////////////////////////////////////////
+
+  ////////////for checking the otp typed////////////////
 
   const VerifyOtp = async () => {
     setotperr();
@@ -218,8 +187,9 @@ const EditProfile = () => {
 
     setotperr("wrong code");
   };
+  ///////////////////////////////////////////////////
 
-
+  ///////////////fnctn to call on make changes is clicked //////////
 
   const MakeChanges = async (e) => {
     e.preventDefault();
@@ -234,24 +204,24 @@ const EditProfile = () => {
         DOB,
         phoneNumber,
         email,
-        "City":city,
-        "State":state,
-        "Country":country,
+        City: city,
+        State: state,
+        Country: country,
         Degree,
         Field,
         CollegeName,
         University,
         GraduationYear,
       };
-      const colldata={
-        "college":CollegeName
-      }
+      const colldata = {
+        college: CollegeName,
+      };
 
       const { message: messagee } = await SendPost(
         `${window.name}edit-profile`,
         edit_data
       );
-      
+
       const { message: messageemon } = await Tokenlesssendpost(
         `${window.name}create-college`,
         colldata
@@ -266,50 +236,48 @@ const EditProfile = () => {
       }
     }
   };
-  const searchMethod=(input)=>{
-  let array=listofCollege;
-  let arr=[];
-  if(array[0])
-  {
-    array.map((college)=>{
-    if(college.college.toLowerCase().includes(input.toLowerCase()))
-    {
-    
-    arr.push(college.college)
-    
-    }
+  //////////////////////////////////////////////
 
-    
-    })
-    if(arr.length>0)
-    {
-      setselectlistCollege(arr)
-      setshowsuggestions(true)
+  //////////////search method for searching the selected colleges//////////
+  const searchMethod = (input) => {
+    let array = listofCollege;
+    let arr = [];
+    if (array[0]) {
+      array.map((college) => {
+        if (college.college.toLowerCase().includes(input.toLowerCase())) {
+          arr.push(college.college);
+        }
+      });
+      if (arr.length > 0) {
+        setselectlistCollege(arr);
+        setshowsuggestions(true);
+      } else {
+        setshowsuggestions(false);
+      }
     }
-    else
-    {
-      setshowsuggestions(false)
-    }
-  }
-  
+  };
+  ////////////////////////////////////////
 
-  }
-
+  ////////////suggestion list comp of college ///////////////
   const suggestionsListComponent = (
-      <ul class="suggestions">
-        {selectlistofCollege.map((college, index) => {
-          return (
-            <li onClick={()=>{
-              setshowsuggestions(false)
-              setCollegeName(college)}} key={index} className="suggestion-active" >
-              {college}
-            </li>
-          );
-        })}
-      </ul>
-  
-   
+    <ul class="suggestions">
+      {selectlistofCollege.map((college, index) => {
+        return (
+          <li
+            onClick={() => {
+              setshowsuggestions(false);
+              setCollegeName(college);
+            }}
+            key={index}
+            className="suggestion-active"
+          >
+            {college}
+          </li>
+        );
+      })}
+    </ul>
   );
+  //////////////////////////////////////
 
   return (
     <>
@@ -527,44 +495,6 @@ const EditProfile = () => {
                     </button>
                   )}
 
-                  {/* <div className="inputholder otpdisplay">
-                    <div className="inputholder-top">
-                      <input
-                        type="text"
-                        placeholder="OTP"
-                        autoComplete="off"
-                        id="otp"
-                        className="otp"
-                        value={otp}
-                        onChange={(e) => {
-                          setotp(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <label className="label" htmlFor="">
-                      {otperror && otperror}
-                    </label>
-                  </div> */}
-
-                  {/* <Tooltip title="City">
-                    <>
-                      <p className="inputtext">City</p>
-                      <div className="inputholder">
-                        <div className="inputholder-top">
-                          <input
-                            type="text"
-                            placeholder="City"
-                            autoComplete="off"
-                            required
-                            value={city}
-                            onChange={(e) => {
-                              setCity(e.target.value);
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip> */}
                   <Tooltip title="Country">
                     <>
                       <p className="inputtext">Country</p>
@@ -591,11 +521,12 @@ const EditProfile = () => {
                             <option>
                               {country ? country : "Select country"}
                             </option>
-                            {allcountry && allcountry.map((country) => (
-                              <option value={JSON.stringify(country)}>
-                                {country.name}
-                              </option>
-                            ))}
+                            {allcountry &&
+                              allcountry.map((country) => (
+                                <option value={JSON.stringify(country)}>
+                                  {country.name}
+                                </option>
+                              ))}
                           </select>
                         </div>
                       </div>
@@ -664,46 +595,7 @@ const EditProfile = () => {
                       </div>
                     </>
                   </Tooltip>
-                  {/* <Tooltip title="State">
-                    <>
-                      <p className="inputtext">State</p>
-                      <div className="inputholder">
-                        <div className="inputholder-top">
-                          <input
-                            type="text"
-                            placeholder="State"
-                            autoComplete="off"
-                            required
-                            value={State}
-                            onChange={(e) => {
-                              setState(e.target.value);
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip> */}
-                  {/* <Tooltip title="Country">
-                    <>
-                      <p className="inputtext">Country</p>
-                      <div className="inputholder">
-                        <div className="inputholder-top">
-                          <input
-                            type="text"
-                            name="Country"
-                            id="Country"
-                            placeholder="Country"
-                            autoComplete="off"
-                            required
-                            value={Country}
-                            onChange={(e) => {
-                              setCountry(e.target.value);
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip> */}
+
                   <Tooltip title="Degree">
                     <>
                       <p className="inputtext">Degree</p>
@@ -757,13 +649,12 @@ const EditProfile = () => {
                             value={CollegeName}
                             onChange={(e) => {
                               setCollegeName(e.target.value);
-                              searchMethod(e.target.value)
+                              searchMethod(e.target.value);
                             }}
                           />
                         </div>
-
                       </div>
-                      {showsuggestions? suggestionsListComponent:""}
+                      {showsuggestions ? suggestionsListComponent : ""}
                     </>
                   </Tooltip>
 

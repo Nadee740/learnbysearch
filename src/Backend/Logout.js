@@ -1,4 +1,4 @@
-
+//////////////api to logout by all means////////////////////////////////
 const Logout = async(url) => {
     let message="a";
  let LoggedOut=false;

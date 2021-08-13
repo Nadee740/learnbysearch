@@ -1,4 +1,4 @@
-
+////////////////post rqst without any tokens///////////////////////
 import { useCookies } from 'react-cookie';
  const Tokenlesssendpost = async(url, data) => {
     // const [cookies, setCookie] = useCookies(['user']);
