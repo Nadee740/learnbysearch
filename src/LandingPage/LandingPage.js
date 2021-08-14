@@ -17,7 +17,7 @@ const LandingPage = () => {
   const [isLoading, setisLoading] = useState(true);
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [pgmsData, setpgms] = useState("");
-  const [webinardata,setwebinardata]=useState();
+  const [webinardata, setwebinardata] = useState();
   const [error, seterror] = useState(false);
 
   const getopenPgmgs = async () => {
@@ -47,17 +47,16 @@ const LandingPage = () => {
     setisLoggedin(messagee);
     getwebinardata();
   };
- const getwebinardata=async()=>{
-   setisLoading(true)
-  const { data: webinardata } = await Researchpgms(`${window.name}get-all-webinars`);
-   if(webinardata)
-   {
-     setwebinardata(webinardata)
-    
-   }
-   setisLoading(false)
-
- }
+  const getwebinardata = async () => {
+    setisLoading(true);
+    const { data: webinardata } = await Researchpgms(
+      `${window.name}get-all-webinars`
+    );
+    if (webinardata) {
+      setwebinardata(webinardata);
+    }
+    setisLoading(false);
+  };
 
   const [para, setPara] = useState(
     "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
@@ -75,9 +74,13 @@ const LandingPage = () => {
         </div>
       ) : (
         <div className="landingpage">
-         {webinardata.map((webinar,index)=>(
-          <Webinar key={index} webinardata={webinar} isloggedin={isLoggedIn} />
-         ))} 
+          {webinardata.map((webinar, index) => (
+            <Webinar
+              key={index}
+              webinardata={webinar}
+              isloggedin={isLoggedIn}
+            />
+          ))}
           <section className="top">
             <div className="container">
               <div className="top-content">
@@ -168,7 +171,6 @@ const LandingPage = () => {
                   ></img>
                 </figure>
               </div>
-         
             </div>
           </section>
           <SliderCo data={pgmsData} />
