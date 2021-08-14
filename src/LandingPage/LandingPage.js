@@ -10,6 +10,7 @@ import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Authverifier from "../Backend/Authverifier";
+import Webinar from "./webinar";
 
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
@@ -25,8 +26,6 @@ const LandingPage = () => {
       `${window.name}research-programs`
     );
     setpgms(Datass);
-    
-    
 
     getBlogs();
   };
@@ -64,6 +63,7 @@ const LandingPage = () => {
         </div>
       ) : (
         <div className="landingpage">
+          <Webinar />
           <section className="top">
             <div className="container">
               <div className="top-content">
