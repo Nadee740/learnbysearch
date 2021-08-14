@@ -17,7 +17,7 @@ const LandingPage = () => {
   const [isLoading, setisLoading] = useState(true);
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [pgmsData, setpgms] = useState("");
-
+  const [webinardata,setwebinardata]=useState();
   const [error, seterror] = useState(false);
 
   const getopenPgmgs = async () => {
@@ -45,8 +45,20 @@ const LandingPage = () => {
       `${window.name}users/me`
     );
     setisLoggedin(messagee);
-    setisLoading(false);
+    getwebinardata();
   };
+ const getwebinardata=async()=>{
+   setisLoading(true)
+  const { data: webinardata } = await Researchpgms(`${window.name}get-all-webinars`);
+   if(webinardata)
+   {
+     setwebinardata(webinardata)
+    
+   }
+   setisLoading(false)
+
+ }
+
   const [para, setPara] = useState(
     "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
   );
@@ -63,7 +75,9 @@ const LandingPage = () => {
         </div>
       ) : (
         <div className="landingpage">
-          <Webinar />
+         {webinardata.map((webinar,index)=>(
+          <Webinar key={index} webinardata={webinar} isloggedin={isLoggedIn} />
+         ))} 
           <section className="top">
             <div className="container">
               <div className="top-content">
@@ -154,36 +168,7 @@ const LandingPage = () => {
                   ></img>
                 </figure>
               </div>
-
-              {/* <div className="about-col">
-                <figure>
-                  <img
-                    src="../images/about3.svg"
-                    alt="Login pic"
-                    className="about-col-img"
-                  ></img>
-                </figure>
-                <p>
-                  Our methodology emphases on a practical learning approach with
-                  hands-on experience to inculcate the best industry standards.
-                  This approach is meant to help students face all challenges
-                  with the supervision of a guide.
-                </p>
-              </div> */}
-              {/* <div className="about-col">
-                <p>
-                  At LearnByResearch, students and research guides collaborate
-                  to enhance their skills and knowledge as well as build
-                  life-changing products and services.
-                </p>
-                <figure>
-                  <img
-                    src="../images/about4.svg"
-                    alt="Login pic"
-                    className="about-col-img"
-                  ></img>
-                </figure>
-              </div> */}
+         
             </div>
           </section>
           <SliderCo data={pgmsData} />

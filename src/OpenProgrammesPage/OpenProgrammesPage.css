@@ -1,3 +1,4 @@
+/* divides the popup to 3 sect */
 .extrapart {
   width: 100%;
   grid-template-columns: repeat(3, 1fr);

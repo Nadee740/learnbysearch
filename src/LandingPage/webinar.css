@@ -63,3 +63,9 @@
     padding: 20px 40px;
   }
 }
+
+.extrapart-webinar{
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  display: grid;
+}
