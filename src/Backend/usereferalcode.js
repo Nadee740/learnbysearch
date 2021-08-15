@@ -1,9 +1,9 @@
 ////////////////////////fnction to check weather logged in or not and rtr user data/////////////
  
-const ReferalCode = async(url) => {
+const UserReferalCode = async(url,data) => {
 
     let message="a";
-    let refercode="";
+    let error=false
     let isLoggedIn=false;
     let Token=localStorage.getItem('LoggedInUserTokenID')  
        
@@ -14,7 +14,7 @@ const ReferalCode = async(url) => {
                        'Content-Type': 'application/json',
                        'Authorization':`Bearer ${Token}`
                    },
-                   
+                   body: JSON.stringify(data)
                    
                })
                .then(res => res.json())
@@ -22,13 +22,12 @@ const ReferalCode = async(url) => {
    
                    
                    if(json.error){
-                       isLoggedIn=false
+                       error=true
                       
                       
                        
                    }  else{
-                       isLoggedIn=true
-                       refercode=json.code
+                     error=false
                          }
                })
                .catch(
@@ -45,8 +44,8 @@ const ReferalCode = async(url) => {
    // },[]); 
    ////////////////////data rtns user dtaa/////////////////////
    
-   return {isLoggedIn,refercode};
+   return {error};
    
    }
    
-   export default ReferalCode;
+   export default UserReferalCode;
