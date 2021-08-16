@@ -15,8 +15,11 @@ const MyApplications = () => {
   const [isempty, setisempty] = useState(false);
   const [applications, setapplication] = useState();
   const [rpData, setrp] = useState();
+  const [applicationsData, setapplicationsdata] = useState();
   let array = [];
   let rparray = [];
+  let test1 = [];
+  let test2 = [];
   let count = 0;
   let checkcount = 1;
   useEffect(async () => {
@@ -43,8 +46,11 @@ const MyApplications = () => {
         );
         count++;
 
-        if (retdata != null) array.push(retdata);
+        if (retdata != null) {
+          
+          array.push(retdata);}
 
+        console.log(userdata.applicationForm.length)
         if (count == userdata.applicationForm.length) {
           if (array.length > 0) {
             setapplication(array);
@@ -64,13 +70,16 @@ const MyApplications = () => {
       const { data: Datass } = await Researchpgms(
         `${window.name}research-program-id/${data.rp}`
       );
-      checkcount++;
+      
       rparray.push(Datass);
+      checkcount++;
+      test1.push({rpdata:Datass,applicationstatus:data})
 
       if (datas.length == rparray.length) {
         setrp(rparray);
-
+        setapplicationsdata(test1)
         setisLoading(false);
+        console.log(test1)
       }
     });
   };
@@ -108,12 +117,12 @@ const MyApplications = () => {
                     Status
                   </p>
                 </div>
-                {applications.map((application, index) => {
+                {applicationsData.map((application, index) => {
                   let classn = "",
                     title = "",
                     classtype = "myapplication-row-btn ";
 
-                  switch (application.data) {
+                  switch (application.applicationstatus.data) {
                     case 4: {
                       classn = "myapplication-row-btn-approv";
                       title = "Approved";
@@ -139,10 +148,10 @@ const MyApplications = () => {
                   return (
                     <div className="myapplication-row" key={index}>
                       <p className="myapplication-row-text ">
-                        {rpData[index].title}
+                        {application.rpdata.title}
                       </p>
                       <p className="myapplication-row-text ">
-                        {application.date.substring(0, 10)}
+                        {application.applicationstatus.date.substring(0, 10)}
                       </p>
                       <p className="myapplication-row-text  ">
                         <button className={classtype}>{title}</button>

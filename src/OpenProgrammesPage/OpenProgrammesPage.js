@@ -135,6 +135,7 @@ function OpenProgrammesPage() {
               if(data.rp==blogsData._id){
                 if(data.data!==3 )
                 {
+                  console.log(data.data,data.rp,blogsData._id)
                 setisLoading(false)
                 check=true;
                 setappliedvisible(true)
