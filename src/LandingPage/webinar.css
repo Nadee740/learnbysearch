@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: relative;
-  background-color: #eeeeee;
 }
 .webinarimg {
   height: 60vh;
@@ -62,9 +61,13 @@
   .webinar-col2 {
     padding: 20px 40px;
   }
+  .webinarimg {
+    height: 50vh;
+    margin: 10px;
+  }
 }
 
-.extrapart-webinar{
+.extrapart-webinar {
   width: 100%;
   grid-template-columns: repeat(2, 1fr);
   display: grid;
