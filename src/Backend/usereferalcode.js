@@ -7,7 +7,7 @@ const UserReferalCode = async(url,data) => {
     let isLoggedIn=false;
     let Token=localStorage.getItem('LoggedInUserTokenID')  
        
-           
+           console.log(url,data)
             await fetch(url, {
                    method: 'POST',
                    headers: {
@@ -19,7 +19,7 @@ const UserReferalCode = async(url,data) => {
                })
                .then(res => res.json())
                .then(json => {
-   
+           console.log("HY")
                    
                    if(json.error){
                        error=true

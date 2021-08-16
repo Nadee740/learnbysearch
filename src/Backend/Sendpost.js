@@ -7,12 +7,13 @@ import {useState,useEffect} from "react"
  let Token=localStorage.getItem('LoggedInUserTokenID')
         
          await fetch(url, {
-                method: 'POST',
+               method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization':`Bearer ${Token}`
                 },
                 body: JSON.stringify(data)
+                
             })
             .then(res => res.json())
             .then(json => {

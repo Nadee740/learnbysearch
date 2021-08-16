@@ -9,9 +9,11 @@ import SendPost from "../Backend/Sendpost";
 import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
+import UserReferalCode from "../Backend/usereferalcode";
 
 const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
+  const [referalvisible, setreferalvisible] = useState(false);
   const [paravisible, setparavisible] = useState(false);
   const [errorvisible, seterrorvisible] = useState(false);
 
@@ -27,6 +29,7 @@ const ApplicationForm = () => {
   const [ResearchProgramId, setResearchProgramId] = useState();
   const [positions, setPosition] = useState("");
   const [blogsData, setblogData] = useState("");
+  const [code, setreferalcode] = useState("");
   const [err, seterr] = useState("");
 
   let array = [];
@@ -78,6 +81,20 @@ const ApplicationForm = () => {
     setSwitch(switchitm);
   };
 
+  const Applyreferal=async()=>{
+    const data={code}
+    const { error: error } = await UserReferalCode(
+      `${window.name}count-code`,data
+    );
+    console.log(error)
+    if(error){
+      setreferalvisible(true)
+    }
+    else{
+      submitformdata()
+    }
+  }
+
   useEffect(() => {
     setisLoading(true);
 
@@ -99,11 +116,27 @@ const ApplicationForm = () => {
     if (q2 == "false" && q3 == "") {
       seterr("Please type a valid Reason ");
     } else {
-      let data = { PositionId, ResearchProgramId, q1, q2, q3 };
+        if(!code=="")
+        {
+          Applyreferal()
+        }
+        else
+        {
+          setreferalcode("")
+          submitformdata()
+        }
+        
+
+      
+    }
+  };
+const submitformdata=async()=>{
+  let data = { PositionId, ResearchProgramId, q1, q2, q3,code };
       if (q2 == "true" || q2 == true) {
-        data = { PositionId, ResearchProgramId, q1, q2 };
+        data = { PositionId, ResearchProgramId, q1, q2,code };
       }
-      console.log(data);
+      console.log(data)
+      
 
       const { message: messagee } = await SendPost(
         `${window.name}application-form`,
@@ -116,8 +149,8 @@ const ApplicationForm = () => {
       } else {
         seterrorvisible(true);
       }
-    }
-  };
+}
+
   //////////////////////////////////////////////////////////////////////
   return (
     <>
@@ -171,6 +204,37 @@ const ApplicationForm = () => {
           </Modal>
         </section>
       </div>
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={referalvisible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={()=>{setreferalvisible(false)}}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>Referal Code error do you want to apply without referal code?</p>
+              <br></br>
+              <div className="extrapart-webinar">
+                <div className="signuppart">
+                  <Link onClick={()=>{setreferalvisible(false)}}>Close</Link>
+                </div>
+                <div>
+                  <Link onClick={()=>{
+                    setreferalvisible(false)
+                    submitformdata()}}>Apply</Link>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        </section>
+      </div>
       {isLoading ? (
         <div className="isLoading">
           <SolarSystemLoading />
@@ -186,6 +250,27 @@ const ApplicationForm = () => {
                 <div className="singup-form">
                   <h2 className="form-title">APPLICATION </h2>
                   <form onSubmit={submitApplictaionform}>
+                    <p className="inputtext">
+                      Referal Code if any
+                    </p>
+                    <div
+                      className="inputholder inputholder2"
+                      id="usernameholder"
+                    >
+                      <div className="inputholder-top ">
+                        <textarea
+                          minLength={100}
+                          rows="1"
+                          className="textarea"
+                          placeholder=""
+                          
+                          value={code}
+                          onChange={(e) => {
+                            setreferalcode(e.target.value)
+                          }}
+                        ></textarea>
+                      </div>
+                    </div>
                     <p className="inputtext">
                       What do you want to achieve by joining the research
                       program?
