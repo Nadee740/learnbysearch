@@ -208,6 +208,11 @@ const Navbar = (props) => {
                         EDIT PROFILE
                       </Link>
                     </li>
+                    <li>
+                      <Link to="/referrels" className="p-link">
+                        REFERRALS
+                      </Link>
+                    </li>
                     <li
                       onClick={() => {
                         submit(false);
@@ -243,49 +248,110 @@ const Navbar = (props) => {
         />
         <ul className="mobnav-items">
           <li className="mobnav-item">
-          <Link onClick={() => {
-                         setNav(false);
-                      }} to="/">Home</Link></li>
-                       <li className="mobnav-item">
-          <Link onClick={() => {
-                         setNav(false);
-                      }} to="/openprogrammes">Upcoming Research</Link></li>
-                      <li className="mobnav-item">
-          <Link onClick={() => {
-                         setNav(false);
-                      }} to="/ongoingprogrammes">Ongoing Research</Link></li>
-          
-          <li className="mobnav-item">
-          <Link onClick={() => {
-                         setNav(false);
-                      }} to="/allblogs">Blogs</Link>
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/"
+            >
+              Home
+            </Link>
           </li>
           <li className="mobnav-item">
-          <Link onClick={() => {
-                         setNav(false);
-                      }} to="/contactus">Contact</Link>
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/openprogrammes"
+            >
+              Upcoming Research
+            </Link>
           </li>
           <li className="mobnav-item">
-          <Link onClick={() => {
-                         setNav(false);
-                      }} to="/myapplications">My Applications</Link>
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/ongoingprogrammes"
+            >
+              Ongoing Research
+            </Link>
+          </li>
+
+          <li className="mobnav-item">
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/allblogs"
+            >
+              Blogs
+            </Link>
+          </li>
+          <li className="mobnav-item">
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/contactus"
+            >
+              Contact
+            </Link>
+          </li>
+          <li className="mobnav-item">
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/myapplications"
+            >
+              My Applications
+            </Link>
           </li>
         </ul>
-        {isLoggedIn?<><Link to="/editprofile" onClick={()=>{setNav(false)}} className="mob-signbtn">EDIT PROFILE</Link>
-       
-       <button  onClick={() => {
-                         setNav(false);
-                        submit(false);
-                      }} className="mob-signbtn">LOGOUT</button>
-  
-      
-       <button  onClick={() => {
-                         setNav(false);
-                        submit(true);
-                      }} className="mob-signbtn">LOGOUT FROM ALL DEVICES</button></>:<Link to="/login" onClick={()=>{setNav(false)}} className="mob-signbtn">Sign in</Link>}
-        
-  
+        {isLoggedIn ? (
+          <>
+            <Link
+              to="/editprofile"
+              onClick={() => {
+                setNav(false);
+              }}
+              className="mob-signbtn"
+            >
+              EDIT PROFILE
+            </Link>
 
+            <button
+              onClick={() => {
+                setNav(false);
+                submit(false);
+              }}
+              className="mob-signbtn"
+            >
+              LOGOUT
+            </button>
+
+            <button
+              onClick={() => {
+                setNav(false);
+                submit(true);
+              }}
+              className="mob-signbtn"
+            >
+              LOGOUT FROM ALL DEVICES
+            </button>
+          </>
+        ) : (
+          <Link
+            to="/login"
+            onClick={() => {
+              setNav(false);
+            }}
+            className="mob-signbtn"
+          >
+            Sign in
+          </Link>
+        )}
       </div>
     </>
   );
