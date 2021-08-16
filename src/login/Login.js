@@ -22,6 +22,7 @@ const Login = () => {
   const [passVISIBLE, setpassVISIBLE] = useState(false);
   const [user, setUserprof] = useState();
   const [visible, setvisible] = useState(false);
+  const [referalvisible, setreferalvisible] = useState(false);
   const [forgotpassvisible, setforgotpassvisible] = useState(false);
   const [resendmailvisible, setresendmailvisible] = useState(false);
 const [isLoggedIn, setisLoggedin] = useState(false);
