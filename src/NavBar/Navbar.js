@@ -5,16 +5,20 @@ import Authverifier from "../Backend/Authverifier";
 import Button from "../button/button";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import "./Navbar.css";
+import Modal from "react-awesome-modal";
 import Logout from "../Backend/Logout";
 import { confirmAlert } from "react-confirm-alert";
 import { RiCloseFill } from "react-icons/ri";
+import ReferalCode from "../Backend/Referalcode";
 const Navbar = (props) => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const [user, setUser] = useState(true);
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [userprof, setuserprof] = useState();
-
+  const [referalvisible, setreferalvisible] = useState(false);
+  const [referalcode, setreferalcode] = useState("");
+  const [error, seterr] = useState("");
   const handleClick = () => {
     setClick(!click);
   };
@@ -76,10 +80,78 @@ const Navbar = (props) => {
     }
   };
 
+  const getReferalCode=async()=>{
+    const { isLoggedIn:isloggedin,refercode:refercode } = await ReferalCode(`${window.name}create-referral`);
+if(isLoggedIn){
+  setreferalcode(refercode)
+}
+else{
+  seterr("not logged in")
+}
+
+}
+  
+
   window.addEventListener("resize", showButton);
   const [nav, setNav] = useState(false);
   return (
     <>
+          <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={referalvisible}
+            width="350"
+            height="300"
+            effect="fadeInUp"
+            onClickAway={()=>{setreferalvisible(false)}}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+                <div
+                    className="referal"
+                    style={{
+                      width: "100%",
+                    }}
+                  >
+                    <p className="reffereltext">
+                      Generate referal code .
+                    </p>
+                    <div className="inputholder" id="passholder">
+                      <div className="inputholder-top">
+                        <input
+                        readOnly
+                        value={referalcode}
+                          required
+                          id="password"
+                          type="text"
+                          placeholder="Refferel Code"
+                        />
+                      </div>
+                      <label className="label" htmlFor="">
+                        {error&&error}
+                      </label>
+                    </div>
+                  {referalcode.length>2? <button onClick={()=>{setreferalvisible(false)}} className="referal-btn">Close</button>: <button onClick={()=>{getReferalCode()}} className="referal-btn">GENERATE</button>} 
+                  </div>
+              {/* <br></br>
+              <div className="extrapart-webinar">
+                <div className="signuppart">
+                  <Link onClick={()=>{setreferalvisible(false)}}>Close</Link>
+                </div>
+                <div>
+                  <Link onClick={()=>{
+                    setreferalvisible(false)
+                    }}>Apply</Link>
+                </div>
+              </div> */}
+            </div>
+          </Modal>
+        </section>
+      </div>
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
@@ -209,8 +281,8 @@ const Navbar = (props) => {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/referrels" className="p-link">
-                        REFERRALS
+                      <Link onClick={()=>{setreferalvisible(true)}} className="p-link">
+                        Generate referal code 
                       </Link>
                     </li>
                     <li
@@ -311,6 +383,16 @@ const Navbar = (props) => {
         </ul>
         {isLoggedIn ? (
           <>
+          <Link
+              
+              onClick={() => {
+                setreferalvisible(true)
+                setNav(false);
+              }}
+              className="mob-signbtn"
+            >
+              Generate referal code
+            </Link>
             <Link
               to="/editprofile"
               onClick={() => {
