@@ -282,7 +282,7 @@ else{
                     </li>
                     <li>
                       <Link onClick={()=>{setreferalvisible(true)}} className="p-link">
-                        Generate referal code 
+                      REFERRAL CODE
                       </Link>
                     </li>
                     <li
@@ -391,7 +391,7 @@ else{
               }}
               className="mob-signbtn"
             >
-              Generate referal code
+              REFERRAL CODE
             </Link>
             <Link
               to="/editprofile"

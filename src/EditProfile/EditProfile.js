@@ -55,6 +55,10 @@ const EditProfile = () => {
     setUniversity(datas.Education ? datas.Education.University : "");
     setGraduationYear(datas.Education ? datas.Education.GraduationYear : "");
     setisverfied(datas.isPhoneVerified);
+    if(datas.referral){
+      setreferal(datas.referral.code)
+      setrefcount(datas.referral.count)
+    }
     setisLoading(false);
   };
 
@@ -90,6 +94,8 @@ const EditProfile = () => {
   const [allcity, setallCity] = useState("");
   const [Degree, setDegree] = useState("");
   const [Field, setField] = useState("");
+  const [referal, setreferal] = useState();
+  const [refcount, setrefcount] = useState();
   const [CollegeName, setCollegeName] = useState("");
   const [listofCollege, setlistCollege] = useState();
   const [selectlistofCollege, setselectlistCollege] = useState([
@@ -697,6 +703,24 @@ const EditProfile = () => {
                       </div>
                     </>
                   </Tooltip>
+                  {referal? <Tooltip title="Referal code">
+                    <>
+                      <p className="inputtext">Referal Code</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="Graduation Year"
+                            autoComplete="off"
+                            required
+                            value={referal}
+                            readOnly
+                          />
+                        </div>
+                      </div>
+                    </>
+                  </Tooltip>:""}
+                 
                   <input
                     // onClick={MakeChanges}
                     type="submit"
