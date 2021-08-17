@@ -274,7 +274,7 @@ const Navbar = (props) => {
                 </div>
               </div>
             ) : (
-              <Button buttonStyle="btn--outline">Sign up</Button>
+              <Button buttonStyle="btn--outline">Sign in</Button>
             )
           ) : (
             ""
