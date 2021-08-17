@@ -10,6 +10,7 @@
   background: #ffffff;
   box-shadow: 0px 4px 11px 3px rgba(192, 192, 192, 0.288) !important;
   border-radius: 34px;
+  width: 90%;
 }
 
 .popup-button {
@@ -165,8 +166,7 @@ a {
   .singin-form {
     padding: 10px;
   }
-  .singin-form h2 {
-  }
+
   .form-group {
     text-align: center;
   }

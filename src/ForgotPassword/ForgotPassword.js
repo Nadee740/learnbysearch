@@ -32,6 +32,7 @@ const ForgotPassword = () => {
   const GetData = async () => {
     const url = `${window.name}forgot-password/${token}`;
     const { message: messagee } = await ChangePassword(url);
+  setisLoading(false)
   };
 
   const closeModal = () => {
