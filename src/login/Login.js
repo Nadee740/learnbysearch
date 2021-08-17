@@ -284,34 +284,6 @@ const Login = () => {
                       {passerror && passerror}
                     </label>
                   </div>
-
-                  <div
-                    className="referal"
-                    style={{
-                      width: "100%",
-                    }}
-                  >
-                    <p className="reffereltext">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Totam ipsa possimus quas molestiae, rerum reprehenderit
-                      eos, fugiat ea animi velit aspernatur facilis non corporis
-                      ut, natus doloremque sapiente quis harum?
-                    </p>
-                    <div className="inputholder" id="passholder">
-                      <div className="inputholder-top">
-                        <input
-                          required
-                          id="password"
-                          type="text"
-                          placeholder="Refferel Code"
-                        />
-                      </div>
-                      <label className="label" htmlFor="">
-                        Error Text
-                      </label>
-                    </div>
-                    <button className="referal-btn">GENERATE</button>
-                  </div>
                   <input
                     type="submit"
                     value="SIGN IN"

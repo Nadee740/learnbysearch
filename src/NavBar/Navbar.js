@@ -17,6 +17,8 @@ const Navbar = (props) => {
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [userprof, setuserprof] = useState();
   const [referalvisible, setreferalvisible] = useState(false);
+  const [referalalrdyvisible, setreferalalrdyvisible] = useState(false);
+  const [referalcodeexist, setreferalcodeexist] = useState(false);
   const [referalcode, setreferalcode] = useState("");
   const [error, seterr] = useState("");
   const handleClick = () => {
@@ -26,10 +28,13 @@ const Navbar = (props) => {
     setClick(false);
   };
   const checkLOgin = async () => {
-    const { isLoggedIn: messagee } = await Authverifier(
+    const { isLoggedIn: isLoggedin, data: datas } = await Authverifier(
       `${window.name}users/me`
     );
-    setisLoggedin(messagee);
+    setisLoggedin(isLoggedin);
+    if (datas.referral) {
+      setreferalcodeexist(true);
+    }
   };
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -80,30 +85,31 @@ const Navbar = (props) => {
     }
   };
 
-  const getReferalCode=async()=>{
-    const { isLoggedIn:isloggedin,refercode:refercode } = await ReferalCode(`${window.name}create-referral`);
-if(isLoggedIn){
-  setreferalcode(refercode)
-}
-else{
-  seterr("not logged in")
-}
-
-}
-  
+  const getReferalCode = async () => {
+    const { isLoggedIn: isloggedin, refercode: refercode } = await ReferalCode(
+      `${window.name}create-referral`
+    );
+    if (isLoggedIn) {
+      setreferalcode(refercode);
+    } else {
+      seterr("not logged in");
+    }
+  };
 
   window.addEventListener("resize", showButton);
   const [nav, setNav] = useState(false);
   return (
     <>
-          <div className="popupscreen">
+      <div className="popupscreen">
         <section className="popupscreen">
           <Modal
             visible={referalvisible}
             width="350"
             height="300"
             effect="fadeInUp"
-            onClickAway={()=>{setreferalvisible(false)}}
+            onClickAway={() => {
+              setreferalvisible(false);
+            }}
           >
             <div className="popup">
               <img
@@ -111,43 +117,48 @@ else{
                 className="logo"
                 alt=""
               />
-                <div
-                    className="referal"
-                    style={{
-                      width: "100%",
-                    }}
-                  >
-                    <p className="reffereltext">
-                      Generate referal code .
-                    </p>
-                    <div className="inputholder" id="passholder">
-                      <div className="inputholder-top">
-                        <input
-                        readOnly
-                        value={referalcode}
-                          required
-                          id="password"
-                          type="text"
-                          placeholder="Refferel Code"
-                        />
-                      </div>
-                      <label className="label" htmlFor="">
-                        {error&&error}
-                      </label>
-                    </div>
-                  {referalcode.length>2? <button onClick={()=>{setreferalvisible(false)}} className="referal-btn">Close</button>: <button onClick={()=>{getReferalCode()}} className="referal-btn">GENERATE</button>} 
+              <div
+                className="referal"
+                style={{
+                  width: "100%",
+                }}
+              >
+                <p className="reffereltext">Generate referal code .</p>
+                <div className="inputholder" id="passholder">
+                  <div className="inputholder-top">
+                    <input
+                      readOnly
+                      value={referalcode}
+                      required
+                      id="password"
+                      type="text"
+                      placeholder="Refferel Code"
+                    />
                   </div>
-              {/* <br></br>
-              <div className="extrapart-webinar">
-                <div className="signuppart">
-                  <Link onClick={()=>{setreferalvisible(false)}}>Close</Link>
+                  <label className="label" htmlFor="">
+                    {error && error}
+                  </label>
                 </div>
-                <div>
-                  <Link onClick={()=>{
-                    setreferalvisible(false)
-                    }}>Apply</Link>
-                </div>
-              </div> */}
+                {referalcode.length > 2 ? (
+                  <button
+                    onClick={() => {
+                      setreferalvisible(false);
+                    }}
+                    className="referal-btn"
+                  >
+                    Close
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      getReferalCode();
+                    }}
+                    className="referal-btn"
+                  >
+                    GENERATE
+                  </button>
+                )}
+              </div>
             </div>
           </Modal>
         </section>
@@ -220,51 +231,6 @@ else{
                 My Applications
               </Link>
             </li>
-            {/* <li>
-              {isLoggedIn ? (
-                <>
-                  <Link
-                    to="/editprofile"
-                    className="nav-links-mobile"
-                    onClick={closeMobileMenu}
-                  >
-                    View Profile
-                  </Link>
-                  <li>
-                    {" "}
-                    <Link
-                      className="nav-links-mobile"
-                      onClick={() => {
-                        closeMobileMenu();
-                        submit(false);
-                      }}
-                    >
-                      Log Out
-                    </Link>
-                  </li>
-                  <li>
-                    {" "}
-                    <Link
-                      className="nav-links-mobile"
-                      onClick={() => {
-                        closeMobileMenu();
-                        submit(true);
-                      }}
-                    >
-                      LOGOUT FROM ALL DEVICES
-                    </Link>
-                  </li>
-                </>
-              ) : (
-                <Link
-                  to="/signup"
-                  className="nav-links-mobile"
-                  onClick={closeMobileMenu}
-                >
-                  Sign Up
-                </Link>
-              )}
-            </li> */}
           </ul>
 
           {button ? (
@@ -280,11 +246,16 @@ else{
                         EDIT PROFILE
                       </Link>
                     </li>
-                    <li>
-                      <Link onClick={()=>{setreferalvisible(true)}} className="p-link">
-                      REFERRAL CODE
+                    {!referalcodeexist?<li>
+                      <Link
+                        onClick={() => {
+                          setreferalvisible(true);
+                        }}
+                        className="p-link"
+                      >
+                        REFERRAL CODE
                       </Link>
-                    </li>
+                    </li>:""}
                     <li
                       onClick={() => {
                         submit(false);
@@ -383,16 +354,15 @@ else{
         </ul>
         {isLoggedIn ? (
           <>
-          <Link
-              
+           {!referalcodeexist? <Link
               onClick={() => {
-                setreferalvisible(true)
+                setreferalvisible(true);
                 setNav(false);
               }}
               className="mob-signbtn"
             >
               REFERRAL CODE
-            </Link>
+            </Link>:""}
             <Link
               to="/editprofile"
               onClick={() => {
