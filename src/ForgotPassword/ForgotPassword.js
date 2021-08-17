@@ -20,6 +20,7 @@ const ForgotPassword = () => {
   const [passVISIBLE, setpassVISIBLE] = useState(false);
   const [confirmpassVISIBLE, setconfirmpassVISIBLE] = useState(false);
   const[isLoading,setisLoading]=useState(true)
+  const[iserror,setiserror]=useState(false)
   let { token } = useParams();
   const stylefunction = (color, id) => {
     document.getElementById(id).style.border = color;
@@ -32,7 +33,12 @@ const ForgotPassword = () => {
   const GetData = async () => {
     const url = `${window.name}forgot-password/${token}`;
     const { message: messagee } = await ChangePassword(url);
-  setisLoading(false)
+  if(messagee=="error")
+  {
+    setiserror(true)
+  }
+ 
+    setisLoading(false)
   };
 
   const closeModal = () => {
@@ -100,7 +106,7 @@ const ForgotPassword = () => {
           </Modal>
         </section>
       </div>
-      {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:<section className="sign-in">
+      {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:iserror?<div className="isLoading"><h1>Invalid Token</h1></div>:<section className="sign-in">
         <div className="container">
           <div className="signup-content">
             <div className="signup-image">
