@@ -11,7 +11,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Authverifier from "../Backend/Authverifier";
 import Webinar from "./webinar";
-
+import Slider from "react-slick";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -61,7 +61,13 @@ const LandingPage = () => {
   const [para, setPara] = useState(
     "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
   );
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <>
       <Helmet>
@@ -74,13 +80,17 @@ const LandingPage = () => {
         </div>
       ) : (
         <div className="landingpage">
-          {webinardata.map((webinar, index) => (
-            <Webinar
-              key={index}
-              webinardata={webinar}
-              isloggedin={isLoggedIn}
-            />
-          ))}
+          <div className="slider-webinar">
+            <Slider {...settings}>
+              {webinardata.map((webinar, index) => (
+                <Webinar
+                  key={index}
+                  webinardata={webinar}
+                  isloggedin={isLoggedIn}
+                />
+              ))}
+            </Slider>
+          </div>
           <section className="top">
             <div className="container">
               <div className="top-content">

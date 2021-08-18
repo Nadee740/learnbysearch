@@ -23,6 +23,7 @@ import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import { SolarSystemLoading } from "react-loadingg";
 import Ongoingresearch from "./ongoingresearch/ongoingresearch";
 import OngoingresearchPage from "./ongoingresearchdetailed/ongoingresearchdetailed";
+import WebinarPage from "./webinar/webinar";
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem("loggedinuserid"));
@@ -61,7 +62,7 @@ function App() {
           <Route path="/openprogrammes" exact component={OpenProgrammes} />
           <Route path="/ongoingprogrammes" exact component={Ongoingresearch} />
           <Route path="/open" component={Open} />
-
+          <Route path="/webinars" component={WebinarPage} />
           <Route path="/blogsdetailspage/:slug" component={BlogsDetailsPage} />
           <Route
             path="/openprogrammespage/:slug"
