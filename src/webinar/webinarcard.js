@@ -1,28 +1,29 @@
 import React from "react";
 import "./webinar.css";
 import { MdDateRange, MdVideoCall } from "react-icons/md";
-const WebinareCard = () => {
+const WebinareCard = ({webinardata}) => {
+  console.log(webinardata)
   return (
     <div className="webinarcard">
       <img
-        src="https://res.cloudinary.com/dn3oddkar/image/upload/v1629043250/webinar_r1aq3h.jpg"
+        src={webinardata.imageUrl}
         alt=""
         className="webinarcard-img"
       />
       <p className="webinarcard-date">
         <MdDateRange />
-        12 June 2020
+        {webinardata.date}
       </p>
       <p className="webinarcard-head">
-        Research Opportunities In Management Innovations
+       {webinardata.title}
       </p>
-      <p className="webinarcard-person">
+      {/* <p className="webinarcard-person">
         Speaker: <span>Rishi Kapal</span>
       </p>
       <p className="webinarcard-date webinarcard-link">
         <MdVideoCall size="1.6em" />
         https://meet.google.com/tqp-gzgg-noj
-      </p>
+      </p> */}
     </div>
   );
 };

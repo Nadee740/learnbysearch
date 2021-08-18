@@ -231,6 +231,15 @@ const Navbar = (props) => {
                 My Applications
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                to="/webinars"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Webinars
+              </Link>
+            </li>
           </ul>
 
           {button ? (
@@ -351,6 +360,17 @@ const Navbar = (props) => {
               My Applications
             </Link>
           </li>
+          <li className="mobnav-item">
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/webinars"
+            >
+              Webinars
+            </Link>
+          </li>
+          
         </ul>
         {isLoggedIn ? (
           <>
