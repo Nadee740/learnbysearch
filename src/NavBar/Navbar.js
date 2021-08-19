@@ -201,12 +201,12 @@ const Navbar = (props) => {
                   width: "200px",
                 }}
               >
-                <a href="/ongoingprogrammes" className="p-link p-link2">
+                <Link to="/openprogrammes" className="p-link p-link2">
+                  Upcoming Research
+                </Link>
+                <Link to="/ongoingprogrammes" className="p-link p-link2">
                   OnGoing Research
-                </a>
-                <a href="/ongoingprogrammes" className="p-link p-link2">
-                  OnGoing Research
-                </a>
+                </Link>
               </div>
             </li>
             <li className="nav-item">
