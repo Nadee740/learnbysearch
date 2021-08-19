@@ -80,7 +80,8 @@ const LandingPage = () => {
         </div>
       ) : (
         <div className="landingpage">
-          <div className="slider-webinar">
+          {/*
+ <div className="slider-webinar">
             <Slider {...settings}>
               {webinardata.map((webinar, index) => (
                 <Webinar
@@ -91,6 +92,7 @@ const LandingPage = () => {
               ))}
             </Slider>
           </div>
+           */}
           <section className="top">
             <div className="container">
               <div className="top-content">

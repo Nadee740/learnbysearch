@@ -186,23 +186,28 @@ const Navbar = (props) => {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                to="/openprogrammes"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Upcoming Research
-              </Link>
-            </li>
-            <li className="nav-item">
+
+            <li className="nav-item div-dropdwn">
               <Link
                 to="/ongoingprogrammes"
-                className="nav-links"
+                className="nav-links dropbtn"
                 onClick={closeMobileMenu}
               >
-                Ongoing Research
+                Research
               </Link>
+              <div
+                class="dropdown"
+                style={{
+                  width: "200px",
+                }}
+              >
+                <a href="/ongoingprogrammes" className="p-link p-link2">
+                  OnGoing Research
+                </a>
+                <a href="/ongoingprogrammes" className="p-link p-link2">
+                  OnGoing Research
+                </a>
+              </div>
             </li>
             <li className="nav-item">
               <Link
@@ -255,16 +260,20 @@ const Navbar = (props) => {
                         EDIT PROFILE
                       </Link>
                     </li>
-                    {!referalcodeexist?<li>
-                      <Link
-                        onClick={() => {
-                          setreferalvisible(true);
-                        }}
-                        className="p-link"
-                      >
-                        REFERRAL CODE
-                      </Link>
-                    </li>:""}
+                    {!referalcodeexist ? (
+                      <li>
+                        <Link
+                          onClick={() => {
+                            setreferalvisible(true);
+                          }}
+                          className="p-link"
+                        >
+                          REFERRAL CODE
+                        </Link>
+                      </li>
+                    ) : (
+                      ""
+                    )}
                     <li
                       onClick={() => {
                         submit(false);
@@ -283,7 +292,7 @@ const Navbar = (props) => {
                 </div>
               </div>
             ) : (
-              <Button buttonStyle="btn--outline">Sign in</Button>
+              <Button buttonStyle="btn--outline">SignIn</Button>
             )
           ) : (
             ""
@@ -370,19 +379,22 @@ const Navbar = (props) => {
               Webinars
             </Link>
           </li>
-          
         </ul>
         {isLoggedIn ? (
           <>
-           {!referalcodeexist? <Link
-              onClick={() => {
-                setreferalvisible(true);
-                setNav(false);
-              }}
-              className="mob-signbtn"
-            >
-              REFERRAL CODE
-            </Link>:""}
+            {!referalcodeexist ? (
+              <Link
+                onClick={() => {
+                  setreferalvisible(true);
+                  setNav(false);
+                }}
+                className="mob-signbtn"
+              >
+                REFERRAL CODE
+              </Link>
+            ) : (
+              ""
+            )}
             <Link
               to="/editprofile"
               onClick={() => {
