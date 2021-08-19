@@ -1,14 +1,56 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import { Link } from "react-router-dom";
+import Authverifier from "../Backend/Authverifier";
 import Researchpgms from "../Backend/Researchpgms";
-
+import SendPost from "../Backend/Sendpost";
+import Modal from "react-awesome-modal";
 import "./webinar.css";
 import WebinareCard from "./webinarcard";
 const WebinarPage = () => {
+
   const [isLoading,setisLoading]=useState(true)
   const [webinardata,setwebinardata]=useState()
+  const [visible, setvisible] = useState(false);
+  const [loginvisible, setloginvisible] = useState(false);
+  const [selectedwbinarid, setselectedwebinarid] = useState("");
 
+  const applyforwebinar = async () => {
+    const { isLoggedIn: isLoggedIn } = await Authverifier(`${window.name}users/me`
+    );
+    if (isLoggedIn) {
+      
+      const data = {
+        webinarId: selectedwbinarid,
+      };
+      console.log(data)
+    
+      const { message: outcome } = await SendPost(
+        `${window.name}apply-for-webinar`,
+        data
+      );
+       setisLoading(false)
+      if (outcome.includes("success")) {
+        closeModal();
+        alert("Successfully registered for webinar");
+      } else {
+        closeModal();
+        alert("Sorry an error occured");
+      }
+    } else {
+      setvisible(false);
+      setloginvisible(true);
+    }
+  };
+
+  const closeModal = () => {
+    setvisible(false);
+  };
+
+  const closeloginModal = () => {
+    setloginvisible(false);
+  };
 useEffect(()=>{
 getwebinardata()
 },[])
@@ -24,14 +66,77 @@ getwebinardata()
     }
     setisLoading(false);
   };
-//   date: "2021-08-17"
-// imageUrl: "https://res.cloudinary.com/dn3oddkar/image/upload/v1629043250/webinar_r1aq3h.jpg"
-// studentId: (13) ["6114a56a806d4a84faf13d84", "60d832e7c8365a408da92132", "60d832e7c8365a408da92132", "60d832e7c8365a408da92132", "60d832e7c8365a408da92132", "6114a56a806d4a84faf13d84", "60e2de7c216c0a1ec267fc2a", "60e2a02ed5631a038a2e6241", "60e2de7c216c0a1ec267fc2a", "611573da806d4a84faf13db6", "611108b0ce993b374eeefc3f", "611108b0ce993b374eeefc3f", "60e186ac3793cf01a050924c"]
-// title: "Research Opportunities In Management Innovations"
-// updatedAt: "2021-08-16T10:31:27.947Z"
+
 
   return (
-    <>{isLoading ? (
+<>
+<div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={visible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={closeModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>Are you sure you want to apply ?</p>
+              <br></br>
+              <div className="extrapart-webinar">
+                <div className="signuppart">
+                  <Link onClick={closeModal}>Close</Link>
+                </div>
+                <div>
+                  <Link onClick={applyforwebinar}>Apply</Link>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        </section>
+      </div>
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={loginvisible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={closeloginModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>PLEASE LOGIN TO SUBMIT APPLICATION...</p>
+              <br></br>
+              <div className="extrapart">
+                <div className="signuppart">
+                  <Link to="/signup" onClick={closeloginModal}>
+                    Sign Up
+                  </Link>
+                </div>
+                <div>
+                  <Link onClick={closeloginModal}>Close</Link>
+                </div>
+
+                <div className="loginpart">
+                  <Link to="/login" onClick={closeloginModal}>
+                    Login
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        </section>
+      </div>
+{isLoading ? (
       <div className="isLoading">
         <SolarSystemLoading />
       </div>
@@ -39,7 +144,7 @@ getwebinardata()
       <h2>Webinars</h2>
       <div className="webinarpage-list">
       {webinardata.map((webinar,index)=>(
-        <WebinareCard key={index} webinardata={webinar} />
+        <WebinareCard key={index} webinardata={webinar} setvisible={setvisible} selectedid={setselectedwebinarid} />
       ))}
       
       </div>
