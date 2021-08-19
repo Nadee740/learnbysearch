@@ -7,13 +7,14 @@ import Authverifier from "../Backend/Authverifier";
 import SendPost from "../Backend/Sendpost";
 import { Link } from "react-router-dom";
 import Modal from "react-awesome-modal";
-const WebinareCard = ({webinardata}) => {
+const WebinareCard = ({ webinardata }) => {
   const [visible, setvisible] = useState(false);
   const [loginvisible, setloginvisible] = useState(false);
   const [isloggedin, setisLoggedin] = useState(false);
 
   const applyforwebinar = async () => {
-    const { isLoggedIn: isLoggedIn } = await Authverifier(`${window.name}users/me`
+    const { isLoggedIn: isLoggedIn } = await Authverifier(
+      `${window.name}users/me`
     );
     if (isLoggedIn) {
       const data = {
@@ -113,29 +114,23 @@ const WebinareCard = ({webinardata}) => {
           </Modal>
         </section>
       </div>
-    <div className="webinarcard">
-      <img
-        src={webinardata.imageUrl}
-        alt=""
-        className="webinarcard-img"
-      />
-      <p className="webinarcard-date">
-        <MdDateRange />
-        {webinardata.date}
-      </p>
-      <p className="webinarcard-head">
-       {webinardata.title}
-      </p>
-      <button
-            className="regbtn"
-            onClick={() => {
-               setvisible(true);
-            }}
-          >
-            Register Now
-            <IoArrowForwardOutline className="webicn" />
-          </button>
-    </div>
+      <div className="webinarcard">
+        <img src={webinardata.imageUrl} alt="" className="webinarcard-img" />
+        <p className="webinarcard-date">
+          <MdDateRange />
+          {webinardata.date}
+        </p>
+        <p className="webinarcard-head">{webinardata.title}</p>
+        <button
+          className="regbtn"
+          onClick={() => {
+            setvisible(true);
+          }}
+        >
+          Register Now
+          <IoArrowForwardOutline className="webicn" />
+        </button>
+      </div>
     </>
   );
 };
