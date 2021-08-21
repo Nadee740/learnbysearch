@@ -53,6 +53,7 @@ const LandingPage = () => {
       `${window.name}get-all-webinars`
     );
     if (webinardata) {
+      console.log(webinardata)
       setwebinardata(webinardata);
     }
     setisLoading(false);
@@ -80,19 +81,20 @@ const LandingPage = () => {
         </div>
       ) : (
         <div className="landingpage">
-          {/*
+          
  <div className="slider-webinar">
             <Slider {...settings}>
-              {webinardata.map((webinar, index) => (
+              {webinardata.map((webinar, index) =>{ 
+                return webinar.isOpen?(
                 <Webinar
                   key={index}
                   webinardata={webinar}
                   isloggedin={isLoggedIn}
                 />
-              ))}
+              ):""})}
             </Slider>
           </div>
-           */}
+          
           <section className="top">
             <div className="container">
               <div className="top-content">

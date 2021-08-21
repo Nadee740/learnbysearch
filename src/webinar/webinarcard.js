@@ -19,7 +19,7 @@ const WebinareCard = ({ webinardata, selectedid, setvisible }) => {
           {webinardata.date}
         </p>
         <p className="webinarcard-head">{webinardata.title}</p>
-        <button
+        {webinardata.isOpen?<button
           className="regbtn"
           disabled
           onClick={() => {
@@ -29,7 +29,7 @@ const WebinareCard = ({ webinardata, selectedid, setvisible }) => {
         >
           Register Now
           <IoArrowForwardOutline className="webicn" />
-        </button>
+        </button>:""}
       </div>
     </>
   );

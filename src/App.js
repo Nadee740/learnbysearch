@@ -24,6 +24,7 @@ import { SolarSystemLoading } from "react-loadingg";
 import Ongoingresearch from "./ongoingresearch/ongoingresearch";
 import OngoingresearchPage from "./ongoingresearchdetailed/ongoingresearchdetailed";
 import WebinarPage from "./webinar/webinar";
+import SignupasGuest from "./SignupasGuest/SignupasGuest";
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem("loggedinuserid"));
@@ -48,9 +49,7 @@ function App() {
       ) : (
         <Router>
           <Navbar />
-
           <Route path="/" exact component={LandingPage} />
-
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/editprofile" component={EditProfile} />
@@ -79,6 +78,7 @@ function App() {
             exact
             component={ApplicationForm}
           />
+          <Route path="/applyasguest" exact component={SignupasGuest} />{" "}
         </Router>
       )}
     </div>
