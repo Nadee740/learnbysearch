@@ -189,7 +189,7 @@ const Navbar = (props) => {
 
             <li className="nav-item div-dropdwn">
               <Link
-                to="/ongoingprogrammes"
+                to="/openprogrammes"
                 className="nav-links dropbtn"
                 onClick={closeMobileMenu}
               >

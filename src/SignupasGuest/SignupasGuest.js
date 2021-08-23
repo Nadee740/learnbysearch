@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SignupasGuest = () => {
+  const [name,setName]=useState("")
+  const [phone,setPhone]=useState("")
   return (
     <section className="sign-in">
       <div className="container">
@@ -13,7 +16,7 @@ const SignupasGuest = () => {
             <form>
               <div className="inputholder" id="usernameholder">
                 <div className="inputholder-top">
-                  <input required type="text" placeholder="Name" id="name" />
+                  <input required type="text" placeholder="Name" id="name" onChange={(e)=>{setName(e.target.value)}} value={name} />
                 </div>
               </div>
 
@@ -24,6 +27,8 @@ const SignupasGuest = () => {
                     id="phone"
                     type="tel"
                     placeholder="Phone Number"
+                    value={phone}
+                    onChange={(e)=>{setPhone(e.target.value)}}
                   />
                 </div>
                 <label className="label" htmlFor=""></label>
