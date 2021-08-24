@@ -85,7 +85,7 @@ const LandingPage = () => {
  <div className="slider-webinar">
             <Slider {...settings}>
               {webinardata.map((webinar, index) =>{ 
-                return !webinar.isOpen?(
+                return webinar.isOpen?(
                 <Webinar
                   key={index}
                   webinardata={webinar}
