@@ -8,6 +8,7 @@ import SendPost from "../Backend/Sendpost";
 const Webinar = ({ webinardata, isloggedin }) => {
   const [visible, setvisible] = useState(false);
   const [loginvisible, setloginvisible] = useState(false);
+  let a="/applyasguest/"+webinardata._id
 
   const applyforwebinar = async () => {
     if (isloggedin) {
@@ -94,7 +95,7 @@ const Webinar = ({ webinardata, isloggedin }) => {
                   </Link>
                 </div>
                 <div>
-                  <Link onClick={closeloginModal}>Close</Link>
+                  <Link to={a}  onClick={closeloginModal}>Apply as guest</Link>
                 </div>
 
                 <div className="loginpart">

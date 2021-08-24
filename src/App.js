@@ -78,7 +78,7 @@ function App() {
             exact
             component={ApplicationForm}
           />
-          <Route path="/applyasguest" exact component={SignupasGuest} />{" "}
+          <Route path="/applyasguest/:id" exact component={SignupasGuest} />{" "}
         </Router>
       )}
     </div>
@@ -86,4 +86,4 @@ function App() {
 }
 
 export default App;
-//<Route path="/blogsdetailspage/:id" component={BlogsDetailsPage} />
+
