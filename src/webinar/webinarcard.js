@@ -21,7 +21,6 @@ const WebinareCard = ({ webinardata, selectedid, setvisible }) => {
         <p className="webinarcard-head">{webinardata.title}</p>
         {webinardata.isOpen?<button
           className="regbtn"
-          disabled
           onClick={() => {
             selectedid(webinardata._id);
             setvisible(true);

@@ -123,7 +123,7 @@ getwebinardata()
                   </Link>
                 </div>
                 <div>
-                  <Link onClick={closeloginModal}>Close</Link>
+                  <Link to={"/applyasguest/"+selectedwbinarid} onClick={closeloginModal}>Apply as guest</Link>
                 </div>
 
                 <div className="loginpart">
