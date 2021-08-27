@@ -61,6 +61,9 @@ getwebinardata()
       `${window.name}get-all-webinars`
     );
     if (webinardata) {
+      webinardata.sort(function (a, b) {
+        return Date.parse(b.date) - Date.parse(a.date);
+      });
       setwebinardata(webinardata);
       
     }

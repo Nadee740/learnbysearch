@@ -44,7 +44,7 @@ const SignupasGuest = () => {
     );
     if(outcome.includes("applied for webinar successfully"))
     {
-      setvisible(true)
+      window.location="/"
       setemail("")
       setName("")
       setPhone("")
@@ -64,31 +64,7 @@ const SignupasGuest = () => {
 
 
   return (
-    <>
-     <div className="popupscreen">
-        <section className="popupscreen">
-          <Modal
-            visible={visible}
-            width="350"
-            height="200"
-            effect="fadeInUp"
-            onClickAway={closeModal}
-          >
-            <div className="popup">
-              <img
-                src="/images/LearnByResearchLogo.png"
-                className="logo"
-                alt=""
-              />
-              <p>SUCCESSFULLY REGISTERED FOR WEBINAR .</p>
-              <br />
-              <Link to="/" onClick={closeModal}>
-                Close
-              </Link>
-            </div>
-          </Modal>
-        </section>
-      </div>
+  <>
      {isLoading ? (
         <div className="isLoading">
           <SolarSystemLoading/>

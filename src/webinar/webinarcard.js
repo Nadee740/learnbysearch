@@ -35,3 +35,7 @@ const WebinareCard = ({ webinardata, selectedid, setvisible }) => {
 };
 
 export default WebinareCard;
+
+
+// popup veenda
+// mail one madhi
