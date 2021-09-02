@@ -1,0 +1,25 @@
+.colleges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.college-holder {
+  width: 90vw;
+}
+.college-card {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.college-img {
+  height: 10rem;
+}
+
+@media screen and (max-width: 960px) {
+  .college-holder {
+    width: 70vw;
+  }
+}

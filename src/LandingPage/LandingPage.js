@@ -12,6 +12,7 @@ import { Helmet } from "react-helmet";
 import Authverifier from "../Backend/Authverifier";
 import Webinar from "./webinar";
 import Slider from "react-slick";
+import Colleges from "./colleges/college";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -53,7 +54,7 @@ const LandingPage = () => {
       `${window.name}get-all-webinars`
     );
     if (webinardata) {
-      console.log(webinardata)
+      console.log(webinardata);
       setwebinardata(webinardata);
     }
     setisLoading(false);
@@ -81,20 +82,22 @@ const LandingPage = () => {
         </div>
       ) : (
         <div className="landingpage">
-          
- <div className="slider-webinar">
+          <div className="slider-webinar">
             <Slider {...settings}>
-              {webinardata.map((webinar, index) =>{ 
-                return webinar.isOpen?(
-                <Webinar
-                  key={index}
-                  webinardata={webinar}
-                  isloggedin={isLoggedIn}
-                />
-              ):""})}
+              {webinardata.map((webinar, index) => {
+                return webinar.isOpen ? (
+                  <Webinar
+                    key={index}
+                    webinardata={webinar}
+                    isloggedin={isLoggedIn}
+                  />
+                ) : (
+                  ""
+                );
+              })}
             </Slider>
           </div>
-          
+
           <section className="top">
             <div className="container">
               <div className="top-content">
@@ -144,6 +147,7 @@ const LandingPage = () => {
               </p>
             </div>
           </section>
+          <Colleges />
           <section className="about">
             <div className="about-content">
               <h2>About LearnByResearch</h2>
