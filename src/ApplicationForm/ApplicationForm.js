@@ -81,19 +81,19 @@ const ApplicationForm = () => {
     setSwitch(switchitm);
   };
 
-  const Applyreferal=async()=>{
-    const data={code}
+  const Applyreferal = async () => {
+    const data = { code };
     const { error: error } = await UserReferalCode(
-      `${window.name}count-code`,data
+      `${window.name}count-code`,
+      data
     );
-    console.log(error)
-    if(error){
-      setreferalvisible(true)
+    console.log(error);
+    if (error) {
+      setreferalvisible(true);
+    } else {
+      submitformdata();
     }
-    else{
-      submitformdata()
-    }
-  }
+  };
 
   useEffect(() => {
     setisLoading(true);
@@ -116,40 +116,33 @@ const ApplicationForm = () => {
     if (q2 == "false" && q3 == "") {
       seterr("Please type a valid Reason ");
     } else {
-        if(!code=="")
-        {
-          Applyreferal()
-        }
-        else
-        {
-          setreferalcode("")
-          submitformdata()
-        }
-        
-
-      
+      if (!code == "") {
+        Applyreferal();
+      } else {
+        setreferalcode("");
+        submitformdata();
+      }
     }
   };
-const submitformdata=async()=>{
-  let data = { PositionId, ResearchProgramId, q1, q2, q3,code };
-      if (q2 == "true" || q2 == true) {
-        data = { PositionId, ResearchProgramId, q1, q2,code };
-      }
-      console.log(data)
-      
+  const submitformdata = async () => {
+    let data = { PositionId, ResearchProgramId, q1, q2, q3, code };
+    if (q2 == "true" || q2 == true) {
+      data = { PositionId, ResearchProgramId, q1, q2, code };
+    }
+    console.log(data);
 
-      const { message: messagee } = await SendPost(
-        `${window.name}application-form`,
-        data
-      );
+    const { message: messagee } = await SendPost(
+      `${window.name}application-form`,
+      data
+    );
 
-      if (messagee.includes("Application form submitted")) {
-        setisLoading(false);
-        setvisible(true);
-      } else {
-        seterrorvisible(true);
-      }
-}
+    if (messagee.includes("Application form submitted")) {
+      setisLoading(false);
+      setvisible(true);
+    } else {
+      seterrorvisible(true);
+    }
+  };
 
   //////////////////////////////////////////////////////////////////////
   return (
@@ -211,7 +204,9 @@ const submitformdata=async()=>{
             width="350"
             height="200"
             effect="fadeInUp"
-            onClickAway={()=>{setreferalvisible(false)}}
+            onClickAway={() => {
+              setreferalvisible(false);
+            }}
           >
             <div className="popup">
               <img
@@ -219,16 +214,29 @@ const submitformdata=async()=>{
                 className="logo"
                 alt=""
               />
-              <p>Referal Code error do you want to apply without referal code?</p>
+              <p>
+                Referal Code error do you want to apply without referal code?
+              </p>
               <br></br>
               <div className="extrapart-webinar">
                 <div className="signuppart">
-                  <Link onClick={()=>{setreferalvisible(false)}}>Close</Link>
+                  <Link
+                    onClick={() => {
+                      setreferalvisible(false);
+                    }}
+                  >
+                    Close
+                  </Link>
                 </div>
                 <div>
-                  <Link onClick={()=>{
-                    setreferalvisible(false)
-                    submitformdata()}}>Apply</Link>
+                  <Link
+                    onClick={() => {
+                      setreferalvisible(false);
+                      submitformdata();
+                    }}
+                  >
+                    Apply
+                  </Link>
                 </div>
               </div>
             </div>
@@ -250,9 +258,7 @@ const submitformdata=async()=>{
                 <div className="singup-form">
                   <h2 className="form-title">APPLICATION </h2>
                   <form onSubmit={submitApplictaionform}>
-                    <p className="inputtext">
-                      Referal Code if any
-                    </p>
+                    <p className="inputtext">Referal Code if any</p>
                     <div
                       className="inputholder inputholder2"
                       id="usernameholder"
@@ -263,10 +269,9 @@ const submitformdata=async()=>{
                           rows="1"
                           className="textarea"
                           placeholder=""
-                          
                           value={code}
                           onChange={(e) => {
-                            setreferalcode(e.target.value)
+                            setreferalcode(e.target.value);
                           }}
                         ></textarea>
                       </div>
@@ -328,10 +333,11 @@ const submitformdata=async()=>{
                       </div>
                     </div>
                     <p className="inputtext">
-                      {" "}
-                      The Program charges Rs. 5000 fees to cover the research,
-                      training and resources cost. Can you afford to pay the
-                      fees?{" "}
+                      This Research Program charges Rs.3000 per month for the
+                      entire duration of the particular research which is
+                      mentioned on the website. This will cover the charges for
+                      mentorship, training resources, publication charges and
+                      the tools required. Can you afford to pay the fees?
                     </p>
                     <div
                       className="inputholder inputholder2"
