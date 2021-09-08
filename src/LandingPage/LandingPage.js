@@ -147,7 +147,7 @@ const LandingPage = () => {
               </p>
             </div>
           </section>
-
+          <Colleges />
           <section className="about">
             <div className="about-content">
               <h2>About LearnByResearch</h2>

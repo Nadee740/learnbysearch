@@ -6,20 +6,27 @@
   width: 100%;
 }
 .college-holder {
-  width: 90vw;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
 }
-.college-card {
+.collwgeholder-card {
   display: flex !important;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
 .college-img {
-  height: 10rem;
+  height: 4rem;
+  margin: 1rem;
 }
 
 @media screen and (max-width: 960px) {
   .college-holder {
-    width: 70vw;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .college-img {
+    height: 3rem;
+    margin: 0.6rem;
   }
 }
