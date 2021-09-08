@@ -3,60 +3,52 @@ import Openprogramcard from "./openprogramescard";
 import "./OpenProgrammes.css";
 import Researchpgms from "../Backend/Researchpgms";
 import { useState } from "react";
-import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-import {Helmet} from "react-helmet";
-
+import { Helmet } from "react-helmet";
 
 const OpenProgrammes = () => {
-       const[blogsData,setblogData]=useState("")
-       const[isLoading,setisLoading]=useState(true)
-       const [error,seterror]=useState(false);
+  const [blogsData, setblogData] = useState("");
+  const [isLoading, setisLoading] = useState(true);
 
-const getBlogs=async()=>{
-  setisLoading(true)
-  const { data: Datass } = await Researchpgms(`${window.name}research-programs`)
-  setblogData(Datass)
+  const getRPS = async () => {
+    setisLoading(true);
+    const { data } = await Researchpgms(`${window.name}research-programs`);
+    setblogData(data);
+    setisLoading(false);
+  };
+
+  useEffect(async () => {
+    getRPS();
+  }, []);
+  if(isLoading){
+return(
+        <div className="isLoading">
+          <SolarSystemLoading />
+        </div>
+      ) }
   
-  
-  
-  setisLoading(false)
-}
-       
-  useEffect(async() => {
-    
-    getBlogs()
-    
-   
-  }, [])
   return (
     <>
-    <Helmet>
-                <meta charSet="utf-8" />
-                <title>Home | Programs</title>
-                
-            </Helmet>
-        {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:
-        error? <div className="isLoading">
-          <h1>OOOps an error occured...</h1>
-        </div>:
-      <div className="openprograms">
-        <h2>Open Programs</h2>
-        <div className="cardholder">
-        {blogsData.length>=1? blogsData.map((blog,index)=>{
-          return blog.applicationStatus?(
-       
-        
-          
-          <Openprogramcard blog={blog} key={index} />
-       
-         
-         
-        
-        ):""}):seterror(true)}
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home | Programs</title>
+      </Helmet>
+     
+        <div className="openprograms">
+          <h2>Open Programs</h2>
+          <div className="cardholder">
+            {blogsData.length >= 1
+              ? blogsData.map((blog, index) => {
+                  return blog.applicationStatus ? (
+                    <Openprogramcard blog={blog} key={index} />
+                  ) : (
+                    ""
+                  );
+                })
+              : setisLoading(true)}
+          </div>
         </div>
-      </div>
-        }
+      
     </>
   );
 };

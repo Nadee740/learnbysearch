@@ -22,7 +22,7 @@ const ApplicationForm = () => {
   const [q1, setq1] = useState("");
   const [q2, setq2] = useState(true);
   const [q3, setq3] = useState("");
-  const [blank, setblank] = useState("");
+ 
 
   const [switchitm, setSwitch] = useState(true);
   const [PositionId, setPositionId] = useState("");
@@ -135,7 +135,7 @@ const submitformdata=async()=>{
       if (q2 == "true" || q2 == true) {
         data = { PositionId, ResearchProgramId, q1, q2,code };
       }
-      console.log(data)
+
       
 
       const { message: messagee } = await SendPost(

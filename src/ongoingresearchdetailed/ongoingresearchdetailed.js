@@ -20,10 +20,7 @@ function OngoingresearchPage() {
   const { slug } = useParams();
   let arr = [];
   let array = [];
-  let rparray = [];
-  let count=0;
-  let checkcount=0;
-  const [rpData, setrp] = useState();
+  let count=0; 
   const [isLoading, setisLoading] = useState(true);
   const [blogsData, setblogData] = useState("");
   const [positions, setPosition] = useState("");
@@ -167,14 +164,16 @@ function OngoingresearchPage() {
   //////////////////////////////FOR GETTING THE DATA FOR RP///////////////////////////////////////
   const getBlogs = async () => {
     setisLoading(true);
-    const { data: Datass } = await Researchpgms(
+    const { data: rpdata } = await Researchpgms(
       `${window.name}research-program/${slug}`
     );
+    if(!rpdata)
+     return seterror(true)
     
-    setblogData(Datass);
+    setblogData(rpdata);
     
 
-    await getPositions(Datass);
+    await getPositions(rpdata);
   };
 
   //////////////////////////////////////////////////////////////////////////
@@ -188,6 +187,18 @@ function OngoingresearchPage() {
     getBlogs();
   }, []);
 
+  if(isLoading)
+   return (
+    <div className="isLoading">
+    <SolarSystemLoading />
+  </div>
+  )
+  if(error)
+    return(
+    <div className="isLoading">
+      <h1>Ooops an error occured...</h1>
+    </div>
+  ) 
   return (
     <>
       <Helmet>
@@ -264,15 +275,7 @@ function OngoingresearchPage() {
 
       
       
-      {isLoading ? (
-        <div className="isLoading">
-          <SolarSystemLoading />
-        </div>
-      ) : error ? (
-        <div className="isLoading">
-          <h1>OOOps an error occured...</h1>
-        </div>
-      ) : (
+   
         <div>
           <div className="blogdetailpage openprogrammespage">
             <div className="blogdetailpage-img">
@@ -469,7 +472,7 @@ function OngoingresearchPage() {
           </div>
           <Footer />
         </div>
-      )}
+     
     </>
   );
 }

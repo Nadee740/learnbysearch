@@ -13,11 +13,8 @@ import ReferalCode from "../Backend/Referalcode";
 const Navbar = (props) => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
-  const [user, setUser] = useState(true);
   const [isLoggedIn, setisLoggedin] = useState(false);
-  const [userprof, setuserprof] = useState();
   const [referalvisible, setreferalvisible] = useState(false);
-  const [referalalrdyvisible, setreferalalrdyvisible] = useState(false);
   const [referalcodeexist, setreferalcodeexist] = useState(false);
   const [referalcode, setreferalcode] = useState("");
   const [error, seterr] = useState("");

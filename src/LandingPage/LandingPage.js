@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import SliderCo from "./slidercourse/slidercourse";
-import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Authverifier from "../Backend/Authverifier";
@@ -18,35 +17,38 @@ const LandingPage = () => {
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [pgmsData, setpgms] = useState("");
   const [webinardata, setwebinardata] = useState();
-  const [error, seterror] = useState(false);
 
-  const getopenPgmgs = async () => {
-    setisLoading(true);
-    const { data: Datass } = await Researchpgms(
-      `${window.name}research-programs`
-    );
-    setpgms(Datass);
-
-    getBlogs();
-  };
   useEffect(() => {
     getopenPgmgs();
   }, []);
 
+  ///for getthing the openpgrms for the slider//
+  const getopenPgmgs = async () => {
+    setisLoading(true);
+    const { data: rps } = await Researchpgms(
+      `${window.name}research-programs`
+    );
+    setpgms(rps);
+
+    getBlogs();
+  };
+  
+ ////gets the blogs
   const getBlogs = async () => {
     setisLoading(true);
-    const { data: Datass } = await Researchpgms(`${window.name}blog`);
-    setblogData(Datass);
+    const { data: blogs } = await Researchpgms(`${window.name}blog`);
+    setblogData(blogs);
     checkLOgin();
   };
 
   const checkLOgin = async () => {
-    const { isLoggedIn: messagee } = await Authverifier(
+    const { isLoggedIn: isloggedin } = await Authverifier(
       `${window.name}users/me`
     );
-    setisLoggedin(messagee);
+    setisLoggedin(isloggedin);
     getwebinardata();
   };
+
   const getwebinardata = async () => {
     setisLoading(true);
     const { data: webinardata } = await Researchpgms(
@@ -58,10 +60,6 @@ const LandingPage = () => {
     }
     setisLoading(false);
   };
-
-  const [para, setPara] = useState(
-    "Getting recognition of what you have accomplished and learned is what matters the most nowadays, we just can't wait to put a post highlighting what we have made, well, here you will be doing that a lot. Every day you will be making something cool which you can't resist posting, finally, to sum up, your social media posts we award the Completion Certification."
-  );
   const settings = {
     dots: true,
     infinite: true,
