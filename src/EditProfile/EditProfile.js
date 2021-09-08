@@ -20,7 +20,6 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Authverifier from "../Backend/Authverifier";
 import Tooltip from "@material-ui/core/Tooltip";
-import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
@@ -28,8 +27,7 @@ import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 
 const EditProfile = () => {
-  const [userid, setUserid] = useState(localStorage.getItem("loggedinuserid"));
-  let userrr = { id: userid };
+ 
   const history = useHistory();
 
   const getData = async () => {

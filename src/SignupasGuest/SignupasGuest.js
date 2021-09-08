@@ -2,7 +2,7 @@ import { useState } from "react";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Link, useParams } from "react-router-dom";
 import Applyasguest from "../Backend/ApplyasGuest";
-import Modal from "react-awesome-modal";
+
 import Applyforwebinarasguest from "../Backend/Applyforwebinarasguest";
 
 const SignupasGuest = () => {
@@ -10,12 +10,9 @@ const SignupasGuest = () => {
   const [name,setName]=useState("")
   const [phone,setPhone]=useState("")
   const [email,setemail]=useState("")
-  const [visible,setvisible]=useState(false) 
   const [isLoading,setisLoading]=useState(false)
  
-  const closeModal=()=>{
-    setvisible(false)
-  }
+
 
   const applyasguest=async(e)=>{
     e.preventDefault()

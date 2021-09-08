@@ -41,13 +41,7 @@ const Signup = () => {
   const [Field, setField] = useState("");
   const [CollegeName, setCollegeName] = useState("");
   const [listofCollege, setlistCollege] = useState();
-  const [selectlistofCollege, setselectlistCollege] = useState([
-    "r15",
-    "rr310",
-    "rc200",
-    "r3",
-    "highness",
-  ]);
+  const [selectlistofCollege, setselectlistCollege] = useState([]);
   const [University, setUniversity] = useState("");
   const [GraduationYear, setGraduationYear] = useState("");
   const [value, setdate] = useState();
@@ -61,9 +55,6 @@ const Signup = () => {
   const [verifyvisible, setverifyvisible] = useState(false);
   const [otperror, setotperr] = useState();
   const [isverfied, setisverfied] = useState(false);
-  const [isLoggedIn, setisLoggedin] = useState(false);
-
-  const [isLoading, setisLoading] = useState(false);
   const setcursor = (id) => {
     document.getElementById(id).focus();
   };
@@ -83,21 +74,22 @@ const Signup = () => {
         number: phoneNumber,
       };
 
-      const { message: messagee } = await SendPost(
+      const { message } = await SendPost(
         `${window.name}number-verification`,
         veri_data
       );
-      if (messagee.includes("successfully")) {
+      if (message.includes("successfully")) {
         setotpsend(true);
 
-        setphoneerr(messagee);
+        setphoneerr(message);
         setcursor("otp");
       } else {
         setcursor("PhoneNumber");
-        setphoneerr(messagee);
+        setphoneerr(message);
       }
     }
   };
+  ////for searching the list of college //
   const searchMethod = (input) => {
     let array = listofCollege;
     let arr = [];
@@ -148,15 +140,7 @@ const Signup = () => {
     setverifyvisible(false);
     setresendmailvisible(true);
   };
-  const clearform = () => {
-    setFirstName();
-    setLastName();
-    setPass();
-    setUsername();
-    setEmail();
-    setPass();
-    setConfrpass();
-  };
+
 
   useEffect(async () => {
     getAllCountries();
@@ -168,8 +152,8 @@ const Signup = () => {
   };
 
   const getCOllegename = async () => {
-    const { data: Datass } = await Researchpgms(`${window.name}get-college`);
-    setlistCollege(Datass);
+    const { data } = await Researchpgms(`${window.name}get-college`);
+    setlistCollege(data);
   };
   const MakeChanges = async () => {
     stylefunction("2px solid #81818128", "degree");
@@ -213,17 +197,17 @@ const Signup = () => {
         college: CollegeName,
       };
 
-      const { message: messagee } = await SendPost(
+      const { message } = await SendPost(
         `${window.name}edit-profile`,
         edit_data
       );
 
-      const { message: messageemon } = await Tokenlesssendpost(
+      const { message: createcollege } = await Tokenlesssendpost(
         `${window.name}create-college`,
         colldata
       );
 
-      if (messagee.includes("updated")) {
+      if (message.includes("updated")) {
         SetStep(step + 1);
       }
     }

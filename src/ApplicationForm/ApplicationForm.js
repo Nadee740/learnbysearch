@@ -6,7 +6,7 @@ import Researchpgms from "../Backend/Researchpgms";
 import Modal from "react-awesome-modal";
 import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
-
+import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import UserReferalCode from "../Backend/usereferalcode";
@@ -22,7 +22,7 @@ const ApplicationForm = () => {
   const [q1, setq1] = useState("");
   const [q2, setq2] = useState(true);
   const [q3, setq3] = useState("");
-  //const [blank, setblank] = useState("");
+  const [blank, setblank] = useState("");
 
   const [switchitm, setSwitch] = useState(true);
   const [PositionId, setPositionId] = useState("");
@@ -55,7 +55,7 @@ const ApplicationForm = () => {
 
       setPosition(array);
 
-      if (data.positions.length === array.length) {
+      if (data.positions.length == array.length) {
         setisLoading(false);
         setPositionId(array[0]._id);
       }

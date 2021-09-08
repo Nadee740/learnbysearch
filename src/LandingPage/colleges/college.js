@@ -6,36 +6,96 @@ const Colleges = () => {
       <h2>We have students from</h2>
       <div className="college-holder">
         <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
-        </div>
-        <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
-        </div>
-        <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
         </div>
 
         <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
         </div>
         <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
-        </div>
-
-        <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
-        </div>
-        <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
         </div>
         <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
         </div>
         <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
         </div>
         <div className="collwgeholder-card">
-          <img src="/images/logo.png" alt="" className="college-img" />
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
+        </div>
+        <div className="collwgeholder-card">
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
+        </div>
+        <div className="collwgeholder-card">
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
+        </div>
+        <div className="collwgeholder-card">
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
+        </div>
+        <div className="collwgeholder-card">
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
+        </div>
+        <div className="collwgeholder-card">
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
+        </div>
+        <div className="collwgeholder-card">
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
+        </div>
+        <div className="collwgeholder-card">
+          <img
+            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+            alt=""
+            className="college-img"
+          />
         </div>
       </div>
     </div>

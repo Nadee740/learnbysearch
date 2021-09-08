@@ -21,23 +21,20 @@ function OpenProgrammesPage() {
   const { slug } = useParams();
   let arr = [];
   let array = [];
-  let rparray = [];
-  let count=0;
-  let checkcount=0;
-  const [rpData, setrp] = useState();
+  let count = 0;
+  
   const [isLoading, setisLoading] = useState(true);
-  const [blogsData, setblogData] = useState("");
+  const [blogsData, setblogData] = useState();
   const [positions, setPosition] = useState("");
   const [mentors, setmentors] = useState("");
   const [error, seterror] = useState(false);
   const [visible, setvisible] = useState(false);
-  const [appliedvisible,setappliedvisible]=useState(false)
-  const htmlpart = blogsData.description;
-  const htmlpartobjective = blogsData.objective;
-  const htmlpartoutcomes = blogsData.outcomes;
+  const [appliedvisible, setappliedvisible] = useState(false);
+  const [htmlpart,sethtmlpart] = useState();
+  const [htmlpartobjective,sethtmlpartobjective] = useState();
+  const [htmlpartoutcomes,sethtmlpartoutcomes] = useState();
   const [isLoggedIn, setisLoggedin] = useState(false);
-  const [userdata,setuserdata]=useState()
-
+  const [userdata, setuserdata] = useState();
 
   const closeModal = () => {
     setvisible(false);
@@ -45,58 +42,48 @@ function OpenProgrammesPage() {
   const closeAppliedModal = () => {
     setappliedvisible(false);
   };
-///////////////////////////POSITIONS OF RP////////////////////////////////
-  const getPositions = async (data) => {
+  ///////////////////////////POSITIONS OF RP////////////////////////////////
+  const getPositions = async (rpdata) => {
     setisLoading(true);
 
-    data.positions.map(async (position, index) => {
-      const { data: Datass } = await Researchpgms(
-        `${window.name}position/${position}`
-      );
+    rpdata.positions.map(async (position, index) => {
+      const { data } = await Researchpgms(`${window.name}position/${position}`);
 
-      arr.push(Datass);
+      arr.push(data);
 
       setPosition(arr);
-      if (data.positions.length == arr.length) await getMentors(data);
+      if (rpdata.positions.length == arr.length) await getMentors(rpdata);
     });
   };
 
   ////////////////////////////////////////////////////////////
 
-
   ////////////////////////////MENTORS OF RP////////////////////////////////////
 
-  const getMentors = async (data) => {
+  const getMentors = async (rpdata) => {
     setisLoading(true);
 
-    data.mentors.map(async (mentor, index) => {
-      const { data: Datass } = await Researchpgms(
-        `${window.name}mentor/${mentor}`
-      );
-
-      array.push(Datass);
-
+    rpdata.mentors.map(async (mentor, index) => {
+      const { data } = await Researchpgms(`${window.name}mentor/${mentor}`);
+      array.push(data);
       setmentors(array);
-
-      if (array.length == data.mentors.length) {
+      if (array.length == rpdata.mentors.length) {
         setloaded();
-        
       }
     });
   };
-/////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////
   const setloaded = () => {
     setisLoading(false);
   };
 
-///////////////////////FUNCSTION FOR APPLY NOW////////////////////////////////////////
+  ///////////////////////FUNCTION FOR APPLY NOW////////////////////////////////////////
   const applicationform = () => {
     if (!isLoggedIn) {
       setvisible(true);
     } else {
-      setisLoading(true)
-      getApplications(userdata)
-
+      setisLoading(true);
+      getApplications(userdata);
 
       // window.location = `/applicationform/${slug}`;
     }
@@ -104,17 +91,11 @@ function OpenProgrammesPage() {
 
   //////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
   //////////////////// FOR USERS RP DATAAAS/////////////////////////////
 
   const getApplications = async (userdata) => {
     if (userdata.applicationForm.length == 0) {
-          window.location = `/applicationform/${slug}`;
-      
+      window.location = `/applicationform/${slug}`;
     } else {
       userdata.applicationForm.map(async (application) => {
         const app_data = {
@@ -130,62 +111,68 @@ function OpenProgrammesPage() {
 
         if (count == userdata.applicationForm.length) {
           if (array.length > 0) {
-            let check=false;
-            array.map((data,index)=>{
-              if(data.rp==blogsData._id){
-                if(data.data!==3 )
-                {
-                  console.log(data.data,data.rp,blogsData._id)
-                setisLoading(false)
-                check=true;
-                setappliedvisible(true)
-                
-                
+            let check = false;
+            array.map((data, index) => {
+              if (data.rp == blogsData._id) {
+                if (data.data !== 3) {
+                  console.log(data.data, data.rp, blogsData._id);
+                  setisLoading(false);
+                  check = true;
+                  setappliedvisible(true);
                 }
-               }
-               if(index==array.length-1)
-               {
-                 if(!check)
-                 window.location = `/applicationform/${slug}`
-               }
-             
-              })
-              } 
-          else {
+              }
+              if (index == array.length - 1) {
+                if (!check) window.location = `/applicationform/${slug}`;
+              }
+            });
+          } else {
             window.location = `/applicationform/${slug}`;
-            
           }
         }
       });
     }
   };
 
- ///////////////////////////// FOR USERS RP DATAAAS////////////////////////////////////
+  ///////////////////////////// FOR USERS RP DATAAAS////////////////////////////////////
 
   //////////////////////////////FOR GETTING THE DATA FOR RP///////////////////////////////////////
-  const getBlogs = async () => {
+  const getRPS = async () => {
     setisLoading(true);
-    const { data: Datass } = await Researchpgms(
+    const { data } = await Researchpgms(
       `${window.name}research-program/${slug}`
     );
-    
-    setblogData(Datass);
-    
-
-    await getPositions(Datass);
+    if(!data)
+     return seterror(true),setisLoading(false)
+    setblogData(data);
+    sethtmlpart(data.description);
+    sethtmlpartobjective(data.objective)
+    sethtmlpartoutcomes(data.outcomes)
+    await getPositions(data);
   };
 
   //////////////////////////////////////////////////////////////////////////
 
   useEffect(async () => {
-    const { isLoggedIn: messagee,data: Datass  } = await Authverifier(
-      `${window.name}users/me`
-    );
-    setisLoggedin(messagee);
-    setuserdata(Datass);
-    getBlogs();
+    setisLoading(true);
+    const { isLoggedIn, data } = await Authverifier(`${window.name}users/me`);
+    setisLoggedin(isLoggedIn);
+    setuserdata(data);
+    getRPS();
   }, []);
 
+  if(isLoading)
+   return (
+    <div className="isLoading">
+    <SolarSystemLoading />
+  </div>
+  )
+  if(error)
+    return(
+    <div className="isLoading">
+      <h1>Ooops an error occured...</h1>
+    </div>
+  ) 
+   
   return (
     <>
       <Helmet>
@@ -232,8 +219,6 @@ function OpenProgrammesPage() {
       </div>
       {/*/////////////////////////////////////////// POPUP FOR NOT LOGGED IN /////////////////////////////////////*/}
 
-     
-      
       {/*//////////////// POPUP FOR ALREADY APPLIED /////////////////////////////////////*/}
       <div className="popupscreen">
         <section className="popupscreen">
@@ -251,26 +236,14 @@ function OpenProgrammesPage() {
                 alt=""
               />
               <p>YOU HAVE ALREADY SUBMITTED APPLICATION.</p>
-              <Link  onClick={closeAppliedModal}>
-                Close
-              </Link>
+              <Link onClick={closeAppliedModal}>Close</Link>
             </div>
           </Modal>
         </section>
       </div>
-          {/*///////////////////////////// POPUP FOR ALREADY APPLIED///////////////////////////////////////// */}
+      {/*///////////////////////////// POPUP FOR ALREADY APPLIED///////////////////////////////////////// */}
 
       
-      
-      {isLoading ? (
-        <div className="isLoading">
-          <SolarSystemLoading />
-        </div>
-      ) : error ? (
-        <div className="isLoading">
-          <h1>OOOps an error occured...</h1>
-        </div>
-      ) : (
         <div>
           <div className="blogdetailpage openprogrammespage">
             <div className="blogdetailpage-img">
@@ -291,7 +264,7 @@ function OpenProgrammesPage() {
                     ""
                   )}
                   {/* blogsData.applicationStatus */}
-                  {blogsData.applicationStatus? (
+                  {blogsData.applicationStatus ? (
                     <button onClick={applicationform} className="applybtn">
                       APPLY NOW
                     </button>
@@ -354,13 +327,14 @@ function OpenProgrammesPage() {
                         </p>
                         {blogsData.applicationStatus ? (
                           <button
-                          className="applynow-btn"
-                          onClick={applicationform}
-                        > 
-                      APPLY NOW
-                    </button>
-                  ) : ""}
-                        
+                            className="applynow-btn"
+                            onClick={applicationform}
+                          >
+                            APPLY NOW
+                          </button>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     ))}
                 </div>
@@ -420,7 +394,6 @@ function OpenProgrammesPage() {
                                 __html: htmlorganisation,
                               }}
                             ></div>{" "}
-                            
                             <div
                               dangerouslySetInnerHTML={{
                                 __html: htmlparteducation,
@@ -468,7 +441,7 @@ function OpenProgrammesPage() {
           </div>
           <Footer />
         </div>
-      )}
+      )
     </>
   );
 }

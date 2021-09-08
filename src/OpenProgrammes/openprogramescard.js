@@ -1,17 +1,6 @@
 import "./OpenProgrammes.css";
-import { useState } from "react";
-
-import { useParams } from "react-router-dom";
-
 function Openprogramcard({ blog }) {
-  
-  const [visible, setvisible] = useState(false);
   let a = "/openprogrammespage/" + blog.slug;
-
-  const closeModal = () => {
-    setvisible(false);
-  };
-
   const htmlpart = blog.description;
   return (
     <>

@@ -17,14 +17,14 @@ const WebinarPage = () => {
   const [selectedwbinarid, setselectedwebinarid] = useState("");
 
   const applyforwebinar = async () => {
-    const { isLoggedIn: isLoggedIn } = await Authverifier(`${window.name}users/me`
+    const { isLoggedIn} = await Authverifier(`${window.name}users/me`
     );
     if (isLoggedIn) {
       
       const data = {
         webinarId: selectedwbinarid,
       };
-      console.log(data)
+      
     
       const { message: outcome } = await SendPost(
         `${window.name}apply-for-webinar`,
