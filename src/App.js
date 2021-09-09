@@ -24,6 +24,7 @@ import Ongoingresearch from "./ongoingresearch/ongoingresearch";
 import OngoingresearchPage from "./ongoingresearchdetailed/ongoingresearchdetailed";
 import WebinarPage from "./webinar/webinar";
 import SignupasGuest from "./SignupasGuest/SignupasGuest";
+import PaymentStatusPage from "./PaymentStatus/PaymentStatusPage";
 
 function App() {
 
@@ -60,6 +61,7 @@ function App() {
             component={ApplicationForm}
           />
           <Route path="/applyasguest/:id" exact component={SignupasGuest} />{" "}
+          <Route path="/paymentstatus" exact component={PaymentStatusPage} />
         </Router>
     
     </div>

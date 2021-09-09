@@ -143,7 +143,7 @@ const LandingPage = () => {
               </p>
             </div>
           </section>
-          <Colleges />
+          {/* <Colleges /> */}
           <section className="about">
             <div className="about-content">
               <h2>About LearnByResearch</h2>
