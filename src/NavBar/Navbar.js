@@ -260,6 +260,11 @@ const Navbar = (props) => {
                         EDIT PROFILE
                       </Link>
                     </li>
+                    <li>
+                      <Link to="/paymentstatus" className="p-link">
+                        PAYMENTS
+                      </Link>
+                    </li>
                     {!referalcodeexist ? (
                       <li>
                         <Link

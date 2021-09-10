@@ -1,0 +1,25 @@
+.pay-btn {
+  font-family: inherit;
+  outline: none;
+
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  color: ivory;
+  font-weight: 500;
+  min-width: 6rem;
+}
+.pay-btn-np {
+  background-color: #3b82f6;
+}
+.pay-btn-np:hover {
+  cursor: pointer;
+  background-color: #4d91ff;
+}
+.pay-btn-paid {
+  background-color: #10b981;
+}
+.pay-btn-deactivated {
+  background-color: #d1d5db;
+}

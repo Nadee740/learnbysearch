@@ -333,11 +333,12 @@ const ApplicationForm = () => {
                       </div>
                     </div>
                     <p className="inputtext">
-                      This Research Program charges Rs.3000 per month for the
-                      entire duration of the particular research which is
-                      mentioned on the website. This will cover the charges for
-                      mentorship, training resources, publication charges and
-                      the tools required. Can you afford to pay the fees?
+                      Can you afford to pay the program fees of Rs 3000 per
+                      month?
+                      <br /> (Duration 3-4 months as it varies with the research
+                      project and is mentioned on the website. This fees will
+                      cover the charges for mentorship, training resources,
+                      publication charges and the tools required.)
                     </p>
                     <div
                       className="inputholder inputholder2"
