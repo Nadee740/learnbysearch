@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import { Link } from "react-router-dom";
 import Authverifier from "../Backend/Authverifier";
 import "./payment.css";
 const PaymentStatusPage = () => {
@@ -17,6 +18,17 @@ const PaymentStatusPage = () => {
         <SolarSystemLoading />
       </div>
     );
+  }
+  if(!isLoggedin){
+    return(
+      <div className="isLoading">
+            <h1>Please Log in</h1>
+            <div className="flex-btn">
+              <Link to="/signup" className="button1 btn2">Sign up</Link>
+              <Link to="/login" className="button1 btn2">Sign in</Link>
+            </div>
+          </div>
+    )
   }
   return (
     <>

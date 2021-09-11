@@ -83,23 +83,36 @@ const MyApplications = () => {
       }
     });
   };
-
+if(isLoading){
+  return(
+  <div className="isLoading">
+          <SolarSystemLoading />
+        </div>)
+}
+if(!isLoggedIn){
+  return( <>
+          <div className="isLoading">
+            <h1>Please Log in</h1>
+            <div className="flex-btn">
+              <Link to="/signup" className="button1 btn2">Sign up</Link>
+              <Link to="/login" className="button1 btn2">Sign in</Link>
+            </div>
+          </div>
+        </>)
+}
+if(isempty){
+  return(
+          <div className="oopps">
+            <h1>Ooops nothing to show ...</h1>
+          </div>
+        )} 
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Home | Applications</title>
       </Helmet>
-      {isLoading ? (
-        <div className="isLoading">
-          <SolarSystemLoading />
-        </div>
-      ) : isLoggedIn ? (
-        isempty ? (
-          <div className="oopps">
-            <h1>Ooops nothing to show ...</h1>
-          </div>
-        ) : (
+    
           <div className="application-container">
             <div className="applications-heading">
               <h2>My Applications</h2>
@@ -123,6 +136,11 @@ const MyApplications = () => {
                     classtype = "myapplication-row-btn ";
 
                   switch (application.applicationstatus.data) {
+                    case 5:{
+                      classn = "myapplication-row-btn-arch";
+                      title = "Archived";
+                      break;
+                    }
                     case 4: {
                       classn = "myapplication-row-btn-approv";
                       title = "Approved";
@@ -182,17 +200,7 @@ const MyApplications = () => {
             </div>
           </div>
         )
-      ) : (
-        <>
-          <div className="isLoading">
-            <h1>Please Log in</h1>
-            <div className="flex-btn">
-              <Link to="/signup" className="button1 btn2">Sign up</Link>
-              <Link to="/login" className="button1 btn2">Sign in</Link>
-            </div>
-          </div>
-        </>
-      )}
+    
     </>
   );
 };
