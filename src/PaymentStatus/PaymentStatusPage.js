@@ -6,12 +6,51 @@ import "./payment.css";
 const PaymentStatusPage = () => {
   const [isLoggedin, setisLoggedin] = useState(false);
   const [isLoading, setisLoading] = useState(false);
+  let fields=[]
+  const [status,setstatus]=useState(6)
   useEffect(async () => {
     setisLoading(true);
     const { isLoggedIn, data } = await Authverifier(`${window.name}users/me`);
     setisLoggedin(isLoggedIn);
     setisLoading(false);
   }, []);
+  for(let i=1;i<=Math.ceil(status/3);i++){
+  if(i==Math.ceil(status/3)){
+    if(status%3==0)
+     fields.push( <div className="myapplication-row">
+     <p className="myapplication-row-text ">29/09/2021</p>
+     <p className="myapplication-row-text ">Paid</p>
+     <p className="myapplication-row-text  ">
+       <button className="pay-btn pay-btn-paid">Paid</button>
+     </p>
+   </div>)
+    else if(status%3==1)
+     fields.push(<div className="myapplication-row">
+     <p className="myapplication-row-text ">29/09/2021</p>
+     <p className="myapplication-row-text ">Not Paid</p>
+     <p className="myapplication-row-text  ">
+       <button className="pay-btn pay-btn-np">Pay Now</button>
+     </p>
+   </div>)
+    else 
+     fields.push( <div className="myapplication-row">
+     <p className="myapplication-row-text ">29/09/2021</p>
+     <p className="myapplication-row-text ">Not Paid</p>
+     <p className="myapplication-row-text  ">
+       <button className="pay-btn pay-btn-deactivated">Pay Now</button>
+     </p>
+   </div>)
+    }
+  else
+    fields.push(  <div className="myapplication-row">
+    <p className="myapplication-row-text ">29/09/2021</p>
+    <p className="myapplication-row-text ">Paid</p>
+    <p className="myapplication-row-text  ">
+      <button className="pay-btn pay-btn-paid">Paid</button>
+    </p>
+  </div>)
+  }
+
   if (isLoading) {
     return (
       <div className="isLoading">
@@ -47,7 +86,8 @@ const PaymentStatusPage = () => {
               </p>
               <p className="myapplication-row-text myapplication-row-text-head "></p>
             </div>
-            <div className="myapplication-row">
+            {fields}
+            {/* <div className="myapplication-row">
               <p className="myapplication-row-text ">29/09/2021</p>
               <p className="myapplication-row-text ">Paid</p>
               <p className="myapplication-row-text  ">
@@ -67,7 +107,7 @@ const PaymentStatusPage = () => {
               <p className="myapplication-row-text  ">
                 <button className="pay-btn pay-btn-deactivated">Pay Now</button>
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
