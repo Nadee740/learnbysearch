@@ -14,42 +14,7 @@ const PaymentStatusPage = () => {
     setisLoggedin(isLoggedIn);
     setisLoading(false);
   }, []);
-  for(let i=1;i<=Math.ceil(status/3);i++){
-  if(i==Math.ceil(status/3)){
-    if(status%3==0)
-     fields.push( <div className="myapplication-row">
-     <p className="myapplication-row-text ">29/09/2021</p>
-     <p className="myapplication-row-text ">Paid</p>
-     <p className="myapplication-row-text  ">
-       <button className="pay-btn pay-btn-paid">Paid</button>
-     </p>
-   </div>)
-    else if(status%3==1)
-     fields.push(<div className="myapplication-row">
-     <p className="myapplication-row-text ">29/09/2021</p>
-     <p className="myapplication-row-text ">Not Paid</p>
-     <p className="myapplication-row-text  ">
-       <button className="pay-btn pay-btn-np">Pay Now</button>
-     </p>
-   </div>)
-    else 
-     fields.push( <div className="myapplication-row">
-     <p className="myapplication-row-text ">29/09/2021</p>
-     <p className="myapplication-row-text ">Not Paid</p>
-     <p className="myapplication-row-text  ">
-       <button className="pay-btn pay-btn-deactivated">Pay Now</button>
-     </p>
-   </div>)
-    }
-  else
-    fields.push(  <div className="myapplication-row">
-    <p className="myapplication-row-text ">29/09/2021</p>
-    <p className="myapplication-row-text ">Paid</p>
-    <p className="myapplication-row-text  ">
-      <button className="pay-btn pay-btn-paid">Paid</button>
-    </p>
-  </div>)
-  }
+
 
   if (isLoading) {
     return (
@@ -69,6 +34,42 @@ const PaymentStatusPage = () => {
           </div>
     )
   }
+  for(let i=1;i<=Math.ceil(status/3);i++){
+    if(i==Math.ceil(status/3)){
+      if(status%3==0)
+       fields.push( <div className="myapplication-row">
+       <p className="myapplication-row-text ">29/09/2021</p>
+       <p className="myapplication-row-text ">Paid</p>
+       <p className="myapplication-row-text  ">
+         <button className="pay-btn pay-btn-paid">Paid</button>
+       </p>
+     </div>)
+      else if(status%3==1)
+       fields.push(<div className="myapplication-row">
+       <p className="myapplication-row-text ">29/09/2021</p>
+       <p className="myapplication-row-text ">Not Paid</p>
+       <p className="myapplication-row-text  ">
+         <button className="pay-btn pay-btn-np">Pay Now</button>
+       </p>
+     </div>)
+      else 
+       fields.push( <div className="myapplication-row">
+       <p className="myapplication-row-text ">29/09/2021</p>
+       <p className="myapplication-row-text ">Not Paid</p>
+       <p className="myapplication-row-text  ">
+         <button className="pay-btn pay-btn-deactivated">Pay Now</button>
+       </p>
+     </div>)
+      }
+    else
+      fields.push(  <div className="myapplication-row">
+      <p className="myapplication-row-text ">29/09/2021</p>
+      <p className="myapplication-row-text ">Paid</p>
+      <p className="myapplication-row-text  ">
+        <button className="pay-btn pay-btn-paid">Paid</button>
+      </p>
+    </div>)
+    }
   return (
     <>
       <div className="application-container">
