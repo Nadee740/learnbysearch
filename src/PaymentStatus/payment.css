@@ -23,3 +23,13 @@
 .pay-btn-deactivated {
   background-color: #d1d5db;
 }
+.paytable-head {
+  font-size: 1.2rem;
+  font-weight: 400;
+  grid-column: 1 / span 3;
+  color: #616161;
+}
+.paytable-head span {
+  text-decoration: underline;
+  font-weight: 500;
+}
