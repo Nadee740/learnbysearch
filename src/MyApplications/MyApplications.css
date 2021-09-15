@@ -55,6 +55,9 @@
 .myapplication-row-btn-arch {
   background: #c3f142;
 }
+.myapplication-row-btn-accept {
+  background: #027e13;
+}
 .app-status {
   height: 200px;
 }
