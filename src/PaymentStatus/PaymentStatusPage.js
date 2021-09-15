@@ -2,21 +2,51 @@ import { useEffect, useState } from "react";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Link } from "react-router-dom";
 import Authverifier from "../Backend/Authverifier";
+import Researchpgms from "../Backend/Researchpgms";
+import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import "./payment.css";
 const PaymentStatusPage = () => {
   const [isLoggedin, setisLoggedin] = useState(false);
   const [isLoading, setisLoading] = useState(false);
-  let fields=[]
-  const [status,setstatus]=useState(6)
+  const [appliedrptdatas,setappliedrpdatas]=useState([])
   useEffect(async () => {
     setisLoading(true);
     const { isLoggedIn, data } = await Authverifier(`${window.name}users/me`);
     setisLoggedin(isLoggedIn);
+    if(isLoggedIn){
+    data.applicationForm.map((application,index)=>{
+      const app_data = {
+        id: application,
+      };
+      Tokenlesssendpost(
+        `${window.name}show-application-status`,
+        app_data).then((res)=>{
+         Researchpgms(
+          `${window.name}research-program-id/${res.retdata.rp}`
+        ).then((rpdata)=>{
+          Researchpgms(`${window.name}position/${res.retdata.appication[0].position}`).then((position)=>{
+setappliedrpdatas((state)=>[...state,{
+  rp:rpdata,
+  position:position.data.title,
+  data:res.retdata.appication[0]
+}])
+if(index==data.applicationForm.length-1)
+{
+  setisLoading(false)
+}
+          })
+        
+          
+        });
+      })
+
+    })
+  }
+    
     setisLoading(false);
   }, []);
 
-
-  if (isLoading) {
+ if (isLoading) {
     return (
       <div className="isLoading">
         <SolarSystemLoading />
@@ -34,56 +64,22 @@ const PaymentStatusPage = () => {
           </div>
     )
   }
-  for(let i=1;i<=Math.ceil(status/3);i++){
-    if(i==Math.ceil(status/3)){
-      if(status%3==0)
-       fields.push( <div className="myapplication-row">
-       <p className="myapplication-row-text ">29/09/2021</p>
-       <p className="myapplication-row-text ">Paid</p>
-       <p className="myapplication-row-text  ">
-         <button className="pay-btn pay-btn-paid">Paid</button>
-       </p>
-     </div>)
-      else if(status%3==1)
-       fields.push(<div className="myapplication-row">
-       <p className="myapplication-row-text ">29/09/2021</p>
-       <p className="myapplication-row-text ">Not Paid</p>
-       <p className="myapplication-row-text  ">
-         <button className="pay-btn pay-btn-np">Pay Now</button>
-       </p>
-     </div>)
-      else 
-       fields.push( <div className="myapplication-row">
-       <p className="myapplication-row-text ">29/09/2021</p>
-       <p className="myapplication-row-text ">Not Paid</p>
-       <p className="myapplication-row-text  ">
-         <button className="pay-btn pay-btn-deactivated">Pay Now</button>
-       </p>
-     </div>)
-      }
-    else
-      fields.push(  <div className="myapplication-row">
-      <p className="myapplication-row-text ">29/09/2021</p>
-      <p className="myapplication-row-text ">Paid</p>
-      <p className="myapplication-row-text  ">
-        <button className="pay-btn pay-btn-paid">Paid</button>
-      </p>
-    </div>)
-    }
   return (
     <>
       <div className="application-container">
         <div className="applications-heading">
           <h2>My Payments</h2>
-        </div>{" "}
-        <div className="myapplication-box">
+        </div>
+        {appliedrptdatas.map((data,number)=>{
+          
+          return data.data.applicationStatus==6?(<div className="myapplication-box" key={number}>
           <div className="myapplication-row">
             <div className="paytable-head ">
               Research Programme:
-              <span>Prototyping the future of retail management</span>
+              <span>{data.rp.data.title}</span>
             </div>
           </div>
-          <div className="myapplication-box-holder">
+         <div className="myapplication-box-holder">
             <div className="myapplication-row myapplication-row-head">
               <p className="myapplication-row-text myapplication-row-text-head ">
                 Due Date
@@ -93,97 +89,31 @@ const PaymentStatusPage = () => {
               </p>
               <p className="myapplication-row-text myapplication-row-text-head "></p>
             </div>
-            <div className="myapplication-row">
-              <p className="myapplication-row-text ">29/09/2021</p>
-              <p className="myapplication-row-text ">Paid</p>
+            {data.data.paymentStatus.map((paymentstatus,index)=>{
+              return(<div className="myapplication-row" key={index}>
+              <p className="myapplication-row-text ">{paymentstatus.deadLine}</p>
+              <p className="myapplication-row-text ">{paymentstatus.status?"Paid":"Not paid"}</p>
               <p className="myapplication-row-text  ">
-                <button className="pay-btn pay-btn-paid">Paid</button>
+                {paymentstatus.status?<button className="pay-btn pay-btn-paid">Paid</button>:paymentstatus.isOverdue?<button className="pay-btn pay-btn-deactivated">Pay Now</button>:<button onClick={()=>{
+                  window.location="https://pages.razorpay.com/lbrinstallment"
+                }} className="pay-btn pay-btn-np">Pay Now</button>}
               </p>
-            </div>
-            <div className="myapplication-row">
-              <p className="myapplication-row-text ">29/09/2021</p>
-              <p className="myapplication-row-text ">Not Paid</p>
-              <p className="myapplication-row-text  ">
-                <button className="pay-btn pay-btn-np">Pay Now</button>
-              </p>
-            </div>
-            <div className="myapplication-row">
-              <p className="myapplication-row-text ">29/09/2021</p>
-              <p className="myapplication-row-text ">Not Paid</p>
-              <p className="myapplication-row-text  ">
-                <button className="pay-btn pay-btn-deactivated">Pay Now</button>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="myapplication-box">
-          <div className="myapplication-row">
-            <div className="paytable-head ">
-              Research Programme:
-              <span>Modeling and Analysis of Biomimetic Drone</span>
-            </div>
-          </div>
-          <div className="myapplication-box-holder">
-            <div className="myapplication-row myapplication-row-head">
-              <p className="myapplication-row-text myapplication-row-text-head ">
-                Due Date
-              </p>
-              <p className="myapplication-row-text myapplication-row-text-head ">
-                Status
-              </p>
-              <p className="myapplication-row-text myapplication-row-text-head "></p>
-            </div>
-            {fields}
-            {/* <div className="myapplication-row">
-              <p className="myapplication-row-text ">29/09/2021</p>
-              <p className="myapplication-row-text ">Paid</p>
-              <p className="myapplication-row-text  ">
-                <button className="pay-btn pay-btn-paid">Paid</button>
-              </p>
-            </div>
-            <div className="myapplication-row">
-              <p className="myapplication-row-text ">29/09/2021</p>
-              <p className="myapplication-row-text ">Not Paid</p>
-              <p className="myapplication-row-text  ">
-                <button className="pay-btn pay-btn-np">Pay Now</button>
-              </p>
-            </div>
-            <div className="myapplication-row">
-              <p className="myapplication-row-text ">29/09/2021</p>
-              <p className="myapplication-row-text ">Not Paid</p>
-              <p className="myapplication-row-text  ">
-                <button className="pay-btn pay-btn-deactivated">Pay Now</button>
-              </p>
-            </div> */}
-          </div>
-        </div>
-      </div>
+            </div>)
+              
+
+})
+
+}
+            
+           </div>
+        </div>):""
+          
+        })
+        
+        }
+       </div>
     </>
   );
 };
 
 export default PaymentStatusPage;
-/*     switch (application.applicationstatus.data) {
-                case 4: {
-                  classn = "myapplication-row-btn-approv";
-                  title = "Approved";
-                  break;
-                }
-                case 3: {
-                  classn = "myapplication-row-btn-rej";
-                  title = "Rejected";
-                  break;
-                }
-                case 2: {
-                  classn = "myapplication-row-btn-pend";
-                  title = "Pending";
-                  break;
-                }
-                case 1: {
-                  classn = "myapplication-row-btn-sub";
-                  title = "Submited";
-                  break;
-                }
-              }
-
-              */
