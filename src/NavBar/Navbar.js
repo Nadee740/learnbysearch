@@ -401,6 +401,15 @@ const Navbar = (props) => {
               ""
             )}
             <Link
+              to="/paymentstatus"
+              onClick={() => {
+                setNav(false);
+              }}
+              className="mob-signbtn"
+            >
+             PAYMENTS
+            </Link>
+            <Link
               to="/editprofile"
               onClick={() => {
                 setNav(false);
