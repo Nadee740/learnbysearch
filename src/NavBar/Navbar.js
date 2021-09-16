@@ -260,11 +260,11 @@ const Navbar = (props) => {
                         EDIT PROFILE
                       </Link>
                     </li>
-                    <li>
+                    {/*<li>
                       <Link to="/paymentstatus" className="p-link">
                         PAYMENTS
                       </Link>
-                    </li>
+                    </li>*/}
                     {!referalcodeexist ? (
                       <li>
                         <Link
@@ -407,7 +407,7 @@ const Navbar = (props) => {
               }}
               className="mob-signbtn"
             >
-             PAYMENTS
+              PAYMENTS
             </Link>
             <Link
               to="/editprofile"
