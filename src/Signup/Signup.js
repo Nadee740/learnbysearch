@@ -208,6 +208,7 @@ const Signup = () => {
       );
 
       if (message.includes("updated")) {
+      
         SetStep(step + 1);
       }
     }
@@ -897,7 +898,7 @@ const Signup = () => {
                       </Tooltip>
                     </div>
                   ) : null}
-                  {step === 3 ? (
+                  {/* {step === 3 ? (
                     <div className="centeralign">
                       <p className="inputtext">Phone Number</p>
                       <div className="inputholder">
@@ -944,7 +945,7 @@ const Signup = () => {
                         </button>
                       )}
                     </div>
-                  ) : null}
+                  ) : null} */}
                   <div className="btnholder">
                     {step > 1 ? (
                       <button
@@ -966,27 +967,26 @@ const Signup = () => {
                             if (city != "") SetStep(step + 1);
                             else alert("Please choose city");
                           } else if (step == 2) MakeChanges();
-                          else if (step == 3) {
-                            if (isverfied) {
-                              const { retdata: messagee } = await Isverified(
-                                `${window.name}is-user-verified`,
-                                { username: username }
-                              );
+                          else if(step ==3){
+                            const { retdata: messagee } = await Isverified(
+          `${window.name}is-user-verified`,
+          { username: username }
+        );
 
-                              if (messagee) {
-                                setvisible(true);
-                              } else {
-                                alert("please verify your mail");
-                              }
-                            } else {
-                              alert("please verify your phone number");
-                            }
-                          } else SetStep(step + 1);
+        if (messagee) {
+          SetStep(step + 1)
+          setvisible(true);
+        } else {
+          
+          alert("please verify your mail");
+        }
+                          }
+                          else SetStep(step + 1);
                         } else {
                         }
                       }}
                     >
-                      NEXT STEP
+                     {step==3?"VERIFY MAIL":"NEXT STEP"}
                     </button>
                   </div>
                 </div>

@@ -84,7 +84,7 @@ const PaymentStatusPage = () => {
                   Research Programme:
                   <span>{data.rp.data.title}</span>
                 </div>
-                <div className="paytable-head2 ">Position</div>
+                <div className="paytable-head2 ">{data.position}</div>
               </div>
               <div className="myapplication-box-holder">
                 <div className="myapplication-row myapplication-row-head">
