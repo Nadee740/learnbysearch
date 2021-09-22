@@ -141,7 +141,6 @@ const Signup = () => {
     setresendmailvisible(true);
   };
 
-
   useEffect(async () => {
     getAllCountries();
     getCOllegename();
@@ -208,7 +207,6 @@ const Signup = () => {
       );
 
       if (message.includes("updated")) {
-      
         SetStep(step + 1);
       }
     }
@@ -483,7 +481,7 @@ const Signup = () => {
                     inactiveBgColor: "#bdbdbd",
                   }}
                 >
-                  <Step label="Create Account" />
+                  <Step label="Application Form" />
                   <Step label="Personal Details" />
                   <Step label="Educational Qualification" />
                   <Step label="Verification" />
@@ -967,26 +965,24 @@ const Signup = () => {
                             if (city != "") SetStep(step + 1);
                             else alert("Please choose city");
                           } else if (step == 2) MakeChanges();
-                          else if(step ==3){
+                          else if (step == 3) {
                             const { retdata: messagee } = await Isverified(
-          `${window.name}is-user-verified`,
-          { username: username }
-        );
+                              `${window.name}is-user-verified`,
+                              { username: username }
+                            );
 
-        if (messagee) {
-          SetStep(step + 1)
-          setvisible(true);
-        } else {
-          
-          alert("please verify your mail");
-        }
-                          }
-                          else SetStep(step + 1);
+                            if (messagee) {
+                              SetStep(step + 1);
+                              setvisible(true);
+                            } else {
+                              alert("please verify your mail");
+                            }
+                          } else SetStep(step + 1);
                         } else {
                         }
                       }}
                     >
-                     {step==3?"VERIFY MAIL":"NEXT STEP"}
+                      {step == 3 ? "VERIFY MAIL" : "NEXT STEP"}
                     </button>
                   </div>
                 </div>

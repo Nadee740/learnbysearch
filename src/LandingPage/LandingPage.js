@@ -114,7 +114,7 @@ const LandingPage = () => {
                     <p>Online Independent R&D Hub</p>
                   </div>
 
-                  {!isLoggedIn ? (
+                  {/*!isLoggedIn ? (
                     <div className="buttons ">
                       <Link to="/signup" className="btns button1">
                         SIGN UP
@@ -126,7 +126,12 @@ const LandingPage = () => {
                     </div>
                   ) : (
                     ""
-                  )}
+                  )*/}
+                  <div className="buttons ">
+                    <Link to="/openprogrammes" className="btns button1">
+                      Open Programmes
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
