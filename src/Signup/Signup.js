@@ -482,9 +482,8 @@ const Signup = () => {
                   }}
                 >
                   <Step label="Application Form" />
-                  <Step label="Personal Details" />
+
                   <Step label="Educational Qualification" />
-                  <Step label="Verification" />
                 </Stepper>
                 <div className="steppHolder">
                   {step === 0 ? (
@@ -668,7 +667,7 @@ const Signup = () => {
                     </form>
                   ) : null}
 
-                  {step === 1 ? (
+                  {/*step === 1 ? (
                     <div className="centeralign">
                       {" "}
                       <Tooltip title="Date of Birth">
@@ -791,8 +790,8 @@ const Signup = () => {
                         </>
                       </Tooltip>
                     </div>
-                  ) : null}
-                  {step === 2 ? (
+                  ) : null*/}
+                  {step === 1 ? (
                     <div className="centeralign">
                       {" "}
                       <Tooltip title="Degree">
