@@ -290,11 +290,11 @@ const Login = () => {
                     placeholder="Sign Up"
                     className="submit-btn"
                   />
-                  <Link to="/signup">
+                  {/* <Link to="/signup">
                     <p className="form-btmtext form-btmtext1">
                       Not registered ? Signup
                     </p>
-                  </Link>
+                  </Link> */}
 
                   <Link
                     onClick={() => {

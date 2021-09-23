@@ -193,9 +193,13 @@ function OpenProgrammesPage() {
               <br></br>
               <div className="extrapart">
                 <div className="signuppart">
-                  <Link to={"/signup/"+slug} onClick={closeModal}>
+                  {isLoggedIn?<Link to={"/applicationform/"+slug} onClick={closeModal}>
+                    Register
+                  </Link>:<Link to={"/signup/"+slug} onClick={closeModal}>
                     Register
                   </Link>
+
+                  }
                 </div>
                 {/* <div>
                   <Link onClick={closeModal}>Close</Link>
