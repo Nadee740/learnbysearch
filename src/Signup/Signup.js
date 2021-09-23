@@ -489,13 +489,20 @@ const Signup = () => {
       </div>
 
       <section className="sign-up">
+    
         <div className="container">
           <div className="signup-content">
             <div className="signup-image">
               <img src="../images/SignUp.svg" alt="Login pic"></img>
             </div>
             <div className="singup-form">
+            <Link to="/login">
+                  <p className="form-btmtext form-btmtext1">
+                    Already registered ? Login
+                  </p>
+                </Link>
               <h2 className="form-title">REGISTRATION</h2>
+              
               <div className="stepperdiv">
                 <Stepper
                   activeStep={step}
@@ -820,11 +827,7 @@ const Signup = () => {
                     </button>
                   </div>
                 </div>
-                <Link to="/login">
-                  <p className="form-btmtext form-btmtext1">
-                    Already registered ? Login
-                  </p>
-                </Link>
+               
               </div>
             </div>
           </div>
