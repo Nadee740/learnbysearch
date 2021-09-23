@@ -506,6 +506,11 @@ const Signup = () => {
               <img src="../images/SignUp.svg" alt="Login pic"></img>
             </div>
             <div className="singup-form">
+              <Link to="/login">
+                <p className="form-btmtext form-btmtext1">
+                  Already registered ? Login
+                </p>
+              </Link>
               <h2 className="form-title">REGISTRATION</h2>
               <div className="stepperdiv">
                 <Stepper
@@ -816,14 +821,9 @@ const Signup = () => {
                         }
                       }}
                     >
-                      {step == 3 ? "VERIFY MAIL" : "NEXT STEP"}
+                      {step === 3 ? "VERIFY MAIL" : "NEXT STEP"}
                     </button>
-                  </div>{" "}
-                  <Link to="/login">
-                    <p className="form-btmtext form-btmtext1">
-                      Already registered ? Login
-                    </p>
-                  </Link>
+                  </div>
                 </div>
               </div>
             </div>
