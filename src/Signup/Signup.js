@@ -777,8 +777,10 @@ const Signup = () => {
                       className="submit-btn submit-btn2"
                       onClick={async () => {
                         if (step < 2) {
-                          if (step == 0) {output()
-                          console.log("HY")
+                          if (step == 0) {
+                            console.log("hy")
+                            output()
+                          
                           }
                          else if (step == 1) MakeChanges();
                    else SetStep(step + 1);
