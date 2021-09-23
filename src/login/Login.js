@@ -88,7 +88,7 @@ const Login = () => {
     // stylefunction("2px solid #81818128", "usernameholder");
     setpassrerror();
     const log_data = {
-      username,
+      email:username,
       password,
     };
     const { message: messagee } = await Tokenlesssendpost(
@@ -241,8 +241,8 @@ const Login = () => {
                     <div className="inputholder-top">
                       <input
                         required
-                        type="text"
-                        placeholder="Username"
+                        type="email"
+                        placeholder="email"
                         id="username"
                         onChange={(e) => {
                           setUser(e.target.value);

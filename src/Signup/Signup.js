@@ -12,13 +12,13 @@ import Tooltip from "@material-ui/core/Tooltip";
 import { Country, State, City } from "country-state-city";
 import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
-import { MdDoneAll, MdClear } from "react-icons/md";
-import Isverified from "../Backend/isverified";
+import { useParams } from "react-router-dom";
 const Signup = () => {
+  const { slug } = useParams();
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
-  const [username, setUsername] = useState("");
+
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [confirmpass, setConfrpass] = useState("");
@@ -160,7 +160,15 @@ const Signup = () => {
     stylefunction("2px solid #81818128", "field");
     stylefunction("2px solid #81818128", "university");
     stylefunction("2px solid #81818128", "graduationyear");
-
+    const log_data = {
+      email,
+      password,
+    };
+    const { message:result } = await Tokenlesssendpost(
+      `${window.name}login`,
+      log_data
+    );
+    console.log(result)
     if (
       Degree == "" ||
       CollegeName == "" ||
@@ -207,19 +215,19 @@ const Signup = () => {
       );
 
       if (message.includes("updated")) {
-        SetStep(step + 1);
+        window.location="/applicationform/"+slug
       }
     }
   };
   const output = async () => {
     setconfirmpassrerror();
     setphoneerror();
-    setusererror();
+   
     setemailerror();
-    setusererror();
+    
     setpassrerror();
 
-    stylefunction("2px solid #81818128", "username");
+
     stylefunction("2px solid #81818128", "email");
     stylefunction("2px solid #81818128", "phone");
     stylefunction("2px solid #81818128", "password");
@@ -231,8 +239,7 @@ const Signup = () => {
       FirstName.length > 2 &&
       LastName.length > 2 &&
       reemail.test(String(email).toLowerCase()) &&
-      phoneNumber.length > 6 &&
-      username.length > 1
+      phoneNumber.length > 6 
     ) {
       let re =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/;
@@ -245,7 +252,7 @@ const Signup = () => {
           stylefunction("2px outset red", "confirmpassword");
         } else {
           const reg_data = {
-            username,
+            
             FirstName,
             LastName,
             email,
@@ -253,29 +260,26 @@ const Signup = () => {
             password,
           };
 
-          const { message: messagee } = await Tokenlesssendpost(
+          const { message} = await Tokenlesssendpost(
             `${window.name}register`,
             reg_data
           );
+         
+          console.log(message)
 
-          if (messagee.includes("verification")) {
+          if (message.includes("verification")) {
             SetStep(step + 1);
-          } else if (messagee.includes("email")) {
-            setemailerror(messagee);
+          } else if (message.includes("email")) {
+            setemailerror(message);
             stylefunction("2px outset red", "email");
             setcursor("email");
-          } else if (messagee.includes("password")) {
-            setpassrerror(messagee);
+          } else if (message.includes("password")) {
+            setpassrerror(message);
             stylefunction("2px outset red", "password");
             setcursor("password");
-          } else if (messagee.toLowerCase().includes("username")) {
-            stylefunction("2px outset red", "username");
-
-            setusererror(messagee);
-            setcursor("username");
-          } else if (messagee.toLowerCase().includes("phone")) {
+          }else if (message.toLowerCase().includes("phone")) {
             stylefunction("2px outset red", "phone");
-            setphoneerror(messagee);
+            setphoneerror(message);
             setcursor("phone");
           }
         }
@@ -291,7 +295,7 @@ const Signup = () => {
       if (!reemail.test(String(email).toLowerCase()))
         stylefunction("2px outset red", "email");
       if (phoneNumber.length <= 6) stylefunction("2px outset red", "phone");
-      if (username.length <= 1) stylefunction("2px outset red", "username");
+      
     }
   };
   const closeOtpModal = () => {
@@ -516,22 +520,6 @@ const Signup = () => {
                         </div>
                       </div>
 
-                      <div className="inputholder" id="username">
-                        <div className="inputholder-top">
-                          <input
-                            required
-                            type="text"
-                            placeholder="Username"
-                            value={username}
-                            onChange={(e) => {
-                              setUsername(e.target.value);
-                            }}
-                          />
-                        </div>
-                        <label className="label" htmlFor="">
-                          {usererror && usererror}
-                        </label>
-                      </div>
 
                       <div className="inputholder" id="email">
                         <div className="inputholder-top">
@@ -667,130 +655,7 @@ const Signup = () => {
                     </form>
                   ) : null}
 
-                  {/*step === 1 ? (
-                    <div className="centeralign">
-                      {" "}
-                      <Tooltip title="Date of Birth">
-                        <>
-                          <p className="inputtext">Date Of Birth</p>
-                          <div className="inputholder">
-                            <div className="inputholder-top">
-                              <input
-                                required
-                                type="date"
-                                placeholder="DD-MM-YY"
-                                className="inputdate"
-                                onChange={(e) => {
-                                  setdate(e.target.value);
-                                }}
-                                value={value}
-                              />
-                            </div>
-                          </div>
-                        </>
-                      </Tooltip>{" "}
-                      <Tooltip title="Country">
-                        <>
-                          <p className="inputtext">Country</p>
-                          <div className="inputholder">
-                            <div className="inputholder-top">
-                              <select
-                                className="selectBox"
-                                required
-                                name="country"
-                                id="country"
-                                onChange={(e) => {
-                                  const data = JSON.parse(e.target.value);
-                                  setCountry(data.name);
-                                  setState("");
-                                  setCity("");
-                                  setallCity("");
-                                  const allstates = State.getStatesOfCountry(
-                                    data.isoCode
-                                  );
-
-                                  setallState(allstates);
-                                }}
-                              >
-                                <option>
-                                  {country ? country : "Select country"}
-                                </option>
-                                {allcountry &&
-                                  allcountry.map((country) => (
-                                    <option value={JSON.stringify(country)}>
-                                      {country.name}
-                                    </option>
-                                  ))}
-                              </select>
-                            </div>
-                          </div>
-                        </>
-                      </Tooltip>
-                      <Tooltip>
-                        <>
-                          <p className="inputtext">State</p>
-
-                          <div className="inputholder">
-                            <div className="inputholder-top">
-                              <select
-                                className="selectBox"
-                                name="state"
-                                id="state"
-                                onChange={(e) => {
-                                  const data = JSON.parse(e.target.value);
-                                  setState(data.name);
-                                  setCity("");
-                                  const allcities = City.getCitiesOfState(
-                                    data.countryCode,
-                                    data.isoCode
-                                  );
-                                  setallCity(allcities);
-                                }}
-                              >
-                                <option>
-                                  {state ? state : "Select state"}
-                                </option>
-                                {allstate &&
-                                  allstate.map((state) => (
-                                    <option value={JSON.stringify(state)}>
-                                      {state.name}
-                                    </option>
-                                  ))}
-                              </select>
-                            </div>
-                          </div>
-                        </>
-                      </Tooltip>
-                      <Tooltip>
-                        <>
-                          <p className="inputtext">City</p>
-                          <div className="inputholder">
-                            <div className="inputholder-top">
-                              <select
-                                name="city"
-                                id="city"
-                                className="selectBox"
-                                onChange={(e) => {
-                                  const data = JSON.parse(e.target.value);
-                                  setCity(data.name);
-                                }}
-                                name="city"
-                                id="city"
-                              >
-                                <option>{city ? city : "select city"}</option>
-                                {allcity &&
-                                  allcity.map((city) => (
-                                    <option value={JSON.stringify(city)}>
-                                      {city.name}
-                                    </option>
-                                  ))}
-                              </select>
-                            </div>
-                          </div>
-                        </>
-                      </Tooltip>
-                    </div>
-                  ) : null*/}
+      
                   {step === 1 ? (
                     <div className="centeralign">
                       {" "}
@@ -895,54 +760,7 @@ const Signup = () => {
                       </Tooltip>
                     </div>
                   ) : null}
-                  {/* {step === 3 ? (
-                    <div className="centeralign">
-                      <p className="inputtext">Phone Number</p>
-                      <div className="inputholder">
-                        <div className="inputholder-top">
-                          <input
-                            id="PhoneNumber"
-                            type="tel"
-                            placeholder="Your Phone Number"
-                            autoComplete="off"
-                            required
-                            value={phoneNumber}
-                            onChange={(e) => {
-                              setPhone(e.target.value);
-                            }}
-                          />
-
-                          {isverfied ? (
-                            <Tooltip title="Verifeid">
-                              <MdDoneAll size="1.2em" className="emtick" />
-                            </Tooltip>
-                          ) : (
-                            <MdClear
-                              size="1.2em"
-                              className="emtick"
-                              color="red"
-                            />
-                          )}
-                        </div>
-                        <label className="label" htmlFor="">
-                          {phoneerror && phoneerror}
-                        </label>
-                      </div>
-
-                      {isverfied ? (
-                        <></>
-                      ) : (
-                        <button
-                          className="edit-profile-btn"
-                          onClick={(e) => {
-                            VERIFYPhonenumber(e);
-                          }}
-                        >
-                          VERIFY PHONE NUMBER
-                        </button>
-                      )}
-                    </div>
-                  ) : null} */}
+                  
                   <div className="btnholder">
                     {step > 1 ? (
                       <button
@@ -958,25 +776,12 @@ const Signup = () => {
                     <button
                       className="submit-btn submit-btn2"
                       onClick={async () => {
-                        if (step < 4) {
-                          if (step == 0) output();
-                          else if (step == 1) {
-                            if (city != "") SetStep(step + 1);
-                            else alert("Please choose city");
-                          } else if (step == 2) MakeChanges();
-                          else if (step == 3) {
-                            const { retdata: messagee } = await Isverified(
-                              `${window.name}is-user-verified`,
-                              { username: username }
-                            );
-
-                            if (messagee) {
-                              SetStep(step + 1);
-                              setvisible(true);
-                            } else {
-                              alert("please verify your mail");
-                            }
-                          } else SetStep(step + 1);
+                        if (step < 2) {
+                          if (step == 0) {output()
+                          console.log("HY")
+                          }
+                         else if (step == 1) MakeChanges();
+                   else SetStep(step + 1);
                         } else {
                         }
                       }}

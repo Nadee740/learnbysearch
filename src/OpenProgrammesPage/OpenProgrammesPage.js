@@ -79,14 +79,8 @@ function OpenProgrammesPage() {
 
   ///////////////////////FUNCTION FOR APPLY NOW////////////////////////////////////////
   const applicationform = () => {
-    if (!isLoggedIn) {
-      setvisible(true);
-    } else {
-      setisLoading(true);
-      getApplications(userdata);
-
-      // window.location = `/applicationform/${slug}`;
-    }
+   setvisible(true);
+    
   };
 
   //////////////////////////////////////////////////////////////////////////
@@ -126,7 +120,7 @@ function OpenProgrammesPage() {
               }
             });
           } else {
-            window.location = `/applicationform/${slug}`;
+            window.location = `/signup/${slug}`;
           }
         }
       });
@@ -184,8 +178,8 @@ function OpenProgrammesPage() {
         <section className="popupscreen">
           <Modal
             visible={visible}
-            width="350"
-            height="200"
+            width="300"
+            height="150"
             effect="fadeInUp"
             onClickAway={closeModal}
           >
@@ -195,15 +189,15 @@ function OpenProgrammesPage() {
                 className="logo"
                 alt=""
               />
-              <p>PLEASE LOGIN TO SUBMIT APPLICATION...</p>
+              
               <br></br>
               <div className="extrapart">
                 <div className="signuppart">
-                  <Link to="/signup" onClick={closeModal}>
-                    Sign Up
+                  <Link to={"/signup/"+slug} onClick={closeModal}>
+                    Register
                   </Link>
                 </div>
-                <div>
+                {/* <div>
                   <Link onClick={closeModal}>Close</Link>
                 </div>
 
@@ -211,7 +205,7 @@ function OpenProgrammesPage() {
                   <Link to="/login" onClick={closeModal}>
                     Login
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </Modal>

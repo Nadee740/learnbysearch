@@ -464,7 +464,9 @@ const ApplicationForm = () => {
                       {step > 0 ? (
                         <button
                           className="submit-btn submit-btn2"
-                          onClick={() => {}}
+                          onClick={() => {
+                            console.log("Hy")
+                          }}
                         >
                           SUBMIT
                         </button>
@@ -474,7 +476,9 @@ const ApplicationForm = () => {
                 </div>
               </div>
             </div>
+            
           </section>
+          
         </div>
       )}
     </>
