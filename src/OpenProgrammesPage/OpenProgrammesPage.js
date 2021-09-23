@@ -79,7 +79,14 @@ function OpenProgrammesPage() {
 
   ///////////////////////FUNCTION FOR APPLY NOW////////////////////////////////////////
   const applicationform = () => {
-   setvisible(true);
+   
+   if(isLoggedIn)
+   {
+window.location="/applicationform/"+slug
+   }
+   else{
+    window.location="/signup/"+slug
+   }
     
   };
 

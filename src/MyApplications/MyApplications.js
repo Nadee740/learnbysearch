@@ -94,7 +94,7 @@ if(!isLoggedIn){
           <div className="isLoading">
             <h1>Please Log in</h1>
             <div className="flex-btn">
-              <Link to="/signup" className="button1 btn2">Sign up</Link>
+    
               <Link to="/login" className="button1 btn2">Sign in</Link>
             </div>
           </div>

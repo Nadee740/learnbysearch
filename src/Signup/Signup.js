@@ -13,6 +13,7 @@ import { Country, State, City } from "country-state-city";
 import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import { useParams } from "react-router-dom";
+import { Select } from "@material-ui/core";
 const Signup = () => {
   const { slug } = useParams();
   const [FirstName, setFirstName] = useState("");
@@ -42,6 +43,7 @@ const Signup = () => {
   const [CollegeName, setCollegeName] = useState("");
   const [listofCollege, setlistCollege] = useState();
   const [selectlistofCollege, setselectlistCollege] = useState([]);
+  const [selectlistofdegree, setselectlistdegree] = useState(["BTECH/BE","MTECH/MediaCapabilities","BA","MA","MBBS","BDS","BCOM","MCOM","BBA","MBA","DED","BED","MED","OTHER"]);
   const [University, setUniversity] = useState("");
   const [GraduationYear, setGraduationYear] = useState("");
   const [value, setdate] = useState();
@@ -107,6 +109,24 @@ const Signup = () => {
       }
     }
   };
+  const degrecomponent=(
+    <ul class="suggestions">
+    {selectlistofCollege.map((college, index) => {
+      return (
+        <li
+          onClick={() => {
+            setshowsuggestions(false);
+            setCollegeName(college);
+          }}
+          key={index}
+          className="suggestion-active"
+        >
+          {college}
+        </li>
+      );
+    })}
+  </ul>
+  )
 
   const suggestionsListComponent = (
     <ul class="suggestions">
@@ -173,13 +193,12 @@ const Signup = () => {
       Degree == "" ||
       CollegeName == "" ||
       Field == "" ||
-      University == "" ||
       GraduationYear == ""
     ) {
       if (Degree == "") stylefunction("2px outset red", "degree");
       if (CollegeName == "") stylefunction("2px outset red", "collegename");
       if (Field == "") stylefunction("2px outset red", "field");
-      if (University == "") stylefunction("2px outset red", "university");
+     
       if (GraduationYear == "")
         stylefunction("2px outset red", "graduationyear");
     } else {
@@ -197,7 +216,7 @@ const Signup = () => {
         Degree,
         Field,
         CollegeName,
-        University,
+        
         GraduationYear,
       };
       const colldata = {
@@ -215,7 +234,8 @@ const Signup = () => {
       );
 
       if (message.includes("updated")) {
-        window.location="/applicationform/"+slug
+         window.location="/applicationform/"+slug
+        
       }
     }
   };
@@ -664,16 +684,24 @@ const Signup = () => {
                           <p className="inputtext">Degree</p>
                           <div className="inputholder" id="degree">
                             <div className="inputholder-top">
-                              <input
+                              <Select
                                 type="text"
                                 placeholder="Degree"
                                 autoComplete="off"
                                 required
-                                value={Degree}
+                                
                                 onChange={(e) => {
                                   setDegree(e.target.value);
                                 }}
-                              />
+                              >{
+                                selectlistofdegree.map((degree)=>(
+                                  <option value={degree}>{degree}</option>
+
+                                ))
+                              }
+
+
+                              </Select>
                             </div>
                           </div>
                         </>
@@ -720,7 +748,7 @@ const Signup = () => {
                           {showsuggestions ? suggestionsListComponent : ""}
                         </>
                       </Tooltip>
-                      <Tooltip title="University">
+                      {/* <Tooltip title="University">
                         <>
                           <p className="inputtext">University</p>
                           <div className="inputholder" id="university">
@@ -738,7 +766,7 @@ const Signup = () => {
                             </div>
                           </div>
                         </>
-                      </Tooltip>
+                      </Tooltip> */}
                       <Tooltip title="Graduation Year">
                         <>
                           <p className="inputtext">Graduation Year</p>
