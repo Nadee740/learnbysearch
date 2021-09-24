@@ -43,7 +43,22 @@ const Signup = () => {
   const [CollegeName, setCollegeName] = useState("");
   const [listofCollege, setlistCollege] = useState();
   const [selectlistofCollege, setselectlistCollege] = useState([]);
-  const [selectlistofdegree, setselectlistdegree] = useState(["BTECH/BE","MTECH/MediaCapabilities","BA","MA","MBBS","BDS","BCOM","MCOM","BBA","MBA","DED","BED","MED","OTHER"]);
+  const [selectlistofdegree, setselectlistdegree] = useState([
+    "BTECH/BE",
+    "MTECH/MediaCapabilities",
+    "BA",
+    "MA",
+    "MBBS",
+    "BDS",
+    "BCOM",
+    "MCOM",
+    "BBA",
+    "MBA",
+    "DED",
+    "BED",
+    "MED",
+    "OTHER",
+  ]);
   const [University, setUniversity] = useState("");
   const [GraduationYear, setGraduationYear] = useState("");
   const [value, setdate] = useState();
@@ -109,24 +124,24 @@ const Signup = () => {
       }
     }
   };
-  const degrecomponent=(
+  const degrecomponent = (
     <ul class="suggestions">
-    {selectlistofCollege.map((college, index) => {
-      return (
-        <li
-          onClick={() => {
-            setshowsuggestions(false);
-            setCollegeName(college);
-          }}
-          key={index}
-          className="suggestion-active"
-        >
-          {college}
-        </li>
-      );
-    })}
-  </ul>
-  )
+      {selectlistofCollege.map((college, index) => {
+        return (
+          <li
+            onClick={() => {
+              setshowsuggestions(false);
+              setCollegeName(college);
+            }}
+            key={index}
+            className="suggestion-active"
+          >
+            {college}
+          </li>
+        );
+      })}
+    </ul>
+  );
 
   const suggestionsListComponent = (
     <ul class="suggestions">
@@ -183,11 +198,11 @@ const Signup = () => {
       email,
       password,
     };
-    const { message:result } = await Tokenlesssendpost(
+    const { message: result } = await Tokenlesssendpost(
       `${window.name}login`,
       log_data
     );
-    console.log(result)
+    console.log(result);
     if (
       Degree == "" ||
       CollegeName == "" ||
@@ -197,7 +212,7 @@ const Signup = () => {
       if (Degree == "") stylefunction("2px outset red", "degree");
       if (CollegeName == "") stylefunction("2px outset red", "collegename");
       if (Field == "") stylefunction("2px outset red", "field");
-     
+
       if (GraduationYear == "")
         stylefunction("2px outset red", "graduationyear");
     } else {
@@ -215,7 +230,7 @@ const Signup = () => {
         Degree,
         Field,
         CollegeName,
-        
+
         GraduationYear,
       };
       const colldata = {
@@ -233,8 +248,7 @@ const Signup = () => {
       );
            
       if (message.includes("updated")) {
-         window.location="/applicationform/"+slug
-        
+        window.location = "/applicationform/" + slug;
       }
       else console.log(message)
     }
@@ -242,11 +256,10 @@ const Signup = () => {
   const output = async () => {
     setconfirmpassrerror();
     setphoneerror();
-   
-    setemailerror();
-    
-    setpassrerror();
 
+    setemailerror();
+
+    setpassrerror();
 
     stylefunction("2px solid #81818128", "email");
     stylefunction("2px solid #81818128", "phone");
@@ -259,7 +272,7 @@ const Signup = () => {
       FirstName.length > 2 &&
       LastName.length > 2 &&
       reemail.test(String(email).toLowerCase()) &&
-      phoneNumber.length > 6 
+      phoneNumber.length > 6
     ) {
       let re =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#\$%\^&\*])(?=.{6,})/;
@@ -272,7 +285,6 @@ const Signup = () => {
           stylefunction("2px outset red", "confirmpassword");
         } else {
           const reg_data = {
-            
             FirstName,
             LastName,
             email,
@@ -280,12 +292,12 @@ const Signup = () => {
             password,
           };
 
-          const { message} = await Tokenlesssendpost(
+          const { message } = await Tokenlesssendpost(
             `${window.name}register`,
             reg_data
           );
-         
-          console.log(message)
+
+          console.log(message);
 
           if (message.includes("verification")) {
             SetStep(step + 1);
@@ -297,7 +309,7 @@ const Signup = () => {
             setpassrerror(message);
             stylefunction("2px outset red", "password");
             setcursor("password");
-          }else if (message.toLowerCase().includes("phone")) {
+          } else if (message.toLowerCase().includes("phone")) {
             stylefunction("2px outset red", "phone");
             setphoneerror(message);
             setcursor("phone");
@@ -315,7 +327,6 @@ const Signup = () => {
       if (!reemail.test(String(email).toLowerCase()))
         stylefunction("2px outset red", "email");
       if (phoneNumber.length <= 6) stylefunction("2px outset red", "phone");
-      
     }
   };
   const closeOtpModal = () => {
@@ -496,11 +507,11 @@ const Signup = () => {
               <img src="../images/SignUp.svg" alt="Login pic"></img>
             </div>
             <div className="singup-form">
-            <Link to="/login">
-                  <p className="form-btmtext form-btmtext1">
-                    Already registered ? Login
-                  </p>
-                </Link>
+              <Link to="/login">
+                <p className="form-btmtext form-btmtext1 login-text">
+                  Already registered ? Login
+                </p>
+              </Link>
               <h2 className="form-title">REGISTRATION</h2>
               
               <div className="stepperdiv">
@@ -546,7 +557,6 @@ const Signup = () => {
                           />
                         </div>
                       </div>
-
 
                       <div className="inputholder" id="email">
                         <div className="inputholder-top">
@@ -681,8 +691,6 @@ const Signup = () => {
                       </div>
                     </form>
                   ) : null}
-
-      
                   {step === 1 ? (
                     <div className="centeralign">
                       {" "}
@@ -696,19 +704,14 @@ const Signup = () => {
                                 placeholder="Degree"
                                 autoComplete="off"
                                 required
-                                
                                 onChange={(e) => {
                                   console.log(e.target.value)
                                   setDegree(e.target.value);
                                 }}
-                              >{
-                                selectlistofdegree.map((degree)=>(
+                              >
+                                {selectlistofdegree.map((degree) => (
                                   <option value={degree}>{degree}</option>
-
-                                ))
-                              }
-
-
+                                ))}
                               </Select>
                             </div>
                           </div>
@@ -796,7 +799,6 @@ const Signup = () => {
                       </Tooltip>
                     </div>
                   ) : null}
-                  
                   <div className="btnholder">
                     {step > 1 ? (
                       <button
@@ -814,21 +816,18 @@ const Signup = () => {
                       onClick={async () => {
                         if (step < 2) {
                           if (step == 0) {
-                            console.log("hy")
-                            output()
-                          
-                          }
-                         else if (step == 1) MakeChanges();
-                   else SetStep(step + 1);
+                            console.log("hy");
+                            output();
+                          } else if (step == 1) MakeChanges();
+                          else SetStep(step + 1);
                         } else {
                         }
                       }}
                     >
-                      {step == 3 ? "VERIFY MAIL" : "NEXT STEP"}
+                      {step === 3 ? "VERIFY MAIL" : "NEXT STEP"}
                     </button>
                   </div>
                 </div>
-               
               </div>
             </div>
           </div>
