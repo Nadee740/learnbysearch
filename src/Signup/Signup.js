@@ -507,7 +507,7 @@ const Signup = () => {
             </div>
             <div className="singup-form">
               <Link to="/login">
-                <p className="form-btmtext form-btmtext1">
+                <p className="form-btmtext form-btmtext1 login-text">
                   Already registered ? Login
                 </p>
               </Link>
