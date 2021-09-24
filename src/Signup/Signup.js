@@ -178,7 +178,6 @@ const Signup = () => {
     stylefunction("2px solid #81818128", "degree");
     stylefunction("2px solid #81818128", "collegename");
     stylefunction("2px solid #81818128", "field");
-    stylefunction("2px solid #81818128", "university");
     stylefunction("2px solid #81818128", "graduationyear");
     const log_data = {
       email,
@@ -232,11 +231,12 @@ const Signup = () => {
         `${window.name}create-college`,
         colldata
       );
-
+           
       if (message.includes("updated")) {
          window.location="/applicationform/"+slug
         
       }
+      else console.log(message)
     }
   };
   const output = async () => {
@@ -698,6 +698,7 @@ const Signup = () => {
                                 required
                                 
                                 onChange={(e) => {
+                                  console.log(e.target.value)
                                   setDegree(e.target.value);
                                 }}
                               >{
