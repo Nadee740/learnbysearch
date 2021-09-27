@@ -14,6 +14,7 @@ import Slider from "react-slick";
 import Colleges from "./colleges/college";
 import Testimonial from "./testimonials/Textimonial";
 import Gettestimonials from "../Backend/Gettestimonials";
+import getStudent from "../Backend/getstudent";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -21,6 +22,7 @@ const LandingPage = () => {
   const [pgmsData, setpgms] = useState("");
   const [webinardata, setwebinardata] = useState();
   const [testimonials,settestimonials]=useState()
+  const [testimonialsdata,settestimonialsdata]=useState([])
   useEffect(() => {
     getopenPgmgs();
   }, []);
@@ -42,12 +44,28 @@ const LandingPage = () => {
     checkLOgin();
   };
   const gettestimonials=async()=>{
-    const { testimonials } = await Gettestimonials(
+    const {testimonials:data} = await Gettestimonials(
       `${window.name}testimonials`
     );
-    settestimonials(testimonials)
-    console.log(testimonials,"hyy")
-    setisLoading(false);
+    settestimonials(data)
+   
+    // setisLoading(false)
+    getstudents(data)
+    
+  }
+  const getstudents=(data)=>{
+    
+ data.map((testimonial,index)=>{
+  getStudent(testimonial.studentId).then((res)=>{
+    console.log(res,"hyya")
+   settestimonialsdata((state)=>[...state,{testimonial:testimonial,student:res.user}])
+  })
+  if(index==data.length-1)
+     {
+       setisLoading(false);
+     
+    }
+    })
   }
   const checkLOgin = async () => {
     const { isLoggedIn: isloggedin } = await Authverifier(
@@ -63,7 +81,7 @@ const LandingPage = () => {
       `${window.name}get-all-webinars`
     );
     if (webinardata) {
-      console.log(webinardata);
+      
       setwebinardata(webinardata);
     }
     gettestimonials()
@@ -267,7 +285,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <Testimonial testimonials={testimonials} />
+          <Testimonial testimonials={testimonialsdata} />
           <div
             className="holder-divv"
             style={{

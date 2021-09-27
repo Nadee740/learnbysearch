@@ -1,24 +1,21 @@
 
- const Getusertestimonials = async(url,data) => {
-console.log("hyy",data)
-    let testimonials={};
+ 
+ const Getusertestimonial = async(url,data) => {
+console.log(url,data)
+    
     let message=""
     
        
            
             await fetch(url, {
                    method: 'GET',
-                   headers: {
-                       'Content-Type': 'application/json'
-                       
-                   },
                    body:data
                    
                })
                .then(res => res.json())
                .then(json => {
-                   console.log(json,"HYYYYY")
-                 testimonials=json.testimonials
+                   console.log(json)
+                 
                   
                })
                .catch(
@@ -35,8 +32,8 @@ console.log("hyy",data)
    // },[]); 
    
    
-   return {testimonials};
+   return {message};
    
    }
    
-   export default Getusertestimonials;
+   export default Getusertestimonial;

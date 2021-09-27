@@ -16,6 +16,7 @@
                })
                .then(res => res.json())
                .then(json => {
+                   console.log("hyy")
                  testimonials=json.testimonials
                   
                })
@@ -32,7 +33,7 @@
    
    // },[]); 
    
-   
+   console.log(testimonials)
    return {testimonials};
    
    }

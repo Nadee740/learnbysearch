@@ -26,7 +26,7 @@ import { useHistory } from "react-router-dom";
 import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import Createtestemonials from "../Backend/createtestimonials";
-import Getusertestimonials from "../Backend/Getusertestimonial";
+import Getusertestimonial from "../Backend/Getusertestimonial";
 
 const EditProfile = () => {
 
@@ -38,14 +38,11 @@ const EditProfile = () => {
       `${window.name}users/me`
     );
     setisLoggedin(message);
-    console.log(datas._id)
-    const id={id:datas._id}
-    const formData=new FormData()
-    formData.append("id",datas._id);
-    const {testimonial}=await Getusertestimonials(`${window.name}testimonial`,formData)
-    
-    
-  setstudentId(datas._id)
+
+   
+   
+   
+     setstudentId(datas._id);
     setFirstName(datas.FirstName);
     setMiddleName(datas.MiddleName);
     setLastName(datas.LastName);
@@ -65,15 +62,32 @@ const EditProfile = () => {
       setreferal(datas.referral.code)
       setrefcount(datas.referral.count)
     }
-    setisLoading(false);
+   getmytestimonial(datas._id)
+    
   };
 
   useEffect(async () => {
     getAllCountries();
     getCOllegename();
     getData();
+    
   }, []);
 
+  const getmytestimonial=async (id) => {
+    setisLoading(true)
+    console.log(id)
+    const data = {
+      id: id
+    };
+     const formData=new FormData()
+     formData.append("id",id);
+    // const { data } = await Researchpgms(`${window.name}research-programs`);
+    const { message } = await Getusertestimonial(
+      `${window.name}testimonial`,formData
+    );
+    // console.log(messagee)
+    setisLoading(false)
+  }
   ///////////////get the details of the country/////
   const getAllCountries = () => {
     const countries = Country.getAllCountries();
@@ -127,7 +141,7 @@ const EditProfile = () => {
   const [otperror, setotperr] = useState();
   const [isverfied, setisverfied] = useState();
   const [isLoggedIn, setisLoggedin] = useState(false);
-  const [studentId, setstudentId] = useState();
+  const [studentId, setstudentId] = useState("");
 
   const [isLoading, setisLoading] = useState(false);
 
@@ -243,7 +257,7 @@ const EditProfile = () => {
         `${window.name}create-college`,
         colldata
       );
-      if(testimonial.length>5)
+      if(testimonial.length>5 && profilepic!="")
       {
         const formData = new FormData();
         formData.append("studentId",studentId);

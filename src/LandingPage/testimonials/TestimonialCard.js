@@ -8,14 +8,14 @@ const TestimonialCard = ({data}) => {
   return (
     <div className="testimonial">
       <img
-        src={data.image}
+        src={data.testimonial.image}
         alt=""
         className="testimonial-img"
       />
       <p className="testimonial-text">
-        {data.testimonial}
+        {data.testimonial.testimonial}
       </p>
-      <p className="testimonial-author">Tim Cook</p>
+      <p className="testimonial-author">{data.student.FirstName}</p>
     </div>
   );
 };

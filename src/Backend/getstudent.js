@@ -1,5 +1,5 @@
 const getStudent = async (id) => {
-    const res = await fetch(`${window.URI}/user/${id}`);
+    const res = await fetch(`${window.name}/user/${id}`);
     const d = res.json();
     return d
   };
