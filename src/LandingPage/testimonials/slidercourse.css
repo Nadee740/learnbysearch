@@ -1,0 +1,29 @@
+.testimonialholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+.testimonial {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.testimonial-text {
+  font-weight: 300;
+  font-size: 1.4rem;
+  text-align: center;
+  font-style: italic;
+}
+.testimonial-author {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.testimonial-img {
+  border-radius: 50%;
+  height: 7rem;
+}

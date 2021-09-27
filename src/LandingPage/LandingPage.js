@@ -12,6 +12,7 @@ import Authverifier from "../Backend/Authverifier";
 import Webinar from "./webinar";
 import Slider from "react-slick";
 import Colleges from "./colleges/college";
+import Testimonial from "./testimonials/Textimonial";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -257,6 +258,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
+          <Testimonial />
           <div
             className="holder-divv"
             style={{
