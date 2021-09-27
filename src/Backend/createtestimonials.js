@@ -14,7 +14,7 @@
             .then(res => res.json())
             .then(json => {
                
-                retdata=json;
+                
                 if(json.status === 'error'){
                     
                     if(typeof json.msg === "object"){
@@ -29,24 +29,7 @@
                    
                     
                 } else if(json.status.toLowerCase() === 'ok'){
-                
-                    if(url.includes("login"))
-                   { 
-                    
-                         
-                          localStorage.setItem("loggedinuserid",json.user._id)
-                          
-                          localStorage.setItem("LoggedInUserTokenID",json.user.tokens[json.user.tokens.length-1].token)
-                          document.cookie=json.user.tokens[json.user.tokens.length-1].token
-                          
-                          
-                }
-
-                else if(url.includes("user")){
-
-                    retdata=json.user
-                }
-                 
+                   retdata=json;
                     throw Error(json.msg);
 
                 } else{
@@ -68,12 +51,8 @@
 
 // },[]); 
 
-if(url.includes("user")){
-    return {retdata}
-}
-else{
 return {message,retdata};
-}
+
 }
 
 export default Createtestemonials;
