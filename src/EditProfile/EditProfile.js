@@ -26,6 +26,7 @@ import { useHistory } from "react-router-dom";
 import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import Createtestemonials from "../Backend/createtestimonials";
+import Getusertestimonials from "../Backend/Getusertestimonial";
 
 const EditProfile = () => {
 
@@ -33,10 +34,16 @@ const EditProfile = () => {
 
   const getData = async () => {
     setisLoading(true);
-    const { isLoggedIn: messagee, data: datas } = await Authverifier(
+    const { isLoggedIn: message, data: datas } = await Authverifier(
       `${window.name}users/me`
     );
-    setisLoggedin(messagee);
+    setisLoggedin(message);
+    console.log(datas._id)
+    const id={id:datas._id}
+    const formData=new FormData()
+    formData.append("id",datas._id);
+    const {testimonial}=await Getusertestimonials(`${window.name}testimonial`,formData)
+    
     
   setstudentId(datas._id)
     setFirstName(datas.FirstName);
@@ -247,7 +254,7 @@ const EditProfile = () => {
         `${window.name}create-testimonial`,
        formData
       );
-    console.log(formData)
+    
       console.log(createtestimonial)
       }
 

@@ -1,5 +1,5 @@
 import "./slidercourse.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TestimonialCard from "./TestimonialCard";
@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import SliderCard from "./TestimonialCard";
 import Gettestimonials from "../../Backend/Gettestimonials";
 
-const Testimonial = () => {
+const Testimonial = ({testimonials}) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -29,22 +29,21 @@ const Testimonial = () => {
       },
     ],
   };
-  useEffect(()=>{
-gettestimonials()
-  },[])
+  
 
-const gettestimonials=async()=>{
-  const { testimonials } = await Gettestimonials(
-    `${window.name}testimonials`
-  );
-  console.log(testimonials,"hyy")
-}
+
 
   return (
     <div className="testimonialholder">
       <div className="slidecontainer">
         <Slider {...settings}>
-          <TestimonialCard /> <TestimonialCard /> <TestimonialCard />
+        {testimonials.map((testmonial)=>(
+
+          <TestimonialCard data={testmonial} /> 
+        ))
+
+        }
+         
         </Slider>
       </div>
     </div>

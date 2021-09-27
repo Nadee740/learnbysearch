@@ -13,13 +13,14 @@ import Webinar from "./webinar";
 import Slider from "react-slick";
 import Colleges from "./colleges/college";
 import Testimonial from "./testimonials/Textimonial";
+import Gettestimonials from "../Backend/Gettestimonials";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [pgmsData, setpgms] = useState("");
   const [webinardata, setwebinardata] = useState();
-
+  const [testimonials,settestimonials]=useState()
   useEffect(() => {
     getopenPgmgs();
   }, []);
@@ -40,7 +41,14 @@ const LandingPage = () => {
     setblogData(blogs);
     checkLOgin();
   };
-
+  const gettestimonials=async()=>{
+    const { testimonials } = await Gettestimonials(
+      `${window.name}testimonials`
+    );
+    settestimonials(testimonials)
+    console.log(testimonials,"hyy")
+    setisLoading(false);
+  }
   const checkLOgin = async () => {
     const { isLoggedIn: isloggedin } = await Authverifier(
       `${window.name}users/me`
@@ -58,7 +66,8 @@ const LandingPage = () => {
       console.log(webinardata);
       setwebinardata(webinardata);
     }
-    setisLoading(false);
+    gettestimonials()
+    
   };
   const settings = {
     dots: true,
@@ -258,7 +267,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <Testimonial />
+          <Testimonial testimonials={testimonials} />
           <div
             className="holder-divv"
             style={{
