@@ -36,8 +36,8 @@ const EditProfile = () => {
       `${window.name}users/me`
     );
     setisLoggedin(messagee);
-    console.log(datas);
-
+    
+  setstudentId(datas._id)
     setFirstName(datas.FirstName);
     setMiddleName(datas.MiddleName);
     setLastName(datas.LastName);
@@ -110,7 +110,7 @@ const EditProfile = () => {
   const [showsuggestions, setshowsuggestions] = useState(false);
 
   const [testimonial, settestimonial] = useState()
-  const [profilepic, setprofilepic] = useState()
+  const [profilepic, setprofilepic] = useState("")
 
   const [otp, setotp] = useState("");
   const [otpsend, setotpsend] = useState(false);
@@ -119,6 +119,7 @@ const EditProfile = () => {
   const [otperror, setotperr] = useState();
   const [isverfied, setisverfied] = useState();
   const [isLoggedIn, setisLoggedin] = useState(false);
+  const [studentId, setstudentId] = useState();
 
   const [isLoading, setisLoading] = useState(false);
 
@@ -223,16 +224,34 @@ const EditProfile = () => {
       const colldata = {
         college: CollegeName,
       };
+     
 
       const { message: messagee } = await SendPost(
         `${window.name}edit-profile`,
         edit_data
       );
 
-      const { message: messageemon } = await Tokenlesssendpost(
+      const { message: result } = await Tokenlesssendpost(
         `${window.name}create-college`,
         colldata
       );
+      if(testimonial.length>5)
+      {
+        const formData = new FormData();
+        formData.append("studentId",studentId);
+        formData.append("image",profilepic);
+        formData.append("testimonial",testimonial);
+      // const testimonialdata={
+      //   studentId,image:profilepic,testimonial
+      // }
+      const { message: createtestimonial } = await Tokenlesssendpost(
+        `${window.name}create-testimonial`,
+       formData
+      );
+    console.log(formData)
+      console.log(createtestimonial)
+      }
+
 
       if (messagee.includes("updated")) {
         setvisible(true);
@@ -748,10 +767,14 @@ const EditProfile = () => {
                           <input
                             type="file"
                             placeholder="profile pic"
+                            accept="image/*"
                             autoComplete="off"
-                            required
-                            onChange={e => setprofilepic(e.target.files[0])}
-                            value={profilepic}
+                            
+                          onChange={(e) => {
+                // console.log(e.target.files)
+                return setprofilepic(e.target.files[0]);
+              }}
+                            
                           />
                         </div>
                       </div>

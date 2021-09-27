@@ -10,7 +10,7 @@ import { useCookies } from 'react-cookie';
          await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    
                 },
                 body: JSON.stringify(data)
             })
