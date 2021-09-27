@@ -27,7 +27,7 @@ import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 
 const EditProfile = () => {
- 
+
   const history = useHistory();
 
   const getData = async () => {
@@ -53,7 +53,7 @@ const EditProfile = () => {
     setUniversity(datas.Education ? datas.Education.University : "");
     setGraduationYear(datas.Education ? datas.Education.GraduationYear : "");
     setisverfied(datas.isPhoneVerified);
-    if(datas.referral){
+    if (datas.referral) {
       setreferal(datas.referral.code)
       setrefcount(datas.referral.count)
     }
@@ -108,6 +108,9 @@ const EditProfile = () => {
   const [value, setdate] = useState();
   const [visible, setvisible] = useState(false);
   const [showsuggestions, setshowsuggestions] = useState(false);
+
+  const [testimonial, settestimonial] = useState()
+  const [profilepic, setprofilepic] = useState()
 
   const [otp, setotp] = useState("");
   const [otpsend, setotpsend] = useState(false);
@@ -701,7 +704,7 @@ const EditProfile = () => {
                       </div>
                     </>
                   </Tooltip>
-                  {referal? <Tooltip title="Referal code">
+                  {referal ? <Tooltip title="Referal code">
                     <>
                       <p className="inputtext">Referal Code</p>
                       <div className="inputholder">
@@ -717,8 +720,44 @@ const EditProfile = () => {
                         </div>
                       </div>
                     </>
-                  </Tooltip>:""}
-                 
+                  </Tooltip> : ""}
+
+                 <Tooltip title="Testimonial">
+                    <>
+                      <p className="inputtext">Testimonial</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="text"
+                            placeholder="testimonial"
+                            autoComplete="off"
+                            required
+                            onChange={e => settestimonial(e.target.value)}
+                            value={testimonial}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  </Tooltip>
+
+                  <Tooltip title="Testimonial">
+                    <>
+                      <p className="inputtext">Profile pic</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <input
+                            type="file"
+                            placeholder="profile pic"
+                            autoComplete="off"
+                            required
+                            onChange={e => setprofilepic(e.target.files[0])}
+                            value={profilepic}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  </Tooltip>
+
                   <input
                     // onClick={MakeChanges}
                     type="submit"
