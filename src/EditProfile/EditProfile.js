@@ -25,6 +25,7 @@ import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
+import Createtestemonials from "../Backend/createtestimonials";
 
 const EditProfile = () => {
 
@@ -241,12 +242,12 @@ const EditProfile = () => {
         formData.append("studentId",studentId);
         formData.append("image",profilepic);
         formData.append("testimonial",testimonial);
-      // const testimonialdata={
-      //   studentId,image:profilepic,testimonial
-      // }
-      const { message: createtestimonial } = await Tokenlesssendpost(
+      const testimonialdata={
+        studentId,image:profilepic,testimonial
+      }
+      const { message: createtestimonial } = await Createtestemonials(
         `${window.name}create-testimonial`,
-       formData
+       testimonialdata
       );
     console.log(formData)
       console.log(createtestimonial)
