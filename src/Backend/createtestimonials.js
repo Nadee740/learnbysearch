@@ -9,9 +9,6 @@
         
          await fetch(url, {
                 method: 'POST',
-                headers: {
-                    
-                },
                 body: data
             })
             .then(res => res.json())

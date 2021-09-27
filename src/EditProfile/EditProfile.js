@@ -242,12 +242,10 @@ const EditProfile = () => {
         formData.append("studentId",studentId);
         formData.append("image",profilepic);
         formData.append("testimonial",testimonial);
-      const testimonialdata={
-        studentId,image:profilepic,testimonial
-      }
+
       const { message: createtestimonial } = await Createtestemonials(
         `${window.name}create-testimonial`,
-       testimonialdata
+       formData
       );
     console.log(formData)
       console.log(createtestimonial)

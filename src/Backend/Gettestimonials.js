@@ -1,5 +1,4 @@
 
- 
  const Gettestimonials = async(url) => {
 
     let testimonials={};
