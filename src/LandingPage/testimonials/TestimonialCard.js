@@ -1,5 +1,5 @@
 import "./slidercourse.css";
-const TestimonialCard = () => {
+const TestimonialCard = ({data}) => {
   return (
     <div className="testimonial">
       <img
