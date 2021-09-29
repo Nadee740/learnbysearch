@@ -1,3 +1,5 @@
+
+
 ////////////////post rqst without any tokens///////////////////////
 import { useCookies } from 'react-cookie';
  const Tokenlesssendpost = async(url, data) => {
@@ -10,7 +12,7 @@ import { useCookies } from 'react-cookie';
          await fetch(url, {
                 method: 'POST',
                 headers: {
-                    
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             })
