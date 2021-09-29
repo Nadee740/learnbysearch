@@ -770,7 +770,6 @@ const EditProfile = () => {
                             type="text"
                             placeholder="testimonial"
                             autoComplete="off"
-                            required
                             onChange={e => settestimonial(e.target.value)}
                             value={testimonial}
                           />
