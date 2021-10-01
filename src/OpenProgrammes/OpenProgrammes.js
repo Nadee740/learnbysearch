@@ -20,35 +20,35 @@ const OpenProgrammes = () => {
   useEffect(async () => {
     getRPS();
   }, []);
-  if(isLoading){
-return(
-        <div className="isLoading">
-          <SolarSystemLoading />
-        </div>
-      ) }
-  
+  if (isLoading) {
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>
+    );
+  }
+
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Home | Programs</title>
       </Helmet>
-     
-        <div className="openprograms">
-          <h2>Open Programs</h2>
-          <div className="cardholder">
-            {blogsData.length >= 1
-              ? blogsData.map((blog, index) => {
-                  return blog.applicationStatus ? (
-                    <Openprogramcard blog={blog} key={index} />
-                  ) : (
-                    ""
-                  );
-                })
-              : setisLoading(true)}
-          </div>
+
+      <div className="openprograms">
+        <h2>Ongoing Research</h2>
+        <div className="cardholder">
+          {blogsData.length >= 1
+            ? blogsData.map((blog, index) => {
+                return blog.applicationStatus ? (
+                  <Openprogramcard blog={blog} key={index} />
+                ) : (
+                  ""
+                );
+              })
+            : setisLoading(true)}
         </div>
-      
+      </div>
     </>
   );
 };
