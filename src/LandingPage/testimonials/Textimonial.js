@@ -7,16 +7,15 @@ import Slider from "react-slick";
 import SliderCard from "./TestimonialCard";
 import Gettestimonials from "../../Backend/Gettestimonials";
 
-const Testimonial = ({testimonials}) => {
+const Testimonial = ({ testimonials }) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 1000,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     cssEase: "linear",
     pauseOnHover: true,
     responsive: [
@@ -29,21 +28,15 @@ const Testimonial = ({testimonials}) => {
       },
     ],
   };
-  
-
-
 
   return (
     <div className="testimonialholder">
+      <h2>Hear from our students</h2>
       <div className="slidecontainer">
         <Slider {...settings}>
-        {testimonials.map((testmonial)=>(
-
-          <TestimonialCard data={testmonial} /> 
-        ))
-
-        }
-         
+          {testimonials.map((testmonial) => (
+            <TestimonialCard data={testmonial} />
+          ))}
         </Slider>
       </div>
     </div>
