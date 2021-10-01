@@ -325,8 +325,14 @@ const Signup = () => {
       if (FirstName.length < 3) stylefunction("2px outset red", "firstname");
       if (LastName.length < 3) stylefunction("2px outset red", "lastname");
       if (!reemail.test(String(email).toLowerCase()))
-        stylefunction("2px outset red", "email");
-      if (phoneNumber.length <= 6) stylefunction("2px outset red", "phone");
+        {stylefunction("2px outset red", "email");
+    setemailerror("Invalid mail")
+    
+      }
+      if (phoneNumber.length <= 6)
+      { stylefunction("2px outset red", "phone");
+    setphoneerror("invalid phone number")
+    }
     }
   };
   const closeOtpModal = () => {

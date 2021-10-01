@@ -42,3 +42,6 @@ alert {
 .divdisplay {
   display: none;
 }
+a {
+  cursor: pointer;
+}

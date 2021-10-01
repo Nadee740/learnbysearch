@@ -22,7 +22,7 @@ function OpenProgrammesPage() {
   let arr = [];
   let array = [];
   let count = 0;
-  
+
   const [isLoading, setisLoading] = useState(true);
   const [blogsData, setblogData] = useState();
   const [positions, setPosition] = useState("");
@@ -30,9 +30,9 @@ function OpenProgrammesPage() {
   const [error, seterror] = useState(false);
   const [visible, setvisible] = useState(false);
   const [appliedvisible, setappliedvisible] = useState(false);
-  const [htmlpart,sethtmlpart] = useState();
-  const [htmlpartobjective,sethtmlpartobjective] = useState();
-  const [htmlpartoutcomes,sethtmlpartoutcomes] = useState();
+  const [htmlpart, sethtmlpart] = useState();
+  const [htmlpartobjective, sethtmlpartobjective] = useState();
+  const [htmlpartoutcomes, sethtmlpartoutcomes] = useState();
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [userdata, setuserdata] = useState();
 
@@ -79,15 +79,11 @@ function OpenProgrammesPage() {
 
   ///////////////////////FUNCTION FOR APPLY NOW////////////////////////////////////////
   const applicationform = () => {
-   
-   if(isLoggedIn)
-   {
-window.location="/applicationform/"+slug
-   }
-   else{
-    window.location="/signup/"+slug
-   }
-    
+    if (isLoggedIn) {
+      window.location = "/applicationform/" + slug;
+    } else {
+      window.location = "/signup/" + slug;
+    }
   };
 
   //////////////////////////////////////////////////////////////////////////
@@ -142,12 +138,11 @@ window.location="/applicationform/"+slug
     const { data } = await Researchpgms(
       `${window.name}research-program/${slug}`
     );
-    if(!data)
-     return seterror(true),setisLoading(false)
+    if (!data) return seterror(true), setisLoading(false);
     setblogData(data);
     sethtmlpart(data.description);
-    sethtmlpartobjective(data.objective)
-    sethtmlpartoutcomes(data.outcomes)
+    sethtmlpartobjective(data.objective);
+    sethtmlpartoutcomes(data.outcomes);
     await getPositions(data);
   };
 
@@ -161,19 +156,19 @@ window.location="/applicationform/"+slug
     getRPS();
   }, []);
 
-  if(isLoading)
-   return (
-    <div className="isLoading">
-    <SolarSystemLoading />
-  </div>
-  )
-  if(error)
-    return(
-    <div className="isLoading">
-      <h1>Ooops an error occured...</h1>
-    </div>
-  ) 
-   
+  if (isLoading)
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="isLoading">
+        <h1>Ooops an error occured...</h1>
+      </div>
+    );
+
   return (
     <>
       <Helmet>
@@ -196,17 +191,19 @@ window.location="/applicationform/"+slug
                 className="logo"
                 alt=""
               />
-              
+
               <br></br>
               <div className="extrapart">
                 <div className="signuppart">
-                  {isLoggedIn?<Link to={"/applicationform/"+slug} onClick={closeModal}>
-                    Register
-                  </Link>:<Link to={"/signup/"+slug} onClick={closeModal}>
-                    Register
-                  </Link>
-
-                  }
+                  {isLoggedIn ? (
+                    <Link to={"/applicationform/" + slug} onClick={closeModal}>
+                      Register
+                    </Link>
+                  ) : (
+                    <Link to={"/signup/" + slug} onClick={closeModal}>
+                      Register
+                    </Link>
+                  )}
                 </div>
                 {/* <div>
                   <Link onClick={closeModal}>Close</Link>
@@ -223,7 +220,6 @@ window.location="/applicationform/"+slug
         </section>
       </div>
       {/*/////////////////////////////////////////// POPUP FOR NOT LOGGED IN /////////////////////////////////////*/}
-
       {/*//////////////// POPUP FOR ALREADY APPLIED /////////////////////////////////////*/}
       <div className="popupscreen">
         <section className="popupscreen">
@@ -247,205 +243,202 @@ window.location="/applicationform/"+slug
         </section>
       </div>
       {/*///////////////////////////// POPUP FOR ALREADY APPLIED///////////////////////////////////////// */}
+      <div>
+        <div className="blogdetailpage openprogrammespage">
+          <div className="blogdetailpage-img">
+            <img
+              src={blogsData.imageUrl}
+              alt="Bg"
+              className="blogdetailpage-img2 blogdetailpage-img3"
+            />
 
-      
-        <div>
-          <div className="blogdetailpage openprogrammespage">
-            <div className="blogdetailpage-img">
-              <img
-                src={blogsData.imageUrl}
-                alt="Bg"
-                className="blogdetailpage-img2 blogdetailpage-img3"
-              />
-
-              <div className="blogdetailpage-head openprogrammespage-head">
-                <div className="blogdetailpage-top openprogrammespage-top">
-                  <>{blogsData.title}</>
-                  {blogsData.applicationStatus ? (
-                    <p onClick={applicationform}>
-                      Deadline - {blogsData.Deadline} !<br></br>
-                    </p>
-                  ) : (
-                    ""
-                  )}
-                  {/* blogsData.applicationStatus */}
-                  {blogsData.applicationStatus ? (
-                    <button onClick={applicationform} className="applybtn">
-                      APPLY NOW
-                    </button>
-                  ) : (
-                    <button>APPLICATION CLOSED</button>
-                  )}
-                </div>
+            <div className="blogdetailpage-head openprogrammespage-head">
+              <div className="blogdetailpage-top openprogrammespage-top">
+                <>{blogsData.title}</>
+                {blogsData.applicationStatus ? (
+                  <p onClick={applicationform}>
+                    Deadline - {blogsData.Deadline}
+                    <br></br>
+                  </p>
+                ) : (
+                  ""
+                )}
+                {/* blogsData.applicationStatus */}
+                {blogsData.applicationStatus ? (
+                  <button onClick={applicationform} className="applybtn">
+                    APPLY NOW
+                  </button>
+                ) : (
+                  <button>APPLICATION CLOSED</button>
+                )}
               </div>
-            </div>
-            <div className="openprogrammespage-holder">
-              <div className="openprogrammespage-section">
-                <p className="openprogrammespage-head"> Objective</p>
-                <p className="openprogrammespage-text">
-                  <div
-                    dangerouslySetInnerHTML={{ __html: htmlpartobjective }}
-                  ></div>
-                </p>
-              </div>
-              <div className="line"></div>
-              <div className="openprogrammespage-section">
-                <p className="openprogrammespage-head">
-                  Description of the Research
-                </p>
-
-                <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
-              </div>
-              <div className="line"></div>
-              <div className="openprogrammespage-section">
-                <p className="openprogrammespage-head">
-                  Outcome of the Research
-                </p>
-                <p className="openprogrammespage-text">
-                  <div
-                    dangerouslySetInnerHTML={{ __html: htmlpartoutcomes }}
-                  ></div>
-                </p>
-              </div>
-              <div className="line"></div>
-              <div className="openprogrammespage-section">
-                <p className="openprogrammespage-head">
-                  Applications Open for following Positions
-                </p>
-                <p className="openprogrammespage-text">
-                  Select following positions from dropdown while filling the
-                  form during Registration
-                </p>
-
-                <div className="vaccency-holder">
-                  {positions &&
-                    positions.map((position, index) => (
-                      <div className="vaccency-item" key={index}>
-                        <p className="vaccency-item-title">{position.title}</p>
-                        <p className="vaccency-item-text">
-                          Number of Students Required: <span>2</span>
-                        </p>
-
-                        <p className="vaccency-item-text">
-                          Eligibility Criterion:
-                          <span>{position.criterion}</span>
-                        </p>
-                        {blogsData.applicationStatus ? (
-                          <button
-                            className="applynow-btn"
-                            onClick={applicationform}
-                          >
-                            APPLY NOW
-                          </button>
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                    ))}
-                </div>
-                <div className="openprogrammespage-feature">
-                  <div className="openprogrammespage-feature-col ">
-                    <BsCalendarFill
-                      size="6em"
-                      color="#818181"
-                      className="open-icn"
-                    />
-                    <p className="vaccency-item-title openprogrammespage-feature-title">
-                      Total Duration
-                    </p>
-                    <p className="vaccency-item-text">{blogsData.duration}</p>
-                  </div>
-                  <div className="openprogrammespage-feature-col openprogrammespage-feature-col2">
-                    <BsFillBellFill
-                      size="6em"
-                      color="#818181"
-                      className="open-icn"
-                    />
-                    <p className="vaccency-item-title openprogrammespage-feature-title">
-                      Weekly commitment
-                    </p>
-                    <p className="vaccency-item-text">{blogsData.commitment}</p>
-                  </div>
-                </div>
-                <div className="mentors">
-                  <p className="openprogrammespage-head">Mentors</p>
-
-                  {mentors &&
-                    mentors.map((mentor, index) => {
-                      const htmlparteducation = mentor.education;
-                      const htmlorganisation = mentor.organisation;
-                      const htmlpartposition = mentor.position;
-
-                      const htmlpartbio = mentor.bio && mentor.bio;
-
-                      return (
-                        <div className="mentors-item" key={index}>
-                          <img
-                            src={mentor.imageUrl}
-                            alt="User"
-                            className="mentors-item-img"
-                          />
-                          <p className="vaccency-item-text mentors-item-text">
-                            <span>{mentor.name}</span>
-                          </p>
-                          <p className="vaccency-item-text mentors-item-text">
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: htmlpartposition,
-                              }}
-                            ></div>
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: htmlorganisation,
-                              }}
-                            ></div>{" "}
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: htmlparteducation,
-                              }}
-                            ></div>{" "}
-                            {htmlpartbio && (
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html: htmlpartbio,
-                                }}
-                              ></div>
-                            )}
-                          </p>
-                          <div className="holder-w">
-                            <a
-                              onClick={() => {
-                                window.location = `${mentor.linkedin}`;
-                              }}
-                              style={{
-                                textDecoration: "none",
-                                width: "fit-content",
-                              }}
-                            >
-                              <FaLinkedin size="2em" color="#0077b5" />
-                            </a>
-                            <a
-                              target="_blank"
-                              href={mentor.googleScholarLink}
-                              style={{
-                                textDecoration: "none",
-                                width: "fit-content",
-                              }}
-                            >
-                              <SiGooglescholar size="2em" color="#3cba54" />
-                            </a>
-                          </div>
-                        </div>
-                      );
-                    })}
-                </div>
-              </div>
-
-              <div className="line"></div>
             </div>
           </div>
-          <Footer />
+          <div className="openprogrammespage-holder">
+            <div className="openprogrammespage-section">
+              <p className="openprogrammespage-head"> Objective</p>
+              <p className="openprogrammespage-text">
+                <div
+                  dangerouslySetInnerHTML={{ __html: htmlpartobjective }}
+                ></div>
+              </p>
+            </div>
+            <div className="line"></div>
+            <div className="openprogrammespage-section">
+              <p className="openprogrammespage-head">
+                Description of the Research
+              </p>
+
+              <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
+            </div>
+            <div className="line"></div>
+            <div className="openprogrammespage-section">
+              <p className="openprogrammespage-head">Outcome of the Research</p>
+              <p className="openprogrammespage-text">
+                <div
+                  dangerouslySetInnerHTML={{ __html: htmlpartoutcomes }}
+                ></div>
+              </p>
+            </div>
+            <div className="line"></div>
+            <div className="openprogrammespage-section">
+              <p className="openprogrammespage-head">
+                Applications Open for following Positions
+              </p>
+              <p className="openprogrammespage-text">
+                Select following positions from dropdown while filling the form
+                during Registration
+              </p>
+
+              <div className="vaccency-holder">
+                {positions &&
+                  positions.map((position, index) => (
+                    <div className="vaccency-item" key={index}>
+                      <p className="vaccency-item-title">{position.title}</p>
+                      <p className="vaccency-item-text">
+                        Number of Students Required: <span>2</span>
+                      </p>
+
+                      <p className="vaccency-item-text">
+                        Eligibility Criterion:
+                        <span>{position.criterion}</span>
+                      </p>
+                      {blogsData.applicationStatus ? (
+                        <button
+                          className="applynow-btn"
+                          onClick={applicationform}
+                        >
+                          APPLY NOW
+                        </button>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  ))}
+              </div>
+              <div className="openprogrammespage-feature">
+                <div className="openprogrammespage-feature-col ">
+                  <BsCalendarFill
+                    size="6em"
+                    color="#818181"
+                    className="open-icn"
+                  />
+                  <p className="vaccency-item-title openprogrammespage-feature-title">
+                    Total Duration
+                  </p>
+                  <p className="vaccency-item-text">{blogsData.duration}</p>
+                </div>
+                <div className="openprogrammespage-feature-col openprogrammespage-feature-col2">
+                  <BsFillBellFill
+                    size="6em"
+                    color="#818181"
+                    className="open-icn"
+                  />
+                  <p className="vaccency-item-title openprogrammespage-feature-title">
+                    Weekly commitment
+                  </p>
+                  <p className="vaccency-item-text">{blogsData.commitment}</p>
+                </div>
+              </div>
+              <div className="mentors">
+                <p className="openprogrammespage-head">Mentors</p>
+
+                {mentors &&
+                  mentors.map((mentor, index) => {
+                    const htmlparteducation = mentor.education;
+                    const htmlorganisation = mentor.organisation;
+                    const htmlpartposition = mentor.position;
+
+                    const htmlpartbio = mentor.bio && mentor.bio;
+
+                    return (
+                      <div className="mentors-item" key={index}>
+                        <img
+                          src={mentor.imageUrl}
+                          alt="User"
+                          className="mentors-item-img"
+                        />
+                        <p className="vaccency-item-text mentors-item-text">
+                          <span>{mentor.name}</span>
+                        </p>
+                        <p className="vaccency-item-text mentors-item-text">
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: htmlpartposition,
+                            }}
+                          ></div>
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: htmlorganisation,
+                            }}
+                          ></div>{" "}
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: htmlparteducation,
+                            }}
+                          ></div>{" "}
+                          {htmlpartbio && (
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: htmlpartbio,
+                              }}
+                            ></div>
+                          )}
+                        </p>
+                        <div className="holder-w">
+                          <a
+                            onClick={() => {
+                              window.open(`${mentor.linkedin}`, "_blank");
+                            }}
+                            style={{
+                              textDecoration: "none",
+                              width: "fit-content",
+                            }}
+                          >
+                            <FaLinkedin size="2em" color="#0077b5" />
+                          </a>
+                          <a
+                            target="_blank"
+                            href={mentor.googleScholarLink}
+                            style={{
+                              textDecoration: "none",
+                              width: "fit-content",
+                            }}
+                          >
+                            <SiGooglescholar size="2em" color="#3cba54" />
+                          </a>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+
+            <div className="line"></div>
+          </div>
         </div>
+        <Footer />
+      </div>
       )
     </>
   );

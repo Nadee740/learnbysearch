@@ -157,7 +157,7 @@ const LandingPage = () => {
                   )*/}
                   <div className="buttons ">
                     <Link to="/openprogrammes" className="btns button1">
-                      Open Programmes
+                      Upcoming Programmes
                     </Link>
                   </div>
                 </div>

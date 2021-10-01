@@ -65,9 +65,7 @@ const Footer = () => {
                 alt=""
               />
               <p>You have subcribed successfully...</p>
-              <Link onClick={closeModal}>
-                Close
-              </Link>
+              <Link onClick={closeModal}>Close</Link>
             </div>
           </Modal>
         </section>
@@ -114,57 +112,60 @@ const Footer = () => {
         <div className="footer-sec">
           <IoCall size="1.3em" color="#F4F4F4" />
 
-          <a href="tel:+91 7972251272" className="footer-text">
-            +91 7972251272
-          </a>
+            <a href="tel:+91 7972251272" className="footer-text">
+              +91 7972251272
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="footer-col2">
-        <div className="footer-col2-1">
-          {/* <div className="socialIcn">
+        <div className="footer-col2">
+          <div className="footer-col2-1">
+            {/* <div className="socialIcn">
            <FaFacebookF size="1.3em" color="#F4F4F4" />
           </div> */}
-          <p className="footer-text2">Subscribe To Our Newsletter</p>
-          <form onSubmit={Subscribe}>
-          <div className="footer-sec">
-          
-            <input
-            required
-              className="email-subscribe"
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setemail(e.target.value);
-              }}
-            ></input>
-           
-            <button type="submit"  className="subs-btn footer-btn">
-              Subscribe
-            </button>
-            <div className="footer-sec "></div>
-            
-          </div>
-          </form>
-          <p className="footer-text2">Follow us On Social Media</p>
-          <div className="socialIcnx">
-            <div className="socialIcn">
-              <a href="https://www.instagram.com/learnbyresearch/">
-                {" "}
-                <FaInstagram size="1.3em" color="#F4F4F4" />
-              </a>
+            <p className="footer-text2">Subscribe To Our Newsletter</p>
+            <form onSubmit={Subscribe}>
+              <div className="footer-sec">
+                <input
+                  required
+                  className="email-subscribe"
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    setemail(e.target.value);
+                  }}
+                ></input>
+
+                <button type="submit" className="subs-btn footer-btn">
+                  Subscribe
+                </button>
+                <div className="footer-sec "></div>
+              </div>
+            </form>
+            <p className="footer-text2">Follow us On Social Media</p>
+            <div className="socialIcnx">
+              <div className="socialIcn">
+                <a
+                  href="https://www.instagram.com/learnbyresearch/"
+                  target="_blank"
+                >
+                  <FaInstagram size="1.3em" color="#F4F4F4" />
+                </a>
+              </div>
+              <div className="socialIcn">
+                <a
+                  href="https://www.linkedin.com/company/learnbyresearch/"
+                  target="_blank"
+                >
+                  <FaLinkedinIn size="1.3em" color="#F4F4F4" />
+                </a>
+              </div>
             </div>
-            <div className="socialIcn">
-              <a href="https://www.linkedin.com/company/learnbyresearch/">
-                <FaLinkedinIn size="1.3em" color="#F4F4F4" />
-              </a>
-            </div>
-          </div>
-          {/* <div className="socialIcn">
+            {/* <div className="socialIcn">
             <FaTwitter size="1.3em" color="#F4F4F4" />
           </div> */}
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
     </>
   );
 };
