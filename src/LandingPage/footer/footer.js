@@ -16,8 +16,12 @@ import Tokenlesssendpost from "../../Backend/tokenlesssendpost";
 const Footer = () => {
   const [email, setemail] = useState();
   const [visible, setvisible] = useState(false);
+  const [alrdyvisible, setalrdyvisible] = useState(false);
   const closeModal = () => {
     setvisible(false);
+  };
+  const closealrdyModal = () => {
+    setalrdyvisible(false);
   };
   const Subscribe = async (e) => {
     e.preventDefault();
@@ -30,7 +34,11 @@ const Footer = () => {
       `${window.name}subscribers`,
       sub_data
     );
-   setvisible(true)
+    if(messagee=="Email successfully added")
+      setvisible(true)
+    else
+      setalrdyvisible(true)
+
    
     setemail("");
   }
@@ -58,6 +66,29 @@ const Footer = () => {
               />
               <p>You have subcribed successfully...</p>
               <Link onClick={closeModal}>
+                Close
+              </Link>
+            </div>
+          </Modal>
+        </section>
+      </div>
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={alrdyvisible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={closealrdyModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>You have Already subcribed ...</p>
+              <Link onClick={closealrdyModal}>
                 Close
               </Link>
             </div>

@@ -77,6 +77,9 @@ const MyApplications = () => {
 
       if (datas.length == rparray.length) {
         setrp(rparray);
+        test1.sort(function(a,b){
+          return Date.parse(b.applicationstatus.date.substring(0, 10)) - Date.parse(a.applicationstatus.date.substring(0, 10));
+        })
         setapplicationsdata(test1)
         setisLoading(false);
         console.log(test1)
