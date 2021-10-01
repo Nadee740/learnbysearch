@@ -16,27 +16,35 @@ import Tokenlesssendpost from "../../Backend/tokenlesssendpost";
 const Footer = () => {
   const [email, setemail] = useState();
   const [visible, setvisible] = useState(false);
+  const [alrdyvisible, setalrdyvisible] = useState(false);
   const closeModal = () => {
     setvisible(false);
   };
+  const closealrdyModal = () => {
+    setalrdyvisible(false);
+  };
   const Subscribe = async (e) => {
     e.preventDefault();
-    const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(String(email).toLowerCase())) {
-      const sub_data = {
-        email,
-      };
-      const { message: messagee } = await Tokenlesssendpost(
-        `${window.name}subscribers`,
-        sub_data
-      );
-      setvisible(true);
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(re.test(String(email).toLowerCase()))
+    {const sub_data = {
+      email,
+    };
+    const { message: messagee } = await Tokenlesssendpost(
+      `${window.name}subscribers`,
+      sub_data
+    );
+    if(messagee=="Email successfully added")
+      setvisible(true)
+    else
+      setalrdyvisible(true)
 
-      setemail("");
-    } else {
-      alert("Please type a valid mail");
-    }
+   
+    setemail("");
+  }
+  else{
+    alert("Please type a valid mail")
+  }
   };
 
   return (
@@ -62,24 +70,47 @@ const Footer = () => {
           </Modal>
         </section>
       </div>
-      <footer className="footer">
-        <div className="footer-col1">
-          <Link to="/" className="footer-logo">
-            Learn By Research
-          </Link>
-          <p className="footer-text2">
-            World's first-ever platform for exploring online independent
-            research programs of your interest and connecting with a mentor to
-            work on break through technologies.
-          </p>
-          <div className="footer-sec">
-            <BsFillEnvelopeFill size="1.3em" color="#F4F4F4" />
-            <a href="mailto:info@learnbyresearch.com" className="footer-text">
-              info@learnbyresearch.com
-            </a>
-          </div>
-          <div className="footer-sec">
-            <IoCall size="1.3em" color="#F4F4F4" />
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={alrdyvisible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={closealrdyModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>You have Already subcribed ...</p>
+              <Link onClick={closealrdyModal}>
+                Close
+              </Link>
+            </div>
+          </Modal>
+        </section>
+      </div>
+    <footer className="footer">
+      <div className="footer-col1">
+        <Link to="/" className="footer-logo">
+          Learn By Research
+        </Link>
+        <p className="footer-text2">
+          World's first-ever platform for exploring online independent research
+          programs of your interest and connecting with a mentor to work on
+          break through technologies.
+        </p>
+        <div className="footer-sec">
+          <BsFillEnvelopeFill size="1.3em" color="#F4F4F4" />
+          <a href="mailto:info@learnbyresearch.com" className="footer-text">
+            info@learnbyresearch.com
+          </a>
+        </div>
+        <div className="footer-sec">
+          <IoCall size="1.3em" color="#F4F4F4" />
 
             <a href="tel:+91 7972251272" className="footer-text">
               +91 7972251272
