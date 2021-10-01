@@ -37,10 +37,12 @@ const Testimonial = ({testimonials}) => {
     <div className="testimonialholder">
       <div className="slidecontainer">
         <Slider {...settings}>
-        {testimonials.map((testmonial)=>(
+        {testimonials.map((testmonial)=>{
+          console.log(testmonial.testimonial.status)
+          return testmonial.testimonial.status?(
 
           <TestimonialCard data={testmonial} /> 
-        ))
+        ):""})
 
         }
          

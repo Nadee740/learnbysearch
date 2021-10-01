@@ -44,13 +44,17 @@ const LandingPage = () => {
     checkLOgin();
   };
   const gettestimonials=async()=>{
-    const {testimonials:data} = await Gettestimonials(
+    const {testimonials} = await Gettestimonials(
       `${window.name}testimonials`
     );
-    settestimonials(data)
+    testimonials.sort(function(a,b){
+      return Date.parse(b.createdAt.substring(0, 10)) - Date.parse(a.createdAt.substring(0, 10));
+    })
+    testimonials.slice(0,5)
+    settestimonials(testimonials)
    
-    // setisLoading(false)
-    getstudents(data)
+    
+    getstudents(testimonials)
     
   }
   const getstudents=(data)=>{
