@@ -25,6 +25,7 @@ const Signup = () => {
   const [confirmpass, setConfrpass] = useState("");
   const [phoneNumber, setPhone] = useState("+91");
   const [emailerror, setemailerror] = useState();
+  const [emailalrdyexist, setemailalrdyexist] = useState(false);
   const [usererror, setusererror] = useState();
   const [passerror, setpassrerror] = useState();
   const [phoneerror, setphoneerror] = useState();
@@ -302,6 +303,8 @@ const Signup = () => {
           if (message.includes("verification")) {
             SetStep(step + 1);
           } else if (message.includes("email")) {
+            if(message=="email already exists")
+              setemailalrdyexist(true)
             setemailerror(message);
             stylefunction("2px outset red", "email");
             setcursor("email");
@@ -576,9 +579,12 @@ const Signup = () => {
                             }}
                           />
                         </div>
-                        <label className="label" htmlFor="">
-                          {emailerror && emailerror}
+                        <label onClick={()=>{
+                          window.location='/login'
+                        }} className="label" htmlFor="">
+                          {emailalrdyexist?"Email already exist click here to Login":emailerror && emailerror}
                         </label>
+                        
                       </div>
 
                       <div className="inputholder" id="phone">
