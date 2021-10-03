@@ -20,6 +20,7 @@ const Signup = () => {
   const [LastName, setLastName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
 
+  
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [confirmpass, setConfrpass] = useState("");
@@ -342,6 +343,7 @@ const Signup = () => {
     setotpsend(false);
   };
 
+
   const VerifyOtp = async () => {
     setotperr();
 
@@ -586,7 +588,42 @@ const Signup = () => {
                         </label>
                         
                       </div>
-
+                      {/* isoCode: 'IN', name: 'India', phonecode: '91' */}
+                      <Tooltip title="Country">
+                    <>
+                      <p className="inputtext">Country</p>
+                      <div className="inputholder">
+                        <div className="inputholder-top">
+                          <select
+                            className="selectBox"
+                            required
+                            name="country"
+                            id="country"
+                            onChange={(e) => {
+                              const data = JSON.parse(e.target.value);
+                              if(data.phonecode.charAt(0)=='+')
+                               setPhone(data.phonecode)
+                              else
+                               setPhone('+'+data.phonecode)
+                              
+                              
+                        
+                            }}
+                          >
+                            <option>
+                              Select country
+                            </option>
+                            {allcountry &&
+                              allcountry.map((country) => (
+                                <option value={JSON.stringify(country)}>
+                                  {country.name+" " + country.phonecode}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
+                      </div>
+                    </>
+                  </Tooltip>
                       <div className="inputholder" id="phone">
                         <div className="inputholder-top">
                           <input
@@ -596,6 +633,10 @@ const Signup = () => {
                             placeholder="phone number"
                             defaultValue="+91"
                             onChange={(e) => {
+                              stylefunction("2px solid #81818128", "phone");
+                              if ((/[a-zA-Z]/).test(e.target.value))
+                              stylefunction("2px outset red", "phone");
+
                               setPhone(e.target.value);
                             }}
                           />

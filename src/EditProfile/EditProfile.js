@@ -553,6 +553,7 @@ const EditProfile = () => {
                             id="country"
                             onChange={(e) => {
                               const data = JSON.parse(e.target.value);
+                              console.log(data)
                               setCountry(data.name);
                               setState("");
                               setCity("");
