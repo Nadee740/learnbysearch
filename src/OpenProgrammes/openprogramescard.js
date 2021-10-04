@@ -11,8 +11,10 @@ function Openprogramcard({ blog }) {
           className="openprogramcard-img"
         />
         <p className="duedate">Due on {blog.Deadline}</p>
-        <p className="openprogramcard-head">{blog.title}</p>
-        <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
+        <div className="openprogramcard-txetholder">
+          <p className="openprogramcard-head">{blog.title}</p>
+          <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
+        </div>
         <button
           onClick={() => {
             window.location = a;
