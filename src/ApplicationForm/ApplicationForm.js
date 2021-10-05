@@ -215,7 +215,7 @@ const ApplicationForm = () => {
                 alt=""
               />
               <p>
-                Referal Code error do you want to apply without referal code?
+                USed Referal Code {code} does not exist.  do you want to apply without referal code?
               </p>
               <br></br>
               <div className="extrapart-webinar">
