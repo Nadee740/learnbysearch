@@ -1,10 +1,8 @@
-
 import { useState } from "react";
 
 import { useParams } from "react-router-dom";
 
 function Ongoingresearchcard({ blog }) {
-  
   const [visible, setvisible] = useState(false);
   let a = "/ongoingresearchpage/" + blog.slug;
 
@@ -22,8 +20,10 @@ function Ongoingresearchcard({ blog }) {
           className="openprogramcard-img"
         />
         <p className="duedate">Application closed on {blog.Deadline}</p>
-        <p className="openprogramcard-head">{blog.title}</p>
-        <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
+        <div className="openprogramcard-txetholder">
+          <p className="openprogramcard-head">{blog.title}</p>
+          <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
+        </div>
         <button
           onClick={() => {
             window.location = a;

@@ -68,6 +68,9 @@
   color: #c86fc9;
   cursor: pointer;
 }
+.openprogramcard-txetholder {
+  height: 100%;
+}
 @media screen and (max-width: 960px) {
   .cardholder {
     padding: 20px 5px;
