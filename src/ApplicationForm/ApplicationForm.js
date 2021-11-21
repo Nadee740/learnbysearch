@@ -6,7 +6,6 @@ import Researchpgms from "../Backend/Researchpgms";
 import Modal from "react-awesome-modal";
 import { Link } from "react-router-dom";
 import SendPost from "../Backend/Sendpost";
-import { RotateCircleLoading } from "react-loadingg";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import UserReferalCode from "../Backend/usereferalcode";
@@ -22,21 +21,17 @@ const ApplicationForm = () => {
   const [q1, setq1] = useState("");
   const [q2, setq2] = useState(true);
   const [q3, setq3] = useState("");
-  const [blank, setblank] = useState("");
-
-  const [switchitm, setSwitch] = useState(true);
   const [PositionId, setPositionId] = useState("");
   const [ResearchProgramId, setResearchProgramId] = useState();
   const [positions, setPosition] = useState("");
-  const [blogsData, setblogData] = useState("");
   const [code, setreferalcode] = useState("");
   const [err, seterr] = useState("");
 
-  let array = [];
-
-  const closeModal = () => {
+ const closeModal = () => {
     setvisible(false);
   };
+
+  /////////modal which says to complete profile/////////////
   const closeerrorModal = () => {
     localStorage.setItem("q1", q1);
     localStorage.setItem("q2", q2);
@@ -45,49 +40,33 @@ const ApplicationForm = () => {
   };
   ////////////////////get positions of rp ///////////////////////////////////////
   const getPositions = async (data) => {
-    setisLoading(true);
     await data.positions.map(async (position, index) => {
-      const { data: Datass } = await Researchpgms(
+      const { data: Data } = await Researchpgms(
         `${window.name}position/${position}`
       );
+      setPosition((state) => [...state, Data]);
 
-      array.push(Datass);
-
-      setPosition(array);
-
-      if (data.positions.length == array.length) {
+      if (data.positions.length == index + 1) {
         setisLoading(false);
-        setPositionId(array[0]._id);
+        setPositionId(position[0]._id);
       }
     });
-
-    // setisLoading(false);
   };
   /////////////////////////////////////////////////////////////////////
 
   //////////////////get rp data////////////////////////////////////////
   const getBlogs = async () => {
-    setisLoading(true);
-    const { data: Datass } = await Researchpgms(
+    const { data } = await Researchpgms(
       `${window.name}research-program/${slug}`
     );
-    setblogData(Datass);
-    setResearchProgramId(Datass._id);
-    await getPositions(Datass);
+    setResearchProgramId(data._id);
+    await getPositions(data);
   };
   //////////////////////////////////////////////
 
-  const handleChange = (event) => {
-    setSwitch(switchitm);
-  };
-
   const Applyreferal = async () => {
     const data = { code };
-    const { error: error } = await UserReferalCode(
-      `${window.name}count-code`,
-      data
-    );
-    console.log(error);
+    const { error } = await UserReferalCode(`${window.name}count-code`, data);
     if (error) {
       setreferalvisible(true);
     } else {
@@ -108,7 +87,7 @@ const ApplicationForm = () => {
     getBlogs();
   }, []);
 
-  ///////////////////////////////submit application////////////////////
+  /////////////decide to apply for referal or submit////////////////////
   const submitApplictaionform = async (e) => {
     e.preventDefault();
     localStorage.removeItem("q1");
@@ -124,25 +103,33 @@ const ApplicationForm = () => {
       }
     }
   };
+
+  ///////////////////////////////submit application////////////////////
   const submitformdata = async () => {
     let data = { PositionId, ResearchProgramId, q1, q2, q3, code };
     if (q2 == "true" || q2 == true) {
       data = { PositionId, ResearchProgramId, q1, q2, code };
     }
-    console.log(data);
 
-    const { message: messagee } = await SendPost(
+    const { message } = await SendPost(
       `${window.name}application-form`,
       data
     );
 
-    if (messagee.includes("Application form submitted")) {
+    if (message.includes("Application form submitted")) {
       setisLoading(false);
       setvisible(true);
     } else {
+      setisLoading(false);
       seterrorvisible(true);
     }
   };
+  if (isLoading)
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>
+    );
 
   //////////////////////////////////////////////////////////////////////
   return (
@@ -215,7 +202,8 @@ const ApplicationForm = () => {
                 alt=""
               />
               <p>
-                USed Referal Code {code} does not exist.  do you want to apply without referal code?
+                USed Referal Code {code} does not exist. do you want to apply
+                without referal code?
               </p>
               <br></br>
               <div className="extrapart-webinar">
@@ -243,244 +231,223 @@ const ApplicationForm = () => {
           </Modal>
         </section>
       </div>
-      {isLoading ? (
-        <div className="isLoading">
-          <SolarSystemLoading />
-        </div>
-      ) : (
-        <div>
-          <section className="sign-in">
-            <div className="container">
-              <div className="signup-content">
-                <div className="signup-image">
-                  <img src="../images/Forms-bro.svg" alt="Login pic"></img>
-                </div>
-                <div className="singup-form">
-                  <h2 className="form-title">APPLICATION </h2>
+      <div>
+        <section className="sign-in">
+          <div className="container">
+            <div className="signup-content">
+              <div className="signup-image">
+                <img src="../images/Forms-bro.svg" alt="Login pic"></img>
+              </div>
+              <div className="singup-form">
+                <h2 className="form-title">APPLICATION </h2>
 
-                  <form onSubmit={submitApplictaionform}>
-                    <div className="stepperdiv">
-                      <Stepper
-                        activeStep={step}
-                        styleConfig={{
-                          completedBgColor: "#bd00c0",
-                          activeBgColor: "#C86FC9",
-                          inactiveBgColor: "#bdbdbd",
-                        }}
+                <form onSubmit={submitApplictaionform}>
+                  <div className="stepperdiv">
+                    <Stepper
+                      activeStep={step}
+                      styleConfig={{
+                        completedBgColor: "#bd00c0",
+                        activeBgColor: "#C86FC9",
+                        inactiveBgColor: "#bdbdbd",
+                      }}
+                    >
+                      <Step label="Application Form" />
+
+                      <Step label="Financial Assistance" />
+                    </Stepper>
+                  </div>
+                  {step === 0 ? (
+                    <>
+                      <p className="inputtext">Referal Code if any</p>
+                      <div
+                        className="inputholder inputholder2"
+                        id="usernameholder"
                       >
-                        <Step label="Application Form" />
-
-                        <Step label="Financial Assistance" />
-                      </Stepper>
-                    </div>
-                    {step === 0 ? (
-                      <>
-                        <p className="inputtext">Referal Code if any</p>
-                        <div
-                          className="inputholder inputholder2"
-                          id="usernameholder"
-                        >
-                          <div className="inputholder-top ">
-                            <textarea
-                              minLength={100}
-                              rows="1"
-                              className="textarea"
-                              placeholder=""
-                              value={code}
-                              onChange={(e) => {
-                                setreferalcode(e.target.value);
-                              }}
-                            ></textarea>
-                          </div>
+                        <div className="inputholder-top ">
+                          <textarea
+                            minLength={100}
+                            rows="1"
+                            className="textarea"
+                            placeholder=""
+                            value={code}
+                            onChange={(e) => {
+                              setreferalcode(e.target.value);
+                            }}
+                          ></textarea>
                         </div>
-                        <p className="inputtext">
-                          What do you want to achieve by joining the research
-                          program?
-                        </p>
-                        <div
-                          className="inputholder inputholder2"
-                          id="usernameholder"
-                        >
-                          <div className="inputholder-top ">
-                            <textarea
-                              minLength={100}
-                              rows="5"
-                              className="textarea"
-                              placeholder=""
-                              required
-                              value={q1}
-                              onChange={(e) => {
-                                setq1(e.target.value);
-                              }}
-                            ></textarea>
-                          </div>
+                      </div>
+                      <p className="inputtext">
+                        What do you want to achieve by joining the research
+                        program?
+                      </p>
+                      <div
+                        className="inputholder inputholder2"
+                        id="usernameholder"
+                      >
+                        <div className="inputholder-top ">
+                          <textarea
+                            minLength={100}
+                            rows="5"
+                            className="textarea"
+                            placeholder=""
+                            required
+                            value={q1}
+                            onChange={(e) => {
+                              setq1(e.target.value);
+                            }}
+                          ></textarea>
                         </div>
-                        <p className="inputtext">
-                          Select the position for which you are applying :
-                        </p>
-                        <div
-                          className="inputholder inputholder2"
-                          id="usernameholder"
-                        >
-                          <div className="inputholder-top inputholder-top3">
-                            {/* <p className="inputp">
+                      </div>
+                      <p className="inputtext">
+                        Select the position for which you are applying :
+                      </p>
+                      <div
+                        className="inputholder inputholder2"
+                        id="usernameholder"
+                      >
+                        <div className="inputholder-top inputholder-top3">
+                          {/* <p className="inputp">
                           SELECT THE POSITION FOR WHICH YOU HAVE TO APPLY !
                         </p> */}
-                            <div className="div">
-                              <select
-                                className="selectbx"
-                                onChange={(e) => {
-                                  setPositionId(e.target.value);
-                                }}
-                              >
-                                {isLoading
-                                  ? setisLoading(true)
-                                  : positions &&
-                                    positions.map((position, index) => (
-                                      <option
-                                        value={position._id}
-                                        className="selectbx-itm"
-                                        key={index}
-                                      >
-                                        {position.title}
-                                      </option>
-                                    ))}
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                    {step === 1 ? (
-                      <>
-                        <p className="inputtext">
-                          Can you afford to pay the program fees of Rs 3000 per
-                          month?
-                          <br /> (Duration 3-4 months as it varies with the
-                          research project and is mentioned on the website. This
-                          fees will cover the charges for mentorship, training
-                          resources, publication charges and the tools
-                          required.)
-                        </p>
-                        <div
-                          className="inputholder inputholder2"
-                          id="usernameholder"
-                        >
-                          <div className="inputholder-top inputholder-top3  ">
-                            {/* <p className="inputp">
-                          The Program charges 5000 fees to cover the
-                          research,training and resources cost.Can you afford to
-                          pay the fees?( If eligible you may get financial
-                          assistance to support. )
-                        </p> */}
-                            <div className="div ">
-                              <select
-                                className="selectbx"
-                                onChange={(e) => {
-                                  setq2(e.target.value);
-                                  if (e.target.value == "true") {
-                                    setparavisible(false);
-                                  } else {
-                                    setparavisible(true);
-                                  }
-                                }}
-                              >
-                                <option value={true} className="selectbx-itm">
-                                  YES
-                                </option>
-                                <option value={false} className="selectbx-itm">
-                                  NO
-                                </option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-
-                        {paravisible ? (
-                          <>
-                            <p className="inputtext">
-                              If You Want financial assistance please mention
-                              your annual family income and tell us how you can
-                              help LearnByResearch to support others in need of
-                              assistance like you :
-                            </p>
-                            <div
-                              className="inputholder inputholder2 "
-                              id="usernameholder"
+                          <div className="div">
+                            <select
+                              className="selectbx"
+                              onChange={(e) => {
+                                setPositionId(e.target.value);
+                              }}
                             >
-                              <div className="inputholder-top ">
-                                <textarea
-                                  minLength={250}
-                                  value={q3}
-                                  onChange={(e) => {
-                                    setq3(e.target.value);
-                                  }}
-                                  rows="15"
-                                  className="textarea"
-                                  placeholder=""
-                                ></textarea>
-                              </div>
-                              <label className="label" htmlFor="">
-                                {err && err}
-                              </label>
+                              {isLoading
+                                ? setisLoading(true)
+                                : positions &&
+                                  positions.map((position, index) => (
+                                    <option
+                                      value={position._id}
+                                      className="selectbx-itm"
+                                      key={index}
+                                    >
+                                      {position.title}
+                                    </option>
+                                  ))}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {step === 1 ? (
+                    <>
+                      <p className="inputtext">
+                        Can you afford to pay the program fees of Rs 3000 per
+                        month?
+                        <br /> (Duration 3-4 months as it varies with the
+                        research project and is mentioned on the website. This
+                        fees will cover the charges for mentorship, training
+                        resources, publication charges and the tools required.)
+                      </p>
+                      <div
+                        className="inputholder inputholder2"
+                        id="usernameholder"
+                      >
+                        <div className="inputholder-top inputholder-top3  ">
+                          <div className="div ">
+                            <select
+                              className="selectbx"
+                              onChange={(e) => {
+                                setq2(e.target.value);
+                                if (e.target.value == "true") {
+                                  setparavisible(false);
+                                } else {
+                                  setparavisible(true);
+                                }
+                              }}
+                            >
+                              <option value={true} className="selectbx-itm">
+                                YES
+                              </option>
+                              <option value={false} className="selectbx-itm">
+                                NO
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      {paravisible ? (
+                        <>
+                          <p className="inputtext">
+                            If You Want financial assistance please mention your
+                            annual family income and tell us how you can help
+                            LearnByResearch to support others in need of
+                            assistance like you :
+                          </p>
+                          <div
+                            className="inputholder inputholder2 "
+                            id="usernameholder"
+                          >
+                            <div className="inputholder-top ">
+                              <textarea
+                                minLength={250}
+                                value={q3}
+                                onChange={(e) => {
+                                  setq3(e.target.value);
+                                }}
+                                rows="15"
+                                className="textarea"
+                                placeholder=""
+                              ></textarea>
                             </div>
-                          </>
-                        ) : (
-                          ""
-                        )}
-                      </>
-                    ) : (
-                      ""
-                    )}
-                    {/*<input
-                      type="submit"
-                      value="Submit"
-                      placeholder="Sign Up"
-                      className="submit-btn"
-                    />*/}
-                    <div className="btnholder">
-                      {step === 0 ? (
-                        <button
-                          className="submit-btn submit-btn2"
-                          onClick={() => {
-                            setStep(step + 1);
-                          }}
-                        >
-                          NEXT STEP
-                        </button>
-                      ) : null}
-                      {step > 0 ? (
-                        <button
-                          className="submit-btn submit-btn2"
-                          onClick={() => {
-                            setStep(step - 1);
-                          }}
-                        >
-                          PREVIOUS STEP
-                        </button>
-                      ) : null}
-                      {step > 0 ? (
-                        <button
-                          className="submit-btn submit-btn2"
-                          onClick={() => {
-                            console.log("Hy")
-                          }}
-                        >
-                          SUBMIT
-                        </button>
-                      ) : null}
-                    </div>
-                  </form>
-                </div>
+                            <label className="label" htmlFor="">
+                              {err && err}
+                            </label>
+                          </div>
+                        </>
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  <div className="btnholder">
+                    {step === 0 ? (
+                      <button
+                        className="submit-btn submit-btn2"
+                        onClick={() => {
+                          setStep(step + 1);
+                        }}
+                      >
+                        NEXT STEP
+                      </button>
+                    ) : null}
+                    {step > 0 ? (
+                      <button
+                        className="submit-btn submit-btn2"
+                        onClick={() => {
+                          setStep(step - 1);
+                        }}
+                      >
+                        PREVIOUS STEP
+                      </button>
+                    ) : null}
+                    {step > 0 ? (
+                      <button
+                        className="submit-btn submit-btn2"
+                        onClick={() => {
+                          console.log("Hy");
+                        }}
+                      >
+                        SUBMIT
+                      </button>
+                    ) : null}
+                  </div>
+                </form>
               </div>
             </div>
-            
-          </section>
-          
-        </div>
-      )}
+          </div>
+        </section>
+      </div>
     </>
   );
 };

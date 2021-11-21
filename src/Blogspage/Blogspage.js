@@ -3,26 +3,24 @@ import { AiOutlineSearch } from "react-icons/ai";
 import Blog from "./blog";
 import { useEffect, useState } from "react";
 import Researchpgms from "../Backend/Researchpgms";
-import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 
 const BlogsPage = () => {
-  const [blogsData, setblogData] = useState("");
-  const [blogsfulldata, setblogsfulldata] = useState("");
+  const [blogsData, setblogData] = useState("");     //blogs after filtered search
+  const [blogsfulldata, setblogsfulldata] = useState("");   //all blogs
   const [isLoading, setisLoading] = useState(true);
   const [SearchText, setsearchText] = useState("");
 
   ////////////////////get all blogs ///////////////////
   const getBlogs = async () => {
     setisLoading(true);
-    const { data: Datass } = await Researchpgms(`${window.name}blog`);
-    Datass.sort(function (a, b) {
+    const { data } = await Researchpgms(`${window.name}blog`);
+    data.sort(function (a, b) {
       return Date.parse(b.date) - Date.parse(a.date);
     });
-    setblogData(Datass);
-
-    setblogsfulldata(Datass);
+    setblogData(data);
+    setblogsfulldata(data);
     setisLoading(false);
   };
   ///////////////////////////////////////////
@@ -51,17 +49,19 @@ const BlogsPage = () => {
   useEffect(() => {
     getBlogs();
   }, []);
+
+  if (isLoading)
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>
+    );
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Home | Blogs</title>
       </Helmet>
-      {isLoading ? (
-        <div className="isLoading">
-          <SolarSystemLoading />
-        </div>
-      ) : (
         <div className="blogpage">
           <div className="blogheader">
             <div className="blogheader-col1">
@@ -97,7 +97,7 @@ const BlogsPage = () => {
             ))}
           </div>
         </div>
-      )}
+     
     </>
   );
 };

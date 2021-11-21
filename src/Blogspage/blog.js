@@ -1,14 +1,12 @@
 import "./Blogspage.css";
-import { FaUserCircle } from "react-icons/fa";
+
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import { useState } from "react";
 import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
-import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-import { Helmet } from "react-helmet";
 const Blog = ({ blog }) => {
   function removeTags(str) {
     if (str === null || str === "") return false;
@@ -31,10 +29,10 @@ const Blog = ({ blog }) => {
   const [isLoading, setisLoading] = useState(true);
 
   useEffect(async () => {
-    const { data: Datass } = await Researchpgms(
+    const { data} = await Researchpgms(
       `${window.name}author/${blog.author}`
     );
-    setauthdata(Datass);
+    setauthdata(data);
 
     setisLoading(false);
   }, []);
@@ -44,7 +42,7 @@ const Blog = ({ blog }) => {
     likedblogs.push(blog._id);
     setlikes(likes + 1);
     localStorage.setItem("likedblogs", JSON.stringify(likedblogs));
-    const { message: messagee } = await Tokenlesssendpost(
+    const { message} = await Tokenlesssendpost(
       `${window.name}like-blog/${blog._id}`,
       {}
     );
@@ -63,15 +61,15 @@ const Blog = ({ blog }) => {
     localStorage.setItem("likedblogs", JSON.stringify(likedblogs));
   };
 
-  const htmlpart = blog.content;
   let a = "/blogsdetailspage/" + blog.slug;
+  if (isLoading)
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>
+    );
   return (
     <>
-      {isLoading ? (
-        <div className="isLoading">
-          <SolarSystemLoading />
-        </div>
-      ) : (
         <div className="blogcard">
           <div
             onClick={() => {
@@ -141,7 +139,7 @@ const Blog = ({ blog }) => {
             </div>
           </div>
         </div>
-      )}
+     
     </>
   );
 };

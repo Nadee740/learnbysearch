@@ -1,8 +1,9 @@
 
- const Gettestimonials = async(url) => {
+ 
+ const GetCollegelogos = async(url) => {
 
-    let testimonials={};
-    let message=""
+    let data={};
+    
     
        
            
@@ -16,15 +17,14 @@
                })
                .then(res => res.json())
                .then(json => {
-                  
-                 testimonials=json.testimonials
+                
+                 data=json
                   
                })
                .catch(
                err => {
                    
-                  
-                   message=err.message
+               console.log(err)
                    // setErr(err.message)
                    
                
@@ -33,9 +33,9 @@
    
    // },[]); 
    
-   console.log(testimonials)
-   return {testimonials};
+   
+   return {data};
    
    }
    
-   export default Gettestimonials;
+   export default GetCollegelogos;

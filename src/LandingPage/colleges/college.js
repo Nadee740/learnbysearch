@@ -1,21 +1,27 @@
 import { Link } from "react-router-dom";
 import "./college.css";
 
-const Colleges = () => {
+const Colleges = ({logos}) => {
+  console.log(logos)
   return (
     <div className="colleges">
       <h2>We have students from</h2>
       <div className="college-holder">
-        <a href="https://www.iimidr.ac.in/" target="_blank">
+        {logos.map((logo,index)=>(
+          
+          <a key={index} href="https://www.iimidr.ac.in/" target="_blank">
           <div className="collwgeholder-card">
             <img
-              src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
+              src={logo.imageUrl}
               alt=""
               className="college-img"
             />
           </div>
         </a>
-        <div className="collwgeholder-card">
+         
+        ))}
+        
+        {/* <div className="collwgeholder-card">
           <img
             src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
             alt=""
@@ -91,14 +97,7 @@ const Colleges = () => {
             alt=""
             className="college-img"
           />
-        </div>
-        <div className="collwgeholder-card">
-          <img
-            src="https://iitgn.ac.in/assets/img/iitgnlogo-emblem.png"
-            alt=""
-            className="college-img"
-          />
-        </div>
+        </div> */}
       </div>
     </div>
   );

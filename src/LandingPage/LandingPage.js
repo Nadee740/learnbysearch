@@ -15,6 +15,7 @@ import Colleges from "./colleges/college";
 import Testimonial from "./testimonials/Textimonial";
 import Gettestimonials from "../Backend/Gettestimonials";
 import getStudent from "../Backend/getstudent";
+import GetCollegelogos from "../Backend/Getcollegelogo";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -23,6 +24,7 @@ const LandingPage = () => {
   const [webinardata, setwebinardata] = useState();
   const [testimonials,settestimonials]=useState()
   const [testimonialsdata,settestimonialsdata]=useState([])
+  const [collegelogos,setcollegelogos]=useState([])
   useEffect(() => {
     getopenPgmgs();
   }, []);
@@ -41,6 +43,12 @@ const LandingPage = () => {
     setisLoading(true);
     const { data: blogs } = await Researchpgms(`${window.name}blog`);
     setblogData(blogs);
+    getcollegelogos()
+  };
+  const getcollegelogos = async () => {
+    setisLoading(true);
+    const { data: collegelogos } = await GetCollegelogos(`${window.name}collegelogos`);
+    setcollegelogos(collegelogos.logos)
     checkLOgin();
   };
   const gettestimonials=async()=>{
@@ -61,7 +69,7 @@ const LandingPage = () => {
     
  data.map((testimonial,index)=>{
   getStudent(testimonial.studentId).then((res)=>{
-    console.log(res,"hyya")
+    
    settestimonialsdata((state)=>[...state,{testimonial:testimonial,student:res.user}])
   })
   if(index==data.length-1)
@@ -180,7 +188,7 @@ const LandingPage = () => {
               </p>
             </div>
           </section>
-          {/*<Colleges />*/}
+          <Colleges logos={collegelogos} />
           <section className="about">
             <div className="about-content">
               <h2>About LearnByResearch</h2>

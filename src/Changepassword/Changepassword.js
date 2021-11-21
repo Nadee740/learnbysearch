@@ -6,7 +6,6 @@ import Footer from "../LandingPage/footer/footer";
 import "./Changepassword.css";
 import Authverifier from "../Backend/Authverifier";
 import { useEffect } from "react";
-import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 

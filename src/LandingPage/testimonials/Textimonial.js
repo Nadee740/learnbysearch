@@ -35,8 +35,7 @@ const Testimonial = ({ testimonials }) => {
       <div className="slidecontainer">
         <Slider {...settings}>
           {testimonials.map((testmonial) => {
-            console.log(testmonial.testimonial.status);
-            return testmonial.testimonial.status ? (
+           return testmonial.testimonial.status ? (
               <TestimonialCard data={testmonial} />
             ) : (
               ""

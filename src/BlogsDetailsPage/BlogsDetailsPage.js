@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { useParams } from "react-router-dom";
 import Researchpgms from "../Backend/Researchpgms";
@@ -10,22 +9,17 @@ import { Helmet } from "react-helmet";
 import "./BlogsDetailsPage.css";
 function BlogsDetailsPage({ blog }) {
   const [blogsData, setblogData] = useState("");
-  const [authData, setauthData] = useState("");
+ const [isLoading, setisLoading] = useState(true);
 
-  const [isLoading, setisLoading] = useState(true);
-  const [SearchText, setsearchText] = useState("");
   let { slug } = useParams();
   const htmlpart = blogsData.content;
   ////////////////get the details of the blog////////////////
   const getBlogs = async () => {
     setisLoading(true);
-    const { data: Datass } = await Researchpgms(`${window.name}blog/${slug}`);
+    const { data} = await Researchpgms(`${window.name}blog/${slug}`);
 
-    setblogData(Datass);
-    const { data: authotDatass } = await Researchpgms(
-      `${window.name}author/${Datass.author}`
-    );
-    setauthData(authotDatass);
+    setblogData(data);
+
     setisLoading(false);
   };
   ///////////////////////////////////////////////
@@ -34,18 +28,19 @@ function BlogsDetailsPage({ blog }) {
     getBlogs();
   }, []);
 
+  if (isLoading)
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>
+    );
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{blogsData.title}</title>
       </Helmet>
-      {isLoading ? (
-        <div className="isLoading">
-          <SolarSystemLoading />
-        </div>
-      ) : (
-        <div>
+      <div>
           <div className="blogdetailpage">
             <div className="blogdetailpage-img">
               <img
@@ -73,7 +68,7 @@ function BlogsDetailsPage({ blog }) {
           </div>
           <Footer />
         </div>
-      )}
+     
     </>
   );
 }
