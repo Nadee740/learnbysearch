@@ -27,6 +27,7 @@ import SignupasGuest from "./SignupasGuest/SignupasGuest";
 import PaymentStatusPage from "./PaymentStatus/PaymentStatusPage";
 import SigninAsresearcher from "./SigninAsResearcher/SigninAsresearcher";
 import SuggestRP from "./SuggestRP/SuggestRP";
+import LoginAsresearcher from "./LoginasResearcher/Loginasresearcher";
 
 function App() {
 
@@ -69,6 +70,7 @@ function App() {
           <Route path="/paymentstatus" exact component={PaymentStatusPage} />
           <Route path="/signinasreasearcher" exact component={SigninAsresearcher} />
           <Route path="/suggestrp" exact component={SuggestRP} />
+          <Route path="/loginasresearcher" exact component={LoginAsresearcher} />
         </Router>
     
     </div>
