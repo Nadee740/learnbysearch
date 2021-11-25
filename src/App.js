@@ -25,6 +25,8 @@ import OngoingresearchPage from "./ongoingresearchdetailed/ongoingresearchdetail
 import WebinarPage from "./webinar/webinar";
 import SignupasGuest from "./SignupasGuest/SignupasGuest";
 import PaymentStatusPage from "./PaymentStatus/PaymentStatusPage";
+import SigninAsresearcher from "./SigninAsResearcher/SigninAsresearcher";
+import SuggestRP from "./SuggestRP/SuggestRP";
 
 function App() {
 
@@ -65,6 +67,8 @@ function App() {
           />
           <Route path="/applyasguest/:id" exact component={SignupasGuest} />{" "}
           <Route path="/paymentstatus" exact component={PaymentStatusPage} />
+          <Route path="/signinasreasearcher" exact component={SigninAsresearcher} />
+          <Route path="/suggestrp" exact component={SuggestRP} />
         </Router>
     
     </div>
