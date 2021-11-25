@@ -8,7 +8,7 @@
 .college-holder {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 }
 .collwgeholder-card {
   display: flex !important;
@@ -17,7 +17,7 @@
   width: 100%;
 }
 .college-img {
-  height: 4rem;
+  height: 3rem;
   margin: 1rem;
 }
 
