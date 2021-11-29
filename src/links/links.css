@@ -1,0 +1,68 @@
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 4rem;
+  padding-bottom: 6rem;
+}
+.links-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  min-width: 22rem;
+  margin-top: 1rem;
+  border-radius: 0.2rem;
+}
+.links-btn-txt {
+  margin-left: 1.2rem;
+  font-weight: 500;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: #fff;
+}
+.fb {
+  background-color: #3b5998;
+}
+.wtspp {
+  background-color: rgb(228, 65, 96);
+}
+.lnkdn {
+  background-color: #0076b4;
+}
+.call {
+  background-color: rgb(255, 69, 0);
+}
+.email {
+  background-color: #1968ff;
+}
+.pagelink {
+  background-color: rgb(77, 116, 163);
+}
+
+.links-btn-txt1 {
+  margin-left: 1.3rem;
+  font-weight: 400;
+  text-align: center;
+}
+.links-icn {
+  height: 8rem;
+}
+@media screen and (max-width: 960px) {
+  .links-icn {
+    height: 4rem;
+  }
+  .links-btn {
+    padding: 0.4rem 0.6rem;
+    outline: none;
+    border: none;
+    font-size: 0.9rem;
+    min-width: 15rem;
+  }
+}

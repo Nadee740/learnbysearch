@@ -29,6 +29,7 @@ import PaymentStatusPage from "./PaymentStatus/PaymentStatusPage";
 import SuggestRP from "./SuggestRP/SuggestRP";
 import LoginAsresearcher from "./LoginasResearcher/Loginasresearcher";
 import SignUpAsresearcher from "./SigninUpResearcher/SignUpAsresearcher";
+import LinksPage from "./links/links";
 
 function App() {
   return (
@@ -66,13 +67,14 @@ function App() {
         />
         <Route path="/applyasguest/:id" exact component={SignupasGuest} />{" "}
         <Route path="/paymentstatus" exact component={PaymentStatusPage} />
-        <Route
+        <Route path="/links" exact component={LinksPage} />
+        {/*<Route
           path="/signupasreasearcher"
           exact
           component={SignUpAsresearcher}
         />
         <Route path="/suggestrp" exact component={SuggestRP} />
-        <Route path="/loginasresearcher" exact component={LoginAsresearcher} />
+        <Route path="/loginasresearcher" exact component={LoginAsresearcher} />*/}
       </Router>
     </div>
   );

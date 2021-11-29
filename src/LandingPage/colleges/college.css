@@ -23,10 +23,14 @@
 
 @media screen and (max-width: 960px) {
   .college-holder {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
   .college-img {
     height: 3rem;
+    margin: 0.6rem;
+  }
+  .college-img {
+    height: 2rem;
     margin: 0.6rem;
   }
 }
