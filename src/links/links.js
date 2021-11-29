@@ -37,12 +37,7 @@ const LinksPage = () => {
             <p className="links-btn-txt">Connect on linkdin</p>
           </button>
         </a>
-        <a href="facebook" target="_blank">
-          <button className="links-btn call">
-            <FaLinkedin color="#fff" size="2em" />{" "}
-            <p className="links-btn-txt">Like Us On Facebook</p>
-          </button>
-        </a>
+
         <a href="tel:+91 7972251272" target="_blank">
           <button className="links-btn email">
             <MdPhone color="#fff" size="2em" />{" "}
