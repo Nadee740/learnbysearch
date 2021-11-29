@@ -15,10 +15,7 @@ const LinksPage = () => {
       <div className="links">
         <img src="/fav2.jpg" alt="" className="links-icn" />
         <p className="links-btn-txt1">Follow Us On Social Media</p>
-        <a
-          href="https://www.linkedin.com/company/learnbyresearch/"
-          target="_blank"
-        >
+        <a href="https://www.facebook.com" target="_blank">
           <button className="links-btn fb">
             <FaFacebook color="#fff" size="2em" />{" "}
             <p className="links-btn-txt">Like Us On Facebook</p>
@@ -60,6 +57,8 @@ const LinksPage = () => {
         </a>
         <a href="https://www.learnbyresearch.com" target="_blank">
           <button className="links-btn fb">
+            {" "}
+            <img src="/fav.jpeg" alt="" className="links-btn-icn" />
             <p className="links-btn-txt">Go to our page</p>
           </button>
         </a>
