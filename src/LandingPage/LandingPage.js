@@ -22,9 +22,9 @@ const LandingPage = () => {
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [pgmsData, setpgms] = useState("");
   const [webinardata, setwebinardata] = useState();
-  const [testimonials,settestimonials]=useState()
-  const [testimonialsdata,settestimonialsdata]=useState([])
-  const [collegelogos,setcollegelogos]=useState([])
+  const [testimonials, settestimonials] = useState();
+  const [testimonialsdata, settestimonialsdata] = useState([]);
+  const [collegelogos, setcollegelogos] = useState([]);
   useEffect(() => {
     getopenPgmgs();
   }, []);
@@ -43,42 +43,44 @@ const LandingPage = () => {
     setisLoading(true);
     const { data: blogs } = await Researchpgms(`${window.name}blog`);
     setblogData(blogs);
-    getcollegelogos()
+    getcollegelogos();
   };
   const getcollegelogos = async () => {
     setisLoading(true);
-    const { data: collegelogos } = await GetCollegelogos(`${window.name}collegelogos`);
-    setcollegelogos(collegelogos.logos)
+    const { data: collegelogos } = await GetCollegelogos(
+      `${window.name}collegelogos`
+    );
+    setcollegelogos(collegelogos.logos);
     checkLOgin();
   };
-  const gettestimonials=async()=>{
-    const {testimonials} = await Gettestimonials(
+  const gettestimonials = async () => {
+    const { testimonials } = await Gettestimonials(
       `${window.name}testimonials`
     );
-    testimonials.sort(function(a,b){
-      return Date.parse(b.createdAt.substring(0, 10)) - Date.parse(a.createdAt.substring(0, 10));
-    })
-    testimonials.slice(0,5)
-    settestimonials(testimonials)
-   
-    
-    getstudents(testimonials)
-    
-  }
-  const getstudents=(data)=>{
-    
- data.map((testimonial,index)=>{
-  getStudent(testimonial.studentId).then((res)=>{
-    
-   settestimonialsdata((state)=>[...state,{testimonial:testimonial,student:res.user}])
-  })
-  if(index==data.length-1)
-     {
-       setisLoading(false);
-     
-    }
-    })
-  }
+    testimonials.sort(function (a, b) {
+      return (
+        Date.parse(b.createdAt.substring(0, 10)) -
+        Date.parse(a.createdAt.substring(0, 10))
+      );
+    });
+    testimonials.slice(0, 5);
+    settestimonials(testimonials);
+
+    getstudents(testimonials);
+  };
+  const getstudents = (data) => {
+    data.map((testimonial, index) => {
+      getStudent(testimonial.studentId).then((res) => {
+        settestimonialsdata((state) => [
+          ...state,
+          { testimonial: testimonial, student: res.user },
+        ]);
+      });
+      if (index == data.length - 1) {
+        setisLoading(false);
+      }
+    });
+  };
   const checkLOgin = async () => {
     const { isLoggedIn: isloggedin } = await Authverifier(
       `${window.name}users/me`
@@ -93,11 +95,9 @@ const LandingPage = () => {
       `${window.name}get-all-webinars`
     );
     if (webinardata) {
-      
       setwebinardata(webinardata);
     }
-    gettestimonials()
-    
+    gettestimonials();
   };
   const settings = {
     dots: true,
@@ -297,7 +297,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <Testimonial testimonials={testimonialsdata} />
+          {/*<Testimonial testimonials={testimonialsdata} />*/}
           <div
             className="holder-divv"
             style={{
