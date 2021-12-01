@@ -121,7 +121,8 @@ const ApplicationForm = () => {
       setvisible(true);
     } else {
       setisLoading(false);
-      seterrorvisible(true);
+      console.log(message)
+      setvisible(true);
     }
   };
   if (isLoading)

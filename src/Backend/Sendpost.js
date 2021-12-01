@@ -5,7 +5,7 @@ import {useState,useEffect} from "react"
  let message="a";
  let retdata={};
  let Token=localStorage.getItem('LoggedInUserTokenID')
- console.log(Token)
+ 
         
          await fetch(url, {
                method: 'POST',
@@ -18,6 +18,7 @@ import {useState,useEffect} from "react"
             })
             .then(res => res.json())
             .then(json => {
+                console.log(json)
                 if(json.status === 'error'){
                     
                     if(typeof json.msg === "object"){
