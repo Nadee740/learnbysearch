@@ -46,7 +46,7 @@ function OngoingresearchPage() {
 
     data.positions.map(async (position, index) => {
       const { data: Datass } = await Researchpgms(
-        `${window.name}position/${position}`
+        `${window.name}position/${position.positionId}`
       );
 
       arr.push(Datass);
@@ -316,7 +316,7 @@ function OngoingresearchPage() {
                     <div className="vaccency-item" key={index}>
                       <p className="vaccency-item-title">{position.title}</p>
                       <p className="vaccency-item-text">
-                        Number of Students Required: <span>2</span>
+                        Number of Students Required: <span>{blogsData.positions[index].openings}</span>
                       </p>
 
                       <p className="vaccency-item-text">

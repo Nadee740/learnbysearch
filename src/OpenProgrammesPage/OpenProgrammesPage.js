@@ -47,7 +47,7 @@ function OpenProgrammesPage() {
     setisLoading(true);
 
     rpdata.positions.map(async (position, index) => {
-      const { data } = await Researchpgms(`${window.name}position/${position}`);
+      const { data } = await Researchpgms(`${window.name}position/${position.positionId}`);
 
       arr.push(data);
 
@@ -316,7 +316,7 @@ function OpenProgrammesPage() {
                     <div className="vaccency-item" key={index}>
                       <p className="vaccency-item-title">{}</p>
                       <p className="vaccency-item-text">
-                        Number of Students Required: <span>2</span>
+                        Number of Students Required: <span>{blogsData.positions[index].openings}</span>
                       </p>
 
                       <p className="vaccency-item-text">

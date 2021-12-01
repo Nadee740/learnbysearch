@@ -41,11 +41,11 @@ const ApplicationForm = () => {
   ////////////////////get positions of rp ///////////////////////////////////////
   const getPositions = async (data) => {
     
-    setPositionId(data.positions[0])
+    setPositionId(data.positions[0].positionId)
     await data.positions.map(async (position, index) => {
       
       const { data: Data } = await Researchpgms(
-        `${window.name}position/${position}`
+        `${window.name}position/${position.positionId}`
       );
       setPosition((state) => [...state, Data]);
 
@@ -90,7 +90,7 @@ const ApplicationForm = () => {
 
   /////////////decide to apply for referal or submit////////////////////
   const submitApplictaionform = async (e) => {
-    e.preventDefault();
+   e.preventDefault()
     localStorage.removeItem("q1");
     localStorage.removeItem("q3");
     if (q2 == "false" && q3 == "") {
@@ -422,7 +422,9 @@ const ApplicationForm = () => {
                       <button
                         className="submit-btn submit-btn2"
                         onClick={() => {
+                         if(q1.length>6)
                           setStep(step + 1);
+                          
                         }}
                       >
                         NEXT STEP
@@ -441,9 +443,8 @@ const ApplicationForm = () => {
                     {step > 0 ? (
                       <button
                         className="submit-btn submit-btn2"
-                        onClick={() => {
-                          console.log("Hy");
-                        }}
+                        type="submit"
+                       
                       >
                         SUBMIT
                       </button>
