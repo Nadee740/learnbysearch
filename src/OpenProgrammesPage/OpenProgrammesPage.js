@@ -314,7 +314,7 @@ function OpenProgrammesPage() {
                 {positions &&
                   positions.map((position, index) => (
                     <div className="vaccency-item" key={index}>
-                      <p className="vaccency-item-title">{}</p>
+                      <p className="vaccency-item-title">{position.title}</p>
                       <p className="vaccency-item-text">
                         Number of Students Required: <span>{blogsData.positions[index].openings}</span>
                       </p>
