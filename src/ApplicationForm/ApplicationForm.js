@@ -421,9 +421,12 @@ const ApplicationForm = () => {
                     {step === 0 ? (
                       <button
                         className="submit-btn submit-btn2"
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.preventDefault()
                          if(q1.length>6)
                           setStep(step + 1);
+                        else
+                          alert("please fill the fields")
                           
                         }}
                       >
