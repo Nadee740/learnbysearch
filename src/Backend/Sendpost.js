@@ -6,7 +6,7 @@ import {useState,useEffect} from "react"
  let retdata={};
  let Token=localStorage.getItem('LoggedInUserTokenID')
  
-        
+        console.log(Token,data)
          await fetch(url, {
                method: 'POST',
                 headers: {

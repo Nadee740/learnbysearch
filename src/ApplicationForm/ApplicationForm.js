@@ -46,11 +46,15 @@ const ApplicationForm = () => {
       );
       setPosition((state) => [...state, Data]);
 
-      if (data.positions.length == index + 1) {
-        setisLoading(false);
-        setPositionId(position[0]._id);
+      if (positions.length>0) {
+      
+        console.log(positions[0]._id)
+        setPositionId(positions[0]._id);
+        
       }
     });
+   
+    setisLoading(false);
   };
   /////////////////////////////////////////////////////////////////////
 
@@ -106,6 +110,7 @@ const ApplicationForm = () => {
 
   ///////////////////////////////submit application////////////////////
   const submitformdata = async () => {
+    console.log('hy')
     let data = { PositionId, ResearchProgramId, q1, q2, q3, code };
     if (q2 == "true" || q2 == true) {
       data = { PositionId, ResearchProgramId, q1, q2, code };
@@ -122,7 +127,7 @@ const ApplicationForm = () => {
     } else {
       setisLoading(false);
       console.log(message)
-      setvisible(true);
+      seterrorvisible(true)
     }
   };
   if (isLoading)
@@ -320,7 +325,9 @@ const ApplicationForm = () => {
                               {isLoading
                                 ? setisLoading(true)
                                 : positions &&
-                                  positions.map((position, index) => (
+                                  positions.map((position, index) =>{
+                                    
+                                    return(
                                     <option
                                       value={position._id}
                                       className="selectbx-itm"
@@ -328,7 +335,8 @@ const ApplicationForm = () => {
                                     >
                                       {position.title}
                                     </option>
-                                  ))}
+                                  )}
+                                  )}
                             </select>
                           </div>
                         </div>
