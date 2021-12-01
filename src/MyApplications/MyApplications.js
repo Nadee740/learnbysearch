@@ -37,6 +37,7 @@ const MyApplications = () => {
       setisLoading(false);
     } else {
       userdata.applicationForm.map(async (application) => {
+        console.log(application,"hyyyaaaa")
         const app_data = {
           id: application,
         };
@@ -46,11 +47,11 @@ const MyApplications = () => {
         );
         count++;
 
-        if (retdata != null) {
-          
+        if (retdata.status!='error') {
+          console.log(retdata,"hyyyy")
           array.push(retdata);}
 
-        console.log(userdata.applicationForm.length)
+        
         if (count == userdata.applicationForm.length) {
           if (array.length > 0) {
             setapplication(array);
@@ -66,6 +67,7 @@ const MyApplications = () => {
   };
 
   const getreaserch = (datas) => {
+   
     datas.map(async (data) => {
       const { data: Datass } = await Researchpgms(
         `${window.name}research-program-id/${data.rp}`
@@ -74,7 +76,7 @@ const MyApplications = () => {
       rparray.push(Datass);
       checkcount++;
       test1.push({rpdata:Datass,applicationstatus:data})
-
+      
       if (datas.length == rparray.length) {
         setrp(rparray);
         test1.sort(function(a,b){
