@@ -40,18 +40,15 @@ const ApplicationForm = () => {
   };
   ////////////////////get positions of rp ///////////////////////////////////////
   const getPositions = async (data) => {
+    
+    setPositionId(data.positions[0])
     await data.positions.map(async (position, index) => {
+      
       const { data: Data } = await Researchpgms(
         `${window.name}position/${position}`
       );
       setPosition((state) => [...state, Data]);
 
-      if (positions.length>0) {
-      
-        console.log(positions[0]._id)
-        setPositionId(positions[0]._id);
-        
-      }
     });
    
     setisLoading(false);
@@ -325,8 +322,9 @@ const ApplicationForm = () => {
                               {isLoading
                                 ? setisLoading(true)
                                 : positions &&
-                                  positions.map((position, index) =>{
+                                   positions.map((position, index) =>{
                                     
+                                     console.log(positions[0]._id,PositionId,"hyyy")
                                     return(
                                     <option
                                       value={position._id}
