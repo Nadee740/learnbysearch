@@ -27,7 +27,7 @@ const ApplicationForm = () => {
   const [code, setreferalcode] = useState("");
   const [err, seterr] = useState("");
 
- const closeModal = () => {
+  const closeModal = () => {
     setvisible(false);
   };
 
@@ -40,17 +40,14 @@ const ApplicationForm = () => {
   };
   ////////////////////get positions of rp ///////////////////////////////////////
   const getPositions = async (data) => {
-    
-    setPositionId(data.positions[0].positionId)
+    setPositionId(data.positions[0].positionId);
     await data.positions.map(async (position, index) => {
-      
       const { data: Data } = await Researchpgms(
         `${window.name}position/${position.positionId}`
       );
       setPosition((state) => [...state, Data]);
-
     });
-   
+
     setisLoading(false);
   };
   /////////////////////////////////////////////////////////////////////
@@ -90,7 +87,7 @@ const ApplicationForm = () => {
 
   /////////////decide to apply for referal or submit////////////////////
   const submitApplictaionform = async (e) => {
-   e.preventDefault()
+    e.preventDefault();
     localStorage.removeItem("q1");
     localStorage.removeItem("q3");
     if (q2 == "false" && q3 == "") {
@@ -107,24 +104,21 @@ const ApplicationForm = () => {
 
   ///////////////////////////////submit application////////////////////
   const submitformdata = async () => {
-    console.log('hy')
+    console.log("hy");
     let data = { PositionId, ResearchProgramId, q1, q2, q3, code };
     if (q2 == "true" || q2 == true) {
       data = { PositionId, ResearchProgramId, q1, q2, code };
     }
 
-    const { message } = await SendPost(
-      `${window.name}application-form`,
-      data
-    );
+    const { message } = await SendPost(`${window.name}application-form`, data);
 
     if (message.includes("Application form submitted")) {
       setisLoading(false);
       setvisible(true);
     } else {
       setisLoading(false);
-      console.log(message)
-      seterrorvisible(true)
+      console.log(message);
+      seterrorvisible(true);
     }
   };
   if (isLoading)
@@ -322,19 +316,22 @@ const ApplicationForm = () => {
                               {isLoading
                                 ? setisLoading(true)
                                 : positions &&
-                                   positions.map((position, index) =>{
-                                    
-                                     console.log(positions[0]._id,PositionId,"hyyy")
-                                    return(
-                                    <option
-                                      value={position._id}
-                                      className="selectbx-itm"
-                                      key={index}
-                                    >
-                                      {position.title}
-                                    </option>
-                                  )}
-                                  )}
+                                  positions.map((position, index) => {
+                                    console.log(
+                                      positions[0]._id,
+                                      PositionId,
+                                      "hyyy"
+                                    );
+                                    return (
+                                      <option
+                                        value={position._id}
+                                        className="selectbx-itm"
+                                        key={index}
+                                      >
+                                        {position.title}
+                                      </option>
+                                    );
+                                  })}
                             </select>
                           </div>
                         </div>
@@ -345,13 +342,40 @@ const ApplicationForm = () => {
                   )}
                   {step === 1 ? (
                     <>
+                      <p className="inputtext">Enter your Top 5 Skills</p>
+                      <div
+                        className="inputholder inputholder2"
+                        id="usernameholder"
+                      >
+                        <div className="inputholder-top ">
+                          <textarea
+                            minLength={100}
+                            rows="3"
+                            className="textarea"
+                            placeholder="Please Enter Skills Comma Separated"
+                            required
+                          ></textarea>
+                        </div>
+                      </div>
+                      <p className="inputtext">Enter your Current CGPA</p>
+                      <div
+                        className="inputholder inputholder2"
+                        id="usernameholder"
+                      >
+                        <div className="inputholder-top ">
+                          <textarea
+                            minLength={100}
+                            rows="1"
+                            className="textarea"
+                            placeholder="CGPA Out off 10"
+                            required
+                          ></textarea>
+                        </div>
+                      </div>
+
                       <p className="inputtext">
-                        Can you afford to pay the program fees of Rs 3000 per
-                        month?
-                        <br /> (Duration 3-4 months as it varies with the
-                        research project and is mentioned on the website. This
-                        fees will cover the charges for mentorship, training
-                        resources, publication charges and the tools required.)
+                        Have you worked on any research projects in the past or
+                        present
                       </p>
                       <div
                         className="inputholder inputholder2"
@@ -380,7 +404,38 @@ const ApplicationForm = () => {
                           </div>
                         </div>
                       </div>
-
+                      <p className="inputtext">
+                        How many research papers have you published?
+                      </p>
+                      <div
+                        className="inputholder inputholder2"
+                        id="usernameholder"
+                      >
+                        <div className="inputholder-top ">
+                          <textarea
+                            minLength={100}
+                            rows="1"
+                            className="textarea"
+                            placeholder=""
+                            required
+                          ></textarea>
+                        </div>
+                      </div>
+                      <p className="inputtext">Linkdin profile Link</p>
+                      <div
+                        className="inputholder inputholder2"
+                        id="usernameholder"
+                      >
+                        <div className="inputholder-top ">
+                          <textarea
+                            minLength={100}
+                            rows="1"
+                            className="textarea"
+                            placeholder=""
+                            required
+                          ></textarea>
+                        </div>
+                      </div>
                       {paravisible ? (
                         <>
                           <p className="inputtext">
@@ -422,12 +477,9 @@ const ApplicationForm = () => {
                       <button
                         className="submit-btn submit-btn2"
                         onClick={(e) => {
-                          e.preventDefault()
-                         if(q1.length>6)
-                          setStep(step + 1);
-                        else
-                          alert("please fill the fields")
-                          
+                          e.preventDefault();
+                          if (q1.length > 6) setStep(step + 1);
+                          else alert("please fill the fields");
                         }}
                       >
                         NEXT STEP
@@ -444,11 +496,7 @@ const ApplicationForm = () => {
                       </button>
                     ) : null}
                     {step > 0 ? (
-                      <button
-                        className="submit-btn submit-btn2"
-                        type="submit"
-                       
-                      >
+                      <button className="submit-btn submit-btn2" type="submit">
                         SUBMIT
                       </button>
                     ) : null}
