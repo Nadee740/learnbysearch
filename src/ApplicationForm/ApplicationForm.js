@@ -10,6 +10,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import UserReferalCode from "../Backend/usereferalcode";
 import { Stepper, Step } from "react-form-stepper";
+import isURL from 'validator/lib/isURL';
 const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
   const [referalvisible, setreferalvisible] = useState(false);
@@ -65,6 +66,9 @@ const ApplicationForm = () => {
     await getPositions(data);
   };
   //////////////////////////////////////////////
+  const stylefunction = (color, id) => {
+    document.getElementById(id).style.border = color;
+  };
 
   const Applyreferal = async () => {
     const data = { code };
@@ -108,8 +112,14 @@ const ApplicationForm = () => {
 
   ///////////////////////////////submit application////////////////////
   const submitformdata = async () => {
- 
-    let data = { PositionId, ResearchProgramId, q1, q2,q3,q4,q5,q6,q7, code };
+ if(isNaN(q4) )
+   alert("please type a valid CGPA ")
+ else if(isNaN(q6))
+    alert("Invalid number of research paper")
+ else if(!isURL(q7))
+    alert('Invalid linkedin url')
+else 
+     {let data = { PositionId, ResearchProgramId, q1, q2,q3,q4,q5,q6,q7, code };
  
 
     const { message } = await SendPost(`${window.name}application-form`, data);
@@ -122,6 +132,7 @@ const ApplicationForm = () => {
       console.log(message);
       seterrorvisible(true);
     }
+  }
   };
   if (isLoading)
     return (
@@ -353,7 +364,7 @@ const ApplicationForm = () => {
                           <textarea
                           value={q3}
                           onChange={(e)=>{setq3(e.target.value)}}
-                            minLength={100}
+                            minLength={10}
                             rows="3"
                             className="textarea"
                             placeholder="Please Enter Skills Comma Separated"
