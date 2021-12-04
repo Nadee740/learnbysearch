@@ -10,6 +10,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import UserReferalCode from "../Backend/usereferalcode";
 import { Stepper, Step } from "react-form-stepper";
+import isURL from 'validator/lib/isURL';
 const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
   const [referalvisible, setreferalvisible] = useState(false);
@@ -21,6 +22,10 @@ const ApplicationForm = () => {
   const [q1, setq1] = useState("");
   const [q2, setq2] = useState(true);
   const [q3, setq3] = useState("");
+  const [q4, setq4] = useState("");
+  const [q5, setq5] = useState(false);
+  const [q6, setq6] = useState("");
+  const [q7, setq7] = useState("");
   const [PositionId, setPositionId] = useState("");
   const [ResearchProgramId, setResearchProgramId] = useState();
   const [positions, setPosition] = useState("");
@@ -61,6 +66,9 @@ const ApplicationForm = () => {
     await getPositions(data);
   };
   //////////////////////////////////////////////
+  const stylefunction = (color, id) => {
+    document.getElementById(id).style.border = color;
+  };
 
   const Applyreferal = async () => {
     const data = { code };
@@ -104,11 +112,15 @@ const ApplicationForm = () => {
 
   ///////////////////////////////submit application////////////////////
   const submitformdata = async () => {
-    console.log("hy");
-    let data = { PositionId, ResearchProgramId, q1, q2, q3, code };
-    if (q2 == "true" || q2 == true) {
-      data = { PositionId, ResearchProgramId, q1, q2, code };
-    }
+ if(isNaN(q4) )
+   alert("please type a valid CGPA ")
+ else if(isNaN(q6))
+    alert("Invalid number of research paper")
+ else if(!isURL(q7))
+    alert('Invalid linkedin url')
+else 
+     {let data = { PositionId, ResearchProgramId, q1, q2,q3,q4,q5,q6,q7, code };
+ 
 
     const { message } = await SendPost(`${window.name}application-form`, data);
 
@@ -120,6 +132,7 @@ const ApplicationForm = () => {
       console.log(message);
       seterrorvisible(true);
     }
+  }
   };
   if (isLoading)
     return (
@@ -349,7 +362,9 @@ const ApplicationForm = () => {
                       >
                         <div className="inputholder-top ">
                           <textarea
-                            minLength={100}
+                          value={q3}
+                          onChange={(e)=>{setq3(e.target.value)}}
+                            minLength={10}
                             rows="3"
                             className="textarea"
                             placeholder="Please Enter Skills Comma Separated"
@@ -364,6 +379,8 @@ const ApplicationForm = () => {
                       >
                         <div className="inputholder-top ">
                           <textarea
+                          value={q4}
+                          onChange={(e)=>{setq4(e.target.value)}}
                             minLength={100}
                             rows="1"
                             className="textarea"
@@ -386,24 +403,27 @@ const ApplicationForm = () => {
                             <select
                               className="selectbx"
                               onChange={(e) => {
-                                setq2(e.target.value);
-                                if (e.target.value == "true") {
-                                  setparavisible(false);
-                                } else {
-                                  setparavisible(true);
-                                }
+                                setq5(e.target.value);
+                                if(e.target.value=="false")
+                                  setparavisible(false)
+                                else 
+                                  setparavisible("true")
+                            
                               }}
                             >
+                            <option value={false} className="selectbx-itm">
+                                NO
+                              </option>
                               <option value={true} className="selectbx-itm">
                                 YES
                               </option>
-                              <option value={false} className="selectbx-itm">
-                                NO
-                              </option>
+                              
                             </select>
                           </div>
                         </div>
                       </div>
+                      {paravisible?(
+                        <>
                       <p className="inputtext">
                         How many research papers have you published?
                       </p>
@@ -413,6 +433,8 @@ const ApplicationForm = () => {
                       >
                         <div className="inputholder-top ">
                           <textarea
+                          value={q6}
+                          onChange={(e)=>{setq6(e.target.value)}}
                             minLength={100}
                             rows="1"
                             className="textarea"
@@ -421,6 +443,9 @@ const ApplicationForm = () => {
                           ></textarea>
                         </div>
                       </div>
+                      </>
+                      ):""
+                      }
                       <p className="inputtext">Linkdin profile Link</p>
                       <div
                         className="inputholder inputholder2"
@@ -428,6 +453,8 @@ const ApplicationForm = () => {
                       >
                         <div className="inputholder-top ">
                           <textarea
+                          value={q7}
+                          onChange={(e)=>{setq7(e.target.value)}}
                             minLength={100}
                             rows="1"
                             className="textarea"
@@ -436,38 +463,7 @@ const ApplicationForm = () => {
                           ></textarea>
                         </div>
                       </div>
-                      {paravisible ? (
-                        <>
-                          <p className="inputtext">
-                            If You Want financial assistance please mention your
-                            annual family income and tell us how you can help
-                            LearnByResearch to support others in need of
-                            assistance like you :
-                          </p>
-                          <div
-                            className="inputholder inputholder2 "
-                            id="usernameholder"
-                          >
-                            <div className="inputholder-top ">
-                              <textarea
-                                minLength={250}
-                                value={q3}
-                                onChange={(e) => {
-                                  setq3(e.target.value);
-                                }}
-                                rows="15"
-                                className="textarea"
-                                placeholder=""
-                              ></textarea>
-                            </div>
-                            <label className="label" htmlFor="">
-                              {err && err}
-                            </label>
-                          </div>
-                        </>
-                      ) : (
-                        ""
-                      )}
+                      
                     </>
                   ) : (
                     ""
@@ -479,7 +475,7 @@ const ApplicationForm = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           if (q1.length > 6) setStep(step + 1);
-                          else alert("please fill the fields");
+                          else alert("Please type a valid reason with minimum 6 characters");
                         }}
                       >
                         NEXT STEP
