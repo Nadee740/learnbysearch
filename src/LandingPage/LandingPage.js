@@ -145,10 +145,10 @@ const LandingPage = () => {
                 <div className="right-side">
                   <div className="top-heading">
                     <h2 className="font-light-top">
-                      India's Largest Platform Building Student Researchers
+                      World's First Platform Rewarding Students for Research
                     </h2>
                     <h2 className="form-title">
-                      Collaborate | Research | Learn
+                      Collaborate | Research | Learn | Earn
                     </h2>
 
                     <p>Online Independent R&D Hub</p>
@@ -243,12 +243,12 @@ const LandingPage = () => {
               <div className="outcomes">
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">1</p>
-                  <p className="outcomes-col-head">Technical and Soft Skills</p>
+                  <p className="outcomes-col-head">Financial Incentives</p>
                   <p className="outcomes-col-text">
-                    By joining the research group you would learn and apply the
-                    relevant technical skills on your own with the support and
-                    mentoring of the research guide, as well as you will be
-                    gaining the power of written and verbal communication.
+                    Students who get selected via stringent selection process at
+                    LearnByResearch,work under research mentors to complete the
+                    research.For every assignment that students complete and get
+                    approvel from researcher,students earn 250 ₹ in cash.
                   </p>
                 </div>
                 <div className="outcomes-col">
