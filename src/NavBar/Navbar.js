@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Authverifier from "../Backend/Authverifier";
 import Button from "../button/button";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import Fade from "react-reveal/Fade";
 import "./Navbar.css";
 import Modal from "react-awesome-modal";
 import Logout from "../Backend/Logout";
@@ -163,7 +164,14 @@ const Navbar = (props) => {
           </Modal>
         </section>
       </div>
-      <nav className="navbar">
+      <div className="topbanner">
+        <Fade left>
+          <p className="topbanner-text">
+            Join us today for free and earn cash rewards for quality research!
+          </p>
+        </Fade>
+      </div>
+      <nav className="navbar ">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             <img
@@ -281,7 +289,7 @@ const Navbar = (props) => {
                     )}
                     {/* <li>
                       <Link to="/suggestrp" className="p-link">
-                       REQUEST RESEARCH PROGRAMME
+                        REQUEST RESEARCH PROGRAMME
                       </Link>
                     </li> */}
                     <li
@@ -423,15 +431,15 @@ const Navbar = (props) => {
             >
               EDIT PROFILE
             </Link>
-            {/* <Link
+           <Link
               to="/editprofile"
               onClick={() => {
                 setNav(false);
               }}
               className="mob-signbtn"
             >
-             REQUEST RESEARCH PROGRAMME
-            </Link> */}
+              REQUEST RESEARCH PROGRAMME
+            </Link>
             <button
               onClick={() => {
                 setNav(false);

@@ -10,7 +10,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import UserReferalCode from "../Backend/usereferalcode";
 import { Stepper, Step } from "react-form-stepper";
-import isURL from 'validator/lib/isURL';
+import isURL from "validator/lib/isURL";
 const ApplicationForm = () => {
   const [visible, setvisible] = useState(false);
   const [referalvisible, setreferalvisible] = useState(false);
@@ -112,27 +112,37 @@ const ApplicationForm = () => {
 
   ///////////////////////////////submit application////////////////////
   const submitformdata = async () => {
- if(isNaN(q4) )
-   alert("please type a valid CGPA ")
- else if(isNaN(q6))
-    alert("Invalid number of research paper")
- else if(!isURL(q7))
-    alert('Invalid linkedin url')
-else 
-     {let data = { PositionId, ResearchProgramId, q1, q2,q3,q4,q5,q6,q7, code };
- 
+    if (isNaN(q4)) alert("please type a valid CGPA ");
+    else if (isNaN(q6)) alert("Invalid number of research paper");
+    else if (!isURL(q7)) alert("Invalid linkedin url");
+    else {
+      let data = {
+        PositionId,
+        ResearchProgramId,
+        q1,
+        q2,
+        q3,
+        q4,
+        q5,
+        q6,
+        q7,
+        code,
+      };
 
-    const { message } = await SendPost(`${window.name}application-form`, data);
+      const { message } = await SendPost(
+        `${window.name}application-form`,
+        data
+      );
 
-    if (message.includes("Application form submitted")) {
-      setisLoading(false);
-      setvisible(true);
-    } else {
-      setisLoading(false);
-      console.log(message);
-      seterrorvisible(true);
+      if (message.includes("Application form submitted")) {
+        setisLoading(false);
+        setvisible(true);
+      } else {
+        setisLoading(false);
+        console.log(message);
+        seterrorvisible(true);
+      }
     }
-  }
   };
   if (isLoading)
     return (
@@ -362,8 +372,10 @@ else
                       >
                         <div className="inputholder-top ">
                           <textarea
-                          value={q3}
-                          onChange={(e)=>{setq3(e.target.value)}}
+                            value={q3}
+                            onChange={(e) => {
+                              setq3(e.target.value);
+                            }}
                             minLength={10}
                             rows="3"
                             className="textarea"
@@ -379,8 +391,10 @@ else
                       >
                         <div className="inputholder-top ">
                           <textarea
-                          value={q4}
-                          onChange={(e)=>{setq4(e.target.value)}}
+                            value={q4}
+                            onChange={(e) => {
+                              setq4(e.target.value);
+                            }}
                             minLength={100}
                             rows="1"
                             className="textarea"
@@ -404,48 +418,48 @@ else
                               className="selectbx"
                               onChange={(e) => {
                                 setq5(e.target.value);
-                                if(e.target.value=="false")
-                                  setparavisible(false)
-                                else 
-                                  setparavisible("true")
-                            
+                                if (e.target.value == "false")
+                                  setparavisible(false);
+                                else setparavisible("true");
                               }}
                             >
-                            <option value={false} className="selectbx-itm">
+                              <option value={false} className="selectbx-itm">
                                 NO
                               </option>
                               <option value={true} className="selectbx-itm">
                                 YES
                               </option>
-                              
                             </select>
                           </div>
                         </div>
                       </div>
-                      {paravisible?(
+                      {paravisible ? (
                         <>
-                      <p className="inputtext">
-                        How many research papers have you published?
-                      </p>
-                      <div
-                        className="inputholder inputholder2"
-                        id="usernameholder"
-                      >
-                        <div className="inputholder-top ">
-                          <textarea
-                          value={q6}
-                          onChange={(e)=>{setq6(e.target.value)}}
-                            minLength={100}
-                            rows="1"
-                            className="textarea"
-                            placeholder=""
-                            required
-                          ></textarea>
-                        </div>
-                      </div>
-                      </>
-                      ):""
-                      }
+                          <p className="inputtext">
+                            How many research papers have you published?
+                          </p>
+                          <div
+                            className="inputholder inputholder2"
+                            id="usernameholder"
+                          >
+                            <div className="inputholder-top ">
+                              <textarea
+                                value={q6}
+                                onChange={(e) => {
+                                  setq6(e.target.value);
+                                }}
+                                minLength={100}
+                                rows="1"
+                                className="textarea"
+                                placeholder=""
+                                required
+                              ></textarea>
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        ""
+                      )}
                       <p className="inputtext">Linkdin profile Link</p>
                       <div
                         className="inputholder inputholder2"
@@ -453,8 +467,10 @@ else
                       >
                         <div className="inputholder-top ">
                           <textarea
-                          value={q7}
-                          onChange={(e)=>{setq7(e.target.value)}}
+                            value={q7}
+                            onChange={(e) => {
+                              setq7(e.target.value);
+                            }}
                             rows="1"
                             className="textarea"
                             placeholder=""
@@ -462,7 +478,6 @@ else
                           ></textarea>
                         </div>
                       </div>
-                      
                     </>
                   ) : (
                     ""
@@ -474,7 +489,10 @@ else
                         onClick={(e) => {
                           e.preventDefault();
                           if (q1.length > 6) setStep(step + 1);
-                          else alert("Please type a valid reason with minimum 6 characters");
+                          else
+                            alert(
+                              "Please type a valid reason with minimum 6 characters"
+                            );
                         }}
                       >
                         NEXT STEP
