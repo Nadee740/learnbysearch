@@ -455,7 +455,6 @@ else
                           <textarea
                           value={q7}
                           onChange={(e)=>{setq7(e.target.value)}}
-                            minLength={100}
                             rows="1"
                             className="textarea"
                             placeholder=""
