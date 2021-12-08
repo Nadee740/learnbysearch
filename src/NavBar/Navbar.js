@@ -289,11 +289,11 @@ const Navbar = (props) => {
                     ) : (
                       ""
                     )}
-                    <li>
+                    {/* <li>
                       <Link to="/suggestrp" className="p-link">
                         REQUEST RESEARCH PROGRAMME
                       </Link>
-                    </li>
+                    </li> */}
                     <li
                       onClick={() => {
                         submit(false);
@@ -433,7 +433,7 @@ const Navbar = (props) => {
             >
               EDIT PROFILE
             </Link>
-            <Link
+           <Link
               to="/editprofile"
               onClick={() => {
                 setNav(false);
