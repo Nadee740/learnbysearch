@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import Authverifier from "../Backend/Authverifier";
 import Button from "../button/button";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import Fade from "react-reveal/Fade";
+import Flip from "react-reveal/Flip";
+
 import "./Navbar.css";
 import Modal from "react-awesome-modal";
 import Logout from "../Backend/Logout";
@@ -165,11 +166,12 @@ const Navbar = (props) => {
         </section>
       </div>
       <div className="topbanner">
-        <Fade left>
-          <p className="topbanner-text">
+        <p className="topbanner-text">
+          {" "}
+          <Flip top cascade duration={2000}>
             Join us today for free and earn cash rewards for quality research!
-          </p>
-        </Fade>
+          </Flip>
+        </p>
       </div>
       <nav className="navbar ">
         <div className="navbar-container">
