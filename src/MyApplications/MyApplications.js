@@ -141,6 +141,11 @@ if(isempty){
                     classtype = "myapplication-row-btn ";
 
                   switch (application.applicationstatus.data) {
+                    case 7:{
+                      classn = "myapplication-row-btn-sub";
+                      title = "Submited";
+                      break;
+                    }
                     case 6:{
                       classn = "myapplication-row-btn-accept";
                       title = "Accepted";
