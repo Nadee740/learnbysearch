@@ -166,7 +166,7 @@ const Navbar = (props) => {
         </section>
       </div>
       <div className="topbanner">
-        <p className="topbanner-text tracking-in-contract">
+        <p className="topbanner-text ">
           Join us today for free and earn cash rewards for quality research!
         </p>
       </div>
