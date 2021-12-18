@@ -194,7 +194,7 @@ const LandingPage = () => {
           <Colleges logos={collegelogos} />
           <section className="about">
             <div className="about-content">
-              <h2>About LearnByResearch</h2>
+              <h2>How our students work?</h2>
               <div className="about-col">
                 <figure>
                   <img
