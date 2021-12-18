@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Authverifier from "../Backend/Authverifier";
 import Researchpgms from "../Backend/Researchpgms";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
+import Footer from "../LandingPage/footer/footer";
 import "./payment.css";
 const PaymentStatusPage = () => {
   const [isLoggedin, setisLoggedin] = useState(false);
@@ -134,6 +135,7 @@ const PaymentStatusPage = () => {
           );
         })}
       </div>
+      <Footer/>
     </>
   );
 };

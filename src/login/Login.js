@@ -12,6 +12,7 @@ import Authverifier from "../Backend/Authverifier";
 import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
+import Footer from "../LandingPage/footer/footer";
 
 const Login = () => {
   const [username, setUser] = useState("");
@@ -308,6 +309,7 @@ const Login = () => {
               </div>
             </div>
           </div>
+          <Footer/>
         </section>
       )}
     </>

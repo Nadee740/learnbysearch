@@ -5,6 +5,7 @@ import Researchpgms from "../Backend/Researchpgms";
 import { useState } from "react";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
+import Footer from "../LandingPage/footer/footer";
 
 const OpenProgrammes = () => {
   const [blogsData, setblogData] = useState("");
@@ -49,6 +50,7 @@ const OpenProgrammes = () => {
             : setisLoading(true)}
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

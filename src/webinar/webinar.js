@@ -8,6 +8,7 @@ import SendPost from "../Backend/Sendpost";
 import Modal from "react-awesome-modal";
 import "./webinar.css";
 import WebinareCard from "./webinarcard";
+import Footer from "../LandingPage/footer/footer";
 const WebinarPage = () => {
 
   const [isLoading,setisLoading]=useState(true)
@@ -152,7 +153,7 @@ getwebinardata()
       
       </div>
     </div>}
-    
+    <Footer/>
     </>
   );
 };

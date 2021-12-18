@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Applyasguest from "../Backend/ApplyasGuest";
 
 import Applyforwebinarasguest from "../Backend/Applyforwebinarasguest";
+import Footer from "../LandingPage/footer/footer";
 
 const SignupasGuest = () => {
   const { id} = useParams();
@@ -112,6 +113,7 @@ const SignupasGuest = () => {
         </div>
       </div>
     </section>
+    
      }
     </>
   );

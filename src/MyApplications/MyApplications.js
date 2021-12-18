@@ -8,6 +8,7 @@ import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import { Helmet } from "react-helmet";
 import "./MyApplications.css";
 import { Link } from "react-router-dom";
+import Footer from "../LandingPage/footer/footer";
 const MyApplications = () => {
   const [userData, setuserData] = useState();
   const [isLoggedIn, setisLoggedin] = useState(false);
@@ -213,6 +214,7 @@ if(isempty){
                 className="app-status app-status-home"
               />
             </div>
+            <Footer/>
           </div>
         )
     

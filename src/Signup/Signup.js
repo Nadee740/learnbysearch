@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import { useParams } from "react-router-dom";
 import { Select } from "@material-ui/core";
+import Footer from "../LandingPage/footer/footer";
 const Signup = () => {
   const { slug } = useParams();
   const [FirstName, setFirstName] = useState("");
@@ -886,6 +887,7 @@ const Signup = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };

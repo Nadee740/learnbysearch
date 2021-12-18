@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Researchpgms from "../Backend/Researchpgms";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
+import Footer from "../LandingPage/footer/footer";
 
 const BlogsPage = () => {
   const [blogsData, setblogData] = useState("");     //blogs after filtered search
@@ -96,8 +97,9 @@ const BlogsPage = () => {
               <Blog blog={blog} key={index} />
             ))}
           </div>
+          <Footer />
         </div>
-     
+        
     </>
   );
 };

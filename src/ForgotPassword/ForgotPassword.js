@@ -9,6 +9,7 @@ import Modal from "react-awesome-modal";
 import ChangePassword from "../Backend/ChangePassword";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import Footer from "../LandingPage/footer/footer";
 const ForgotPassword = () => {
   const [new_password, setnew_password] = useState("");
   const [confirm_password, setconfirm_password] = useState("");
@@ -191,6 +192,7 @@ const ForgotPassword = () => {
             </div>
           </div>
         </div>
+        <Footer/>
       </section>
       }
     </>

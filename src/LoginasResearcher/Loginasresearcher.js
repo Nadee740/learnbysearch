@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiEye, HiEyeOff } from "react-icons/hi";
+import Footer from "../LandingPage/footer/footer";
 const LoginAsresearcher = () => {
   const [passVISIBLE, setpassVISIBLE] = useState(false);
   return (
@@ -69,6 +70,7 @@ const LoginAsresearcher = () => {
             </div>
           </div>
         </div>
+        <Footer/>
       </section>
     </>
   );

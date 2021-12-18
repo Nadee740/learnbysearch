@@ -7,6 +7,7 @@ import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import {Helmet} from "react-helmet";
 import Ongoingresearchcard from "./ongoinresearchcard";
+import Footer from "../LandingPage/footer/footer";
 
 
 const Ongoingresearch = () => {
@@ -56,8 +57,11 @@ const getBlogs=async()=>{
         
         ):""}):seterror(true)}
         </div>
+       
       </div>
+      
         }
+        <Footer/>
     </>
   );
 };
