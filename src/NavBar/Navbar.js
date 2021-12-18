@@ -222,7 +222,7 @@ const Navbar = (props) => {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Blogs
+                Articles
               </Link>
             </li>
             <li className="nav-item">
@@ -363,7 +363,7 @@ const Navbar = (props) => {
               }}
               to="/allblogs"
             >
-              Blogs
+              Articles
             </Link>
           </li>
           <li className="mobnav-item">

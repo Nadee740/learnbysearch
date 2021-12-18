@@ -56,7 +56,7 @@
   font-family: inherit;
   width: 100%;
   font-weight: 500;
-  background: #c86fc9;
+  background: #2e4680;
   color: #ffffff;
   padding: 10px;
   border: none;
@@ -65,7 +65,7 @@
 }
 .openprogramcard-btn:hover {
   background: #ffffff;
-  color: #c86fc9;
+  color: #2e4680;
   cursor: pointer;
 }
 .openprogramcard-txetholder {

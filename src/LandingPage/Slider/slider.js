@@ -23,7 +23,7 @@ const BlogSlider = ({ blog }) => {
   };
   return (
     <div className="blogSlider">
-      <h2>Latest Blogs</h2>
+      <h2>Latest Articles</h2>
       <div className="slidecontainer">
         <Slider {...settings}>
           {blog.map((blog, index) => (

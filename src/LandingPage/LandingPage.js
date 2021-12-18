@@ -151,7 +151,10 @@ const LandingPage = () => {
                       Collaborate | Research | Learn | Earn
                     </h2>
 
-                    <p>Online Independent R&D Hub</p>
+                    <p>
+                      Platfrom to connect leading researchers with the best
+                      students
+                    </p>
                   </div>
 
                   {/*!isLoggedIn ? (
@@ -169,7 +172,7 @@ const LandingPage = () => {
                   )*/}
                   <div className="buttons ">
                     <Link to="/openprogrammes" className="btns button1">
-                      Upcoming Programmes
+                      Upcoming Research: Apply Now
                     </Link>
                   </div>
                 </div>
@@ -248,7 +251,7 @@ const LandingPage = () => {
                     Students who get selected via stringent selection process at
                     LearnByResearch,work under research mentors to complete the
                     research.For every assignment that students complete and get
-                    approvel from researcher,students earn 250 ₹ in cash.
+                    approvel from researcher,students earn upto ₹ 250 in cash.
                   </p>
                 </div>
                 <div className="outcomes-col">

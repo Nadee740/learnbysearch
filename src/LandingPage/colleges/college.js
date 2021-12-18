@@ -5,7 +5,7 @@ const Colleges = ({ logos }) => {
   console.log(logos);
   return (
     <div className="colleges">
-      <h2>We have students from</h2>
+      <h2>Our Students are from</h2>
       <div className="college-holder">
         {logos.map((logo, index) => (
           <a key={index} href={""} target="_blank">
