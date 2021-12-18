@@ -166,11 +166,8 @@ const Navbar = (props) => {
         </section>
       </div>
       <div className="topbanner">
-        <p className="topbanner-text">
-          {" "}
-          <Flip top cascade duration={2000}>
-            Join us today for free and earn cash rewards for quality research!
-          </Flip>
+        <p className="topbanner-text ">
+          Join us today for free and earn cash rewards for quality research!
         </p>
       </div>
       <nav className="navbar ">
@@ -225,7 +222,7 @@ const Navbar = (props) => {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Blogs
+                Articles
               </Link>
             </li>
             <li className="nav-item">
@@ -366,7 +363,7 @@ const Navbar = (props) => {
               }}
               to="/allblogs"
             >
-              Blogs
+              Articles
             </Link>
           </li>
           <li className="mobnav-item">
@@ -433,7 +430,7 @@ const Navbar = (props) => {
             >
               EDIT PROFILE
             </Link>
-           <Link
+            <Link
               to="/editprofile"
               onClick={() => {
                 setNav(false);

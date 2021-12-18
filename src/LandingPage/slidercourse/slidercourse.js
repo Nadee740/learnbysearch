@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import SliderCard from "./slider-course";
 
-const SliderCo = ({data}) => {
+const SliderCo = ({ data }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -14,8 +14,8 @@ const SliderCo = ({data}) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 1000,
-    autoplaySpeed: 2000,
+    speed: 2000,
+    autoplaySpeed: 2500,
     cssEase: "linear",
     pauseOnHover: true,
     responsive: [
@@ -33,11 +33,9 @@ const SliderCo = ({data}) => {
       <h2>Applications Open For</h2>
       <div className="slidecontainer">
         <Slider {...settings}>
-        {
-          data.map((pgms)=>{
-          return pgms.applicationStatus ? ( <SliderCard data={pgms}/>):""
-          })
-        }
+          {data.map((pgms) => {
+            return pgms.applicationStatus ? <SliderCard data={pgms} /> : "";
+          })}
           {/* <SliderCard />
           <SliderCard />
           <SliderCard />
