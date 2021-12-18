@@ -166,11 +166,8 @@ const Navbar = (props) => {
         </section>
       </div>
       <div className="topbanner">
-        <p className="topbanner-text">
-          {" "}
-          <Flip top cascade duration={2000}>
-            Join us today for free and earn cash rewards for quality research!
-          </Flip>
+        <p className="topbanner-text tracking-in-contract">
+          Join us today for free and earn cash rewards for quality research!
         </p>
       </div>
       <nav className="navbar ">
@@ -433,7 +430,7 @@ const Navbar = (props) => {
             >
               EDIT PROFILE
             </Link>
-           <Link
+            <Link
               to="/editprofile"
               onClick={() => {
                 setNav(false);
