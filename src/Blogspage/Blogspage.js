@@ -78,7 +78,6 @@ const BlogsPage = () => {
               Blogging is a conversation , not a code
             </p>
           </div>
-          <Footer />
         </div>
         <div className="searchbarholder">
           <input
@@ -99,6 +98,7 @@ const BlogsPage = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

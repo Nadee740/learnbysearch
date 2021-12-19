@@ -104,13 +104,13 @@ const Footer = () => {
               info@learnbyresearch.com
             </a>
           </div>
-          <div className="footer-sec">
+          {/* <div className="footer-sec">
             <IoCall size="1.3em" color="#F4F4F4" />
 
             <a href="tel:+91 7972251272" className="footer-text">
               +91 7972251272
             </a>
-          </div>
+          </div> */}
         </div>
         <div className="footer-col2">
           <div className="footer-col2-1">
@@ -152,6 +152,11 @@ const Footer = () => {
                   target="_blank"
                 >
                   <FaLinkedinIn size="1.3em" color="#F4F4F4" />
+                </a>
+              </div>{" "}
+              <div className="socialIcn">
+                <a href="https://www.facebook.com/lbrindia" target="_blank">
+                  <FaFacebookF size="1.3em" color="#F4F4F4" />
                 </a>
               </div>
             </div>

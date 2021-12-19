@@ -16,6 +16,8 @@ import Testimonial from "./testimonials/Textimonial";
 import Gettestimonials from "../Backend/Gettestimonials";
 import getStudent from "../Backend/getstudent";
 import GetCollegelogos from "../Backend/Getcollegelogo";
+import MentorCarusel from "./mentorCarousel/mentorcarousel";
+
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -179,6 +181,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
+          {/* <MentorCarusel />*/}
           <section className="second">
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
@@ -191,6 +194,7 @@ const LandingPage = () => {
               </p>
             </div>
           </section>
+
           <Colleges logos={collegelogos} />
           <section className="about">
             <div className="about-content">

@@ -1,0 +1,41 @@
+.mentorcarousel {
+  background-color: "red";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  justify-content: center;
+}
+.mentorcarousel-sildercontainer {
+  width: 100%;
+  padding: 2rem;
+}
+.mentorcarousel-card {
+  display: flex !important;
+
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.mentorcarousel-card-inner {
+  padding: 3rem;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mentorcarousel-img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.mentorcarousel-card-head {
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.mentorcarousel-card-sub {
+  text-align: center;
+  margin-top: 0.5rem;
+}
