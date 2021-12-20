@@ -191,7 +191,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <MentorCarusel mentors={mentors} />
+          
           <section className="second">
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
@@ -206,6 +206,7 @@ const LandingPage = () => {
           </section>
 
           <Colleges logos={collegelogos} />
+          <MentorCarusel mentors={mentors} />
           <section className="about">
             <div className="about-content">
               <h2>How our students work?</h2>
