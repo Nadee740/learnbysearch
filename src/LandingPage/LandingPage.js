@@ -47,16 +47,15 @@ const LandingPage = () => {
     const { data: blogs } = await Researchpgms(`${window.name}blog`);
     setblogData(blogs);
     getmentors();
-    
   };
 
-  const getmentors=async()=>{
+  const getmentors = async () => {
     setisLoading(true);
     const { data: mentors } = await Researchpgms(`${window.name}mentors`);
-   setmentors(mentors)
+    setmentors(mentors);
 
     getcollegelogos();
-  }
+  };
   const getcollegelogos = async () => {
     setisLoading(true);
     const { data: collegelogos } = await GetCollegelogos(
@@ -157,7 +156,7 @@ const LandingPage = () => {
                 <div className="right-side">
                   <div className="top-heading">
                     <h2 className="font-light-top">
-                      World's First Platform Rewarding Students for Research
+                      World's First Platfrom Rewarding Students for Research
                     </h2>
                     <h2 className="form-title">
                       Collaborate | Research | Learn | Earn
@@ -354,7 +353,7 @@ const LandingPage = () => {
             </div>
           </div>
           <BlogSlider blog={blogsData} />
-          
+
           <Footer />
         </div>
       )}
