@@ -285,7 +285,7 @@ const ApplicationForm = () => {
                       >
                         <div className="inputholder-top ">
                           <textarea
-                            minLength={100}
+                           
                             rows="1"
                             className="textarea"
                             placeholder=""
@@ -395,7 +395,7 @@ const ApplicationForm = () => {
                             onChange={(e) => {
                               setq4(e.target.value);
                             }}
-                            minLength={100}
+                            minLength={1}
                             rows="1"
                             className="textarea"
                             placeholder="CGPA Out off 10"
@@ -448,7 +448,7 @@ const ApplicationForm = () => {
                                 onChange={(e) => {
                                   setq6(e.target.value);
                                 }}
-                                minLength={100}
+                                minLength={1}
                                 rows="1"
                                 className="textarea"
                                 placeholder=""
