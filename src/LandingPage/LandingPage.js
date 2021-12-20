@@ -47,16 +47,15 @@ const LandingPage = () => {
     const { data: blogs } = await Researchpgms(`${window.name}blog`);
     setblogData(blogs);
     getmentors();
-    
   };
 
-  const getmentors=async()=>{
+  const getmentors = async () => {
     setisLoading(true);
     const { data: mentors } = await Researchpgms(`${window.name}mentors`);
-   setmentors(mentors)
+    setmentors(mentors);
 
     getcollegelogos();
-  }
+  };
   const getcollegelogos = async () => {
     setisLoading(true);
     const { data: collegelogos } = await GetCollegelogos(
@@ -191,12 +190,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-<<<<<<< HEAD
-          <MentorCarusel />
-          {/* */}
-=======
           <MentorCarusel mentors={mentors} />
->>>>>>> 7dbb86f52146afb707920c1d13f977efca4fd77b
           <section className="second">
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
@@ -358,7 +352,7 @@ const LandingPage = () => {
             </div>
           </div>
           <BlogSlider blog={blogsData} />
-          
+
           <Footer />
         </div>
       )}
