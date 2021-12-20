@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./college.css";
 
 const Colleges = ({ logos }) => {
-  console.log(logos);
+ 
   return (
     <div className="colleges">
       <h2>Our Students are from</h2>

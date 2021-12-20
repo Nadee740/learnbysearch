@@ -1,6 +1,16 @@
 import "./mentorcarousel.css";
 import Slider from "react-slick";
-const MentorCarusel = () => {
+const MentorCarusel = ({mentors}) => {
+//   0:
+// education: "<p>MTech in Robotics and Automation,<br>BTech in Electrical and Electronics Engineering</p>"
+// email: "srichitra@learnbyresearch.com"
+// googleScholarLink: "https://scholar.google.com/citations?hl=en&user=Tun1Q6AAAAAJ"
+// imageUrl: "http://res.cloudinary.com/dn3oddkar/image/upload/v1625144137/aem5drn2kswanerf00ah.jpg"
+// linkedin: "https://www.linkedin.com/in/srichitra-s"
+// name: "Srichitra S"
+// organisation: "<p>LearnByResearch</p>"
+// phone: "9447473514"
+// position: "<p>Lead Researcher (AI and Robotics)</p>"
   const settings = {
     dots: true,
     infinite: true,
@@ -23,62 +33,30 @@ const MentorCarusel = () => {
       <h2>Our mentors</h2>
       <div className="mentorcarousel-sildercontainer">
         <Slider {...settings}>
-          <div className="mentorcarousel-card">
+        {
+          mentors.map((mentor,index)=>{
+            let position = mentor.position.replace(/<\/?[^>]+(>|$)/g, "");
+            return(
+              <div className="mentorcarousel-card">
             <div className="mentorcarousel-card-inner">
               <img
-                src="https://randomuser.me/api/portraits/men/98.jpg"
-                alt=""
+                src={mentor.imageUrl}
+                alt="Mentor image"
                 className="mentorcarousel-img"
               />
-              <p className="mentorcarousel-card-head">Mr.Tim Cook</p>
+              <p className="mentorcarousel-card-head">{mentor.name}</p>
               <p className="mentorcarousel-card-sub">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                quasi velit, et esse vel asperiores.
+               {position}
               </p>
             </div>
           </div>
-          <div className="mentorcarousel-card">
-            <div className="mentorcarousel-card-inner">
-              <img
-                src="https://randomuser.me/api/portraits/men/98.jpg"
-                alt=""
-                className="mentorcarousel-img"
-              />
-              <p className="mentorcarousel-card-head">Mr.Tim Cook</p>
-              <p className="mentorcarousel-card-sub">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                quasi velit, et esse vel asperiores.
-              </p>
-            </div>
-          </div>
-          <div className="mentorcarousel-card">
-            <div className="mentorcarousel-card-inner">
-              <img
-                src="https://randomuser.me/api/portraits/men/98.jpg"
-                alt=""
-                className="mentorcarousel-img"
-              />
-              <p className="mentorcarousel-card-head">Mr.Tim Cook</p>
-              <p className="mentorcarousel-card-sub">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                quasi velit, et esse vel asperiores.
-              </p>
-            </div>
-          </div>
-          <div className="mentorcarousel-card">
-            <div className="mentorcarousel-card-inner">
-              <img
-                src="https://randomuser.me/api/portraits/men/98.jpg"
-                alt=""
-                className="mentorcarousel-img"
-              />
-              <p className="mentorcarousel-card-head">Mr.Tim Cook</p>
-              <p className="mentorcarousel-card-sub">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                quasi velit, et esse vel asperiores.
-              </p>
-            </div>
-          </div>
+            )
+          })
+        }
+     
+      
+    
+        
         </Slider>
       </div>
     </div>
