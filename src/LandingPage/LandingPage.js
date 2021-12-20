@@ -147,7 +147,7 @@ const LandingPage = () => {
                 <div className="right-side">
                   <div className="top-heading">
                     <h2 className="font-light-top">
-                      World's First Platform Rewarding Students for Research
+                      World's First Platfrom Rewarding Students for Research
                     </h2>
                     <h2 className="form-title">
                       Collaborate | Research | Learn | Earn
@@ -181,7 +181,8 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          {/* <MentorCarusel />*/}
+          <MentorCarusel />
+          {/* */}
           <section className="second">
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
