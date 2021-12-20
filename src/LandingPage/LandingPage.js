@@ -164,7 +164,7 @@ const LandingPage = () => {
                     </h2>
 
                     <p>
-                      Platfrom to connect leading researchers with the best
+                      Platform to connect leading researchers with the best
                       students
                     </p>
                   </div>
