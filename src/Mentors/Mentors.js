@@ -1,7 +1,9 @@
+import Footer from "../LandingPage/footer/footer";
+
 const Mentors = () => {
     return ( 
 <>
-    Mentor
+    <Footer/>
 </>
 
      );
