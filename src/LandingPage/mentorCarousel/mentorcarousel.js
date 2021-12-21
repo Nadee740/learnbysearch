@@ -34,6 +34,7 @@ const MentorCarusel = ({ mentors }) => {
       <div className="mentorcarousel-sildercontainer">
         <Slider {...settings}>
           {mentors.map((mentor, index) => {
+            if(index<10){
             let position = mentor.position.replace(/<\/?[^>]+(>|$)/g, "");
             return (
               <div className="mentorcarousel-card">
@@ -48,6 +49,7 @@ const MentorCarusel = ({ mentors }) => {
                 </div>
               </div>
             );
+          }
           })}
         </Slider>
       </div>
