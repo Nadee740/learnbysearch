@@ -5,6 +5,10 @@
   align-items: center;
   padding: 4rem;
   justify-content: center;
+  padding-bottom: 0;
+}
+.mentorcarousel-head {
+  margin-bottom: 0;
 }
 .mentorcarousel-sildercontainer {
   width: 100%;
@@ -16,6 +20,9 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  position: relative;
+
+  min-height: 25rem;
 }
 .mentorcarousel-card-inner {
   padding: 3rem;
@@ -23,7 +30,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #b6c7f3;
+  border-radius: 0.4rem;
+  width: 20vw;
+  height: 100%;
+  flex-grow: 1;
 }
+
 .mentorcarousel-img {
   width: 10rem;
   height: 10rem;
@@ -38,4 +51,9 @@
 .mentorcarousel-card-sub {
   text-align: center;
   margin-top: 0.5rem;
+}
+@media screen and (max-width: 800px) {
+  .mentorcarousel-card-inner {
+    width: 100%;
+  }
 }

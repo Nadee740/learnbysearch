@@ -30,7 +30,7 @@ const MentorCarusel = ({ mentors }) => {
   };
   return (
     <div className="mentorcarousel">
-      <h2>Our Mentors</h2>
+      <h2 className="mentorcarousel-head">Our Mentors</h2>
       <div className="mentorcarousel-sildercontainer">
         <Slider {...settings}>
           {mentors.map((mentor, index) => {
@@ -51,6 +51,9 @@ const MentorCarusel = ({ mentors }) => {
           })}
         </Slider>
       </div>
+      <a href="">
+        <p className="viewmore">View More</p>
+      </a>
     </div>
   );
 };
