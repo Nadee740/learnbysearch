@@ -1,0 +1,29 @@
+.mentorssec {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mentor-grid {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  grid-row-gap: 10rem;
+}
+
+@media screen and (max-width: 800px) {
+  .mentor-grid {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-row-gap: 3rem;
+  }
+  .mentor-grid > .mentorcarousel-card-inner {
+    width: 50%;
+  }
+}

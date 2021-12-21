@@ -34,26 +34,26 @@ const MentorCarusel = ({ mentors }) => {
       <div className="mentorcarousel-sildercontainer">
         <Slider {...settings}>
           {mentors.map((mentor, index) => {
-            if(index<10){
-            let position = mentor.position.replace(/<\/?[^>]+(>|$)/g, "");
-            return (
-              <div className="mentorcarousel-card">
-                <div className="mentorcarousel-card-inner">
-                  <img
-                    src={mentor.imageUrl}
-                    alt="Mentor image"
-                    className="mentorcarousel-img"
-                  />
-                  <p className="mentorcarousel-card-head">{mentor.name}</p>
-                  <p className="mentorcarousel-card-sub">{position}</p>
+            if (index < 10) {
+              let position = mentor.position.replace(/<\/?[^>]+(>|$)/g, "");
+              return (
+                <div className="mentorcarousel-card">
+                  <div className="mentorcarousel-card-inner">
+                    <img
+                      src={mentor.imageUrl}
+                      alt="Mentor image"
+                      className="mentorcarousel-img"
+                    />
+                    <p className="mentorcarousel-card-head">{mentor.name}</p>
+                    <p className="mentorcarousel-card-sub">{position}</p>
+                  </div>
                 </div>
-              </div>
-            );
-          }
+              );
+            }
           })}
         </Slider>
       </div>
-      <a href="">
+      <a href="/mentors">
         <p className="viewmore">View More</p>
       </a>
     </div>

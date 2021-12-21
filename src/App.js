@@ -30,6 +30,7 @@ import SuggestRP from "./SuggestRP/SuggestRP";
 import LoginAsresearcher from "./LoginasResearcher/Loginasresearcher";
 import SignUpAsresearcher from "./SigninUpResearcher/SignUpAsresearcher";
 import LinksPage from "./links/links";
+import Mentors from "./Mentors/Mentors";
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
         <Route path="/applyasguest/:id" exact component={SignupasGuest} />{" "}
         <Route path="/paymentstatus" exact component={PaymentStatusPage} />
         <Route path="/links" exact component={LinksPage} />
+        <Route path="/mentors" exact component={Mentors} />
         {/*<Route
           path="/signupasreasearcher"
           exact

@@ -52,6 +52,9 @@
   text-align: center;
   margin-top: 0.5rem;
 }
+.viewmore {
+  color: #000;
+}
 @media screen and (max-width: 800px) {
   .mentorcarousel-card-inner {
     width: 100%;
