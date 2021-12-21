@@ -1,48 +1,50 @@
 import Footer from "../LandingPage/footer/footer";
+import { useEffect, useState } from "react";
 import "./mentors.css";
+import Researchpgms from "../Backend/Researchpgms";
+import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 const Mentors = () => {
+  const [mentors, setmentors] = useState("");
+  const [isLoading, setisLoading] = useState(true);
+  useEffect(async()=>{
+    setisLoading(true);
+    const { data: mentors } = await Researchpgms(`${window.name}mentors`);
+    setmentors(mentors);
+    setisLoading(false);
+  },[])
+  if(isLoading){
+  return(
+    <div className="isLoading">
+      <SolarSystemLoading />
+    </div>
+  ) 
+
+  }
   return (
     <>
       <div className="mentorssec">
         <h2 className="mentorcarousel-head">Our Mentors</h2>
-        <div className="mentor-grid">
+        {
+          mentors.map((mentor,index)=>{
+    
+let position = mentor.position.replace(/<\/?[^>]+(>|$)/g, "");
+            return(
+              <div className="mentor-grid">
           <div className="mentorcarousel-card-inner">
             <img
-              src={"https://randomuser.me/api/portraits/men/45.jpg"}
+              src={mentor.imageUrl}
               alt="Mentor image"
               className="mentorcarousel-img"
             />
-            <p className="mentorcarousel-card-head">SDS</p>
-            <p className="mentorcarousel-card-sub">SDSD</p>
+            <p className="mentorcarousel-card-head">{mentor.name}</p>
+            <p className="mentorcarousel-card-sub">{position}</p>
           </div>
-          <div className="mentorcarousel-card-inner">
-            <img
-              src={"https://randomuser.me/api/portraits/men/45.jpg"}
-              alt="Mentor image"
-              className="mentorcarousel-img"
-            />
-            <p className="mentorcarousel-card-head">SDS</p>
-            <p className="mentorcarousel-card-sub">SDSD</p>
-          </div>
-          <div className="mentorcarousel-card-inner">
-            <img
-              src={"https://randomuser.me/api/portraits/men/45.jpg"}
-              alt="Mentor image"
-              className="mentorcarousel-img"
-            />
-            <p className="mentorcarousel-card-head">SDS</p>
-            <p className="mentorcarousel-card-sub">SDSD</p>
-          </div>
-          <div className="mentorcarousel-card-inner">
-            <img
-              src={"https://randomuser.me/api/portraits/men/45.jpg"}
-              alt="Mentor image"
-              className="mentorcarousel-img"
-            />
-            <p className="mentorcarousel-card-head">SDS</p>
-            <p className="mentorcarousel-card-sub">SDSD</p>
-          </div>
-        </div>
+         </div>
+            )
+          })
+        }
+        
+     
       </div>
       <Footer />
     </>
