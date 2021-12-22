@@ -273,7 +273,7 @@ const ApplicationForm = () => {
                     >
                       <Step label="Application Form" />
 
-                      <Step label="Financial Assistance" />
+                      <Step label="Additional Details" />
                     </Stepper>
                   </div>
                   {step === 0 ? (
@@ -285,7 +285,6 @@ const ApplicationForm = () => {
                       >
                         <div className="inputholder-top ">
                           <textarea
-                           
                             rows="1"
                             className="textarea"
                             placeholder=""
