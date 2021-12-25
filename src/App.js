@@ -31,6 +31,8 @@ import LoginAsresearcher from "./LoginasResearcher/Loginasresearcher";
 import SignUpAsresearcher from "./SigninUpResearcher/SignUpAsresearcher";
 import LinksPage from "./links/links";
 import Mentors from "./Mentors/Mentors";
+import QuizSection from "./quiz/quiz";
+import QuizSectionResults from "./quiz/quizresults";
 
 function App() {
   return (
@@ -70,6 +72,8 @@ function App() {
         <Route path="/paymentstatus" exact component={PaymentStatusPage} />
         <Route path="/links" exact component={LinksPage} />
         <Route path="/mentors" exact component={Mentors} />
+        <Route path="/quiz" exact component={QuizSection} />
+        <Route path="/quiz/result" exact component={QuizSectionResults} />
         {/*<Route
           path="/signupasreasearcher"
           exact
