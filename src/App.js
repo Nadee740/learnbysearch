@@ -72,7 +72,7 @@ function App() {
         <Route path="/paymentstatus" exact component={PaymentStatusPage} />
         <Route path="/links" exact component={LinksPage} />
         <Route path="/mentors" exact component={Mentors} />
-        <Route path="/quiz" exact component={QuizSection} />
+        <Route path="/quiz/:rpid/:positionid" exact component={QuizSection} />
         <Route path="/quiz/result" exact component={QuizSectionResults} />
         {/*<Route
           path="/signupasreasearcher"
