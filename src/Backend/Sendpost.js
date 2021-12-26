@@ -1,12 +1,12 @@
 import {useState,useEffect} from "react"
  /////////////post rqst that need token in header/////////////////////////////////////////
  const SendPost = async(url, data) => {
-
+ let Json={}
  let message="a";
  let retdata={};
  let Token=localStorage.getItem('LoggedInUserTokenID')
  
-        console.log(Token,data)
+        
          await fetch(url, {
                method: 'POST',
                 headers: {
@@ -18,7 +18,7 @@ import {useState,useEffect} from "react"
             })
             .then(res => res.json())
             .then(json => {
-                console.log(json)
+               Json=json
                 if(json.status === 'error'){
                     
                     if(typeof json.msg === "object"){
@@ -74,7 +74,7 @@ if(url.includes("user")){
     return {retdata}
 }
 else{
-return {message};
+return {message,Json};
 }
 }
 

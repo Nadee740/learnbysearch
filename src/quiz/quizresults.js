@@ -9,6 +9,7 @@ const QuizSectionResults = () => {
   const { score } = useParams();
   const { rpid } = useParams();
   const { positionid } = useParams();
+  const { total } = useParams();
  
   const[isLoading,setisLoading]=useState()
   const[rp,setrp]=useState()
@@ -31,7 +32,7 @@ return (
       <div className="quiz-window">
         <h2 className="quiz-head">Quiz Result</h2>
         <p className="quiz-window-para">Quiz for {postion}:{rp}</p>
-        <div className="quiz-score">{score}/10</div>
+        <div className="quiz-score">{score}/{total}</div>
         <div className="quiz-result">
           <p className="quiz-result-text1">{score} Correct Answers</p>{" "}
           <p className="quiz-result-text1">{lose} Wrong Answers</p>

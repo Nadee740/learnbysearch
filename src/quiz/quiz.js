@@ -5,20 +5,23 @@ import Researchpgms from "../Backend/Researchpgms";
 import Footer from "../LandingPage/footer/footer";
 import Modal from "react-awesome-modal";
 import "./quiz.css";
+import SendPost from "../Backend/Sendpost";
 const QuizSection = () => {
   const { rpid } = useParams();
   const { positionid } = useParams();
+  const { appid } = useParams();
   const [quizdata,setquizdata]=useState();
   const [isLoading,setisLoading]=useState(true);
   const [score,setscore]=useState(0);
   const [visible,setvisible]=useState(false);
+  
   const [result,setresult]=useState([false])
 
   const closeModal=()=>{
     setvisible(false)
   }
   useEffect(async()=>{
-
+  
     const { data } = await Researchpgms(`${window.name}quiz?rpId=${rpid}&positionId=${positionid}`);
     if(data!=null)
     {  setquizdata(data)
@@ -49,7 +52,9 @@ const QuizSection = () => {
                 alt=""
               />
               <p>Are you sure you want to submit?.</p>
-              <Link onClick={()=>{
+              <Link onClick={ async()=>{
+                if(result.length==quizdata.questions.length)
+{
                 let win=0;
                 let lose=0;
                 closeModal()
@@ -60,7 +65,25 @@ const QuizSection = () => {
                   else
                    lose++
                 })
-                 window.location=`/quiz/result/${rpid}/${positionid}/${win}/${lose}`
+                let data = {
+       applicationId:appid,
+       score:win
+  
+      };
+
+      const { Json } = await SendPost(
+        `${window.name}score`,
+        data
+      );
+      console.log(Json)
+      if(Json.status=="ok")
+          {let len=result.length
+             window.location=`/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`
+          }
+              }
+              else{
+                alert("Please attend all question")
+              }
               }}>Submit</Link>
             </div>
           </Modal>
