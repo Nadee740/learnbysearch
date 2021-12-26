@@ -73,7 +73,7 @@ function App() {
         <Route path="/links" exact component={LinksPage} />
         <Route path="/mentors" exact component={Mentors} />
         <Route path="/quiz/:rpid/:positionid" exact component={QuizSection} />
-        <Route path="/quiz/result" exact component={QuizSectionResults} />
+        <Route path="/quiz/result/:rpid/:positionid/:score/:lose" exact component={QuizSectionResults} />
         {/*<Route
           path="/signupasreasearcher"
           exact
