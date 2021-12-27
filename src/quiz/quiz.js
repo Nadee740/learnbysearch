@@ -24,6 +24,14 @@ const QuizSection = () => {
   
     const { data } = await Researchpgms(`${window.name}quiz?rpId=${rpid}&positionId=${positionid}`);
     if(data!=null)
+//     position:
+// title: "Machine Learning Researcher "
+// _id: "60ddbc6978e692ab358f7919"
+// [[Prototype]]: Object
+// questions: (5) [{…}, {…}, {…}, {…}, {…}]
+// researchProgram:
+// title:
+    console.log(data)
     {  setquizdata(data)
       setisLoading(false)}
   
@@ -78,10 +86,12 @@ const QuizSection = () => {
       console.log(Json)
       if(Json.status=="ok")
           {let len=result.length
+       
              window.location=`/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`
           }
               }
               else{
+                closeModal()
                 alert("Please attend all question")
               }
               }}>Submit</Link>
@@ -91,7 +101,7 @@ const QuizSection = () => {
       </div>
       <div className="quiz-window">
         <h2 className="quiz-head">Quiz</h2>
-        <p className="quiz-window-para">Quiz for position:Research Program</p>
+        <p className="quiz-window-para">Quiz for {quizdata.position.title}:{quizdata.researchProgram.title}</p>
         {quizdata.questions.map((question,index) => {
           return (
             <div className="quiz-card">
