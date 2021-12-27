@@ -17,7 +17,7 @@
                })
                .then(res => res.json())
                .then(json => {
-                
+               
                  data=json.data
                   
                })

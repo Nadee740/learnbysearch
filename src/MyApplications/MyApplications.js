@@ -149,12 +149,12 @@ if(isempty){
                     }
                     case 6:{
                       classn = "myapplication-row-btn-accept";
-                      title = "Accepted";
+                      title = "Archived";
                       break;
                     }
                     case 5:{
                       classn = "myapplication-row-btn-arch";
-                      title = "Archived";
+                      title = "Accepted";
                       break;
                     }
                     case 4: {

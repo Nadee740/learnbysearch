@@ -30,6 +30,7 @@ const ApplicationForm = () => {
   const [ResearchProgramId, setResearchProgramId] = useState();
   const [positions, setPosition] = useState("");
   const [code, setreferalcode] = useState("");
+  const [Appid, setAppid] = useState("");
   const [err, seterr] = useState("");
 
   const closeModal = () => {
@@ -129,17 +130,19 @@ const ApplicationForm = () => {
         code,
       };
 
-      const { message } = await SendPost(
+      const { message,Json } = await SendPost(
         `${window.name}application-form`,
         data
       );
+      
 
       if (message.includes("Application form submitted")) {
+        setAppid(Json.data._id)
         setisLoading(false);
         setvisible(true);
       } else {
         setisLoading(false);
-        console.log(message);
+      
         seterrorvisible(true);
       }
     }
@@ -158,6 +161,9 @@ const ApplicationForm = () => {
         <meta charSet="utf-8" />
         <title>Home | Programs</title>
       </Helmet>
+      {/* <Link to="/myapplications" onClick={closeModal}>
+                Close
+              </Link> */}
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -173,10 +179,28 @@ const ApplicationForm = () => {
                 className="logo"
                 alt=""
               />
-              <p>APPLICATION FORM SUBMITTED SUCCESSFULLY...</p>
-              <Link to="/myapplications" onClick={closeModal}>
-                Close
-              </Link>
+              <p>ATTEND QUIZ NOW...</p>
+              <br/>
+              <div className="extrapart-webinar">
+                <div className="signuppart">
+                  <Link
+                  to="/myapplications" onClick={closeModal}
+                  >
+                    Skip
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                  to={"/quiz/"+ResearchProgramId+"/"+PositionId+"/"+Appid}
+                    onClick={() => {
+                      closeModal()
+                      
+                    }}
+                  >
+                    Attend
+                  </Link>
+                </div>
+              </div>
             </div>
           </Modal>
         </section>
@@ -339,11 +363,7 @@ const ApplicationForm = () => {
                                 ? setisLoading(true)
                                 : positions &&
                                   positions.map((position, index) => {
-                                    console.log(
-                                      positions[0]._id,
-                                      PositionId,
-                                      "hyyy"
-                                    );
+                                   
                                     return (
                                       <option
                                         value={position._id}
