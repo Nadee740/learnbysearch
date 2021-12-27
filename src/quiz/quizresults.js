@@ -37,11 +37,11 @@ return (
           <p className="quiz-result-text1">{score} Correct Answers</p>{" "}
           <p className="quiz-result-text1">{lose} Wrong Answers</p>
         </div>{" "}
-        {/* <div className="quiz-resultfooter">
+        <div className="quiz-resultfooter">
           <button className="quiz-resultfooter-btn">
             Download Certificate
           </button>
-        </div> */}
+        </div>
       </div>
       <Footer />
     </>

@@ -24,14 +24,6 @@ const QuizSection = () => {
   
     const { data } = await Researchpgms(`${window.name}quiz?rpId=${rpid}&positionId=${positionid}`);
     if(data!=null)
-//     position:
-// title: "Machine Learning Researcher "
-// _id: "60ddbc6978e692ab358f7919"
-// [[Prototype]]: Object
-// questions: (5) [{…}, {…}, {…}, {…}, {…}]
-// researchProgram:
-// title:
-    console.log(data)
     {  setquizdata(data)
       setisLoading(false)}
   
