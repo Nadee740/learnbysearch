@@ -38,7 +38,7 @@ const MyApplications = () => {
       setisLoading(false);
     } else {
       userdata.applicationForm.map(async (application) => {
-        console.log(application,"hyyyaaaa")
+        
         const app_data = {
           id: application,
         };
@@ -49,12 +49,13 @@ const MyApplications = () => {
         count++;
 
         if (retdata.status!='error') {
-          console.log(retdata,"hyyyy")
+          
           array.push(retdata);}
 
         
         if (count == userdata.applicationForm.length) {
           if (array.length > 0) {
+           
             setapplication(array);
 
             getreaserch(array);
@@ -85,7 +86,7 @@ const MyApplications = () => {
         })
         setapplicationsdata(test1)
         setisLoading(false);
-        console.log(test1)
+        
       }
     });
   };
@@ -169,12 +170,12 @@ if(isempty){
                     }
                     case 2: {
                       classn = "myapplication-row-btn-pend";
-                      title = "Pending";
+                      title = "Under Review";
                       break;
                     }
                     case 1: {
                       classn = "myapplication-row-btn-sub";
-                      title = "Submited";
+                      title = "Attend Quiz";
                       break;
                     }
                   }
@@ -188,7 +189,14 @@ if(isempty){
                         {application.applicationstatus.date.substring(0, 10)}
                       </p>
                       <p className="myapplication-row-text  ">
-                        <button className={classtype}>{title}</button>
+                        <button onClick={async()=>{
+                          if(application.applicationstatus.data==1)
+                          {setisLoading(true)
+                            console.log(application.applicationstatus.appication[0])
+                            
+                           window.location=`/quiz/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0]._id}`
+                          }
+                        }} className={classtype}>{title}</button>
                         {}
                       </p>
                     </div>
