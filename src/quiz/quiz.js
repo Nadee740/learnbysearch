@@ -10,33 +10,43 @@ const QuizSection = () => {
   const { rpid } = useParams();
   const { positionid } = useParams();
   const { appid } = useParams();
-  const [quizdata,setquizdata]=useState();
-  const [isLoading,setisLoading]=useState(true);
-  const [score,setscore]=useState(0);
-  const [visible,setvisible]=useState(false);
-  
-  const [result,setresult]=useState([false])
+  const [quizdata, setquizdata] = useState();
+  const [isLoading, setisLoading] = useState(true);
+  const [score, setscore] = useState(0);
+  const [visible, setvisible] = useState(false);
+  const [selected, setselected] = useState([]);
+  const [result, setresult] = useState([false]);
+  const [chumma, setchumma] = useState(false);
 
-  const closeModal=()=>{
-    setvisible(false)
-  }
-  useEffect(async()=>{
-  
-    const { data } = await Researchpgms(`${window.name}quiz?rpId=${rpid}&positionId=${positionid}`);
-    if(data!=null)
-    {  setquizdata(data)
-      setisLoading(false)}
-  
-  },[])
+  const closeModal = () => {
+    setvisible(false);
+  };
+  useEffect(async () => {
+    const { data } = await Researchpgms(
+      `${window.name}quiz?rpId=${rpid}&positionId=${positionid}`
+    );
+    if (data != null)
+    {
+      setquizdata(data);
+      let a=selected
+      data.questions.map((question,index)=>{
+        
+        a.push([false,false,false,false])
+      })
+      setselected(a)
+      console.log(selected)
+      setisLoading(false);
+    }
+  }, []);
   if (isLoading)
-  return (
-    <div className="isLoading">
-      <SolarSystemLoading />
-    </div>
-  );
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>
+    );
   return (
     <>
-     <div className="popupscreen">
+      <div className="popupscreen">
         <section className="popupscreen">
           <Modal
             visible={visible}
@@ -52,133 +62,161 @@ const QuizSection = () => {
                 alt=""
               />
               <p>Are you sure you want to submit?.</p>
-              <Link onClick={ async()=>{
-                if(result.length==quizdata.questions.length)
-{
-                let win=0;
-                let lose=0;
-                closeModal()
-                console.log(result)
-                result.map((re)=>{
-                  if(re)
-                   win++
-                  else
-                   lose++
-                })
-                let data = {
-       applicationId:appid,
-       score:win
-  
-      };
+              <Link
+                onClick={async () => {
+                  if (result.length == quizdata.questions.length) {
+                    let win = 0;
+                    let lose = 0;
+                    closeModal();
+                    console.log(result);
+                    result.map((re) => {
+                      if (re) win++;
+                      else lose++;
+                    });
+                    let data = {
+                      applicationId: appid,
+                      score: win,
+                    };
 
-      const { Json } = await SendPost(
-        `${window.name}score`,
-        data
-      );
-      console.log(Json)
-      if(Json.status=="ok")
-          {let len=result.length
-       
-             window.location=`/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`
-          }
-              }
-              else{
-                closeModal()
-                alert("Please attend all question")
-              }
-              }}>Submit</Link>
+                    const { Json } = await SendPost(
+                      `${window.name}score`,
+                      data
+                    );
+                    console.log(Json);
+                    if (Json.status == "ok") {
+                      let len = result.length;
+
+                      window.location = `/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`;
+                    }
+                  } else {
+                    closeModal();
+                    alert("Please attend all question");
+                  }
+                }}
+              >
+                Submit
+              </Link>
             </div>
           </Modal>
         </section>
       </div>
       <div className="quiz-window">
         <h2 className="quiz-head">Quiz</h2>
-        <p className="quiz-window-para">Quiz for {quizdata.position.title}:{quizdata.researchProgram.title}</p>
-        {quizdata.questions.map((question,index) => {
+        <p className="quiz-window-para">
+          Quiz for {quizdata.position.title}:{quizdata.researchProgram.title}
+        </p>
+        {quizdata.questions.map((question, index) => {
           return (
             <div className="quiz-card">
               <p className="quiz-question">
-                {index+1 +".  " + question.question}
+                {index + 1 + ".  " + question.question}
               </p>
-              <button className="quiz-option" onClick={()=>{
-                if(question.correctOption==1)
-                   {
+              <button
+                className={selected[index][0]?"quiz-option-selected":"quiz-option"}
+                onClick={() => {
                   
-                      let r=result
-                    r[index]=true
-                    setresult(r)
-                   }
-                else
-                {
-                  let r=result
-                   r[index]=false
-                   setresult(r)
+                  let a=[...selected]
+                  a[index][0]=!a[index][0]
+                  a[index][1]=false
+                  a[index][2]=false
+                  a[index][3]=false
+                  setselected(a)
+                  if (question.correctOption == 1) {
+                    let r = result;
+                    r[index] = true;
+                    setresult(r);
 
-
-                }
-              }}>
+                  } else {
+                    let r = result;
+                    r[index] = false;
+                    setresult(r);
+                  }
+                  console.log(selected)
+                }}
+              >
                 <div className="quiz-option-circle">A</div> {question.option1}
               </button>
-              <button className="quiz-option" onClick={()=>{
-                if(question.correctOption==2)
-                {let r=result
-                   r[index]=true
-                   setresult(r)
-                   }
-                else
-                {
-                  let r=result
-                   r[index]=false
-                   setresult(r)
-
-
-                }
-            
-              }}>
+              <button
+                className={selected[index][1]?"quiz-option-selected":"quiz-option"}
+                onClick={() => {
+                  let a=[...selected]
+                  a[index][1]=!a[index][1]
+                  a[index][0]=false
+                  a[index][2]=false
+                  a[index][3]=false
+                  setselected(a)
+                  if (question.correctOption == 2) {
+                    let r = result;
+                    r[index] = true;
+                    setresult(r);
+                  } else {
+                    let r = result;
+                    r[index] = false;
+                    setresult(r);
+                  }
+                }}
+              >
                 <div className="quiz-option-circle">B</div> {question.option2}
               </button>
-              <button className="quiz-option" onClick={()=>{
-                if(question.correctOption==3)
-                {let r=result
-                   r[index]=true
-                   setresult(r)
-                   }
-                else
-                {
-                  let r=result
-                   r[index]=false
-                   setresult(r)
-
-
-                }
-              }}>
-                <div className="quiz-option-circle">C</div>{question.option3}
+              <button
+                className={selected[index][2]?"quiz-option-selected":"quiz-option"}
+                onClick={() => {
+                  let a=[...selected]
+                  a[index][2]=!a[index][2]
+                  a[index][1]=false
+                  a[index][0]=false
+                  a[index][3]=false
+                  setselected(a)
+                  if (question.correctOption == 3) {
+                    let r = result;
+                    r[index] = true;
+                    setresult(r);
+                  } else {
+                    let r = result;
+                    r[index] = false;
+                    setresult(r);
+                  }
+                }}
+              >
+                <div className="quiz-option-circle">C</div>
+                {question.option3}
               </button>
-              <button className="quiz-option" onClick={()=>{
-                if(question.correctOption==4)
-                {let r=result
-                   r[index]=true
-                   setresult(r)
-                   }
-                else
-                {
-                  let r=result
-                   r[index]=false
-                   setresult(r)
-
-
-                }
-              }}>
-                <div className="quiz-option-circle">D</div>{question.option4}
+              <button
+                className={selected[index][3]?"quiz-option-selected":"quiz-option"}
+                onClick={() => {
+                  let a=[...selected]
+                  a[index][3]=!a[index][3]
+                  a[index][1]=false
+                  a[index][2]=false
+                  a[index][0]=false
+                  setselected(a)
+                  if (question.correctOption == 4) {
+                    let r = result;
+                    r[index] = true;
+                    setresult(r);
+                  } else {
+                    let r = result;
+                    r[index] = false;
+                    setresult(r);
+                  }
+                }}
+              >
+                <div className="quiz-option-circle">D</div>
+                {question.option4}
               </button>
             </div>
           );
         })}
 
         <div className="quiz-footer">
-          <button onClick={()=>{
-            setvisible(true)
-          }} className="quiz-footer-btn">Submit</button>
+          <button
+            onClick={() => {
+              setvisible(true);
+            }}
+            className="quiz-footer-btn"
+          >
+            Submit
+          </button>
         </div>
       </div>
       <Footer />
