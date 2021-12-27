@@ -12,7 +12,7 @@ const QuizSection = () => {
               <p className="quiz-question">
                 {item}. Lorem ipsum dolor sit amet consectetur adipisicing elit?
               </p>
-              <button className="quiz-option">
+              <button className="quiz-option quiz-option-selected">
                 <div className="quiz-option-circle">A</div> Option A content
               </button>
               <button className="quiz-option">
