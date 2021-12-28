@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Researchpgms from "../Backend/Researchpgms";
 import Footer from "../LandingPage/footer/footer";
-
+import Modal from "react-awesome-modal";
+import "./quiz.css";
 const Quizconfirmtaion = () => {
     const { rpid } = useParams();
   const { positionid } = useParams();
@@ -11,7 +12,11 @@ const Quizconfirmtaion = () => {
     const[isLoading,setisLoading]=useState()
     const[rp,setrp]=useState()
     const[postion,setPosition]=useState()
+    const[visible,setvisible]=useState(false)
 
+    const closeModal=()=>{
+      setvisible(false)
+    }
     useEffect(async()=>{
         const { data } = await Researchpgms(`${window.name}research-program-id/${rpid}`)
         setrp(data.title)
@@ -27,6 +32,55 @@ return (
 );
   return (
     <>
+    <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={visible}
+            width="350"
+            height="300"
+            effect="fadeInUp"
+            onClickAway={closeModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>Warning !</p>
+              <br/>
+              This quiz is compulsory for the screening process.
+Failing to attempt the quiz will result in your
+application now moving forward.
+<br />
+You must take this quiz in next 2 working days and
+can find the quiz link on your Dashboard "My
+
+Applications".
+              <div className="extrapart-webinar">
+                <div className="popup-button">
+                  <Link
+                  to="/myapplications" onClick={closeModal}
+                  >
+                    Skip
+                  </Link>
+                </div>
+                <div className="popup-button">
+                  <Link
+                  to={`/quiz/${rpid}/${positionid}/${appid}`}
+                    onClick={() => {
+                      closeModal()
+                      
+                    }}
+                  >
+                    Attend
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        </section>
+      </div> 
       <div className="quiz-confirmation">
         <h2 className="quiz-confirmation-head">Take Your Quiz!</h2>
         <img
@@ -47,7 +101,7 @@ return (
         </p>
         <div className="quiz-confirm-btm">
           <button onClick={()=>{
-              window.location='/'
+              setvisible(true)
           }} className="quiz-confirm-btm-btn1 quiz-confirm-btm-btn">
             Skip
           </button>
