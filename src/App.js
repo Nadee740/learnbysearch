@@ -33,6 +33,7 @@ import LinksPage from "./links/links";
 import Mentors from "./Mentors/Mentors";
 import QuizSection from "./quiz/quiz";
 import QuizSectionResults from "./quiz/quizresults";
+import Quizconfirmtaion from "./quiz/quizconfirmation";
 
 function App() {
   return (
@@ -74,6 +75,7 @@ function App() {
         <Route path="/mentors" exact component={Mentors} />
         <Route path="/quiz/:rpid/:positionid/:appid" exact component={QuizSection} />
         <Route path="/quiz/result/:rpid/:positionid/:score/:lose/:total" exact component={QuizSectionResults} />
+        <Route path="/quiz/confirmation/:rpid/:positionid/:appid" exact component={Quizconfirmtaion} />
         {/*<Route
           path="/signupasreasearcher"
           exact
