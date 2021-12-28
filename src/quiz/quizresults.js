@@ -11,7 +11,7 @@ const QuizSectionResults = () => {
   const { positionid } = useParams();
   const { total } = useParams();
  
-  const[isLoading,setisLoading]=useState()
+  const[isLoading,setisLoading]=useState(true)
   const[rp,setrp]=useState()
   const[postion,setPosition]=useState()
 useEffect(async()=>{
@@ -19,6 +19,7 @@ useEffect(async()=>{
   setrp(data.title)
   const { data:pos } = await Researchpgms(`${window.name}position/${positionid}`)
   setPosition(pos.title)
+  setisLoading(false)
 },[])
 
 if (isLoading)

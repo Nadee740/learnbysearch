@@ -194,7 +194,7 @@ if(isempty){
                           {setisLoading(true)
                             console.log(application.applicationstatus.appication[0])
                             
-                           window.location=`/quiz/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0]._id}`
+                           window.location=`/quiz/confirmation/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0]._id}`
                           }
                         }} className={classtype}>{title}</button>
                         {}
