@@ -33,11 +33,19 @@ return (
       <div className="quiz-window">
         <h2 className="quiz-head">Quiz Result</h2>
         <p className="quiz-window-para">Quiz for {postion}:{rp}</p>
-        <div className="quiz-score">{score}/{total}</div>
+        <p className="quiz-window-para2">
+        Thank you for attempting the quiz. Your application has
+been successfully processed for further consideration.
+You will here from us shortly, keep
+<br></br>
+You have qualified for a detailed quiz report and a
+certificate.Download it and share
+</p>
+        {/* <div className="quiz-score">{score}/{total}</div>
         <div className="quiz-result">
           <p className="quiz-result-text1">{score} Correct Answers</p>{" "}
           <p className="quiz-result-text1">{lose} Wrong Answers</p>
-        </div>{" "}
+        </div>{" "} */}
         <div className="quiz-resultfooter">
           <button className="quiz-resultfooter-btn">
             Download Certificate

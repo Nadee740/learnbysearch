@@ -37,7 +37,14 @@
   margin-top: 3rem;
 }
 .quiz-window-para {
+  padding: 30px;
   font-size: 1.5rem;
+}
+.quiz-window-para2 {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+  font-size: 1.3rem;
 }
 .quiz-card {
   width: 70%;
