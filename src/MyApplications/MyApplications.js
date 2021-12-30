@@ -180,7 +180,7 @@ const MyApplications = () => {
                 }
                 case 1: {
                   classn = "myapplication-row-btn-sub";
-                  title = "Attend Quiz";
+                  title = "Submitted";
                   break;
                 }
               }
@@ -195,22 +195,30 @@ const MyApplications = () => {
                   </p>
                   <p className="myapplication-row-text  ">
                     <button
-                      onClick={async () => {
-                        if (application.applicationstatus.data == 1) {
-                          setisLoading(true);
-                          console.log(
-                            application.applicationstatus.appication[0]
-                          );
-
-                          window.location = `/quiz/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0]._id}`;
-                        }
-                      }}
+           
                       className={classtype}
                     >
                       {title}
                     </button>
                     {}
                   </p>
+                  <p className="myapplication-row-text  ">
+                    <button
+                      onClick={async () => {
+                        if (application.applicationstatus.data == 1) {
+                          setisLoading(true);
+                         
+
+                          window.location = `/quiz/confirmation/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0]._id}`;
+                        }
+                      }}
+                      className={application.applicationstatus.data == 1?"myapplication-row-btn myapplication-row-btn-rej":"myapplication-row-btn myapplication-row-btn-approv"}
+                    >
+                      {application.applicationstatus.data == 1?"Attend Quiz":"Download Certificate"}
+                    </button>
+                    {}
+                  </p>
+                  
                 </div>
               );
             })}
