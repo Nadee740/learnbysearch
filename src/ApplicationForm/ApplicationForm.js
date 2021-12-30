@@ -139,7 +139,8 @@ const ApplicationForm = () => {
       if (message.includes("Application form submitted")) {
         setAppid(Json.data._id)
         setisLoading(false);
-        setvisible(true);
+        window.location=`/quiz/confirmation/${ResearchProgramId}/${PositionId}/${Json.data._id}`
+        
       } else {
         setisLoading(false);
       
@@ -164,47 +165,7 @@ const ApplicationForm = () => {
       {/* <Link to="/myapplications" onClick={closeModal}>
                 Close
               </Link> */}
-      <div className="popupscreen">
-        <section className="popupscreen">
-          <Modal
-            visible={visible}
-            width="350"
-            height="200"
-            effect="fadeInUp"
-            onClickAway={closeModal}
-          >
-            <div className="popup">
-              <img
-                src="/images/LearnByResearchLogo.png"
-                className="logo"
-                alt=""
-              />
-              <p>ATTEND QUIZ NOW...</p>
-              <br/>
-              <div className="extrapart-webinar">
-                <div className="signuppart">
-                  <Link
-                  to="/myapplications" onClick={closeModal}
-                  >
-                    Skip
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                  to={"/quiz/"+ResearchProgramId+"/"+PositionId+"/"+Appid}
-                    onClick={() => {
-                      closeModal()
-                      
-                    }}
-                  >
-                    Attend
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Modal>
-        </section>
-      </div>
+      
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal
@@ -544,3 +505,45 @@ const ApplicationForm = () => {
 };
 
 export default ApplicationForm;
+
+{/* <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={visible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={closeModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>ATTEND QUIZ NOW...</p>
+              <br/>
+              <div className="extrapart-webinar">
+                <div className="signuppart">
+                  <Link
+                  to="/myapplications" onClick={closeModal}
+                  >
+                    Skip
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                  to={"/quiz/"+ResearchProgramId+"/"+PositionId+"/"+Appid}
+                    onClick={() => {
+                      closeModal()
+                      
+                    }}
+                  >
+                    Attend
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        </section>
+      </div> */}

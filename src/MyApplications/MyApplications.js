@@ -136,9 +136,6 @@ const MyApplications = () => {
                 Application Date
               </p>
               <p className="myapplication-row-text myapplication-row-text-head ">
-                Quiz Status
-              </p>
-              <p className="myapplication-row-text myapplication-row-text-head ">
                 Status
               </p>
             </div>
