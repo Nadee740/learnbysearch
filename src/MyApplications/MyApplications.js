@@ -138,6 +138,9 @@ const MyApplications = () => {
               <p className="myapplication-row-text myapplication-row-text-head ">
                 Status
               </p>
+              <p className="myapplication-row-text myapplication-row-text-head ">
+                Quiz Status
+              </p>
             </div>
             {applicationsData.map((application, index) => {
               let classn = "",
