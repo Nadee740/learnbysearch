@@ -85,8 +85,8 @@ const QuizSection = () => {
                     console.log(Json);
                     if (Json.status == "ok") {
                       let len = result.length;
-
-                      window.location = `/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`;
+                      window.location='/myapplications'
+                      // window.location = `/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`;
                     }
                   } else {
                     closeModal();
