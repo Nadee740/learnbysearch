@@ -37,6 +37,14 @@ const QuizSection = () => {
       console.log(selected)
       setisLoading(false);
     }
+    else
+    {
+      return (
+        <div className="isLoading">
+          <h1>No quiz to load</h1>
+        </div>
+      )
+    }
   }, []);
   if (isLoading)
     return (
