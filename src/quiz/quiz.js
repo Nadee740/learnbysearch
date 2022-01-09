@@ -12,6 +12,7 @@ const QuizSection = () => {
   const { appid } = useParams();
   const [quizdata, setquizdata] = useState();
   const [isLoading, setisLoading] = useState(true);
+  const [empty, setisempty] = useState(false);
   const [score, setscore] = useState(0);
   const [visible, setvisible] = useState(false);
   const [selected, setselected] = useState([]);
@@ -37,6 +38,12 @@ const QuizSection = () => {
       console.log(selected)
       setisLoading(false);
     }
+    else
+    {
+      
+      setisempty(true)
+      setisLoading(false);
+    }
   }, []);
   if (isLoading)
     return (
@@ -44,6 +51,15 @@ const QuizSection = () => {
         <SolarSystemLoading />
       </div>
     );
+    if(empty)
+    {return (
+      <div className="oopps">
+        <h1>Ooops nothing to show ...</h1>
+      </div>
+    );
+
+    }
+
   return (
     <>
       <div className="popupscreen">
@@ -85,8 +101,8 @@ const QuizSection = () => {
                     console.log(Json);
                     if (Json.status == "ok") {
                       let len = result.length;
-
-                      window.location = `/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`;
+                      // window.location='/myapplications'
+                     window.location = `/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`;
                     }
                   } else {
                     closeModal();

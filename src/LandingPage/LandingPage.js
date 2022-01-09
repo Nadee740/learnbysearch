@@ -17,7 +17,8 @@ import Gettestimonials from "../Backend/Gettestimonials";
 import getStudent from "../Backend/getstudent";
 import GetCollegelogos from "../Backend/Getcollegelogo";
 import MentorCarusel from "./mentorCarousel/mentorcarousel";
-
+import Modal from "react-awesome-modal";
+import SendPost from "../Backend/Sendpost";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -28,6 +29,9 @@ const LandingPage = () => {
   const [testimonialsdata, settestimonialsdata] = useState([]);
   const [collegelogos, setcollegelogos] = useState([]);
   const [mentors, setmentors] = useState("");
+  const [visible, setvisible] = useState(false);
+  const [loginvisible, setloginvisible] = useState(false);
+  const [selectedwebinardata, setselectedwebinardata] = useState("");
   useEffect(() => {
     getopenPgmgs();
   }, []);
@@ -117,17 +121,116 @@ const LandingPage = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  const closeModal = () => {
+    setvisible(false);
+  };
+  const closeloginModal = () => {
+    setloginvisible(false);
+  };
+  const applyforwebinar = async () => {
+    setisLoading(true)
+    if (isLoggedIn) {
+      const data = {
+        webinarId: selectedwebinardata._id,
+      };
+      const { message: outcome } = await SendPost(
+        `${window.name}apply-for-webinar`,
+        data
+      );
+      setisLoading(false)
+      if (outcome.includes("success")) {
+        closeModal();
+        alert(`Successfully registered for\n${selectedwebinardata.title}`);
+      } else {
+        closeModal();
+        alert("Sorry an error occured");
+      }
+    } else {
+      setisLoading(false)
+      setvisible(false);
+      setloginvisible(true);
+    }
+  };
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Home</title>
       </Helmet>
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={visible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={closeModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>Are you sure you want to apply for {selectedwebinardata.title}?</p>
+              <br></br>
+              <div className="extrapart-webinar">
+                <div className="signuppart">
+                  <Link to="/" onClick={()=>{
+                    setvisible(false)
+                  }} >Close</Link>
+                </div>
+                <div>
+                  <Link to="/" onClick={applyforwebinar}>Apply</Link>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        </section>
+      </div>
+      <div className="popupscreen">
+        <section className="popupscreen">
+          <Modal
+            visible={loginvisible}
+            width="350"
+            height="200"
+            effect="fadeInUp"
+            onClickAway={closeloginModal}
+          >
+            <div className="popup">
+              <img
+                src="/images/LearnByResearchLogo.png"
+                className="logo"
+                alt=""
+              />
+              <p>PLEASE LOGIN TO SUBMIT APPLICATION...</p>
+              <br></br>
+              <div className="extrapart">
+                <div className="signuppart">
+                  <Link to="/signup" onClick={closeloginModal}>
+                    Sign Up
+                  </Link>
+                </div>
+                <div>
+                  <Link to={"/applyasguest/"+selectedwebinardata._id}  onClick={closeloginModal}>Apply as guest</Link>
+                </div>
+
+                <div className="loginpart">
+                  <Link to="/login" onClick={closeloginModal}>
+                    Login
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        </section>
+      </div>
       {isLoading ? (
         <div className="isLoading">
           <SolarSystemLoading />
         </div>
       ) : (
+        
         <div className="landingpage">
           <div className="slider-webinar">
             <Slider {...settings}>
@@ -137,6 +240,8 @@ const LandingPage = () => {
                     key={index}
                     webinardata={webinar}
                     isloggedin={isLoggedIn}
+                    setvisible={setvisible}
+                    setwebinardata={setselectedwebinardata}
                   />
                 ) : (
                   ""

@@ -138,9 +138,9 @@ const MyApplications = () => {
               <p className="myapplication-row-text myapplication-row-text-head ">
                 Status
               </p>
-              <p className="myapplication-row-text myapplication-row-text-head ">
+              {/* <p className="myapplication-row-text myapplication-row-text-head ">
                 Quiz Status
-              </p>
+              </p> */}
             </div>
             {applicationsData.map((application, index) => {
               let classn = "",
@@ -180,7 +180,7 @@ const MyApplications = () => {
                 }
                 case 1: {
                   classn = "myapplication-row-btn-sub";
-                  title = "Submitted";
+                  title = "Attend Quiz";
                   break;
                 }
               }
@@ -195,14 +195,21 @@ const MyApplications = () => {
                   </p>
                   <p className="myapplication-row-text  ">
                     <button
-           
+                      onClick={()=>{
+                        if (application.applicationstatus.data == 1) {
+                          setisLoading(true);
+                         
+
+                          window.location = `/quiz/confirmation/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0]._id}`;
+                        }
+                      }}
                       className={classtype}
                     >
                       {title}
                     </button>
                     {}
                   </p>
-                  <p className="myapplication-row-text  ">
+                  {/* <p className="myapplication-row-text  ">
                     <button
                       onClick={async () => {
                         if (application.applicationstatus.data == 1) {
@@ -217,7 +224,7 @@ const MyApplications = () => {
                       {application.applicationstatus.data == 1?"Attend Quiz":"Download Certificate"}
                     </button>
                     {}
-                  </p>
+                  </p> */}
                   
                 </div>
               );
