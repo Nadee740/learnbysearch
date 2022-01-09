@@ -73,9 +73,21 @@ function App() {
         <Route path="/paymentstatus" exact component={PaymentStatusPage} />
         <Route path="/links" exact component={LinksPage} />
         <Route path="/mentors" exact component={Mentors} />
-        <Route path="/quiz/:rpid/:positionid/:appid" exact component={QuizSection} />
-        <Route path="/quiz/result/:rpid/:positionid/:score/:lose/:total" exact component={QuizSectionResults} />
-        <Route path="/quiz/confirmation/:rpid/:positionid/:appid" exact component={Quizconfirmtaion} />
+        <Route
+          path="/quiz/:rpid/:positionid/:appid"
+          exact
+          component={QuizSection}
+        />
+        <Route
+          path="/quiz/result/:rpid/:positionid/:score/:lose/:total"
+          exact
+          component={QuizSectionResults}
+        />
+        <Route
+          path="/quiz/confirmation/:rpid/:positionid/:appid"
+          exact
+          component={Quizconfirmtaion}
+        />
         {/*<Route
           path="/signupasreasearcher"
           exact
