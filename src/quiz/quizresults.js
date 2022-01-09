@@ -36,19 +36,21 @@ return (
         <p className="quiz-window-para2">
         Thank you for attempting the quiz. Your application has
 been successfully processed for further consideration.
-You will here from us shortly, keep
+You will here from us shortly.
 <br></br>
-You have qualified for a detailed quiz report and a
-certificate.Download it and share
+{/* You have qualified for a detailed quiz report and a
+certificate.Download it and share */}
 </p>
-        {/* <div className="quiz-score">{score}/{total}</div>
+        <div className="quiz-score">{score}/{total}</div>
         <div className="quiz-result">
           <p className="quiz-result-text1">{score} Correct Answers</p>{" "}
           <p className="quiz-result-text1">{lose} Wrong Answers</p>
-        </div>{" "} */}
+        </div>{" "}
         <div className="quiz-resultfooter">
-          <button className="quiz-resultfooter-btn">
-            Download Certificate
+          <button onClick={()=>{
+            window.location="/"
+          }} className="quiz-resultfooter-btn">
+            Home
           </button>
         </div>
       </div>
