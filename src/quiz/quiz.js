@@ -12,6 +12,7 @@ const QuizSection = () => {
   const { appid } = useParams();
   const [quizdata, setquizdata] = useState();
   const [isLoading, setisLoading] = useState(true);
+  const [empty, setisempty] = useState(false);
   const [score, setscore] = useState(0);
   const [visible, setvisible] = useState(false);
   const [selected, setselected] = useState([]);
@@ -39,11 +40,9 @@ const QuizSection = () => {
     }
     else
     {
-      return (
-        <div className="isLoading">
-          <h1>No quiz to load</h1>
-        </div>
-      )
+      
+      setisempty(true)
+      setisLoading(false);
     }
   }, []);
   if (isLoading)
@@ -52,6 +51,15 @@ const QuizSection = () => {
         <SolarSystemLoading />
       </div>
     );
+    if(empty)
+    {return (
+      <div className="oopps">
+        <h1>Ooops nothing to show ...</h1>
+      </div>
+    );
+
+    }
+
   return (
     <>
       <div className="popupscreen">
