@@ -128,7 +128,7 @@ const QuizSection = () => {
                 {index + 1 + ".  " + question.question}
               </p>
               <button
-                className={selected[index][0]?"quiz-option-selected":"quiz-option"}
+                className={selected[index][0]?"quiz-option-selected-green":"quiz-option"}
                 onClick={() => {
                   
                   let a=[...selected]
@@ -153,7 +153,7 @@ const QuizSection = () => {
                 <div className="quiz-option-circle">A</div> {question.option1}
               </button>
               <button
-                className={selected[index][1]?"quiz-option-selected":"quiz-option"}
+                className={selected[index][1]?"quiz-option-selected-green":"quiz-option"}
                 onClick={() => {
                   let a=[...selected]
                   a[index][1]=!a[index][1]
@@ -175,7 +175,7 @@ const QuizSection = () => {
                 <div className="quiz-option-circle">B</div> {question.option2}
               </button>
               <button
-                className={selected[index][2]?"quiz-option-selected":"quiz-option"}
+                className={selected[index][2]?"quiz-option-selected-green":"quiz-option"}
                 onClick={() => {
                   let a=[...selected]
                   a[index][2]=!a[index][2]
@@ -198,7 +198,7 @@ const QuizSection = () => {
                 {question.option3}
               </button>
               <button
-                className={selected[index][3]?"quiz-option-selected":"quiz-option"}
+                className={selected[index][3]?"quiz-option-selected-green":"quiz-option"}
                 onClick={() => {
                   let a=[...selected]
                   a[index][3]=!a[index][3]

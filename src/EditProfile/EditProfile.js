@@ -378,7 +378,7 @@ const EditProfile = () => {
             <div className="popup">
               <h1>LEARN BY RESEARCH</h1>
               <p>PROFILE UPDATES SUCCESFULLY ...</p>
-              <Link onClick={closeModal}>Close</Link>
+              <Link to="/editprofile" onClick={closeModal}>Close</Link>
             </div>
           </Modal>
         </section>

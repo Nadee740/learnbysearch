@@ -145,7 +145,7 @@ const Login = () => {
                 Verification email already sent on <br /> email address.
               </p>
               <br />
-              <Link onClick={closeModal}>Resend verification mail</Link>
+              <Link to="/login" onClick={closeModal}>Resend verification mail</Link>
             </div>
           </Modal>
         </section>

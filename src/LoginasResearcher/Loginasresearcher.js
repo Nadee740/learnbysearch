@@ -63,9 +63,9 @@ const LoginAsresearcher = () => {
                     </p>
                   </Link> */}
 
-                <Link>
+                {/* <Link >
                   <p className="form-btmtext">Forgot Password</p>
-                </Link>
+                </Link> */}
               </form>
             </div>
           </div>

@@ -144,6 +144,15 @@
   border-radius: 0.4rem;
 }
 .quiz-option-selected-green {
+  
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 0.3rem;
   border: 2px solid rgba(82, 82, 82, 0.103);
   background-color: rgb(0, 185, 46);
   border-radius: 0.4rem;
