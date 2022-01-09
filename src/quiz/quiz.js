@@ -54,7 +54,7 @@ const QuizSection = () => {
     if(empty)
     {return (
       <div className="oopps">
-        <h1>Ooops nothing to show ...</h1>
+        <h1>Ooops no quiz data found ...</h1>
       </div>
     );
 
