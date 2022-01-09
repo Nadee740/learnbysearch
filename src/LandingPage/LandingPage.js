@@ -128,6 +128,7 @@ const LandingPage = () => {
     setloginvisible(false);
   };
   const applyforwebinar = async () => {
+    setisLoading(true)
     if (isLoggedIn) {
       const data = {
         webinarId: selectedwebinardata._id,
@@ -136,7 +137,7 @@ const LandingPage = () => {
         `${window.name}apply-for-webinar`,
         data
       );
-
+      setisLoading(false)
       if (outcome.includes("success")) {
         closeModal();
         alert(`Successfully registered for\n${selectedwebinardata.title}`);
@@ -145,7 +146,7 @@ const LandingPage = () => {
         alert("Sorry an error occured");
       }
     } else {
-      
+      setisLoading(false)
       setvisible(false);
       setloginvisible(true);
     }
@@ -175,10 +176,12 @@ const LandingPage = () => {
               <br></br>
               <div className="extrapart-webinar">
                 <div className="signuppart">
-                  <Link onClick={closeModal}>Close</Link>
+                  <Link to="/" onClick={()=>{
+                    setvisible(false)
+                  }} >Close</Link>
                 </div>
                 <div>
-                  <Link onClick={applyforwebinar}>Apply</Link>
+                  <Link to="/" onClick={applyforwebinar}>Apply</Link>
                 </div>
               </div>
             </div>
@@ -227,6 +230,7 @@ const LandingPage = () => {
           <SolarSystemLoading />
         </div>
       ) : (
+        
         <div className="landingpage">
           <div className="slider-webinar">
             <Slider {...settings}>
