@@ -138,11 +138,12 @@ const MyApplications = () => {
               <p className="myapplication-row-text myapplication-row-text-head ">
                 Status
               </p>
-              {/* <p className="myapplication-row-text myapplication-row-text-head ">
+              <p className="myapplication-row-text myapplication-row-text-head ">
                 Quiz Status
-              </p> */}
+              </p>
             </div>
             {applicationsData.map((application, index) => {
+              console.log(application)
               let classn = "",
                 title = "",
                 classtype = "myapplication-row-btn ";
@@ -180,7 +181,7 @@ const MyApplications = () => {
                 }
                 case 1: {
                   classn = "myapplication-row-btn-sub";
-                  title = "Attend Quiz";
+                  title = "Applied";
                   break;
                 }
               }
@@ -195,21 +196,13 @@ const MyApplications = () => {
                   </p>
                   <p className="myapplication-row-text  ">
                     <button
-                      onClick={()=>{
-                        if (application.applicationstatus.data == 1) {
-                          setisLoading(true);
-                         
-
-                          window.location = `/quiz/confirmation/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0]._id}`;
-                        }
-                      }}
                       className={classtype}
                     >
                       {title}
                     </button>
                     {}
                   </p>
-                  {/* <p className="myapplication-row-text  ">
+                  <p className="myapplication-row-text  ">
                     <button
                       onClick={async () => {
                         if (application.applicationstatus.data == 1) {
@@ -221,10 +214,10 @@ const MyApplications = () => {
                       }}
                       className={application.applicationstatus.data == 1?"myapplication-row-btn myapplication-row-btn-rej":"myapplication-row-btn myapplication-row-btn-approv"}
                     >
-                      {application.applicationstatus.data == 1?"Attend Quiz":"Download Certificate"}
+                      {application.applicationstatus.data == 1?"Attend Quiz":"View score"}
                     </button>
                     {}
-                  </p> */}
+                  </p>
                   
                 </div>
               );
