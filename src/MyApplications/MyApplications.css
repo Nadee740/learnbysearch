@@ -38,6 +38,7 @@
   font-family: inherit;
   color: #ffffff;
   border: none;
+  min-width: 11rem;
   padding: 5px 50px;
 }
 .myapplication-row-btn-pend {
