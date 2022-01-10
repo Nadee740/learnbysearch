@@ -143,7 +143,26 @@ const MyApplications = () => {
               </p>
             </div>
             {applicationsData.map((application, index) => {
-              console.log(application)
+              {/* Object
+applicationstatus:
+appication: Array(1)
+0:
+applicationID: "LBR1996"
+applicationStatus: 2
+createdAt: "2022-01-09T06:28:00.462Z"
+paymentStatus: []
+position: "61c1a5d52311378561d79aa3"
+question1: "aaaaaaaaaaaa"
+question2: true
+question3: "aaaaaaaaaaaaa"
+question4: "8"
+question5: "false"
+question6: ""
+question7: "https://www.google.com/search?sxsrf=AOaemvIyaEr3GJmdQuy4TbAzabbGOIvvLA%3A1641708136541&lei=aHraYdXIIMaTseMP1e6ZSA&q=location%20pathname%20undefined&ved=2ahUKEwjVnLay_6P1AhXGSWwGHVV3BgkQsKwBKAB6BAgtEAE&biw=1536&bih=722&dpr=1.25"
+quizScore: "1"
+referral_code: ""
+researchProgram: "61c1a7b92311378561d79aab" */}
+              console.log(application.applicationstatus.appication[0].quizScore)
               let classn = "",
                 title = "",
                 classtype = "myapplication-row-btn ";
@@ -210,6 +229,16 @@ const MyApplications = () => {
                          
 
                           window.location = `/quiz/confirmation/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0]._id}`;
+                        }
+                        else
+                        {
+                          if(application.applicationstatus.appication[0].quizScore)
+                         { setisLoading(false)
+                          window.location=`/quiz/result/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0].quizScore}/0/0`
+                         }
+                         else{
+                           alert("No data found")
+                         }
                         }
                       }}
                       className={application.applicationstatus.data == 1?"myapplication-row-btn myapplication-row-btn-rej":"myapplication-row-btn myapplication-row-btn-approv"}

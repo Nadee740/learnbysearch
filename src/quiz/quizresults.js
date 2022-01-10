@@ -41,10 +41,10 @@ You will here from us shortly.
 {/* You have qualified for a detailed quiz report and a
 certificate.Download it and share */}
 </p>
-        <div className="quiz-score">{score}/{total}</div>
+        <div className="quiz-score">{score}</div>
         <div className="quiz-result">
           <p className="quiz-result-text1">{score} Correct Answers</p>{" "}
-          <p className="quiz-result-text1">{lose} Wrong Answers</p>
+          {/* <p className="quiz-result-text1">{lose} Wrong Answers</p> */}
         </div>{" "}
         <div className="quiz-resultfooter">
           <button onClick={()=>{
