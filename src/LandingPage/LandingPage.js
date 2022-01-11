@@ -128,7 +128,7 @@ const LandingPage = () => {
     setloginvisible(false);
   };
   const applyforwebinar = async () => {
-    setisLoading(true)
+    setisLoading(true);
     if (isLoggedIn) {
       const data = {
         webinarId: selectedwebinardata._id,
@@ -137,7 +137,7 @@ const LandingPage = () => {
         `${window.name}apply-for-webinar`,
         data
       );
-      setisLoading(false)
+      setisLoading(false);
       if (outcome.includes("success")) {
         closeModal();
         alert(`Successfully registered for\n${selectedwebinardata.title}`);
@@ -146,7 +146,7 @@ const LandingPage = () => {
         alert("Sorry an error occured");
       }
     } else {
-      setisLoading(false)
+      setisLoading(false);
       setvisible(false);
       setloginvisible(true);
     }
@@ -172,16 +172,25 @@ const LandingPage = () => {
                 className="logo"
                 alt=""
               />
-              <p>Are you sure you want to apply for {selectedwebinardata.title}?</p>
+              <p>
+                Are you sure you want to apply for {selectedwebinardata.title}?
+              </p>
               <br></br>
               <div className="extrapart-webinar">
                 <div className="signuppart">
-                  <Link to="/" onClick={()=>{
-                    setvisible(false)
-                  }} >Close</Link>
+                  <Link
+                    to="/"
+                    onClick={() => {
+                      setvisible(false);
+                    }}
+                  >
+                    Close
+                  </Link>
                 </div>
                 <div>
-                  <Link to="/" onClick={applyforwebinar}>Apply</Link>
+                  <Link to="/" onClick={applyforwebinar}>
+                    Apply
+                  </Link>
                 </div>
               </div>
             </div>
@@ -212,7 +221,12 @@ const LandingPage = () => {
                   </Link>
                 </div>
                 <div>
-                  <Link to={"/applyasguest/"+selectedwebinardata._id}  onClick={closeloginModal}>Apply as guest</Link>
+                  <Link
+                    to={"/applyasguest/" + selectedwebinardata._id}
+                    onClick={closeloginModal}
+                  >
+                    Apply as guest
+                  </Link>
                 </div>
 
                 <div className="loginpart">
@@ -230,26 +244,7 @@ const LandingPage = () => {
           <SolarSystemLoading />
         </div>
       ) : (
-        
         <div className="landingpage">
-          <div className="slider-webinar">
-            <Slider {...settings}>
-              {webinardata.map((webinar, index) => {
-                return webinar.isOpen ? (
-                  <Webinar
-                    key={index}
-                    webinardata={webinar}
-                    isloggedin={isLoggedIn}
-                    setvisible={setvisible}
-                    setwebinardata={setselectedwebinardata}
-                  />
-                ) : (
-                  ""
-                );
-              })}
-            </Slider>
-          </div>
-
           <section className="top">
             <div className="container">
               <div className="top-content">
@@ -295,7 +290,23 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          
+          <div className="slider-webinar">
+            <Slider {...settings}>
+              {webinardata.map((webinar, index) => {
+                return webinar.isOpen ? (
+                  <Webinar
+                    key={index}
+                    webinardata={webinar}
+                    isloggedin={isLoggedIn}
+                    setvisible={setvisible}
+                    setwebinardata={setselectedwebinardata}
+                  />
+                ) : (
+                  ""
+                );
+              })}
+            </Slider>
+          </div>
           <section className="second">
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
