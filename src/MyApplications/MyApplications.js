@@ -205,7 +205,7 @@ researchProgram: "61c1a7b92311378561d79aab" */}
                 }
               }
               classtype = classtype + classn;
-              return (
+              return application.applicationstatus.data != 6?(
                 <div className="myapplication-row" key={index}>
                   <p className="myapplication-row-text ">
                     {application.rpdata.title}
@@ -249,7 +249,9 @@ researchProgram: "61c1a7b92311378561d79aab" */}
                   </p>
                   
                 </div>
-              );
+            
+              ):""
+              
             })}
           </div>
         </div>
