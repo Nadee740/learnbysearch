@@ -51,7 +51,7 @@ return (
               <br/>
               This quiz is compulsory for the screening process.
 Failing to attempt the quiz will result in your
-application now moving forward.
+application not moving forward.
 <br />
 You must take this quiz in next 2 working days and
 can find the quiz link on your Dashboard "My
