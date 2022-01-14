@@ -10,23 +10,14 @@ const SliderCo = ({ data }) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2500,
+
+    autoplaySpeed: 3500,
     cssEase: "linear",
     pauseOnHover: true,
-    responsive: [
-      {
-        breakpoint: 700,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
   return (
     <div className="slider2">
