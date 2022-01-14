@@ -101,6 +101,12 @@
   font-weight: 400;
   color: #ffffff;
 }
+.course-sponser-page {
+  position: absolute;
+  top: 20px;
+  padding: 0.5rem 0.6rem;
+  font-size: 16px;
+}
 @media screen and (max-width: 800px) {
   .openprogrammespage-head {
     text-align: center;

@@ -66,8 +66,28 @@
   left: 4rem;
 }
 .course-sponser {
-  background-color: rgb(236, 49, 49);
   padding: 0.6rem 1rem;
   font-weight: 500;
   color: #fff;
+  animation: sponserAnim 2s ease-in infinite;
+}
+.sponsered {
+  background-color: rgb(236, 49, 49);
+}
+.non-sponsered {
+  background-color: rgb(52, 49, 236);
+}
+@keyframes sponserAnim {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
 }

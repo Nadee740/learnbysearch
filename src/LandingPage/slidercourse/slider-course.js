@@ -5,7 +5,8 @@ const SliderCard = ({ data }) => {
     <div className="slidercard">
       <img src={data.imageUrl} alt="Course" className="slidercard-img" />
       <div className="content-holder">
-        <div className="course-sponser">Sponsered</div>
+        <div className="course-sponser non-sponsered ">Non-Sponsered</div>
+        {/*<div className="course-sponser sponsered ">Non-Sponsered</div> */}
         <h2 className="slidercardtext">{data.title}</h2>
         <button
           onClick={() => {

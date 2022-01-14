@@ -93,3 +93,13 @@
   line-height: 100%;
   height: min-content;
 }
+.course-sponser-small {
+  padding: 0.6rem 1rem;
+  font-weight: 500;
+  color: #fff;
+
+  position: absolute;
+  top: 160px;
+  left: 1rem;
+  transform: scale(0.8);
+}
