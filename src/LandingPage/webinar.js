@@ -10,7 +10,9 @@ const Webinar = ({ webinardata, isloggedin,setvisible,setwebinardata}) => {
   return (
     <>
       
-      <div className="webinar">
+      <div className="webinar"  onClick={() => {
+              window.location="/webinars"
+            }}>
         <div className="webinar-col1">
           <img
             src={webinardata.imageUrl}
@@ -24,8 +26,7 @@ const Webinar = ({ webinardata, isloggedin,setvisible,setwebinardata}) => {
           <button
             className="regbtn"
             onClick={() => {
-              setwebinardata(webinardata)
-              setvisible(true);
+              window.location="/webinars"
             }}
           >
             Register Now

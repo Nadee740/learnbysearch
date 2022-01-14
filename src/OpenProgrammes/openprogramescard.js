@@ -4,7 +4,9 @@ function Openprogramcard({ blog }) {
   const htmlpart = blog.description;
   return (
     <>
-      <div className="openprogramcard">
+      <div className="openprogramcard"   onClick={() => {
+            window.location = a;
+          }}>
         <img
           src={blog.imageUrl}
           alt="Card Haeder"
