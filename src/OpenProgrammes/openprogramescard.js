@@ -15,7 +15,7 @@ function Openprogramcard({ blog }) {
         />
         <p className="duedate">Due on {blog.Deadline}</p>
         <div className="openprogramcard-txetholder">
-          <div className="course-sponser-small sponsered ">Sponsered</div>
+          
           {blog.isSponsered?<div className="course-sponser-small sponsered ">
             Sponsered
           </div>:<div className="course-sponser-small non-sponsered ">

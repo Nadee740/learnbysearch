@@ -141,6 +141,7 @@ function OpenProgrammesPage() {
       `${window.name}research-program/${slug}`
     );
     if (!data) return seterror(true), setisLoading(false);
+    console.log(data)
     setblogData(data);
     sethtmlpart(data.description);
     sethtmlpartobjective(data.objective);
@@ -256,10 +257,13 @@ function OpenProgrammesPage() {
 
             <div className="blogdetailpage-head openprogrammespage-head">
               <div className="blogdetailpage-top openprogrammespage-top">
-                <div className="course-sponser-page sponsered ">Sponsered</div>
-                {/*<div className="course-sponser-page non-sponsered ">
+                {
+                  blogsData.isSponsered?<div className="course-sponser-page sponsered ">Sponsered</div>:
+                  <div className="course-sponser-page non-sponsered ">
                   Non-Sponsered
-                </div>  */}
+                </div>
+                }
+             
                 <>{blogsData.title}</>
                 {blogsData.applicationStatus ? (
                   <p onClick={applicationform}>
@@ -343,16 +347,19 @@ function OpenProgrammesPage() {
                         )}
                       </div>
                       <div className="vaccency-holder-sponsered">
-                        <div className="vaccency-offerprice-item sponsered">
+                        {
+                          blogsData.isSponsered?<div className="vaccency-offerprice-item sponsered">
                           <p className="vaccency-offerprice-item-text">
                             Earn Upto <span>₹ 500</span>{" "}
                           </p>
-                        </div>
-                        {/** For Non sponsered program <div className="vaccency-offerprice-item non-sponsered">
+                        </div>:<div className="vaccency-offerprice-item sponsered">
                           <p className="vaccency-offerprice-item-text">
-                            Fees: <span>₹ 1180</span>
+                            Fees <span>₹ 1180</span>{" "}
                           </p>
-                        </div> */}
+                        </div>
+                        }
+                       
+                     
                       </div>
                     </div>
                   ))}

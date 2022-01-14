@@ -19,7 +19,6 @@ import GetCollegelogos from "../Backend/Getcollegelogo";
 import MentorCarusel from "./mentorCarousel/mentorcarousel";
 import Modal from "react-awesome-modal";
 import SendPost from "../Backend/Sendpost";
-import Activities from "./whatActivities/activities";
 import WebinarSlider from "./Webinarslider/Webinar";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
@@ -324,8 +323,8 @@ const LandingPage = () => {
                 organizations.
               </p>
             </div>
-          </section>*/}
-          <Activities />
+          </section>
+
           <Colleges logos={collegelogos} />
           <MentorCarusel mentors={mentors} />
           <section className="about">

@@ -23,6 +23,13 @@ function Ongoingresearchcard({ blog }) {
         />
         <p className="duedate">Application closed on {blog.Deadline}</p>
         <div className="openprogramcard-txetholder">
+        {blog.isSponsered?<div className="course-sponser-small sponsered ">
+            Sponsered
+          </div>:<div className="course-sponser-small non-sponsered ">
+            Non-Sponsered
+          </div>
+
+          }
           <p className="openprogramcard-head">{blog.title}</p>
           <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
         </div>
