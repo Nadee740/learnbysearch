@@ -9,7 +9,7 @@ import SliderCo from "./slidercourse/slidercourse";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Authverifier from "../Backend/Authverifier";
-import Webinar from "./webinar";
+
 import Slider from "react-slick";
 import Colleges from "./colleges/college";
 import Testimonial from "./testimonials/Textimonial";
@@ -19,6 +19,7 @@ import GetCollegelogos from "../Backend/Getcollegelogo";
 import MentorCarusel from "./mentorCarousel/mentorcarousel";
 import Modal from "react-awesome-modal";
 import SendPost from "../Backend/Sendpost";
+import WebinarSlider from "./Webinarslider/Webinar";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -290,7 +291,18 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <div className="slider-webinar">
+          {/* imageUrl: 'https://res.cloudinary.com/dn3oddkar/image/upload/v1641887378/we_bkm1lo.jpg', date: '2022-01-21', title: ' How to write a  review of Literature', …}
+createdAt: "2022-01-07T06:00:45.759Z"
+date: "2022-01-21"
+guestId: (2) ['61dd801b1a51eda54d7b20d0', '61dd95d41a51eda54d7b20d3']
+imageUrl: "https://res.cloudinary.com/dn3oddkar/image/upload/v1641887378/we_bkm1lo.jpg"
+isOpen: true
+speakerId: "61d5599a20ab6804bfda3fd2"
+studentId: (14) ['611de6f3e348e065bc17a6cb', '61dc2a84b4d942742db1a257', '60d832e7c8365a408da92132', '60d832e7c8365a408da92132', '60d832e7c8365a408da92132', '60d832e7c8365a408da92132', '60d832e7c8365a408da92132', '61a5b8908dc9d3c28f96ac67', '61ddad9276dc67acf2a4ad9c', '61dee64076dc67acf2a4adbc', '61dee64076dc67acf2a4adbc', '61586270cb2f297bedcac098', '61df8cbd76dc67acf2a4adc9', '61af2a96bb915e3ef36b08a8']
+title: " How to write a  review of Literature" */}
+          <WebinarSlider blog={webinardata}/>
+          {/* <BlogSlider blog={webinardata} /> */}
+          {/* <div className="slider-webinar">
             <Slider {...settings}>
               {webinardata.map((webinar, index) => {
                 return webinar.isOpen ? (
@@ -306,7 +318,7 @@ const LandingPage = () => {
                 );
               })}
             </Slider>
-          </div>
+          </div> */}
           <section className="second">
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
