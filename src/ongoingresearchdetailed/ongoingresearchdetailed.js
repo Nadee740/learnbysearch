@@ -15,6 +15,9 @@ import RotateCircleLoading from "react-loadingg/lib/RotateCircleLoading";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
+import GetRequest from "../Backend/getRequest";
+import './a.css';
+import avatar from "./avatar.png";
 
 function OngoingresearchPage() {
   const { slug } = useParams();
@@ -32,6 +35,7 @@ function OngoingresearchPage() {
   const htmlpartobjective = blogsData.objective;
   const htmlpartoutcomes = blogsData.outcomes;
   const [isLoggedIn, setisLoggedin] = useState(false);
+  const [enrolledStudents, setenrolledStudents] = useState([])
   const [userdata, setuserdata] = useState();
 
   const closeModal = () => {
@@ -55,6 +59,24 @@ function OngoingresearchPage() {
       if (data.positions.length == arr.length) await getMentors(data);
     });
   };
+
+  useEffect(() => {
+    if(!blogsData){
+      return
+    }
+    console.log('|||||||||||||||||||||||||')
+    console.log(blogsData._id)
+    GetRequest(`${window.name}get-enrolled-students?rpId=${blogsData._id}`).then(res => {
+      console.log(res)
+      if(res.status === 'ok'){
+        setenrolledStudents(res.applications)
+      } else {
+        console.log(res)
+      }
+    }).catch(e => {
+      console.log(e)
+    })
+  }, [blogsData])
 
   ////////////////////////////////////////////////////////////
 
@@ -360,6 +382,8 @@ function OngoingresearchPage() {
                   <p className="vaccency-item-text">{blogsData.commitment}</p>
                 </div>
               </div>
+
+            
               <div className="mentors">
                 <p className="openprogrammespage-head">Mentors</p>
 
@@ -435,7 +459,24 @@ function OngoingresearchPage() {
                     );
                   })}
               </div>
+
+              <div className="studentsListContainer">
+                <p className="openprogrammespage-head">Enrolled Students</p>
+                <div className="studentsList">
+                  {enrolledStudents.map(application => (
+                    <div className="student">
+                    <div className="avatar">
+                      <img src={avatar} alt="avatar" />
+                    </div>
+                    <div className="studentname">{application.studentId.FirstName} {application.studentId.LastName}</div>
+
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
+
+           
 
             <div className="line"></div>
           </div>
