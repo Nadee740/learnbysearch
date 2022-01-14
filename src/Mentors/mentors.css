@@ -12,7 +12,10 @@
   grid-gap: 2rem;
   grid-row-gap: 10rem;
 }
-
+.mentorcarousel-img {
+  object-fit: cover;
+  object-position: top;
+}
 @media screen and (max-width: 800px) {
   .mentor-grid {
     width: 100%;
