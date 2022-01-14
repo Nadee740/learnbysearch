@@ -132,6 +132,17 @@
   padding: 6px;
   cursor: pointer;
 }
+.banner-closebtn {
+  position: absolute;
+  right: 3rem;
+  opacity: 0.7;
+  z-index: 2000;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.banner-closebtn:hover {
+  transform: scale(1.2);
+}
 @media screen and (max-width: 960px) {
   /* .navbar{
 height: 100vh;
@@ -310,6 +321,7 @@ height: 100vh;
   align-items: center;
   justify-content: center;
   padding: 1.2rem;
+  position: relative;
 }
 .topbanner-text {
   font-size: 1.3rem;

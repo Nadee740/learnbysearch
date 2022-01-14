@@ -6,6 +6,7 @@ import Button from "../button/button";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import Flip from "react-reveal/Flip";
 
+import { IoCloseCircleOutline } from "react-icons/io5";
 import "./Navbar.css";
 import Modal from "react-awesome-modal";
 import Logout from "../Backend/Logout";
@@ -15,6 +16,7 @@ import ReferalCode from "../Backend/Referalcode";
 const Navbar = (props) => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [topbanner, setTopbanner] = useState(true);
   const [user, setUser] = useState(true);
   const [isLoggedIn, setisLoggedin] = useState(false);
   const [userprof, setuserprof] = useState();
@@ -165,11 +167,22 @@ const Navbar = (props) => {
           </Modal>
         </section>
       </div>
-      <div className="topbanner">
-        <p className="topbanner-text ">
-          Join us today for free and earn cash rewards for quality research!
-        </p>
-      </div>
+      {topbanner ? (
+        <div className="topbanner">
+          <p className="topbanner-text ">
+            Join us today for free and earn cash rewards for quality research!
+          </p>
+          <IoCloseCircleOutline
+            onClick={() => setTopbanner(false)}
+            size={"1.5em"}
+            color="#ffff"
+            className="banner-closebtn"
+          />
+        </div>
+      ) : (
+        ""
+      )}
+
       <nav className="navbar ">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>

@@ -16,7 +16,7 @@
     rgba(0, 0, 0, 0.22) 101.15%
   );
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   padding: 20px;
   justify-content: center;
   flex-direction: column;
@@ -59,4 +59,15 @@
 .slidercardbtn:hover {
   background-color: rgba(255, 255, 255, 0.089);
   cursor: pointer;
+}
+.course-sponser {
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+.course-sponser {
+  background-color: rgb(236, 49, 49);
+  padding: 0.6rem 1rem;
+  font-weight: 500;
+  color: #fff;
 }
