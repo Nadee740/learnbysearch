@@ -296,8 +296,29 @@ function OngoingresearchPage() {
               </div>
             </div>
           </div>
+          
           <div className="openprogrammespage-holder">
+
+              <div className="openprogrammespage-section">
+              <div className="studentsListContainer">
+                <p className="openprogrammespage-head">Enrolled Students</p>
+                <div className="studentsList">
+                  {enrolledStudents.map(application => (
+                    <div className="student">
+                    <div className="avatar">
+                      <img src={avatar} alt="avatar" />
+                    </div>
+                    <div className="studentname">{application.studentId.FirstName} {application.studentId.LastName}</div>
+
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              </div>
+              <div className="line"></div>
             <div className="openprogrammespage-section">
+            
               <p className="openprogrammespage-head"> Objective</p>
               <p className="openprogrammespage-text">
                 <div
@@ -460,20 +481,7 @@ function OngoingresearchPage() {
                   })}
               </div>
 
-              <div className="studentsListContainer">
-                <p className="openprogrammespage-head">Enrolled Students</p>
-                <div className="studentsList">
-                  {enrolledStudents.map(application => (
-                    <div className="student">
-                    <div className="avatar">
-                      <img src={avatar} alt="avatar" />
-                    </div>
-                    <div className="studentname">{application.studentId.FirstName} {application.studentId.LastName}</div>
-
-                    </div>
-                  ))}
-                </div>
-              </div>
+              
             </div>
 
            
