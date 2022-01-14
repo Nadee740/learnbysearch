@@ -9,7 +9,7 @@ import SliderCo from "./slidercourse/slidercourse";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Authverifier from "../Backend/Authverifier";
-import Webinar from "./webinar";
+
 import Slider from "react-slick";
 import Colleges from "./colleges/college";
 import Testimonial from "./testimonials/Textimonial";
@@ -20,6 +20,7 @@ import MentorCarusel from "./mentorCarousel/mentorcarousel";
 import Modal from "react-awesome-modal";
 import SendPost from "../Backend/Sendpost";
 import Activities from "./whatActivities/activities";
+import WebinarSlider from "./Webinarslider/Webinar";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -57,7 +58,7 @@ const LandingPage = () => {
   const getmentors = async () => {
     setisLoading(true);
     const { data: mentors } = await Researchpgms(`${window.name}mentors`);
-    setmentors(mentors);
+    setmentors(mentors.reverse());
 
     getcollegelogos();
   };
@@ -295,7 +296,7 @@ const LandingPage = () => {
             <Slider {...settings}>
               {webinardata.map((webinar, index) => {
                 return webinar.isOpen ? (
-                  <Webinar
+                  <WebinarSlider
                     key={index}
                     webinardata={webinar}
                     isloggedin={isLoggedIn}
@@ -309,6 +310,10 @@ const LandingPage = () => {
             </Slider>
           </div>
           {/*<section className="second">
+         
+          <WebinarSlider blog={webinardata}/>
+        
+          <section className="second">
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
               <p>
