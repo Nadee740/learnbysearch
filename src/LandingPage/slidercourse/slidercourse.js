@@ -21,7 +21,7 @@ const SliderCo = ({ data }) => {
   };
   return (
     <div className="slider2">
-      <h2>Applications Open For</h2>
+      <h2>Research positions open for application</h2>
       <div className="slidecontainer">
         <Slider {...settings}>
           {data.map((pgms) => {

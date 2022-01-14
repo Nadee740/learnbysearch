@@ -319,27 +319,41 @@ function OpenProgrammesPage() {
               <div className="vaccency-holder">
                 {positions &&
                   positions.map((position, index) => (
-                    <div className="vaccency-item" key={index}>
-                      <p className="vaccency-item-title">{position.title}</p>
-                      <p className="vaccency-item-text">
-                        Number of Students Required:{" "}
-                        <span>{blogsData.positions[index].openings}</span>
-                      </p>
+                    <div className="vaccency-holder-row">
+                      <div className="vaccency-item" key={index}>
+                        <p className="vaccency-item-title">{position.title}</p>
+                        <p className="vaccency-item-text">
+                          Number of Students Required:{" "}
+                          <span>{blogsData.positions[index].openings}</span>
+                        </p>
 
-                      <p className="vaccency-item-text">
-                        Eligibility Criterion:
-                        <span>{position.criterion}</span>
-                      </p>
-                      {blogsData.applicationStatus ? (
-                        <button
-                          className="applynow-btn"
-                          onClick={applicationform}
-                        >
-                          APPLY NOW
-                        </button>
-                      ) : (
-                        ""
-                      )}
+                        <p className="vaccency-item-text">
+                          Eligibility Criterion:
+                          <span>{position.criterion}</span>
+                        </p>
+                        {blogsData.applicationStatus ? (
+                          <button
+                            className="applynow-btn"
+                            onClick={applicationform}
+                          >
+                            APPLY NOW
+                          </button>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                      <div className="vaccency-holder-sponsered">
+                        <div className="vaccency-offerprice-item sponsered">
+                          <p className="vaccency-offerprice-item-text">
+                            Earn Upto <span>₹ 500</span>{" "}
+                          </p>
+                        </div>
+                        {/** For Non sponsered program <div className="vaccency-offerprice-item non-sponsered">
+                          <p className="vaccency-offerprice-item-text">
+                            Fees: <span>₹ 1180</span>
+                          </p>
+                        </div> */}
+                      </div>
                     </div>
                   ))}
               </div>

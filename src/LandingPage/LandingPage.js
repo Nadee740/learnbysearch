@@ -257,7 +257,7 @@ const LandingPage = () => {
                 <div className="right-side">
                   <div className="top-heading">
                     <h2 className="font-light-top">
-                      World's First Platfrom Rewarding Students for Research
+                      World's First Platform Rewarding Students for Research
                     </h2>
                     <h2 className="form-title">
                       Collaborate | Research | Learn | Earn
@@ -381,23 +381,31 @@ title: " How to write a  review of Literature" */}
           <section className="gain">
             <div className="gain-container">
               <div className="gain-content">
-                <h2>
-                  What will you gain when you complete your Research Work?
-                </h2>
+                <h2>Why you should take up a research with LBR?</h2>
               </div>
               <div className="outcomes">
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">1</p>
+                  <img
+                    src="/images/Aims/help.svg"
+                    className="outcomes-img"
+                    alt=""
+                  />
                   <p className="outcomes-col-head">Financial Incentives</p>
                   <p className="outcomes-col-text">
                     Students who get selected via stringent selection process at
-                    LearnByResearch,work under research mentors to complete the
-                    research.For every assignment that students complete and get
-                    approvel from researcher,students earn upto ₹ 250 in cash.
+                    LearnByResearch, work under researchers to complete the
+                    project. For all the sponsored research projects student's
+                    earn monthly stipend upto ₹ 5000 per month.
                   </p>
                 </div>
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">2</p>
+                  <img
+                    src="/images/Aims/paper.svg"
+                    className="outcomes-img"
+                    alt=""
+                  />
                   <p className="outcomes-col-head">
                     Research Paper Publications
                   </p>
@@ -412,6 +420,11 @@ title: " How to write a  review of Literature" */}
                 </div>
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">3</p>
+                  <img
+                    src="/images/Aims/team.svg"
+                    className="outcomes-img"
+                    alt=""
+                  />
                   <p className="outcomes-col-head">
                     Network and Focused Community
                   </p>
@@ -426,6 +439,11 @@ title: " How to write a  review of Literature" */}
                 </div>
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">4</p>
+                  <img
+                    src="/images/Aims/certi.svg"
+                    className="outcomes-img"
+                    alt=""
+                  />
                   <p className="outcomes-col-head">
                     Certificate of Research Completion
                   </p>

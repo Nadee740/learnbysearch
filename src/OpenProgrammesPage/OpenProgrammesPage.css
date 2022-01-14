@@ -42,13 +42,42 @@
   width: 85%;
 }
 .vaccency-holder {
-  width: 70%;
+  width: 90%;
+  position: relative;
 }
+.vaccency-holder-sponsered {
+  height: 100%;
+}
+.vaccency-holder-row {
+  display: flex;
+  flex-direction: row;
 
+  position: relative;
+}
+.vaccency-offerprice-item {
+  width: 100%;
+
+  margin: 20px 10px;
+
+  padding: 50px 30px;
+  clip-path: polygon(100% 0%, 100% 49%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+}
+.vaccency-offerprice-item-text {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: center;
+}
+.vaccency-offerprice-item-text span {
+  font-weight: 600;
+  display: block;
+  font-size: 2.5rem;
+}
 .vaccency-item {
   margin: 20px 10px;
   background-color: #8181811f;
   padding: 20px;
+  min-width: 70%;
 }
 .vaccency-item-title {
   color: #585858;
@@ -109,6 +138,33 @@
   animation: sponserAnim 2s ease-in infinite;
 }
 @media screen and (max-width: 800px) {
+  .vaccency-item {
+    margin-bottom: 0;
+  }
+  .vaccency-holder-sponsered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .vaccency-offerprice-item-text {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: center;
+  }
+  .vaccency-offerprice-item-text span {
+    font-size: 1.8rem;
+  }
+  .vaccency-offerprice-item {
+    width: 30%;
+    clip-path: polygon(50% 0, 100% 35%, 100% 100%, 0 100%, 0 36%);
+    margin: 0;
+    padding: 30px 20px;
+  }
+  .vaccency-holder-row {
+    display: flex;
+    flex-direction: column;
+  }
   .openprogrammespage-head {
     text-align: center;
   }

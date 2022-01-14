@@ -15,8 +15,8 @@ const MentorCarusel = ({ mentors }) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     autoScroll: true,
     responsive: [
       {
@@ -30,7 +30,7 @@ const MentorCarusel = ({ mentors }) => {
   };
   return (
     <div className="mentorcarousel">
-      <h2 className="mentorcarousel-head">Our Mentors</h2>
+      <h2 className="mentorcarousel-head">Our Researchers</h2>
       <div className="mentorcarousel-sildercontainer">
         <Slider {...settings}>
           {mentors.map((mentor, index) => {
