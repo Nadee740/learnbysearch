@@ -309,9 +309,10 @@ const LandingPage = () => {
               })}
             </Slider> */}
           </div>
+          <WebinarSlider blog={webinardata}/>
           {/*<section className="second">
          
-          <WebinarSlider blog={webinardata}/>
+         
         
           <section className="second">
             <div className="scnd-content">

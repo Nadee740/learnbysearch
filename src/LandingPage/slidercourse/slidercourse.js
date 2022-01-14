@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import SliderCard from "./slider-course";
 
 const SliderCo = ({ data }) => {
+ console.log(data)
   const settings = {
     dots: true,
     infinite: true,
