@@ -26,9 +26,9 @@ const BlogSlider = ({ blog }) => {
       <h2>Latest Articles</h2>
       <div className="slidecontainer">
         <Slider {...settings}>
-          {blog.map((blog, index) => (
+          {blog.map((blog, index) =>index<8? (
             <Slidercard blog={blog} key={index} />
-          ))}
+          ):"")}
         </Slider>
       </div>
     </div>

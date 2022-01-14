@@ -24,8 +24,9 @@ const SliderCo = ({ data }) => {
       <h2>Research positions open for application</h2>
       <div className="slidecontainer">
         <Slider {...settings}>
-          {data.map((pgms) => {
-            return pgms.applicationStatus ? <SliderCard data={pgms} /> : "";
+          {data.map((pgms,index) => {
+            console.log(index)
+            return pgms.applicationStatus ?<SliderCard data={pgms} /> :"";
           })}
           {/* <SliderCard />
           <SliderCard />
