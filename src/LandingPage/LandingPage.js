@@ -19,7 +19,6 @@ import GetCollegelogos from "../Backend/Getcollegelogo";
 import MentorCarusel from "./mentorCarousel/mentorcarousel";
 import Modal from "react-awesome-modal";
 import SendPost from "../Backend/Sendpost";
-import Activities from "./whatActivities/activities";
 import WebinarSlider from "./Webinarslider/Webinar";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
@@ -292,24 +291,6 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <div className="slider-webinar">
-            <Slider {...settings}>
-              {webinardata.map((webinar, index) => {
-                return webinar.isOpen ? (
-                  <WebinarSlider
-                    key={index}
-                    webinardata={webinar}
-                    isloggedin={isLoggedIn}
-                    setvisible={setvisible}
-                    setwebinardata={setselectedwebinardata}
-                  />
-                ) : (
-                  ""
-                );
-              })}
-            </Slider>
-          </div>
-          {/*<section className="second">
          
           <WebinarSlider blog={webinardata}/>
         
@@ -324,8 +305,8 @@ const LandingPage = () => {
                 organizations.
               </p>
             </div>
-          </section>*/}
-          <Activities />
+          </section>
+
           <Colleges logos={collegelogos} />
           <MentorCarusel mentors={mentors} />
           <section className="about">
