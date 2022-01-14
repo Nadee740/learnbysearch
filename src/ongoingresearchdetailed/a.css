@@ -1,0 +1,38 @@
+.studentsListContainer{
+    margin: 50px 0;
+}
+
+.studentsList{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.studentsList .student{
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.studentsList .student .avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+.studentsList .student .avatar img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.studentsList .student .studentname {
+    margin-left: 20px;
+    margin-right: 20px;
+}
