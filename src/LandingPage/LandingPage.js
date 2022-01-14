@@ -256,7 +256,7 @@ const LandingPage = () => {
                 <div className="right-side">
                   <div className="top-heading">
                     <h2 className="font-light-top">
-                      World's First Platfrom Rewarding Students for Research
+                      World's First Platform Rewarding Students for Research
                     </h2>
                     <h2 className="form-title">
                       Collaborate | Research | Learn | Earn
