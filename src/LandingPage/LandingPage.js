@@ -19,6 +19,7 @@ import GetCollegelogos from "../Backend/Getcollegelogo";
 import MentorCarusel from "./mentorCarousel/mentorcarousel";
 import Modal from "react-awesome-modal";
 import SendPost from "../Backend/Sendpost";
+import Activities from "./whatActivities/activities";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -307,7 +308,7 @@ const LandingPage = () => {
               })}
             </Slider>
           </div>
-          <section className="second">
+          {/*<section className="second">
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
               <p>
@@ -318,8 +319,8 @@ const LandingPage = () => {
                 organizations.
               </p>
             </div>
-          </section>
-
+          </section>*/}
+          <Activities />
           <Colleges logos={collegelogos} />
           <MentorCarusel mentors={mentors} />
           <section className="about">

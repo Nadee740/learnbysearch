@@ -4,7 +4,7 @@ import "./college.css";
 const Colleges = ({ logos }) => {
   return (
     <div className="colleges">
-      <h2>Our Students are from</h2>
+      <h2>LBR Student's are from</h2>
       <div className="college-holder">
         {logos.map((logo, index) => (
           <div className="collwgeholder-card" key={index}>
