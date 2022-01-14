@@ -10,7 +10,9 @@ const Webinar = ({ webinardata, isloggedin,setvisible,setwebinardata}) => {
   return (
     <>
       
-      <div className="webinar">
+      <div className="webinar"  onClick={() => {
+              window.location="/webinars"
+            }}>
         <div className="webinar-col1">
           <img
             src={webinardata.imageUrl}
