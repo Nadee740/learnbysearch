@@ -112,6 +112,10 @@ p {
   margin-bottom: 15px;
   text-align: center;
 }
+.outcomes-img {
+  height: 10rem;
+  margin: 2rem;
+}
 .scnd-content p {
   font-size: 18px;
   line-height: 26px;
@@ -247,7 +251,7 @@ p {
   background-color: #ffffff;
 
   padding: 20px;
-  background: #ffdaf1;
+  background: #ffdaf1c2;
 }
 .outcomes-col2 {
   background-color: #fbb5fc;
