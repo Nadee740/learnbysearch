@@ -104,8 +104,9 @@
 .course-sponser-page {
   position: absolute;
   top: 20px;
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem 0.8rem;
   font-size: 16px;
+  animation: sponserAnim 2s ease-in infinite;
 }
 @media screen and (max-width: 800px) {
   .openprogrammespage-head {

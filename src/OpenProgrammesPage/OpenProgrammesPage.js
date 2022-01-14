@@ -256,10 +256,10 @@ function OpenProgrammesPage() {
 
             <div className="blogdetailpage-head openprogrammespage-head">
               <div className="blogdetailpage-top openprogrammespage-top">
-                <div className="course-sponser-page non-sponsered ">
+                <div className="course-sponser-page sponsered ">Sponsered</div>
+                {/*<div className="course-sponser-page non-sponsered ">
                   Non-Sponsered
-                </div>
-                {/*<div className="course-sponser sponsered ">Non-Sponsered</div> */}
+                </div>  */}
                 <>{blogsData.title}</>
                 {blogsData.applicationStatus ? (
                   <p onClick={applicationform}>
