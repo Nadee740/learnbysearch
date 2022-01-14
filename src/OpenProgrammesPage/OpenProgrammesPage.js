@@ -141,6 +141,7 @@ function OpenProgrammesPage() {
       `${window.name}research-program/${slug}`
     );
     if (!data) return seterror(true), setisLoading(false);
+    console.log(data)
     setblogData(data);
     sethtmlpart(data.description);
     sethtmlpartobjective(data.objective);
@@ -256,10 +257,13 @@ function OpenProgrammesPage() {
 
             <div className="blogdetailpage-head openprogrammespage-head">
               <div className="blogdetailpage-top openprogrammespage-top">
-                <div className="course-sponser-page sponsered ">Sponsered</div>
-                {/*<div className="course-sponser-page non-sponsered ">
+                {
+                  blogsData.isSponsered?<div className="course-sponser-page sponsered ">Sponsered</div>:
+                  <div className="course-sponser-page non-sponsered ">
                   Non-Sponsered
-                </div>  */}
+                </div>
+                }
+             
                 <>{blogsData.title}</>
                 {blogsData.applicationStatus ? (
                   <p onClick={applicationform}>
@@ -319,27 +323,44 @@ function OpenProgrammesPage() {
               <div className="vaccency-holder">
                 {positions &&
                   positions.map((position, index) => (
-                    <div className="vaccency-item" key={index}>
-                      <p className="vaccency-item-title">{position.title}</p>
-                      <p className="vaccency-item-text">
-                        Number of Students Required:{" "}
-                        <span>{blogsData.positions[index].openings}</span>
-                      </p>
+                    <div className="vaccency-holder-row">
+                      <div className="vaccency-item" key={index}>
+                        <p className="vaccency-item-title">{position.title}</p>
+                        <p className="vaccency-item-text">
+                          Number of Students Required:{" "}
+                          <span>{blogsData.positions[index].openings}</span>
+                        </p>
 
-                      <p className="vaccency-item-text">
-                        Eligibility Criterion:
-                        <span>{position.criterion}</span>
-                      </p>
-                      {blogsData.applicationStatus ? (
-                        <button
-                          className="applynow-btn"
-                          onClick={applicationform}
-                        >
-                          APPLY NOW
-                        </button>
-                      ) : (
-                        ""
-                      )}
+                        <p className="vaccency-item-text">
+                          Eligibility Criterion:
+                          <span>{position.criterion}</span>
+                        </p>
+                        {blogsData.applicationStatus ? (
+                          <button
+                            className="applynow-btn"
+                            onClick={applicationform}
+                          >
+                            APPLY NOW
+                          </button>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                      <div className="vaccency-holder-sponsered">
+                        {
+                          blogsData.isSponsered?<div className="vaccency-offerprice-item sponsered">
+                          <p className="vaccency-offerprice-item-text">
+                            Earn Upto <span>₹ 500</span>{" "}
+                          </p>
+                        </div>:<div className="vaccency-offerprice-item sponsered">
+                          <p className="vaccency-offerprice-item-text">
+                            Fees <span>₹ 1180</span>{" "}
+                          </p>
+                        </div>
+                        }
+                       
+                     
+                      </div>
                     </div>
                   ))}
               </div>

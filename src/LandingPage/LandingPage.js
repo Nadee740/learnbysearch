@@ -9,7 +9,7 @@ import SliderCo from "./slidercourse/slidercourse";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Authverifier from "../Backend/Authverifier";
-import Webinar from "./webinar";
+
 import Slider from "react-slick";
 import Colleges from "./colleges/college";
 import Testimonial from "./testimonials/Textimonial";
@@ -19,6 +19,8 @@ import GetCollegelogos from "../Backend/Getcollegelogo";
 import MentorCarusel from "./mentorCarousel/mentorcarousel";
 import Modal from "react-awesome-modal";
 import SendPost from "../Backend/Sendpost";
+import Activities from "./whatActivities/activities";
+import WebinarSlider from "./Webinarslider/Webinar";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -56,7 +58,7 @@ const LandingPage = () => {
   const getmentors = async () => {
     setisLoading(true);
     const { data: mentors } = await Researchpgms(`${window.name}mentors`);
-    setmentors(mentors);
+    setmentors(mentors.reverse());
 
     getcollegelogos();
   };
@@ -256,7 +258,7 @@ const LandingPage = () => {
                 <div className="right-side">
                   <div className="top-heading">
                     <h2 className="font-light-top">
-                      World's First Platfrom Rewarding Students for Research
+                      World's First Platform Rewarding Students for Research
                     </h2>
                     <h2 className="form-title">
                       Collaborate | Research | Learn | Earn
@@ -291,10 +293,10 @@ const LandingPage = () => {
             </div>
           </section>
           <div className="slider-webinar">
-            <Slider {...settings}>
+            {/**<Slider {...settings}>
               {webinardata.map((webinar, index) => {
                 return webinar.isOpen ? (
-                  <Webinar
+                  <WebinarSlider
                     key={index}
                     webinardata={webinar}
                     isloggedin={isLoggedIn}
@@ -305,8 +307,12 @@ const LandingPage = () => {
                   ""
                 );
               })}
-            </Slider>
+            </Slider> */}
           </div>
+          {/*<section className="second">
+         
+          <WebinarSlider blog={webinardata}/>
+        
           <section className="second">
             <div className="scnd-content">
               <h2>What is Learn By Research?</h2>
@@ -318,8 +324,8 @@ const LandingPage = () => {
                 organizations.
               </p>
             </div>
-          </section>
-
+          </section>*/}
+          <Activities />
           <Colleges logos={collegelogos} />
           <MentorCarusel mentors={mentors} />
           <section className="about">
@@ -369,23 +375,31 @@ const LandingPage = () => {
           <section className="gain">
             <div className="gain-container">
               <div className="gain-content">
-                <h2>
-                  What will you gain when you complete your Research Work?
-                </h2>
+                <h2>Why you should take up a research with LBR?</h2>
               </div>
               <div className="outcomes">
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">1</p>
+                  <img
+                    src="/images/Aims/help.svg"
+                    className="outcomes-img"
+                    alt=""
+                  />
                   <p className="outcomes-col-head">Financial Incentives</p>
                   <p className="outcomes-col-text">
                     Students who get selected via stringent selection process at
-                    LearnByResearch,work under research mentors to complete the
-                    research.For every assignment that students complete and get
-                    approvel from researcher,students earn upto ₹ 250 in cash.
+                    LearnByResearch, work under researchers to complete the
+                    project. For all the sponsored research projects student's
+                    earn monthly stipend upto ₹ 5000 per month.
                   </p>
                 </div>
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">2</p>
+                  <img
+                    src="/images/Aims/paper.svg"
+                    className="outcomes-img"
+                    alt=""
+                  />
                   <p className="outcomes-col-head">
                     Research Paper Publications
                   </p>
@@ -400,6 +414,11 @@ const LandingPage = () => {
                 </div>
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">3</p>
+                  <img
+                    src="/images/Aims/team.svg"
+                    className="outcomes-img"
+                    alt=""
+                  />
                   <p className="outcomes-col-head">
                     Network and Focused Community
                   </p>
@@ -414,6 +433,11 @@ const LandingPage = () => {
                 </div>
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">4</p>
+                  <img
+                    src="/images/Aims/certi.svg"
+                    className="outcomes-img"
+                    alt=""
+                  />
                   <p className="outcomes-col-head">
                     Certificate of Research Completion
                   </p>
@@ -430,8 +454,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          {/*<Testimonial testimonials={testimonialsdata} />*/}
-          <div
+          {/*<Testimonial testimonials={testimonialsdata} /> <div
             className="holder-divv"
             style={{
               display: "flex",
@@ -448,7 +471,7 @@ const LandingPage = () => {
               alt="app-status"
               className="app-status app-status-home"
             />
-          </div>
+          </div>*/}
 
           <div className="applydetails">
             <div className="applydetails-col1">

@@ -1,5 +1,6 @@
 import "./OpenProgrammes.css";
 function Openprogramcard({ blog }) {
+ 
   let a = "/openprogrammespage/" + blog.slug;
   const htmlpart = blog.description;
   return (
@@ -14,12 +15,17 @@ function Openprogramcard({ blog }) {
         />
         <p className="duedate">Due on {blog.Deadline}</p>
         <div className="openprogramcard-txetholder">
-          <div className="course-sponser-small sponsered ">Sponsered</div>
-          {/*<div className="course-sponser-small sponsered ">
+          
+          {blog.isSponsered?<div className="course-sponser-small sponsered ">
             Sponsered
-          </div>   <div className="course-sponser-small non-sponsered ">
+          </div>:<div className="course-sponser-small non-sponsered ">
             Non-Sponsered
-          </div>*/}
+          </div>
+
+          }
+            {/* <div className="course-sponser-small non-sponsered ">
+            Non-Sponsered
+          </div> */}
           <p className="openprogramcard-head">{blog.title}</p>
           <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
         </div>

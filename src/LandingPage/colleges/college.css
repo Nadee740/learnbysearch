@@ -6,7 +6,7 @@
   width: 100%;
 }
 .college-holder {
-  width: 100%;
+  width: 60%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
@@ -17,10 +17,14 @@
   width: 100%;
 }
 .college-img {
-  height: 3rem;
-  margin: 1rem;
+  filter: grayscale(100%);
+  height: 2.4rem;
+  margin: 0.5rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-
+.college-img:hover {
+  filter: grayscale(0%);
+}
 @media screen and (max-width: 960px) {
   .college-holder {
     grid-template-columns: repeat(4, 1fr);

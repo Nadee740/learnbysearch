@@ -2,17 +2,14 @@ import { Link } from "react-router-dom";
 import "./college.css";
 
 const Colleges = ({ logos }) => {
- 
   return (
     <div className="colleges">
-      <h2>Our Students are from</h2>
+      <h2>LBR Student's are from</h2>
       <div className="college-holder">
         {logos.map((logo, index) => (
-          <a key={index} href={""} target="_blank">
-            <div className="collwgeholder-card">
-              <img src={logo.imageUrl} alt="" className="college-img" />
-            </div>
-          </a>
+          <div className="collwgeholder-card" key={index}>
+            <img src={logo.imageUrl} alt="" className="college-img" />
+          </div>
         ))}
 
         {/* <div className="collwgeholder-card">
