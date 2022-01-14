@@ -454,8 +454,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          {/*<Testimonial testimonials={testimonialsdata} />*/}
-          <div
+          {/*<Testimonial testimonials={testimonialsdata} /> <div
             className="holder-divv"
             style={{
               display: "flex",
@@ -472,7 +471,7 @@ const LandingPage = () => {
               alt="app-status"
               className="app-status app-status-home"
             />
-          </div>
+          </div>*/}
 
           <div className="applydetails">
             <div className="applydetails-col1">
