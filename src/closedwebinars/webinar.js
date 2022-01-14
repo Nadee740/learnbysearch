@@ -9,7 +9,7 @@ import Modal from "react-awesome-modal";
 import "./webinar.css";
 import WebinareCard from "./webinarcard";
 import Footer from "../LandingPage/footer/footer";
-const WebinarPage = () => {
+const CLosedWebinarPage = () => {
 
   const [isLoading,setisLoading]=useState(true)
   const [webinardata,setwebinardata]=useState()
@@ -65,6 +65,7 @@ getwebinardata()
       webinardata.sort(function (a, b) {
         return Date.parse(b.date) - Date.parse(a.date);
       });
+      console.log(webinardata.isOpen)
       setwebinardata(webinardata);
       
     }
@@ -147,7 +148,7 @@ getwebinardata()
     ) :<div className="webinarpage">
       <h2>Webinars</h2>
       <div className="webinarpage-list">
-      {webinardata.map((webinar,index)=>webinar.isOpen?(
+      {webinardata.map((webinar,index)=>!webinar.isOpen?(
         <WebinareCard key={index} webinardata={webinar} setvisible={setvisible} selectedid={setselectedwebinarid} />
       ):"")}
       
@@ -158,4 +159,4 @@ getwebinardata()
   );
 };
 
-export default WebinarPage;
+export default CLosedWebinarPage;

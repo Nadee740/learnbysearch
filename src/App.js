@@ -34,6 +34,7 @@ import Mentors from "./Mentors/Mentors";
 import QuizSection from "./quiz/quiz";
 import QuizSectionResults from "./quiz/quizresults";
 import Quizconfirmtaion from "./quiz/quizconfirmation";
+import CLosedWebinarPage from "./closedwebinars/webinar";
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
           exact
           component={ApplicationForm}
         />
+        <Route path="/closedwebinar" exact component={CLosedWebinarPage} />
         <Route path="/applyasguest/:id" exact component={SignupasGuest} />{" "}
         <Route path="/paymentstatus" exact component={PaymentStatusPage} />
         <Route path="/links" exact component={LinksPage} />
