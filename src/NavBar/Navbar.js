@@ -256,14 +256,27 @@ const Navbar = (props) => {
                 My Applications
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item div-dropdwn">
               <Link
-                to="/webinars"
-                className="nav-links"
+                to="/openprogrammes"
+                className="nav-links dropbtn"
                 onClick={closeMobileMenu}
               >
                 Webinars
               </Link>
+              <div
+                class="dropdown"
+                style={{
+                  width: "200px",
+                }}
+              >
+                <Link to="/webinars" className="p-link p-link2">
+                  Open Webinars
+                </Link>
+                <Link to="/closedwebinars" className="p-link p-link2">
+                  Closed Webinars
+                </Link>
+              </div>
             </li>
           </ul>
 
@@ -406,7 +419,17 @@ const Navbar = (props) => {
               }}
               to="/webinars"
             >
-              Webinars
+              Open Webinars
+            </Link>
+          </li>
+          <li className="mobnav-item">
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/closedwebinars"
+            >
+              Closed Webinars
             </Link>
           </li>
         </ul>

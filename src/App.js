@@ -70,7 +70,7 @@ function App() {
           exact
           component={ApplicationForm}
         />
-        <Route path="/closedwebinar" exact component={CLosedWebinarPage} />
+        <Route path="/closedwebinars" exact component={CLosedWebinarPage} />
         <Route path="/applyasguest/:id" exact component={SignupasGuest} />{" "}
         <Route path="/paymentstatus" exact component={PaymentStatusPage} />
         <Route path="/links" exact component={LinksPage} />
