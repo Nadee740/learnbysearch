@@ -319,7 +319,7 @@ function OpenProgrammesPage() {
                 </div>
                 <div className="line"></div>
               </div>
-              <div className="">
+              <div className="advantages">
                 <div className="openprogrammespage-section">
                   <p className="openprogrammespage-head">Advantages</p>
                   <p className="openprogrammespage-text">
@@ -329,7 +329,6 @@ function OpenProgrammesPage() {
                     Experience Certificate and Medal on Publication
                   </p>
                 </div>
-                <div className="line"></div>
               </div>
             </div>
 
