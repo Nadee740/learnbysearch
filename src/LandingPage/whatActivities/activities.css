@@ -29,12 +29,23 @@
 }
 .activities-grid-col-head {
   padding: 1rem 2rem;
-  background-color: #2e4680;
-  color: #fff;
+
   font-size: 1.2rem;
   font-weight: 300;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  position: relative;
+}
+.activities-grid-col-head::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: #2e4680;
+  width: 100%;
+  z-index: 5;
+  left: 0;
+  font-weight: 400;
 }
 .activities-grid-col-para {
   font-weight: 300;

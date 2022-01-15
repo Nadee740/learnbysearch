@@ -22,16 +22,21 @@ const BlogSlider = ({ blog }) => {
     ],
   };
   return (
-    <div className="blogSlider">
-      <h2>Latest Articles</h2>
-      <div className="slidecontainer">
-        <Slider {...settings}>
-          {blog.map((blog, index) =>index<8? (
-            <Slidercard blog={blog} key={index} />
-          ):"")}
-        </Slider>
+    <>
+      <div className="blogSlider">
+        <h2>Latest Articles</h2>
+        <div className="slidecontainer">
+          <Slider {...settings}>
+            {blog.map((blog, index) =>
+              index < 8 ? <Slidercard blog={blog} key={index} /> : ""
+            )}
+          </Slider>
+        </div>
       </div>
-    </div>
+      <a href="/webinars">
+        <p className="viewmore viewmore-blog">View More</p>
+      </a>
+    </>
   );
 };
 

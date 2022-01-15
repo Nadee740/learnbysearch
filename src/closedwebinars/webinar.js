@@ -10,28 +10,24 @@ import "./webinar.css";
 import WebinareCard from "./webinarcard";
 import Footer from "../LandingPage/footer/footer";
 const CLosedWebinarPage = () => {
-
-  const [isLoading,setisLoading]=useState(true)
-  const [webinardata,setwebinardata]=useState()
+  const [isLoading, setisLoading] = useState(true);
+  const [webinardata, setwebinardata] = useState();
   const [visible, setvisible] = useState(false);
   const [loginvisible, setloginvisible] = useState(false);
   const [selectedwbinarid, setselectedwebinarid] = useState("");
 
   const applyforwebinar = async () => {
-    const { isLoggedIn} = await Authverifier(`${window.name}users/me`
-    );
+    const { isLoggedIn } = await Authverifier(`${window.name}users/me`);
     if (isLoggedIn) {
-      
       const data = {
         webinarId: selectedwbinarid,
       };
-      
-    
+
       const { message: outcome } = await SendPost(
         `${window.name}apply-for-webinar`,
         data
       );
-       setisLoading(false)
+      setisLoading(false);
       if (outcome.includes("success")) {
         closeModal();
         alert("Successfully registered for webinar");
@@ -52,9 +48,9 @@ const CLosedWebinarPage = () => {
   const closeloginModal = () => {
     setloginvisible(false);
   };
-useEffect(()=>{
-getwebinardata()
-},[])
+  useEffect(() => {
+    getwebinardata();
+  }, []);
 
   const getwebinardata = async () => {
     setisLoading(true);
@@ -65,17 +61,15 @@ getwebinardata()
       webinardata.sort(function (a, b) {
         return Date.parse(b.date) - Date.parse(a.date);
       });
-      console.log(webinardata.isOpen)
+      console.log(webinardata.isOpen);
       setwebinardata(webinardata);
-      
     }
     setisLoading(false);
   };
 
-
   return (
-<>
-<div className="popupscreen">
+    <>
+      <div className="popupscreen">
         <section className="popupscreen">
           <Modal
             visible={visible}
@@ -128,7 +122,12 @@ getwebinardata()
                   </Link>
                 </div>
                 <div>
-                  <Link to={"/applyasguest/"+selectedwbinarid} onClick={closeloginModal}>Apply as guest</Link>
+                  <Link
+                    to={"/applyasguest/" + selectedwbinarid}
+                    onClick={closeloginModal}
+                  >
+                    Apply as guest
+                  </Link>
                 </div>
 
                 <div className="loginpart">
@@ -141,20 +140,30 @@ getwebinardata()
           </Modal>
         </section>
       </div>
-{isLoading ? (
-      <div className="isLoading">
-        <SolarSystemLoading />
-      </div>
-    ) :<div className="webinarpage">
-      <h2>Webinars</h2>
-      <div className="webinarpage-list">
-      {webinardata.map((webinar,index)=>!webinar.isOpen?(
-        <WebinareCard key={index} webinardata={webinar} setvisible={setvisible} selectedid={setselectedwebinarid} />
-      ):"")}
-      
-      </div>
-    </div>}
-    <Footer/>
+      {isLoading ? (
+        <div className="isLoading">
+          <SolarSystemLoading />
+        </div>
+      ) : (
+        <div className="webinarpage">
+          <h2>Past Webinars</h2>
+          <div className="webinarpage-list">
+            {webinardata.map((webinar, index) =>
+              !webinar.isOpen ? (
+                <WebinareCard
+                  key={index}
+                  webinardata={webinar}
+                  setvisible={setvisible}
+                  selectedid={setselectedwebinarid}
+                />
+              ) : (
+                ""
+              )
+            )}
+          </div>
+        </div>
+      )}
+      <Footer />
     </>
   );
 };

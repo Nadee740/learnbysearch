@@ -1,94 +1,103 @@
 .slider2 {
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 30px 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 30px 10px;
+}
+.slidercard {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-image: linear-gradient(
+    70.04deg,
+    rgba(0, 0, 0, 0.63) 0%,
+    rgba(0, 0, 0, 0.22) 101.15%
+  );
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: center;
+  flex-direction: column;
+  height: 350px;
+}
+.slidercard-img {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+.slidercardtext {
+  color: #fff;
+  width: 80%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 100%;
+}
+.content-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.slidercardbtn {
+  font-family: inherit;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.301);
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  border: 2px solid #fff;
+}
+.slidercardbtn:hover {
+  background-color: rgba(255, 255, 255, 0.089);
+  cursor: pointer;
+}
+.course-sponser {
+  position: absolute;
+  top: 3rem;
+  left: 4rem;
+}
+.course-sponser {
+  padding: 0.6rem 1rem;
+  font-weight: 500;
+  color: #fff;
+  animation: sponserAnim 2s ease-in infinite;
+}
+.sponsered {
+  background-color: rgb(236, 49, 49);
+}
+.non-sponsered {
+  background-color: rgb(5, 235, 24);
+}
+.card-img-2 {
+  height: 14rem;
+  object-fit: contain;
+}
+.webinar-card-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 0;
+}
+@keyframes sponserAnim {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.95);
   }
-  .slidercard {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    background-image: linear-gradient(
-      70.04deg,
-      rgba(0, 0, 0, 0.63) 0%,
-      rgba(0, 0, 0, 0.22) 101.15%
-    );
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    justify-content: center;
-    flex-direction: column;
-    height: 350px;
+  50% {
+    opacity: 1;
+    transform: scale(1);
   }
-  .slidercard-img {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 120%;
-    object-fit: cover;
-    top: 0;
-    left: 0;
-    margin: 0;
+  100% {
+    opacity: 0.6;
+    transform: scale(0.95);
   }
-  .slidercardtext {
-    color: #fff;
-    width: 80%;
-    text-align: center;
-    font-size: 30px;
-    font-weight: 300;
-    line-height: 100%;
-  }
-  .content-holder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .slidercardbtn {
-    font-family: inherit;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.301);
-    border: none;
-    color: #fff;
-    font-weight: 500;
-    border: 2px solid #fff;
-  }
-  .slidercardbtn:hover {
-    background-color: rgba(255, 255, 255, 0.089);
-    cursor: pointer;
-  }
-  .course-sponser {
-    position: absolute;
-    top: 3rem;
-    left: 4rem;
-  }
-  .course-sponser {
-    padding: 0.6rem 1rem;
-    font-weight: 500;
-    color: #fff;
-    animation: sponserAnim 2s ease-in infinite;
-  }
-  .sponsered {
-    background-color: rgb(236, 49, 49);
-  }
-  .non-sponsered {
-    background-color: rgb(52, 49, 236);
-  }
-  @keyframes sponserAnim {
-    0% {
-      opacity: 0.6;
-      transform: scale(0.95);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    100% {
-      opacity: 0.6;
-      transform: scale(0.95);
-    }
-  }
-  
+}

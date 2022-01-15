@@ -141,7 +141,7 @@ function OpenProgrammesPage() {
       `${window.name}research-program/${slug}`
     );
     if (!data) return seterror(true), setisLoading(false);
-    console.log(data)
+    console.log(data);
     setblogData(data);
     sethtmlpart(data.description);
     sethtmlpartobjective(data.objective);
@@ -257,13 +257,16 @@ function OpenProgrammesPage() {
 
             <div className="blogdetailpage-head openprogrammespage-head">
               <div className="blogdetailpage-top openprogrammespage-top">
-                {
-                  blogsData.isSponsered?<div className="course-sponser-page sponsered ">Sponsered</div>:
+                {blogsData.isSponsered ? (
+                  <div className="course-sponser-page sponsered ">
+                    Sponsored
+                  </div>
+                ) : (
                   <div className="course-sponser-page non-sponsered ">
-                  Non-Sponsered
-                </div>
-                }
-             
+                    Non-Sponsored
+                  </div>
+                )}
+
                 <>{blogsData.title}</>
                 {blogsData.applicationStatus ? (
                   <p onClick={applicationform}>
@@ -285,32 +288,51 @@ function OpenProgrammesPage() {
             </div>
           </div>
           <div className="openprogrammespage-holder">
-            <div className="openprogrammespage-section">
-              <p className="openprogrammespage-head"> Objective</p>
-              <p className="openprogrammespage-text">
-                <div
-                  dangerouslySetInnerHTML={{ __html: htmlpartobjective }}
-                ></div>
-              </p>
-            </div>
-            <div className="line"></div>
-            <div className="openprogrammespage-section">
-              <p className="openprogrammespage-head">
-                Description of the Research
-              </p>
+            <div className="openprogrammespage-holder-table">
+              <div className="">
+                <div className="openprogrammespage-section">
+                  <p className="openprogrammespage-head"> Objective</p>
+                  <p className="openprogrammespage-text">
+                    <div
+                      dangerouslySetInnerHTML={{ __html: htmlpartobjective }}
+                    ></div>
+                  </p>
+                </div>
+                <div className="line"></div>
+                <div className="openprogrammespage-section">
+                  <p className="openprogrammespage-head">
+                    Description of the Research
+                  </p>
 
-              <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
+                  <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
+                </div>
+                <div className="line"></div>
+                <div className="openprogrammespage-section">
+                  <p className="openprogrammespage-head">
+                    Outcome of the Research
+                  </p>
+                  <p className="openprogrammespage-text">
+                    <div
+                      dangerouslySetInnerHTML={{ __html: htmlpartoutcomes }}
+                    ></div>
+                  </p>
+                </div>
+                <div className="line"></div>
+              </div>
+              <div className="">
+                <div className="openprogrammespage-section">
+                  <p className="openprogrammespage-head">Advantages</p>
+                  <p className="openprogrammespage-text">
+                    1. Live Mentorship (1 on 1)
+                    <br /> 2. Weekly Meeting <br /> 3. Virtual Team Work <br />
+                    4. Research Paper writing Training <br /> 5. Research
+                    Experience Certificate and Medal on Publication
+                  </p>
+                </div>
+                <div className="line"></div>
+              </div>
             </div>
-            <div className="line"></div>
-            <div className="openprogrammespage-section">
-              <p className="openprogrammespage-head">Outcome of the Research</p>
-              <p className="openprogrammespage-text">
-                <div
-                  dangerouslySetInnerHTML={{ __html: htmlpartoutcomes }}
-                ></div>
-              </p>
-            </div>
-            <div className="line"></div>
+
             <div className="openprogrammespage-section">
               <p className="openprogrammespage-head">
                 Applications Open for following Positions
@@ -347,19 +369,24 @@ function OpenProgrammesPage() {
                         )}
                       </div>
                       <div className="vaccency-holder-sponsered">
-                        {
-                          blogsData.isSponsered?<div className="vaccency-offerprice-item sponsered">
-                          <p className="vaccency-offerprice-item-text">
-                            Earn Upto <span>₹ 500</span>{" "}
-                          </p>
-                        </div>:<div className="vaccency-offerprice-item sponsered">
-                          <p className="vaccency-offerprice-item-text">
-                            Fees <span>₹ 1180</span>{" "}
-                          </p>
-                        </div>
-                        }
-                       
-                     
+                        {blogsData.isSponsered ? (
+                          <div className="vaccency-offerprice-item sponsered">
+                            <p className="vaccency-offerprice-item-text">
+                              Earn Upto <span>₹ 500</span>{" "}
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="vaccency-offerprice-item non-sponsered">
+                            <p className="vaccency-offerprice-item-text">
+                              Fees:{" "}
+                              <strike className="vaccency-offerprice-item-text-span">
+                                ₹ 25000
+                              </strike>
+                              <br />
+                              53% off <span>₹ 11800</span>
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}

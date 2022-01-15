@@ -13,9 +13,12 @@ function Ongoingresearchcard({ blog }) {
   const htmlpart = blog.description;
   return (
     <>
-      <div className="openprogramcard"   onClick={() => {
-            window.location = a;
-          }}>
+      <div
+        className="openprogramcard"
+        onClick={() => {
+          window.location = a;
+        }}
+      >
         <img
           src={blog.imageUrl}
           alt="Card Haeder"
@@ -23,13 +26,13 @@ function Ongoingresearchcard({ blog }) {
         />
         <p className="duedate">Application closed on {blog.Deadline}</p>
         <div className="openprogramcard-txetholder">
-        {blog.isSponsered?<div className="course-sponser-small sponsered ">
-            Sponsered
-          </div>:<div className="course-sponser-small non-sponsered ">
-            Non-Sponsered
-          </div>
-
-          }
+          {blog.isSponsered ? (
+            <div className="course-sponser-small sponsered ">Sponsored</div>
+          ) : (
+            <div className="course-sponser-small non-sponsered ">
+              Non-Sponsored
+            </div>
+          )}
           <p className="openprogramcard-head">{blog.title}</p>
           <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
         </div>

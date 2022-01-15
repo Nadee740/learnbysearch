@@ -37,7 +37,7 @@ const OpenProgrammes = () => {
       </Helmet>
 
       <div className="openprograms">
-        <h2>Ongoing Research</h2>
+        <h2>Upcoming Research</h2>
         <div className="cardholder">
           {blogsData.length >= 1
             ? blogsData.map((blog, index) => {
@@ -50,7 +50,7 @@ const OpenProgrammes = () => {
             : setisLoading(true)}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

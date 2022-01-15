@@ -267,10 +267,7 @@ const LandingPage = () => {
                       Collaborate | Research | Learn | Earn
                     </h2>
 
-                    <p>
-                      Platform to connect leading researchers with the best
-                      students
-                    </p>
+                    <p>Think Research? Think LearnByResearch!</p>
                   </div>
 
                   {/*!isLoggedIn ? (
@@ -295,6 +292,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
+          <SliderCo data={pgmsData} />
           <div className="slider-webinar">
             {/**<Slider {...settings}>
               {webinardata.map((webinar, index) => {
@@ -328,54 +326,7 @@ const LandingPage = () => {
               </p>
             </div>
           </section>*/}
-          <Activities /> <WebinarSlider blog={webinardata} />
-          <Colleges logos={collegelogos} />
-          <MentorCarusel mentors={mentors} />
-          <StudentTask />
-          {/**<section className="about">
-            <div className="about-content">
-              <h2>How our students work?</h2>
-              <div className="about-col">
-                <figure>
-                  <img
-                    src="../images/about1.svg"
-                    alt="Login pic"
-                    className="about-col-img"
-                  ></img>
-                </figure>
-                <p>
-                  LearnByResearch is a hub for innovation, research &
-                  development. Pioneered by experienced professionals from the
-                  industry, academics & startups. LearnByResearch is unique in
-                  its methodology of delivering the right skillsets. We promote
-                  innovation, research, and entrepreneurship as part of the
-                  research work. LearnByResearch is dedicated to higher levels
-                  of interdisciplinary R&D in the fields of emerging
-                  technologies with the strategy to build entrepreneurs and
-                  industry leaders.
-                </p>
-              </div>
-              <div className="about-col">
-                <p>
-                  Our methodology emphases on a practical learning approach with
-                  hands-on experience to inculcate the best industry standards.
-                  This approach is meant to help students face all challenges
-                  with the supervision of a guide. At LearnByResearch, students
-                  and research guides collaborate to enhance their skills and
-                  knowledge as well as build life-changing products and
-                  services.
-                </p>
-                <figure>
-                  <img
-                    src="../images/about2.svg"
-                    alt="Login pic"
-                    className="about-col-img"
-                  ></img>
-                </figure>
-              </div>
-            </div>
-          </section> */}
-          <SliderCo data={pgmsData} />
+          <WebinarSlider blog={webinardata} />
           <section className="gain">
             <div className="gain-container">
               <div className="gain-content">
@@ -458,6 +409,52 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
+          <Activities /> <StudentTask />
+          <Colleges logos={collegelogos} />
+          <MentorCarusel mentors={mentors} />
+          {/**<section className="about">
+            <div className="about-content">
+              <h2>How our students work?</h2>
+              <div className="about-col">
+                <figure>
+                  <img
+                    src="../images/about1.svg"
+                    alt="Login pic"
+                    className="about-col-img"
+                  ></img>
+                </figure>
+                <p>
+                  LearnByResearch is a hub for innovation, research &
+                  development. Pioneered by experienced professionals from the
+                  industry, academics & startups. LearnByResearch is unique in
+                  its methodology of delivering the right skillsets. We promote
+                  innovation, research, and entrepreneurship as part of the
+                  research work. LearnByResearch is dedicated to higher levels
+                  of interdisciplinary R&D in the fields of emerging
+                  technologies with the strategy to build entrepreneurs and
+                  industry leaders.
+                </p>
+              </div>
+              <div className="about-col">
+                <p>
+                  Our methodology emphases on a practical learning approach with
+                  hands-on experience to inculcate the best industry standards.
+                  This approach is meant to help students face all challenges
+                  with the supervision of a guide. At LearnByResearch, students
+                  and research guides collaborate to enhance their skills and
+                  knowledge as well as build life-changing products and
+                  services.
+                </p>
+                <figure>
+                  <img
+                    src="../images/about2.svg"
+                    alt="Login pic"
+                    className="about-col-img"
+                  ></img>
+                </figure>
+              </div>
+            </div>
+          </section> */}
           {/*<Testimonial testimonials={testimonialsdata} /> <div
             className="holder-divv"
             style={{
