@@ -50,6 +50,10 @@ p {
 }
 .buttons {
   padding: 2px 0 2px;
+  outline: none;
+  background: #2e4680;
+  border: none;
+  color: #fff;
 }
 .button1 {
   margin-top: 10px;
@@ -113,7 +117,7 @@ p {
   text-align: center;
 }
 .outcomes-img {
-  height: 10rem;
+  width: 7rem;
   margin: 2rem;
 }
 .scnd-content p {
@@ -256,6 +260,10 @@ p {
 .outcomes-col2 {
   background-color: #fbb5fc;
 }
+.outcomes-col-grid {
+  display: flex;
+  flex-direction: row;
+}
 .outcomes-col-number {
   width: 40px;
   height: 40px;
@@ -334,6 +342,10 @@ p {
   .outcomes {
     margin: 5px 30px;
   }
+  .outcomes-col-grid {
+    display: flex;
+    flex-direction: column;
+  }
   .applydetails {
     margin: 10px 0;
     padding: 10px !important;
@@ -377,8 +389,6 @@ p {
   .btns {
     width: 200px;
     height: 35px;
-    border: 0.2px outset #fff;
-    border-radius: 10px;
 
     display: flex;
     justify-content: center;

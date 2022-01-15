@@ -269,7 +269,6 @@ const LandingPage = () => {
 
                     <p>Think Research? Think LearnByResearch!</p>
                   </div>
-
                   {/*!isLoggedIn ? (
                     <div className="buttons ">
                       <Link to="/signup" className="btns button1">
@@ -282,12 +281,12 @@ const LandingPage = () => {
                     </div>
                   ) : (
                     ""
-                  )*/}
-                  <div className="buttons ">
-                    <Link to="/openprogrammes" className="btns button1">
+                  )*/}{" "}
+                  <Link to="/openprogrammes" className="btns button1">
+                    <button className="buttons ">
                       Upcoming Research: Apply Now
-                    </Link>
-                  </div>
+                    </button>{" "}
+                  </Link>
                 </div>
               </div>
             </div>
@@ -335,76 +334,94 @@ const LandingPage = () => {
               <div className="outcomes">
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">1</p>
-                  <img
-                    src="/images/Aims/help.svg"
-                    className="outcomes-img"
-                    alt=""
-                  />
-                  <p className="outcomes-col-head">Financial Incentives</p>
-                  <p className="outcomes-col-text">
-                    Students who get selected via stringent selection process at
-                    LearnByResearch, work under researchers to complete the
-                    project. For all the sponsored research projects student's
-                    earn monthly stipend upto ₹ 5000 per month.
-                  </p>
+                  <div className="outcomes-col-grid">
+                    <img
+                      src="/images/Aims/help.svg"
+                      className="outcomes-img"
+                      alt=""
+                    />
+
+                    <div className="">
+                      <p className="outcomes-col-head">Financial Incentives</p>
+                      <p className="outcomes-col-text">
+                        Students who get selected via stringent selection
+                        process at LearnByResearch, work under researchers to
+                        complete the project. For all the sponsored research
+                        projects student's earn monthly stipend upto ₹ 5000 per
+                        month.
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">2</p>
-                  <img
-                    src="/images/Aims/paper.svg"
-                    className="outcomes-img"
-                    alt=""
-                  />
-                  <p className="outcomes-col-head">
-                    Research Paper Publications
-                  </p>
-                  <p className="outcomes-col-text">
-                    The outcome of almost all research groups involves
-                    publishing the results and experimental work in a reputed
-                    journal scientific research journal. Here during the
-                    research work, all students will be publishing at least 2
-                    papers with the support of the team members and the research
-                    guide.
-                  </p>
+                  <div className="outcomes-col-grid">
+                    <img
+                      src="/images/Aims/paper.svg"
+                      className="outcomes-img"
+                      alt=""
+                    />{" "}
+                    <div className="">
+                      <p className="outcomes-col-head">
+                        Research Paper Publications
+                      </p>
+                      <p className="outcomes-col-text">
+                        The outcome of almost all research groups involves
+                        publishing the results and experimental work in a
+                        reputed journal scientific research journal. Here during
+                        the research work, all students will be publishing at
+                        least 2 papers with the support of the team members and
+                        the research guide.
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">3</p>
-                  <img
-                    src="/images/Aims/team.svg"
-                    className="outcomes-img"
-                    alt=""
-                  />
-                  <p className="outcomes-col-head">
-                    Network and Focused Community
-                  </p>
-                  <p className="outcomes-col-text">
-                    During the research work, students will be working and
-                    engaging with fellow teammates through the weekly meetings,
-                    interaction sessions, and experimentations. This will help
-                    students to grow their network. If you want to be an
-                    entrepreneur and start building a great product maybe you
-                    can find your co-founder here!
-                  </p>
+                  <div className="outcomes-col-grid">
+                    <img
+                      src="/images/Aims/team.svg"
+                      className="outcomes-img"
+                      alt=""
+                    />
+                    <div className="">
+                      <p className="outcomes-col-head">
+                        Network and Focused Community
+                      </p>
+                      <p className="outcomes-col-text">
+                        During the research work, students will be working and
+                        engaging with fellow teammates through the weekly
+                        meetings, interaction sessions, and experimentations.
+                        This will help students to grow their network. If you
+                        want to be an entrepreneur and start building a great
+                        product maybe you can find your co-founder here!
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div className="outcomes-col">
                   <p className="outcomes-col-number">4</p>
-                  <img
-                    src="/images/Aims/certi.svg"
-                    className="outcomes-img"
-                    alt=""
-                  />
-                  <p className="outcomes-col-head">
-                    Certificate of Research Completion
-                  </p>
-                  <p className="outcomes-col-text">
-                    Getting recognition of what you have accomplished and
-                    learned is what matters the most nowadays, we just can't
-                    wait to put a post highlighting what we have made, well,
-                    here you will be doing that a lot. Every day you will be
-                    making something cool which you can't resist posting,
-                    finally, to sum up, your social media posts we award the
-                    Completion Certification.
-                  </p>
+                  <div className="outcomes-col-grid">
+                    <img
+                      src="/images/Aims/certi.svg"
+                      className="outcomes-img"
+                      alt=""
+                    />
+                    <div className="">
+                      <p className="outcomes-col-head">
+                        Certificate of Research Completion
+                      </p>
+                      <p className="outcomes-col-text">
+                        Getting recognition of what you have accomplished and
+                        learned is what matters the most nowadays, we just can't
+                        wait to put a post highlighting what we have made, well,
+                        here you will be doing that a lot. Every day you will be
+                        making something cool which you can't resist posting,
+                        finally, to sum up, your social media posts we award the
+                        Completion Certification.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

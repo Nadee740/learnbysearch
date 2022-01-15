@@ -5,18 +5,22 @@
   display: grid;
 }
 
-.advantages{
+.advantages {
   /* border: 1px solid #000; */
   position: sticky;
   margin-left: 50px;
   top: 100px;
   height: fit-content;
-  background: rgb(211,180,249);
-background: linear-gradient(30deg, rgba(211,180,249,0.8169642857142857) 0%, rgba(103,135,232,0.5956757703081232) 43%, rgba(159,215,247,0.7497373949579832) 100%);
+  background: rgb(211, 180, 249);
+  background: linear-gradient(
+    30deg,
+    rgba(211, 180, 249, 0.8169642857142857) 0%,
+    rgba(103, 135, 232, 0.5956757703081232) 43%,
+    rgba(159, 215, 247, 0.7497373949579832) 100%
+  );
 }
 
-@media(max-width: 767px){
- 
+@media (max-width: 767px) {
 }
 
 .openprogrammespage-top {
@@ -82,11 +86,11 @@ background: linear-gradient(30deg, rgba(211,180,249,0.8169642857142857) 0%, rgba
   grid-template-columns: 0.6fr 0.4fr;
 }
 
-@media(max-width: 767px) {
-  .openprogrammespage-holder-table{
+@media (max-width: 767px) {
+  .openprogrammespage-holder-table {
     grid-template-columns: 1fr;
   }
-  .advantages{
+  .advantages {
     margin-left: 0;
   }
 }
@@ -169,6 +173,9 @@ background: linear-gradient(30deg, rgba(211,180,249,0.8169642857142857) 0%, rgba
   animation: sponserAnim 2s ease-in infinite;
 }
 @media screen and (max-width: 800px) {
+  .course-sponser-page {
+    left: 20px;
+  }
   .vaccency-item {
     margin-bottom: 0;
   }
