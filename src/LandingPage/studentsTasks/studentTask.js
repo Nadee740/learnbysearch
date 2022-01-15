@@ -2,7 +2,7 @@ import "./studenttask.css";
 const StudentTask = () => {
   return (
     <div className="studenttask">
-      <h2 className="mentorcarousel-head">What students are doing at LBR</h2>
+      <h2 className="activities-head">What students are doing at LBR</h2>
       <div className="studenttask-table">
         <div className="studenttask-table-col">
           <img
@@ -41,7 +41,7 @@ const StudentTask = () => {
             className="studenttask-table-col-img"
           />
           <p className="studenttask-table-col-text">
-            Earn Stipend on Sponsered Research Projects
+            Earn Stipend on Sponsored Research Projects
           </p>
         </div>
       </div>

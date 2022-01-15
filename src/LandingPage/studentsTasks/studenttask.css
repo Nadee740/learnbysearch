@@ -34,7 +34,7 @@
 @media screen and (max-width: 960px) {
   .studenttask-table {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
   .studenttask-table-col-img {
     height: 6rem;
@@ -45,5 +45,8 @@
     font-size: 1rem;
 
     margin-top: 0.5rem;
+  }
+  .studenttask-table-col {
+    padding: 0.5rem;
   }
 }

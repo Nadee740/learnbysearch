@@ -99,3 +99,8 @@
     transform: scale(0.95);
   }
 }
+@media screen and (max-width: 960px) {
+  .slidercardtext {
+    font-size: 20px;
+  }
+}

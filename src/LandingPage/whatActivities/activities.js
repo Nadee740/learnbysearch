@@ -2,7 +2,9 @@ import "./activities.css";
 const Activities = () => {
   return (
     <div className="activities">
-      <h2>What research activities are happening at LBR?</h2>
+      <h2 className="activities-head">
+        What research activities are happening at LBR?
+      </h2>
       <div className="activities-grid">
         <div className="activities-grid-col">
           <p className="activities-grid-col-head">For Students</p>

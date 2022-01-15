@@ -472,8 +472,7 @@ const LandingPage = () => {
               alt="app-status"
               className="app-status app-status-home"
             />
-          </div>*/}
-          <BannerBtn />
+          </div> <BannerBtn />*/}
           <div className="applydetails">
             <div className="applydetails-col1">
               <h2>Why you must apply?</h2>

@@ -324,6 +324,10 @@ p {
   margin: 10px;
 }
 @media screen and (max-width: 800px) {
+  .outcomes-img {
+    height: 7rem;
+    margin: 1rem;
+  }
   .app-status-home {
     width: 95% !important;
   }
