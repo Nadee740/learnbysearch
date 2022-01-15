@@ -25,3 +25,8 @@
   cursor: pointer;
   font-weight: 300;
 }
+@media screen and (max-width: 960px) {
+  .bannerbtn-text {
+    font-size: 1.6rem;
+  }
+}
