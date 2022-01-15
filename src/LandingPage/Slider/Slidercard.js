@@ -18,7 +18,7 @@ const Slidercard = ({ blog }) => {
     <div className="cardholder2">
       <div className="card">
         <img src={blog.imageUrl} alt="Blog " className="card-img" />
-        <h3 className="card-heading-new">{blog.title}</h3>
+        <h3 className="card-heading-new">{blog.title.substring(0,35)}</h3>
         <p>
           <div className="card-txt">{str}</div>
         </p>
