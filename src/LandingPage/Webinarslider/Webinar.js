@@ -25,7 +25,7 @@ const WebinarSlider = ({ blog }) => {
   const [num, setnum] = useState(0);
   return (
     <div className="blogSlider">
-      <h2>Latest Articles</h2>
+      <h2 className="mentorcarousel-head">Latest Webinars</h2>
       <div className="slidecontainer">
         <Slider {...settings}>
           {blog.map((blog, index) =>

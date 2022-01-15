@@ -1,0 +1,49 @@
+.studenttask {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: rgba(245, 245, 245, 0.274);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.studenttask-table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.studenttask-table-col {
+  margin-top: 3rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.studenttask-table-col-img {
+  height: 8rem;
+  margin-bottom: 1rem;
+}
+.studenttask-table-col-text {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-top: 1rem;
+}
+@media screen and (max-width: 960px) {
+  .studenttask-table {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .studenttask-table-col-img {
+    height: 6rem;
+    margin-bottom: 0.2rem;
+  }
+  .studenttask-table-col-text {
+    margin-top: 1rem;
+    font-size: 1rem;
+
+    margin-top: 0.5rem;
+  }
+}

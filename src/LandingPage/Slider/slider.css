@@ -33,7 +33,6 @@
   color: #585858;
 }
 .card-heading {
-  height: 85px;
 }
 .card p {
   color: #818181;
@@ -64,7 +63,6 @@
 }
 @media screen and (max-width: 800px) {
   .card-heading {
-    height: 90px;
   }
 
   .blogSlider {

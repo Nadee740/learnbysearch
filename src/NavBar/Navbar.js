@@ -170,7 +170,8 @@ const Navbar = (props) => {
       {topbanner ? (
         <div className="topbanner">
           <p className="topbanner-text ">
-            Join us today for free and earn cash rewards for quality research!
+            Check out newly launched Sponsored and Non-Sponsored Research
+            Projects now!
           </p>
           <IoCloseCircleOutline
             onClick={() => setTopbanner(false)}

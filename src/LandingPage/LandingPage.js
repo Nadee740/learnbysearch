@@ -21,6 +21,8 @@ import Modal from "react-awesome-modal";
 import SendPost from "../Backend/Sendpost";
 import Activities from "./whatActivities/activities";
 import WebinarSlider from "./Webinarslider/Webinar";
+import StudentTask from "./studentsTasks/studentTask";
+import BannerBtn from "./banner/banner";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -258,7 +260,8 @@ const LandingPage = () => {
                 <div className="right-side">
                   <div className="top-heading">
                     <h2 className="font-light-top">
-                      World's First Platform Rewarding Students for Research
+                      Platform to connect leading researchers with the best
+                      students
                     </h2>
                     <h2 className="form-title">
                       Collaborate | Research | Learn | Earn
@@ -309,7 +312,6 @@ const LandingPage = () => {
               })}
             </Slider> */}
           </div>
-          <WebinarSlider blog={webinardata}/>
           {/*<section className="second">
          
          
@@ -326,10 +328,11 @@ const LandingPage = () => {
               </p>
             </div>
           </section>*/}
-          <Activities />
+          <Activities /> <WebinarSlider blog={webinardata} />
           <Colleges logos={collegelogos} />
           <MentorCarusel mentors={mentors} />
-          <section className="about">
+          <StudentTask />
+          {/**<section className="about">
             <div className="about-content">
               <h2>How our students work?</h2>
               <div className="about-col">
@@ -371,7 +374,7 @@ const LandingPage = () => {
                 </figure>
               </div>
             </div>
-          </section>
+          </section> */}
           <SliderCo data={pgmsData} />
           <section className="gain">
             <div className="gain-container">
@@ -473,7 +476,7 @@ const LandingPage = () => {
               className="app-status app-status-home"
             />
           </div>*/}
-
+          <BannerBtn />
           <div className="applydetails">
             <div className="applydetails-col1">
               <h2>Why you must apply?</h2>
@@ -493,7 +496,6 @@ const LandingPage = () => {
             </div>
           </div>
           <BlogSlider blog={blogsData} />
-
           <Footer />
         </div>
       )}
