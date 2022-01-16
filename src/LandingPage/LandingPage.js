@@ -60,7 +60,7 @@ const LandingPage = () => {
   const getmentors = async () => {
     setisLoading(true);
     const { data: mentors } = await Researchpgms(`${window.name}mentors`);
-    setmentors(mentors.reverse());
+    setmentors(mentors);
 
     getcollegelogos();
   };

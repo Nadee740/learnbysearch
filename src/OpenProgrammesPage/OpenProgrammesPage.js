@@ -138,7 +138,7 @@ function OpenProgrammesPage() {
   const getRPS = async () => {
     setisLoading(true);
     const { data } = await Researchpgms(
-      `https://ec00-116-68-86-157.ngrok.io/api/research-program/${slug}`
+      `${window.name}research-program/${slug}`
     );
     if (!data) return seterror(true), setisLoading(false);
     console.log(data);

@@ -164,7 +164,7 @@ function OngoingresearchPage() {
   const getBlogs = async () => {
     setisLoading(true);
     const { data: rpdata } = await Researchpgms(
-      `https://ec00-116-68-86-157.ngrok.io/api/research-program/${slug}`
+      `${window.name}research-program/${slug}`
     );
     if (!rpdata) return seterror(true);
 

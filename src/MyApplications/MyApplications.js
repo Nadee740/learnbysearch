@@ -43,7 +43,7 @@ const MyApplications = () => {
         };
         // 611bec2c291f071c87488bfa
         
-         const { jsonda: retdata } = await Researchpgms(`https://ec00-116-68-86-157.ngrok.io/api/show-application-status?id=${application}`)
+         const { jsonda: retdata } = await Researchpgms(`${window.name}show-application-status?id=${application}`)
         // const { message: messagee, retdata } = await Tokenlesssendpost(
         //   `${window.name}show-application-status`,
         //   app_data
