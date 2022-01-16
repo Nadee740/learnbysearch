@@ -41,21 +41,26 @@ const MyApplications = () => {
         const app_data = {
           id: application,
         };
-        const { message: messagee, retdata } = await Tokenlesssendpost(
-          `${window.name}show-application-status`,
-          app_data
-        );
+        // 611bec2c291f071c87488bfa
+        
+         const { jsonda: retdata } = await Researchpgms(`https://ec00-116-68-86-157.ngrok.io/api/show-application-status?id=${application}`)
+        // const { message: messagee, retdata } = await Tokenlesssendpost(
+        //   `${window.name}show-application-status`,
+        //   app_data
+        // );
         count++;
-
-        if (retdata.status != "error") {
-          array.push(retdata);
+        
+        if (retdata.status != "error" && retdata.application!=null && retdata.application!="null") {
+          console.log(retdata)
+          array.push(retdata.application);
         }
 
         if (count == userdata.applicationForm.length) {
           if (array.length > 0) {
-            setapplication(array);
 
-            getreaserch(array);
+            setapplication(array);
+            setisLoading(false);
+            // getreaserch(array);
           } else {
             setisempty(true);
             setisLoading(false);
@@ -142,7 +147,8 @@ const MyApplications = () => {
                 Quiz Status
               </p>
             </div>
-            {applicationsData.map((application, index) => {
+            {applications.map((application, index) => {
+              console.log(application)
               {/* Object
 applicationstatus:
 appication: Array(1)
@@ -162,12 +168,12 @@ question7: "https://www.google.com/search?sxsrf=AOaemvIyaEr3GJmdQuy4TbAzabbGOIvv
 quizScore: "1"
 referral_code: ""
 researchProgram: "61c1a7b92311378561d79aab" */}
-              console.log(application.applicationstatus.appication[0].quizScore)
+
               let classn = "",
                 title = "",
                 classtype = "myapplication-row-btn ";
 
-              switch (application.applicationstatus.data) {
+              switch (application.applicationStatus) {
                 case 7: {
                   classn = "myapplication-row-btn-sub";
                   title = "Submited";
@@ -204,14 +210,32 @@ researchProgram: "61c1a7b92311378561d79aab" */}
                   break;
                 }
               }
+              {/* {status: 'ok', msg: 'received the Application status', application: {…}}
+application:
+applicationID: "LBR0479"
+applicationStatus: 5
+createdAt: "2021-12-03T07:50:55.807Z"
+paymentStatus: []
+position: {_id: '60ddbc6978e692ab358f7919', title: 'Machine Learning Researcher '}
+question1: "aaaaaaaaa"
+question2: true
+question3: "aaaaaaaaaa"
+question4: "9"
+question5: "false"
+question6: ""
+question7: "https://www.tutorialspoint.com/validate-url-in-reactjs"
+referral_code: ""
+researchProgram: {_id: '6135f6adf7a62e3442a09f4c', title: 'Artificial Intelligence in Dentistry'}
+studentId: "60e186ac3793cf01a050924c"
+updatedAt: "2021-12-04T05:26:56.544Z" */}
               classtype = classtype + classn;
-              return application.applicationstatus.data != 6?(
+              return application.applicationstatus != 6?(
                 <div className="myapplication-row" key={index}>
                   <p className="myapplication-row-text ">
-                    {application.rpdata.title}
+                    {application.researchProgram.title}
                   </p>
                   <p className="myapplication-row-text ">
-                    {application.applicationstatus.date.substring(0, 10)}
+                    {application.createdAt.substring(0, 10)}
                   </p>
                   <p className="myapplication-row-text  ">
                     <button
@@ -224,26 +248,26 @@ researchProgram: "61c1a7b92311378561d79aab" */}
                   <p className="myapplication-row-text  ">
                     <button
                       onClick={async () => {
-                        if (application.applicationstatus.data == 1) {
+                        if (application.applicationStatus == 1) {
                           setisLoading(true);
                          
 
-                          window.location = `/quiz/confirmation/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0]._id}`;
+                          window.location = `/quiz/confirmation/${application.researchProgram._id}/${application.position._id}/${application._id}`;
                         }
                         else
                         {
-                          if(application.applicationstatus.appication[0].quizScore)
+                          if(application.quizScore)
                          { setisLoading(false)
-                          window.location=`/quiz/result/${application.applicationstatus.appication[0].researchProgram}/${application.applicationstatus.appication[0].position}/${application.applicationstatus.appication[0].quizScore}/0/0`
+                          window.location=`/quiz/result/${application.researchProgram._id}/${application.position._id}/${application.quizScore}/0/0`
                          }
                          else{
                            alert("No data found")
                          }
                         }
                       }}
-                      className={application.applicationstatus.data == 1?"myapplication-row-btn myapplication-row-btn-rej":"myapplication-row-btn myapplication-row-btn-approv"}
+                      className={application.applicationStatus == 1?"myapplication-row-btn myapplication-row-btn-rej":"myapplication-row-btn myapplication-row-btn-approv"}
                     >
-                      {application.applicationstatus.data == 1?"Attend Quiz":"View score"}
+                      {application.applicationStatus == 1?"Attend Quiz":"View score"}
                     </button>
                     {}
                   </p>
