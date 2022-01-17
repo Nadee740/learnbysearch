@@ -429,7 +429,7 @@ const LandingPage = () => {
           </section>
           <Activities /> <StudentTask />
           <Colleges logos={collegelogos} />
-          <Publishedprograms />
+          {/* <Publishedprograms /> */}
           <MentorCarusel mentors={mentors} />
           {/**<section className="about">
             <div className="about-content">

@@ -212,7 +212,6 @@ function OpenProgrammesPage() {
                 {/* <div>
                   <Link onClick={closeModal}>Close</Link>
                 </div>
-
                 <div className="loginpart">
                   <Link to="/login" onClick={closeModal}>
                     Login
@@ -499,4 +498,4 @@ function OpenProgrammesPage() {
   );
 }
 
-export default OpenProgrammesPage;
+export default OpenProgrammesPage
