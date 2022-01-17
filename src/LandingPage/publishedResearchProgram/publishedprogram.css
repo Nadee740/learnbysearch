@@ -1,0 +1,35 @@
+.publishCard-btn {
+  margin-top: 1rem;
+}
+.publishedcard-row {
+  background-color: rgba(218, 218, 218, 0.829);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  position: absolute;
+  top: 134px;
+  align-items: center;
+  padding: 0.3rem;
+}
+.publishedcard-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0.5rem;
+}
+.publishedcard-user {
+  height: 3.1rem;
+  width: 3.1rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.publishedcard-col-usertxt {
+  margin: 0 !important;
+  font-size: 1rem;
+}
+.publishedcard-col-subtxt {
+  margin: 0 !important;
+  font-size: 0.8rem;
+  font-weight: 300;
+}

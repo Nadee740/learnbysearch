@@ -30,7 +30,7 @@ const Slidercard = ({ blog }) => {
     <div className="cardholder2">
       <div className="card webinar-card-home">
         <img src={blog.imageUrl} alt="Blog " className="card-img-2" />
-        <h3 className="card-heading">{blog.title.substring(0,36)+".."}</h3>
+        <h3 className="card-heading">{blog.title.substring(0, 36) + ".."}</h3>
 
         <Link to="/webinars">
           <button>Register</button>

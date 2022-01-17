@@ -23,6 +23,7 @@ import Activities from "./whatActivities/activities";
 import WebinarSlider from "./Webinarslider/Webinar";
 import StudentTask from "./studentsTasks/studentTask";
 import BannerBtn from "./banner/banner";
+import Publishedprograms from "./publishedResearchProgram/publishedProgarm";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -428,6 +429,7 @@ const LandingPage = () => {
           </section>
           <Activities /> <StudentTask />
           <Colleges logos={collegelogos} />
+          <Publishedprograms />
           <MentorCarusel mentors={mentors} />
           {/**<section className="about">
             <div className="about-content">
