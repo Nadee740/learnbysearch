@@ -12,7 +12,7 @@ const SliderCard = ({ data }) => {
         )}{" "}
         {/*<div className="course-sponser sponsered ">Non-Sponsered</div> */}
         <h2 className="slidercardtext">{data.title}</h2>
-        {/**<h2 className="slidercardtext slidercardtext-small">
+        {/* *<h2 className="slidercardtext slidercardtext-small">
           Only best "research positions" Students will be globally accepted
         </h2> */}
         <button
