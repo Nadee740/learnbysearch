@@ -32,7 +32,7 @@ const ApplicationForm = () => {
   const [code, setreferalcode] = useState("");
   const [Appid, setAppid] = useState("");
   const [err, seterr] = useState("");
-
+const [blogsData,setblogsData]=useState();
   const closeModal = () => {
     setvisible(false);
   };
@@ -46,7 +46,7 @@ const ApplicationForm = () => {
   };
   ////////////////////get positions of rp ///////////////////////////////////////
   const getPositions = async (data) => {
-    setPositionId(data.positions[0].positionId);
+    
     await data.positions.map(async (position, index) => {
       const { data: Data } = await Researchpgms(
         `${window.name}position/${position.positionId}`
@@ -63,8 +63,12 @@ const ApplicationForm = () => {
     const { data } = await Researchpgms(
       `${window.name}research-program/${slug}`
     );
+    setblogsData(data)
     setResearchProgramId(data._id);
-    await getPositions(data);
+    setPositionId(data.positions[0].positionId._id);
+    setisLoading(false)
+   
+    // await getPositions(data);
   };
   //////////////////////////////////////////////
   const stylefunction = (color, id) => {
@@ -145,6 +149,7 @@ const ApplicationForm = () => {
         setisLoading(false);
       
         seterrorvisible(true);
+        console.log(message)
       }
     }
   };
@@ -322,16 +327,16 @@ const ApplicationForm = () => {
                             >
                               {isLoading
                                 ? setisLoading(true)
-                                : positions &&
-                                  positions.map((position, index) => {
-                                   
+                                :blogsData&&
+                                  blogsData.positions.map((position, index) => {
+                                   console.log(position)
                                     return (
                                       <option
-                                        value={position._id}
+                                        value={position.positionId._id}
                                         className="selectbx-itm"
                                         key={index}
                                       >
-                                        {position.title}
+                                        {position.positionId.title}
                                       </option>
                                     );
                                   })}

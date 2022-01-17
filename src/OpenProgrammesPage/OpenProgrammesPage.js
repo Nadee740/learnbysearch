@@ -43,37 +43,37 @@ function OpenProgrammesPage() {
     setappliedvisible(false);
   };
   ///////////////////////////POSITIONS OF RP////////////////////////////////
-  const getPositions = async (rpdata) => {
-    setisLoading(true);
+  // const getPositions = async (rpdata) => {
+  //   setisLoading(true);
 
-    rpdata.positions.map(async (position, index) => {
-      const { data } = await Researchpgms(
-        `${window.name}position/${position.positionId}`
-      );
+  //   rpdata.positions.map(async (position, index) => {
+  //     const { data } = await Researchpgms(
+  //       `${window.name}position/${position.positionId}`
+  //     );
 
-      arr.push(data);
+  //     arr.push(data);
 
-      setPosition(arr);
-      if (rpdata.positions.length == arr.length) await getMentors(rpdata);
-    });
-  };
+  //     setPosition(arr);
+  //     if (rpdata.positions.length == arr.length) await getMentors(rpdata);
+  //   });
+  // };
 
   ////////////////////////////////////////////////////////////
 
   ////////////////////////////MENTORS OF RP////////////////////////////////////
 
-  const getMentors = async (rpdata) => {
-    setisLoading(true);
+  // const getMentors = async (rpdata) => {
+  //   setisLoading(true);
 
-    rpdata.mentors.map(async (mentor, index) => {
-      const { data } = await Researchpgms(`${window.name}mentor/${mentor}`);
-      array.push(data);
-      setmentors(array);
-      if (array.length == rpdata.mentors.length) {
-        setloaded();
-      }
-    });
-  };
+  //   rpdata.mentors.map(async (mentor, index) => {
+  //     const { data } = await Researchpgms(`${window.name}mentor/${mentor}`);
+  //     array.push(data);
+  //     setmentors(array);
+  //     if (array.length == rpdata.mentors.length) {
+  //       setloaded();
+  //     }
+  //   });
+  // };
   /////////////////////////////////////////////////////////////////
   const setloaded = () => {
     setisLoading(false);
@@ -146,7 +146,8 @@ function OpenProgrammesPage() {
     sethtmlpart(data.description);
     sethtmlpartobjective(data.objective);
     sethtmlpartoutcomes(data.outcomes);
-    await getPositions(data);
+    setisLoading(false)
+    // await getPositions(data);
   };
 
   //////////////////////////////////////////////////////////////////////////
@@ -342,19 +343,19 @@ function OpenProgrammesPage() {
               </p>
 
               <div className="vaccency-holder">
-                {positions &&
-                  positions.map((position, index) => (
+                {blogsData &&
+                  blogsData.positions.map((position, index) => (
                     <div className="vaccency-holder-row">
                       <div className="vaccency-item" key={index}>
-                        <p className="vaccency-item-title">{position.title}</p>
+                        <p className="vaccency-item-title">{position.positionId.title}</p>
                         <p className="vaccency-item-text">
                           Number of Students Required:{" "}
-                          <span>{blogsData.positions[index].openings}</span>
+                          <span>{position.openings}</span>
                         </p>
 
                         <p className="vaccency-item-text">
                           Eligibility Criterion:
-                          <span>{position.criterion}</span>
+                          <span>{position.positionId.criterion}</span>
                         </p>
                         {blogsData.applicationStatus ? (
                           <button
@@ -417,8 +418,8 @@ function OpenProgrammesPage() {
               <div className="mentors">
                 <p className="openprogrammespage-head">Mentors</p>
 
-                {mentors &&
-                  mentors.map((mentor, index) => {
+                {blogsData &&
+                  blogsData.mentors.map((mentor, index) => {
                     const htmlparteducation = mentor.education;
                     const htmlorganisation = mentor.organisation;
                     const htmlpartposition = mentor.position;

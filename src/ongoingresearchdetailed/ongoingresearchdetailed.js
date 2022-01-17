@@ -170,7 +170,7 @@ function OngoingresearchPage() {
 
     setblogData(rpdata);
 
-    await getPositions(rpdata);
+    setisLoading(false)
   };
 
   //////////////////////////////////////////////////////////////////////////
@@ -354,17 +354,17 @@ function OngoingresearchPage() {
               </p>
 
               <div className="vaccency-holder">
-                {positions &&
-                  positions.map((position, index) => (
+                {blogsData &&
+                  blogsData.positions.map((position, index) => (
                     <div className="vaccency-item" key={index}>
-                      <p className="vaccency-item-title">{position.title}</p>
+                      <p className="vaccency-item-title">{position.positionId.title}</p>
                       <p className="vaccency-item-text">
-                        Number of Students Required: <span>{blogsData.positions[index].openings}</span>
+                        Number of Students Required: <span>{position.openings}</span>
                       </p>
 
                       <p className="vaccency-item-text">
                         Eligibility Criterion:
-                        <span>{position.criterion}</span>
+                        <span>{position.positionId.criterion}</span>
                       </p>
                       {blogsData.applicationStatus ? (
                         <button
@@ -408,8 +408,8 @@ function OngoingresearchPage() {
               <div className="mentors">
                 <p className="openprogrammespage-head">Mentors</p>
 
-                {mentors &&
-                  mentors.map((mentor, index) => {
+                {blogsData &&
+                  blogsData.mentors.map((mentor, index) => {
                     const htmlparteducation = mentor.education;
                     const htmlorganisation = mentor.organisation;
                     const htmlpartposition = mentor.position;
@@ -429,7 +429,7 @@ function OngoingresearchPage() {
                         <p className="vaccency-item-text mentors-item-text">
                           <div
                             dangerouslySetInnerHTML={{
-                              __html: htmlparteducation,
+                              __html: htmlpartposition,
                             }}
                           ></div>
                           <div
@@ -439,7 +439,7 @@ function OngoingresearchPage() {
                           ></div>{" "}
                           <div
                             dangerouslySetInnerHTML={{
-                              __html: htmlpartposition,
+                              __html: htmlparteducation,
                             }}
                           ></div>{" "}
                           {htmlpartbio && (
@@ -453,10 +453,7 @@ function OngoingresearchPage() {
                         <div className="holder-w">
                           <a
                             onClick={() => {
-                              window.open(
-                                `${mentor.linkedin}`,
-                                "_blank" // <- This is what makes it open in a new window.
-                              );
+                              window.open(`${mentor.linkedin}`, "_blank");
                             }}
                             style={{
                               textDecoration: "none",

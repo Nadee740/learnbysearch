@@ -3,6 +3,7 @@
  const Researchpgms = async(url) => {
 
     let data={};
+    let jsonda={}
     let message=""
     
        
@@ -17,6 +18,7 @@
                })
                .then(res => res.json())
                .then(json => {
+                   jsonda=json
                
                  data=json.data
                   
@@ -35,7 +37,7 @@
    // },[]); 
    
    
-   return {data};
+   return {data,jsonda};
    
    }
    
