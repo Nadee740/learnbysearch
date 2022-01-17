@@ -21,8 +21,7 @@ const WebinareCard = ({ webinardata, selectedid, setvisible }) => {
           <button
             className="regbtn"
             onClick={() => {
-              selectedid(webinardata._id);
-              setvisible(true);
+              window.location="/webinar/"+webinardata._id
             }}
           >
             Register Now

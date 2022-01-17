@@ -11,7 +11,7 @@ const Slidercard = ({ blog }) => {
   // speakerId: "61d5599a20ab6804bfda3fd2"
   // studentId: (14) ['611de6f3e348e065bc17a6cb', '61dc2a84b4d942742db1a257', '60d832e7c8365a408da92132', '60d832e7c8365a408da92132', '60d832e7c8365a408da92132', '60d832e7c8365a408da92132', '60d832e7c8365a408da92132', '61a5b8908dc9d3c28f96ac67', '61ddad9276dc67acf2a4ad9c', '61dee64076dc67acf2a4adbc', '61dee64076dc67acf2a4adbc', '61586270cb2f297bedcac098', '61df8cbd76dc67acf2a4adc9', '61af2a96bb915e3ef36b08a8']
   // title: " How to write a  review of Literature"
-  console.log(blog);
+
   //   function removeTags(str) {
   //     if ((str===null) || (str===''))
   //     return false;
@@ -32,7 +32,7 @@ const Slidercard = ({ blog }) => {
         <img src={blog.imageUrl} alt="Blog " className="card-img-2" />
         <h3 className="card-heading">{blog.title.substring(0, 36) + ".."}</h3>
 
-        <Link to="/webinars">
+        <Link to={"/webinar/"+blog._id}>
           <button>Register</button>
         </Link>
       </div>
