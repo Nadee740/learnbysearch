@@ -19,6 +19,19 @@ const PublishedCard = ({rp}) => {
 // updatedAt: "2022-01-18T13:26:05.897Z"
 // __v: 0
 // _id: "61c028799a59756af1856e81"
+// mentors: Array(1)
+// 0:
+// bio: ""
+// education: "<p>MTech in Robotics and Automation,<br>BTech in Electrical and Electronics Engineering</p>"
+// email: "srichitra@learnbyresearch.com"
+// googleScholarLink: "https://scholar.google.com/citations?hl=en&user=Tun1Q6AAAAAJ"
+// imageUrl: "http://res.cloudinary.com/dn3oddkar/image/upload/v1625144137/aem5drn2kswanerf00ah.jpg"
+// linkedin: "https://www.linkedin.com/in/srichitra-s"
+// name: "Srichitra S"
+// organisation: "<p>LearnByResearch</p>"
+// phone: "9447473514"
+// position: "<p>Lead Researcher (AI and Robotics)</p>"
+// researchGateLink: "undefined"
   return (
     <div className="cardholder2">
       <div className="openprogramcard">
@@ -49,7 +62,7 @@ const PublishedCard = ({rp}) => {
             eligendi consequatur!
           </div> */}
         </div>
-        <button onClick={()=>{window.location=rp.publicLink}} className="openprogramcard-btn publishCard-btn">
+        <button onClick={()=>{window.location=rp.publishedLink}} className="openprogramcard-btn publishCard-btn">
           View Publication
         </button>{" "}
         {/* <button className="openprogramcard-btn publishCard-btn">
