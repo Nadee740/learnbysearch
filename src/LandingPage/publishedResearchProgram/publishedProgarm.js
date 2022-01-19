@@ -22,7 +22,7 @@ const Publishedprograms = ({rpdata}) => {
   };
   return (
     <div className="blogSlider publishedprograms">
-      <h2 className="mentorcarousel-head">Published Research Programs</h2>
+      <h2 className="mentorcarousel-head">Completed Research Programs</h2>
       <div className="slidecontainer ">
         <Slider {...settings}>
         {rpdata.map((rp,index)=>{
