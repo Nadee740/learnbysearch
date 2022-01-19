@@ -10,6 +10,7 @@ import ChangePassword from "../Backend/ChangePassword";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import Footer from "../LandingPage/footer/footer";
+import { Helmet } from "react-helmet";
 const ForgotPassword = () => {
   const [new_password, setnew_password] = useState("");
   const [confirm_password, setconfirm_password] = useState("");
@@ -82,8 +83,19 @@ const ForgotPassword = () => {
     }
   };
 
+  if (isLoading)
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>)
+
   return (
     <>
+    <Helmet>
+        <meta charSet="utf-8" />
+        <title>ForgotPassword || LearnByResearch</title>
+      </Helmet>
+
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal

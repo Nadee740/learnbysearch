@@ -160,7 +160,7 @@ const LandingPage = () => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Home</title>
+        <title>Home || LearnByResearch</title>
       </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">

@@ -9,6 +9,7 @@ import Modal from "react-awesome-modal";
 import "./webinar.css";
 import WebinareCard from "./webinarcard";
 import Footer from "../LandingPage/footer/footer";
+import { Helmet } from "react-helmet";
 const CLosedWebinarPage = () => {
   const [isLoading, setisLoading] = useState(true);
   const [webinardata, setwebinardata] = useState();
@@ -68,7 +69,12 @@ const CLosedWebinarPage = () => {
   };
 
   return (
+    
     <>
+    <Helmet>
+        <meta charSet="utf-8" />
+        <title>Webinars || LearnByResearch</title>
+      </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal

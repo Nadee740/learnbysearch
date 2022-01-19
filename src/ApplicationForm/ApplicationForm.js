@@ -165,7 +165,7 @@ const [blogsData,setblogsData]=useState();
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Home | Programs</title>
+        <title>Applicationform || LearnByResearch</title>
       </Helmet>
       {/* <Link to="/myapplications" onClick={closeModal}>
                 Close

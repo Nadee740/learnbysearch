@@ -38,7 +38,7 @@ function BlogsDetailsPage({ blog }) {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{blogsData.title}</title>
+        <title>{blogsData.title}|| LearnByResearch</title>
       </Helmet>
       <div>
           <div className="blogdetailpage">

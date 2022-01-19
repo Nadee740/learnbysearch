@@ -2,7 +2,8 @@ import "./publishedprogram.css";
 import Slider from "react-slick";
 import PublishedCard from "./publishedCard";
 const Publishedprograms = ({rpdata}) => {
-  // mentors: Array(1), isCompleted: false
+  let count=0
+  
   console.log(rpdata)
   const settings = {
     dots: true,
@@ -26,8 +27,25 @@ const Publishedprograms = ({rpdata}) => {
       <div className="slidecontainer ">
         <Slider {...settings}>
         {rpdata.map((rp,index)=>{
-        
-          return rp.isCompleted?(<PublishedCard rp={rp}  />):""
+          console.log(count)
+
+        if(rp.isCompleted)
+         {count=count+1
+          return (<PublishedCard rp={rp}/>)
+         }
+         if(index=rpdata.length-1)
+         {
+           if(count==1)
+           {
+             return(<div>
+
+             </div>)
+             return(<div>
+               
+               </div>)
+           }
+         }
+   
         })}
           
         </Slider>{" "}

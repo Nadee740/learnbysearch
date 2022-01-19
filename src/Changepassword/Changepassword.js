@@ -86,7 +86,7 @@ const Changepassword = () => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Home | Changepassword</title>
+        <title>Changepassword || LearnByResearch</title>
       </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">

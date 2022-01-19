@@ -35,7 +35,7 @@ const getBlogs=async()=>{
     <>
     <Helmet>
                 <meta charSet="utf-8" />
-                <title>Home | Programs</title>
+                <title>Programs || LearnByResearch</title>
                 
             </Helmet>
         {isLoading?<div className="isLoading"><SolarSystemLoading/></div>:

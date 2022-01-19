@@ -6,6 +6,7 @@ import Footer from "../LandingPage/footer/footer";
 import Modal from "react-awesome-modal";
 import "./quiz.css";
 import SendPost from "../Backend/Sendpost";
+import { Helmet } from "react-helmet";
 const QuizSection = () => {
   const { rpid } = useParams();
   const { positionid } = useParams();
@@ -62,6 +63,10 @@ const QuizSection = () => {
 
   return (
     <>
+    <Helmet>
+        <meta charSet="utf-8" />
+        <title>Quiz || LearnByResearch</title>
+      </Helmet>
       <div className="popupscreen">
         <section className="popupscreen">
           <Modal

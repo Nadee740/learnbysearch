@@ -62,7 +62,7 @@ const PublishedCard = ({rp}) => {
             eligendi consequatur!
           </div> */}
         </div>
-        <button onClick={()=>{window.location=rp.publishedLink}} className="openprogramcard-btn publishCard-btn">
+        <button  onClick={()=>{window.location=rp.publishedLink}} className="openprogramcard-btn publishCard-btn">
           View Publication
         </button>{" "}
         {/* <button className="openprogramcard-btn publishCard-btn">

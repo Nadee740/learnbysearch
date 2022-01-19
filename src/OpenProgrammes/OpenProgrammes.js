@@ -33,7 +33,7 @@ const OpenProgrammes = () => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Home | Programs</title>
+        <title>Programs || LearnByResearch</title>
       </Helmet>
 
       <div className="openprograms">

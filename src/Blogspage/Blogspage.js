@@ -61,7 +61,7 @@ const BlogsPage = () => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Home | Articles</title>
+        <title>Articles || LearnByResearch</title>
       </Helmet>
       <div className="blogpage">
         <div className="blogheader">

@@ -177,7 +177,7 @@ function OpenProgrammesPage() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{blogsData.title}</title>
+        <title>{blogsData.title} || LearnByResearch</title>
       </Helmet>
       {/*////////////////////////////////// POPUP FOR NOT LOGGED IN //////////////////////////////// */}
       <div className="popupscreen">

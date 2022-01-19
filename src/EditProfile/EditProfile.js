@@ -324,12 +324,18 @@ const EditProfile = () => {
     </ul>
   );
   //////////////////////////////////////
+  if (isLoading)
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>
+    )
 
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Home | EditProfile</title>
+        <title>EditProfile || LearnByResearch </title>
       </Helmet>
 
       <div className="popupscreen">
