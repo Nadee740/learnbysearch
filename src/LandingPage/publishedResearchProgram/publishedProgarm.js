@@ -26,24 +26,25 @@ const Publishedprograms = ({ rpdata }) => {
     <div className="blogSlider publishedprograms">
       <h2 className="mentorcarousel-head">Completed Research Programs</h2>
       <div className="slidecontainer ">
-        <Slider {...settings}>
-          {rps.map((rp, index) => {
-            return <PublishedCard rp={rp} />;
-          })}
-
-          <div></div>
-          <div></div>
-
-          {() => {
-            if (rps.lenth == 1)
-              for (let i = 0; i < 2; i++)
-                return <div className="dummy-card"></div>;
-            else if (rps.lenth == 2)
-              for (let i = 0; i < 1; i++)
-                return <div className="dummy-card"></div>;
-          }}
-        </Slider>{" "}
+        {rps.length == 1 || rps.length == 2 ? (
+          <div className="slidecontainer-sub">
+            {rps.map((rp, index) => {
+              return (
+                <>
+                  <PublishedCard rp={rp} />
+                </>
+              );
+            })}
+          </div>
+        ) : (
+          <Slider {...settings}>
+            {rps.map((rp, index) => {
+              return <PublishedCard rp={rp} />;
+            })}
+          </Slider>
+        )}
       </div>
+      <div className="slidecontainer "></div>
     </div>
   );
 };
