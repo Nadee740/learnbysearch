@@ -37,6 +37,7 @@ import Quizconfirmtaion from "./quiz/quizconfirmation";
 import CLosedWebinarPage from "./closedwebinars/webinar";
 import WebinarSepPage from "./webinar/webinarpage";
 import Publishedprograms from "./LandingPage/publishedResearchProgram/publishedProgarm";
+import CompletedRp from "./CompletedRp/CompletedRP";
 
 function App() {
   return (
@@ -88,7 +89,8 @@ function App() {
           component={QuizSectionResults}
         />
         <Route path="/webinar/:id" exact component={WebinarSepPage} />
-        <Route path="/published" exact component={Publishedprograms} />
+        <Route path="/completedrp" exact component={CompletedRp} />
+        
         <Route
           path="/quiz/confirmation/:rpid/:positionid/:appid"
           exact

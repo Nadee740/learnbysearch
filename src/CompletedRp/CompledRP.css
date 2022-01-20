@@ -1,0 +1,112 @@
+.openprograms {
+    padding: 30px 40px;
+    color: #404040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .openprogramcard-img {
+    height: 180px;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+    margin-bottom: 5px;
+  }
+  .cardholder {
+    display: grid;
+    padding: 20px;
+    grid-gap: 50px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .openprogramcard {
+    background: #ffffff;
+    box-shadow: 0px 4px 11px 3px rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .openprogramcard:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 4px 11px 3px rgba(0, 0, 0, 0.137);
+  }
+  .openprogramcard p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    margin-bottom: 15px;
+  }
+  .openprogramcard-head {
+    color: #404040;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    line-height: 110%;
+  }
+  .openprogramcard-text {
+    color: #818181;
+    font-weight: 400;
+    line-height: 115%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .openprogramcard-btn {
+    font-family: inherit;
+    width: 100%;
+    font-weight: 500;
+    background: #2e4680;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .openprogramcard-btn:hover {
+    background: #ffffff;
+    color: #2e4680;
+    cursor: pointer;
+  }
+  .openprogramcard-txetholder {
+    height: 100%;
+  }
+  @media screen and (max-width: 960px) {
+    .cardholder {
+      padding: 20px 5px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+  
+    .openprograms {
+      padding: 30px 15px;
+    }
+  }
+  .duedate {
+    margin: 0;
+    background-color: #38383857;
+    position: absolute;
+    right: 25px;
+    color: #ffffff;
+    padding: 5px;
+    top: 25px;
+    display: block;
+    line-height: 100%;
+    height: min-content;
+  }
+  .course-sponser-small {
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    color: #fff;
+  
+    position: absolute;
+    top: 160px;
+    left: 1rem;
+    transform: scale(0.8);
+  }
+  
