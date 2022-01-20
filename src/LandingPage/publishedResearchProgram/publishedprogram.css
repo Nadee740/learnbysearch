@@ -33,3 +33,9 @@
   font-size: 0.8rem;
   font-weight: 300;
 }
+
+@media screen and (max-width: 960px) {
+  .dummy-card {
+    display: none;
+  }
+}

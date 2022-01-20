@@ -29,22 +29,19 @@ const Publishedprograms = ({ rpdata }) => {
         <Slider {...settings}>
           {rps.map((rp, index) => {
             return <PublishedCard rp={rp} />;
-            
-           
           })}
-          
+
           <div></div>
           <div></div>
-          
-          {()=>{
-            if(rps.lenth==1)
-              for(let i=0;i<2;i++)
-               return(<div></div>)
-            else if(rps.lenth==2)
-            for(let i=0;i<1;i++)
-               return(<div></div>)
+
+          {() => {
+            if (rps.lenth == 1)
+              for (let i = 0; i < 2; i++)
+                return <div className="dummy-card"></div>;
+            else if (rps.lenth == 2)
+              for (let i = 0; i < 1; i++)
+                return <div className="dummy-card"></div>;
           }}
-          
         </Slider>{" "}
       </div>
     </div>
