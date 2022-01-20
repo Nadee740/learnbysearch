@@ -227,9 +227,11 @@ const Navbar = (props) => {
                 </Link>
                 <Link to="/ongoingprogrammes" className="p-link p-link2">
                   OnGoing Research
+                </Link>{" "}
+                <Link to="/completedrp" className="p-link p-link2">
+                  Completed Research
                 </Link>
               </div>
-            
             </li>
             <li className="nav-item">
               <Link
@@ -383,7 +385,16 @@ const Navbar = (props) => {
               Ongoing Research
             </Link>
           </li>
-
+          <li className="mobnav-item">
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/completedrp"
+            >
+              Completed Research
+            </Link>
+          </li>
           <li className="mobnav-item">
             <Link
               onClick={() => {
