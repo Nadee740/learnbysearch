@@ -1,10 +1,11 @@
 import "./publishedprogram.css";
 import Slider from "react-slick";
 import PublishedCard from "./publishedCard";
-const Publishedprograms = ({rpdata}) => {
-  let count=0
-  
-  console.log(rpdata)
+const Publishedprograms = ({ rpdata }) => {
+  let count = 0;
+  let rps = rpdata.filter((rp) => rp.isCompleted == true);
+
+  console.log(rpdata);
   const settings = {
     dots: true,
     infinite: true,
@@ -26,27 +27,23 @@ const Publishedprograms = ({rpdata}) => {
       <h2 className="mentorcarousel-head">Completed Research Programs</h2>
       <div className="slidecontainer ">
         <Slider {...settings}>
-        {rpdata.map((rp,index)=>{
-          console.log(count)
-
-        if(rp.isCompleted)
-         {count=count+1
-          return (<PublishedCard rp={rp}/>)
-         }
-         if(index=rpdata.length-1)
-         {
-           if(count==1)
-           {
-             return(<div>
-
-             </div>)
-             return(<div>
-               
-               </div>)
-           }
-         }
-   
-        })}
+          {rps.map((rp, index) => {
+            return <PublishedCard rp={rp} />;
+            
+           
+          })}
+          
+          <div></div>
+          <div></div>
+          
+          {()=>{
+            if(rps.lenth==1)
+              for(let i=0;i<2;i++)
+               return(<div></div>)
+            else if(rps.lenth==2)
+            for(let i=0;i<1;i++)
+               return(<div></div>)
+          }}
           
         </Slider>{" "}
       </div>
