@@ -1,6 +1,6 @@
 import "./CompledRP.css";
 function CompletedRPCard({ blog }) {
-  
+  console.log(blog)
   const htmlpart = blog.description;
   return (
     <>
@@ -24,9 +24,7 @@ function CompletedRPCard({ blog }) {
               Non-Sponsored
             </div>
           )}
-          {/* <div className="course-sponser-small non-sponsered ">
-            Non-Sponsered
-          </div> */}
+      
           <p className="openprogramcard-head">{blog.title}</p>
           <div dangerouslySetInnerHTML={{ __html: htmlpart }}></div>
         </div>
