@@ -7,7 +7,7 @@ function CompletedRPCard({ blog }) {
       <div
         className="openprogramcard"
         onClick={() => {
-          window.location = blog.publishedLink;
+          window.location ="/completedrp/"+blog.slug;
         }}
       >
         <img
@@ -30,7 +30,7 @@ function CompletedRPCard({ blog }) {
         </div>
         <button
           onClick={() => {
-            window.location = blog.publishedLink;
+            window.location = "/completedrp/"+blog.slug;
           }}
           className="openprogramcard-btn"
         >

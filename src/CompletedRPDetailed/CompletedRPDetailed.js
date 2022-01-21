@@ -91,45 +91,7 @@ const CompltetedRpDetailedPage = () => {
   
     //////////////////// FOR USERS RP DATAAAS/////////////////////////////
   
-    const getApplications = async (userdata) => {
-      if (userdata.applicationForm.length == 0) {
-        window.location = `/applicationform/${slug}`;
-      } else {
-        userdata.applicationForm.map(async (application) => {
-          const app_data = {
-            id: application,
-          };
-          const { message: messagee, retdata } = await Tokenlesssendpost(
-            `${window.name}show-application-status`,
-            app_data
-          );
-          count++;
-  
-          if (retdata != null) array.push(retdata);
-  
-          if (count == userdata.applicationForm.length) {
-            if (array.length > 0) {
-              let check = false;
-              array.map((data, index) => {
-                if (data.rp == blogsData._id) {
-                  if (data.data !== 3) {
-                    console.log(data.data, data.rp, blogsData._id);
-                    setisLoading(false);
-                    check = true;
-                    setappliedvisible(true);
-                  }
-                }
-                if (index == array.length - 1) {
-                  if (!check) window.location = `/applicationform/${slug}`;
-                }
-              });
-            } else {
-              window.location = `/signup/${slug}`;
-            }
-          }
-        });
-      }
-    };
+ 
   
     ///////////////////////////// FOR USERS RP DATAAAS////////////////////////////////////
   
@@ -275,12 +237,28 @@ const CompltetedRpDetailedPage = () => {
                   ""
                 )}
                 {/* blogsData.applicationStatus */}
-                {blogsData.applicationStatus ? (
-                  <button onClick={applicationform} className="applybtn">
-                    APPLY NOW
+                {/* commitment: "2 hours a day"
+createdAt: "2022-01-19T07:58:30.157Z"
+description: "<p>Development of a Low-Cost LiDAR system that will be used for most SLAM Applications. It should suffice the minimum cost capability while in fabrication in comparison with other products available in the market which will help students and educators.&nbsp;</p>"
+duration: "7 to 8 months"
+imageUrl: "http://res.cloudinary.com/dn3oddkar/image/upload/v1642579109/jnujys2k5ealk2ffxq7q.png"
+isCompleted: true
+isSponsered: false
+mentors: ['60ddbb4978e692ab358f7917']
+objective: "<p>To be able to develop an economical way for slam application.</p>"
+outcomes: "<p>Researchers would be able to:&nbsp;</p><ol><li>Development of a Low-Cost LiDAR system.&nbsp;</li><li>Establish a SLAM in a small space.</li><li>Preserve the software and algorithm used for development.</li><li>Able to gain knowledge in the fields of #Python #MATLAB #Arduino.</li></ol>"
+positions: (2) [{…}, {…}]
+publishedLink: "http://ijiset.com/vol8/v8s12/IJISET_V8_I12_06.pdf"
+slug: "development_of_low_cost_lidar_scanner_for_indoor_mapping"
+title: "Development of Low-cost LiDAR Scanner for Indoor Mapping" */}
+                {blogsData.publishedLink ? (
+                  <button onClick={()=>{
+                      window.location=blogsData.publishedLink
+                  }} className="applybtn">
+                    View Publication
                   </button>
                 ) : (
-                  <button>APPLICATION CLOSED</button>
+                  <button>Publication link not yet created</button>
                 )}
               </div>
             </div>
@@ -354,16 +332,7 @@ const CompltetedRpDetailedPage = () => {
                           Eligibility Criterion:
                           <span>{position.positionId.criterion}</span>
                         </p>
-                        {blogsData.applicationStatus ? (
-                          <button
-                            className="applynow-btn"
-                            onClick={applicationform}
-                          >
-                            APPLY NOW
-                          </button>
-                        ) : (
-                          ""
-                        )}
+                     
                       </div>
                       <div className="vaccency-holder-sponsered">
                         {blogsData.isSponsered ? (
