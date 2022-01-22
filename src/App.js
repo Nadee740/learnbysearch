@@ -41,6 +41,7 @@ import CompletedRp from "./CompletedRp/CompletedRP";
 import Events from "./events/events";
 import EventsPage from "./events/events";
 import CompltetedRpDetailedPage from "./CompletedRPDetailed/CompletedRPDetailed";
+import GrantsPage from "./grants/grants";
 
 function App() {
   return (
@@ -81,6 +82,7 @@ function App() {
         <Route path="/paymentstatus" exact component={PaymentStatusPage} />
         <Route path="/links" exact component={LinksPage} />
         <Route path="/mentors" exact component={Mentors} />
+        <Route path="/grants" exact component={GrantsPage} />
         <Route
           path="/quiz/:rpid/:positionid/:appid"
           exact

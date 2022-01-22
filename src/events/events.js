@@ -30,8 +30,10 @@ const EventsPage = () => {
     { value: "Category", label: "Category" },
   ];
   const customStyles = {
-    control: (provided, state) => ({
+    container: (provided, state) => ({
       ...provided,
+      width: "100%",
+      backgroundColor: "red",
     }),
   };
   return (
@@ -61,7 +63,7 @@ const EventsPage = () => {
             <div className="line"></div>
           </div>
           <div className="">
-            <p className="events-filter-text">Area of Intrest</p>
+            <p className="events-filter-text">Area of Interest</p>
             <div className="">
               <Select
                 styles={customStyles}
@@ -161,7 +163,7 @@ const EventsPage = () => {
                 <IoChevronForward size={"1.5em"} />
               </div>
             </div>
-            <div className="chips">#Area Of Intrest</div>
+            <div className="chips">#Area Of Interest</div>
           </div>
         </div>
       </div>
