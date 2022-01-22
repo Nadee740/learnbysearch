@@ -1,0 +1,290 @@
+/* divides the popup to 3 sect */
+.extrapart {
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    display: grid;
+  }
+  
+  .advantages {
+    /* border: 1px solid #000; */
+    position: sticky;
+    margin-left: 50px;
+    top: 100px;
+    height: fit-content;
+    background: rgb(211, 180, 249);
+    background: linear-gradient(
+      30deg,
+      rgba(211, 180, 249, 0.8169642857142857) 0%,
+      rgba(103, 135, 232, 0.5956757703081232) 43%,
+      rgba(159, 215, 247, 0.7497373949579832) 100%
+    );
+  }
+  
+  @media (max-width: 767px) {
+  }
+  
+  .openprogrammespage-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #ffffff;
+  }
+  .openprogrammespage-head {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 40px;
+  
+    line-height: 100%;
+  }
+  .openprogrammespage-head p {
+    width: 100%;
+    color: #ffffff;
+    text-align: right;
+  }
+  .openprogrammespage-section {
+    padding: 20px 30px;
+  }
+  .openprogrammespage-head {
+    color: #585858;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .openprogrammespage-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: #404040;
+    line-height: 140%;
+  }
+  .openprogrammespage-holder {
+    margin-top: 20px;
+    width: 85%;
+  }
+  .vaccency-holder {
+    width: 90%;
+    position: relative;
+  }
+  .vaccency-holder-sponsered {
+    height: 100%;
+  }
+  .vaccency-holder-row {
+    display: flex;
+    flex-direction: row;
+  
+    position: relative;
+  }
+  .vaccency-offerprice-item {
+    width: 100%;
+  
+    margin: 20px 10px;
+  
+    padding: 50px 30px;
+    clip-path: polygon(100% 0%, 100% 49%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+  }
+  .openprogrammespage-holder-table {
+    display: grid;
+    grid-template-columns: 0.6fr 0.4fr;
+  }
+  
+  @media (max-width: 767px) {
+    .openprogrammespage-holder-table {
+      grid-template-columns: 1fr;
+    }
+    .advantages {
+      margin-left: 0;
+    }
+  }
+  .vaccency-offerprice-item-text {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+  }
+  .vaccency-offerprice-item-text span {
+    font-weight: 600;
+    display: block;
+    font-size: 2.5rem;
+  }
+  .vaccency-offerprice-item-text-span {
+    font-weight: 600;
+  }
+  .vaccency-item {
+    margin: 20px 10px;
+    background-color: #8181811f;
+    padding: 20px;
+    min-width: 70%;
+  }
+  .vaccency-item-title {
+    color: #585858;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .vaccency-item-text {
+    color: #818181;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 10px;
+  }
+  .vaccency-item-text span {
+    padding-right: 10px;
+    font-weight: 500;
+  }
+  .openprogrammespage-feature {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .openprogrammespage-feature-col {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  .openprogrammespage-feature-col p {
+    color: #ffffff;
+    text-align: center;
+  }
+  .openprogrammespage-feature-title {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 20px 10px;
+  }
+  .openprogrammespage-feature-col2 {
+    background-color: #333333;
+  }
+  .applynow-btn {
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 5px;
+    font-family: inherit;
+    background-color: #2e4680;
+    border: none;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  .course-sponser-page {
+    position: absolute;
+    top: 20px;
+    padding: 0.5rem 0.8rem;
+    font-size: 16px;
+    animation: sponserAnim 2s ease-in infinite;
+  }
+  @media screen and (max-width: 800px) {
+    .course-sponser-page {
+      left: 20px;
+    }
+    .vaccency-item {
+      margin-bottom: 0;
+    }
+    .vaccency-holder-sponsered {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vaccency-offerprice-item-text {
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 300;
+      text-align: center;
+    }
+    .vaccency-offerprice-item-text span {
+      font-size: 1.8rem;
+    }
+    .vaccency-offerprice-item {
+      width: 30%;
+      clip-path: polygon(50% 0, 100% 35%, 100% 100%, 0 100%, 0 36%);
+      margin: 0;
+      padding: 30px 20px;
+    }
+    .vaccency-holder-row {
+      display: flex;
+      flex-direction: column;
+    }
+    .openprogrammespage-head {
+      text-align: center;
+    }
+    .openprogrammespage-top {
+      flex-direction: column;
+      justify-content: center;
+    }
+    .open-icn {
+      font-size: 0.51em;
+    }
+    .openprogrammespage-feature-col {
+      padding: 17px 4px;
+    }
+    .openprogrammespage-feature-col p {
+      line-height: 100%;
+      font-weight: 400;
+      font-size: 19px;
+      margin: 2px;
+    }
+    .openprogrammespage-section {
+      padding: 20px 0px;
+    }
+    .openprogrammespage-holder {
+      margin-top: 20px;
+      width: 92%;
+    }
+    .vaccency-holder {
+      width: 100%;
+    }
+    .openprogrammespage-feature {
+      display: block;
+    }
+  }
+  .mentors {
+    margin-top: 100px;
+  }
+  .mentors-item {
+    padding: 30px;
+    background-color: #8181811f;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  .mentors-item-text {
+    display: block;
+    color: #585858;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding: 0;
+  }
+  .mentors-item-img {
+    height: 200px;
+    object-fit: contain;
+  }
+  .applybtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #2e4680;
+    font-size: 18px;
+    font-family: inherit;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .applybtn:hover {
+    cursor: pointer;
+    background-color: #2e4780b7;
+  }
+  .blogdetailpage-img3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  .holder-w {
+    display: flex;
+    width: 10%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  

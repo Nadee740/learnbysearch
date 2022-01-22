@@ -65,9 +65,11 @@ const PublishedCard = ({rp}) => {
         <button  onClick={()=>{window.location=rp.publishedLink}} className="openprogramcard-btn publishCard-btn">
           View Publication
         </button>{" "}
-        {/* <button className="openprogramcard-btn publishCard-btn">
+        <button onClick={()=>{
+          window.location="/completedrp/"+rp.slug
+        }} className="openprogramcard-btn publishCard-btn">
           KNOW MORE
-        </button> */}
+        </button>
       </div>
     </div>
   );

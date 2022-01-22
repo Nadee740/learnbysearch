@@ -40,6 +40,7 @@ import Publishedprograms from "./LandingPage/publishedResearchProgram/publishedP
 import CompletedRp from "./CompletedRp/CompletedRP";
 import Events from "./events/events";
 import EventsPage from "./events/events";
+import CompltetedRpDetailedPage from "./CompletedRPDetailed/CompletedRPDetailed";
 
 function App() {
   return (
@@ -93,6 +94,11 @@ function App() {
         <Route path="/webinar/:id" exact component={WebinarSepPage} />
         <Route path="/completedrp" exact component={CompletedRp} />
         <Route path="/events" exact component={EventsPage} />
+        <Route
+          path="/completedrp/:slug"
+          exact
+          component={CompltetedRpDetailedPage}
+        />
         <Route
           path="/quiz/confirmation/:rpid/:positionid/:appid"
           exact
