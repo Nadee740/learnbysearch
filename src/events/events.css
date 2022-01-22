@@ -1,0 +1,132 @@
+.events {
+  padding: 4rem;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.events-row {
+  padding: 2rem;
+  padding-top: 1rem;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+}
+.events-filter {
+  border: 1px solid #eee;
+  width: 316px;
+  overflow-y: auto;
+  border-radius: 6px;
+  padding: 23px;
+  background: #fff;
+  min-height: 50rem;
+  position: relative;
+}
+.events-filter-text {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #212121;
+  margin-bottom: 0.5rem;
+}
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #eeeeee;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.events-card {
+  border: 1px solid #eee;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+  border-radius: 6px;
+  position: relative;
+  margin-bottom: 2rem;
+}
+.events-card {
+  background-color: #fff;
+  padding: 1.4rem;
+}
+.events-card-title {
+  margin: 0 !important;
+  font-size: 1.4rem;
+  color: #616161;
+}
+.events-card-text {
+  font-size: 1rem;
+  line-height: 125%;
+  font-weight: 300;
+  color: #484848;
+  margin-top: 1rem;
+}
+.events-card-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.events-card-row-col {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.events-card-row-col-text {
+  font-size: 1rem;
+  line-height: 125%;
+  font-weight: 500;
+  margin-left: 0.6rem;
+  color: #212121;
+}
+.organiser-logo {
+  height: 1.8rem;
+}
+.organiser {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.organiser-col-text {
+  font-size: 1rem;
+
+  font-weight: 500;
+
+  color: #212121;
+}
+.organiser-col {
+}
+.view-detail-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #0d47a1;
+}
+.view-detail-btn-text {
+  margin-right: 0.4rem;
+  color: #0d47a1;
+}
+.chips {
+  padding: 6px 12px;
+  background: #f8f8f8;
+  border-radius: 14px;
+  font-size: 14px;
+  color: rgb(75, 75, 75);
+  line-height: 16px;
+  margin-right: 8px;
+  width: 40%;
+  text-align: center;
+  margin-top: 1rem;
+}
+.events-cat {
+  background-color: #ffab00;
+  position: absolute;
+  right: 0;
+  top: 1rem;
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 10rem;
+  border-bottom-left-radius: 10rem;
+  font-weight: 500;
+  color: #fff;
+}
