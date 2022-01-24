@@ -96,6 +96,7 @@ function App() {
         <Route path="/webinar/:id" exact component={WebinarSepPage} />
         <Route path="/completedrp" exact component={CompletedRp} />
         <Route path="/events" exact component={EventsPage} />
+        
         <Route
           path="/completedrp/:slug"
           exact
