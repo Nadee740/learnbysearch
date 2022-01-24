@@ -33,7 +33,6 @@ const EventsPage = () => {
     container: (provided, state) => ({
       ...provided,
       width: "100%",
-      backgroundColor: "red",
     }),
   };
   return (
