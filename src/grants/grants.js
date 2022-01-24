@@ -1,5 +1,5 @@
 import "./grants.css";
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Select from "react-select";
 import {
   IoCalendarClearSharp,
@@ -7,7 +7,11 @@ import {
   IoGolfSharp,
   IoTimeOutline,
 } from "react-icons/io5";
+import Researchpgms from "../Backend/Researchpgms";
 const GrantsPage = () => {
+  const[isLoading,setisLoading]=useState(true)
+  const[allgrants,setallgrants]=useState([])
+  const[filteredgrants,setfiteredgrants]=useState([])
   const category = [
     { value: "Fellowship", label: "Fellowship" },
     { value: "Research Grant", label: "Research Grant" },
@@ -35,6 +39,12 @@ const GrantsPage = () => {
       ...provided,
     }),
   };
+useEffect(async()=>{
+  const { data: Datass } = await Researchpgms(`${window.name}grants`)
+  setallgrants(Datass)
+  setfiteredgrants(Datass)
+},[])
+
   return (
     <div className="events">
       <h2 className="events-head">Grants</h2>
@@ -43,7 +53,15 @@ const GrantsPage = () => {
           <div className="">
             <p className="events-filter-text">Category</p>
             <div className="">
-              <Select styles={customStyles} options={category} isMulti={true} />
+              <Select  onChange={(selected)=>{
+                // console.log(allevents)
+                let a=[]
+selected.map((selct)=>{
+               a.push(selct.value.toLowerCase())
+   
+               })
+               console.log(allgrants.filter(grant=>a.includes(grant.category.toLowerCase())))
+              }} styles={customStyles} options={category} isMulti={true} />
             </div>
             <div className="line"></div>
           </div>
@@ -74,34 +92,32 @@ const GrantsPage = () => {
           </div>
         </div>
         <div className="events-cards">
-          <div className="events-card">
-            <div className="events-cat">Fellowship</div>
-            <h3 className="events-card-title">Title Of the Grant</h3>
+        {filteredgrants.map((grant,index)=>{
+          return (    <div className="events-card">
+            <div className="events-cat">{grant.category}</div>
+            <h3 className="events-card-title">{grant.title}</h3>
             <p className="events-card-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Aspernatur ea rem aperiam, vel nihil distinctio debitis reiciendis
-              ipsa excepturi. Quaerat laborum officiis est, impedit voluptatum
-              error doloribus! Minus, assumenda facilis.
+   {grant.description.replace(/<\/?[^>]+(>|$)/g, "")}
             </p>
             <div className="events-card-row">
               <div className="events-card-row-col">
                 <IoTimeOutline color="#484848" size={"1.2em"} />
                 <p className="events-card-row-col-text">
-                  Deadline:25 June 2022
+                  Deadline:{grant.deadline}
                 </p>
               </div>
               <div className="">
                 <div className="events-card-row-col">
                   <IoGolfSharp color="#484848" size={"1.2em"} />
-                  <p className="events-card-row-col-text">New York</p>
+                  <p className="events-card-row-col-text">{grant.location}</p>
                 </div>
               </div>
             </div>
-            <p className="grant-eligibility-text">Eligibility Education</p>
+            <p className="grant-eligibility-text">{grant.eligibility}</p>
             <div className="organiser">
               <div className="organiser-col">
                 <p className="organiser-col-text">Amount</p>
-                <p className="organiser-col-text grant-col-text">₹ 12000</p>
+                <p className="organiser-col-text grant-col-text">₹ {grant.amount}</p>
               </div>
               <div className="view-detail-btn">
                 <p className="organiser-col-text view-detail-btn-text">
@@ -110,8 +126,10 @@ const GrantsPage = () => {
                 <IoChevronForward size={"1.5em"} />
               </div>
             </div>
-            <div className="chips">#Area Of Intrest</div>
-          </div>
+            <div className="chips">{grant.areaOfInterest}</div>
+          </div>)
+        })}
+      
         </div>
       </div>
     </div>

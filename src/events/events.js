@@ -86,8 +86,9 @@ if(arr.length==data.data.length)
                 let a=[]
 selected.map((selct)=>{
                a.push(selct.value.toLowerCase())
-               console.log(allevents.filter(evnt=>a.includes(evnt.event.category.toLowerCase())))
+
                })
+               console.log(allevents.filter(evnt=>a.includes(evnt.event.category.toLowerCase())))
               }} styles={customStyles} options={category} isMulti={true}  />
             </div>
             <div className="line"></div>
