@@ -117,13 +117,13 @@ selected.map((selct)=>{
             </div>
             <div className="line"></div>
           </div>
-          <div className="">
+          {/* <div className="">
             <p className="events-filter-text">Filter By</p>
             <div className="">
               <Select styles={customStyles} options={sortby} />
             </div>
             <div className="line"></div>
-          </div>
+          </div> */}
           <div className="">
             <p className="events-filter-text">Area of Interest</p>
             <div className="">
@@ -141,7 +141,7 @@ selected.map((selct)=>{
         {filteredevents.map((event)=>{
         
           return(<div className="events-card">
-            <div className="events-cat">{event.event.category}</div>
+            <div className="events-cat workshop-chip">{event.event.category}</div>
             <h3 className="events-card-title">{event.event.title}</h3>
             <p className="events-card-text">
              {event.event.description.replace(/<\/?[^>]+(>|$)/g, "")}
