@@ -124,13 +124,13 @@ const EventsPage = () => {
                       })
                     );
                   } else if ((slct.value = "Category")) {
-                    console.log(
+                    setfilteredevents(
                       filteredevents.sort(function (a, b) {
                         return a.event.category - b.event.category;
                       })
                     );
                   } else if ((slct.value = "Organiser")) {
-                    console.log(
+                    setfilteredevents(
                       filteredevents.sort(function (a, b) {
                         return a.organizer.name - b.organizer.name;
                       })

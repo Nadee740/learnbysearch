@@ -69,7 +69,39 @@ selected.map((selct)=>{
           <div className="">
             <p className="events-filter-text">Sort By</p>
             <div className="">
-              <Select styles={customStyles} options={sortby} isMulti={true} />
+              <Select styles={customStyles} options={sortby}  onChange={(slct) => {
+                  if (slct.value == "Date") {
+                    setfiteredgrants(
+                      filteredgrants.sort(function (a, b) {
+                        return a.event.date - b.event.date;
+                      })
+                    );
+                  } else if ((slct.value = "Location")) {
+                    setfiteredgrants(
+                      filteredgrants.sort(function (a, b) {
+                        return a.event.location - b.event.location;
+                      })
+                    );
+                  } else if ((slct.value = "Area of interst")) {
+                    setfiteredgrants(
+                      filteredgrants.sort(function (a, b) {
+                        return a.event.areaOfInterest - b.event.areaOfInterest;
+                      })
+                    );
+                  } else if ((slct.value = "Category")) {
+                    setfiteredgrants(
+                      filteredgrants.sort(function (a, b) {
+                        return a.event.category - b.event.category;
+                      })
+                    );
+                  } else if ((slct.value = "Organiser")) {
+                    setfiteredgrants(
+                      filteredgrants.sort(function (a, b) {
+                        return a.organizer.name - b.organizer.name;
+                      })
+                    );
+                  }
+                }} />
             </div>
             <div className="line"></div>
           </div>
