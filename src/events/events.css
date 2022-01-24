@@ -1,3 +1,21 @@
+Webinar,
+Workshop,
+Training,
+Conference Fellowship,
+Research Grant,
+Scholarship,
+.webinar-chip {
+  background-color: #ffab00;
+}
+.workshop-chip {
+  background-color: #00ff6a;
+}
+.training-chip {
+  background-color: #6200ff;
+}
+.Conference {
+  background-color: #ff004c;
+}
 .events {
   padding: 4rem;
   background-color: #fafafa;
@@ -129,7 +147,6 @@
   margin-top: 1rem;
 }
 .events-cat {
-  background-color: #ffab00;
   position: absolute;
   right: 0;
   top: 1rem;
