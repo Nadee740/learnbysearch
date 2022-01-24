@@ -47,6 +47,7 @@ useEffect(async()=>{
 
   return (
     <div className="events">
+    {/* ADd graphics */}
       <h2 className="events-head">Grants</h2>
       <div className="events-row">
         <div className="events-filter">
@@ -72,13 +73,13 @@ selected.map((selct)=>{
             </div>
             <div className="line"></div>
           </div>
-          <div className="">
+          {/* <div className="">
             <p className="events-filter-text">Filter By</p>
             <div className="">
               <Select styles={customStyles} options={sortby} />
             </div>
             <div className="line"></div>
-          </div>
+          </div> */}
           <div className="">
             <p className="events-filter-text">Area of Interest</p>
             <div className="">
