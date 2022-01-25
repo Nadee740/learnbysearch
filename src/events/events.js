@@ -36,6 +36,16 @@ const EventsPage = () => {
     { value: "Organiser", label: "Organiser" },
     { value: "Category", label: "Category" },
   ];
+  const AreaofInterest=[
+    { value: "Engineering & Technology", label: "Engineering & Technology" },
+    { value: "Art & Literature", label: "DeadlinArt & Literature" },
+    { value: "Biotechnology", label: "Biotechnology" },
+    { value: "Biology", label: "Biology" },
+    { value: "Medicine", label: "Medicine" },
+    { value: "Management", label: "Management" },
+    { value: "Pure Science", label: "Pure Science" },
+    
+  ]
   const customStyles = {
     container: (provided, state) => ({
       ...provided,
@@ -82,14 +92,16 @@ const EventsPage = () => {
                 onChange={(selected) => {
                   setfilteredevents(allevents)
                   let a = [];
+                  if(selected.length>0){
                   selected.map((selct) => {
                     a.push(selct.value.toLowerCase());
                   });
                   setfilteredevents(
-                    allevents.filter((evnt) =>
+                    filteredevents.filter((evnt) =>
                       a.includes(evnt.event.category.toLowerCase())
                     )
                   );
+                }
                 }}
                 styles={customStyles}
                 options={category}
@@ -153,8 +165,22 @@ const EventsPage = () => {
             <div className="">
               <Select
                 styles={customStyles}
-                options={sortbyinnerSelect}
+                options={AreaofInterest}
                 isMulti={true}
+                onChange={(selected) => {
+                  setfilteredevents(allevents)
+                  if(selected.length>0){
+                  let a = [];
+                  selected.map((selct) => {
+                    a.push(selct.value.toLowerCase());
+                  });
+                  setfilteredevents(
+                    filteredevents.filter((evnt) =>
+                      a.includes(evnt.event.areaOfInterest.toLowerCase())
+                    )
+                  );
+                }
+                }}
               />
             </div>
             <div className="line"></div>
