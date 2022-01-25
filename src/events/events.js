@@ -36,7 +36,7 @@ const EventsPage = () => {
     { value: "Organiser", label: "Organiser" },
     { value: "Category", label: "Category" },
   ];
-  const AreaofInterest=[
+  const AreaofInterest = [
     { value: "Engineering & Technology", label: "Engineering & Technology" },
     { value: "Art & Literature", label: "DeadlinArt & Literature" },
     { value: "Biotechnology", label: "Biotechnology" },
@@ -44,8 +44,7 @@ const EventsPage = () => {
     { value: "Medicine", label: "Medicine" },
     { value: "Management", label: "Management" },
     { value: "Pure Science", label: "Pure Science" },
-    
-  ]
+  ];
   const customStyles = {
     container: (provided, state) => ({
       ...provided,
@@ -82,7 +81,8 @@ const EventsPage = () => {
   }
   return (
     <div className="events">
-      <h2 className="events-head">Events</h2>
+      <h2 className="events-head">Events</h2>{" "}
+      <img src="/images/events.svg" alt="Events" className="events-head-img" />
       <div className="events-row">
         <div className="events-filter">
           <div className="">
@@ -90,18 +90,18 @@ const EventsPage = () => {
             <div className="">
               <Select
                 onChange={(selected) => {
-                  setfilteredevents(allevents)
+                  setfilteredevents(allevents);
                   let a = [];
-                  if(selected.length>0){
-                  selected.map((selct) => {
-                    a.push(selct.value.toLowerCase());
-                  });
-                  setfilteredevents(
-                    filteredevents.filter((evnt) =>
-                      a.includes(evnt.event.category.toLowerCase())
-                    )
-                  );
-                }
+                  if (selected.length > 0) {
+                    selected.map((selct) => {
+                      a.push(selct.value.toLowerCase());
+                    });
+                    setfilteredevents(
+                      filteredevents.filter((evnt) =>
+                        a.includes(evnt.event.category.toLowerCase())
+                      )
+                    );
+                  }
                 }}
                 styles={customStyles}
                 options={category}
@@ -168,18 +168,18 @@ const EventsPage = () => {
                 options={AreaofInterest}
                 isMulti={true}
                 onChange={(selected) => {
-                  setfilteredevents(allevents)
-                  if(selected.length>0){
-                  let a = [];
-                  selected.map((selct) => {
-                    a.push(selct.value.toLowerCase());
-                  });
-                  setfilteredevents(
-                    filteredevents.filter((evnt) =>
-                      a.includes(evnt.event.areaOfInterest.toLowerCase())
-                    )
-                  );
-                }
+                  setfilteredevents(allevents);
+                  if (selected.length > 0) {
+                    let a = [];
+                    selected.map((selct) => {
+                      a.push(selct.value.toLowerCase());
+                    });
+                    setfilteredevents(
+                      filteredevents.filter((evnt) =>
+                        a.includes(evnt.event.areaOfInterest.toLowerCase())
+                      )
+                    );
+                  }
                 }}
               />
             </div>
@@ -231,9 +231,12 @@ const EventsPage = () => {
                       className="organiser-logo"
                     />
                   </div>
-                  <div onClick={()=>{
-                    window.location=event.event.regLink
-                  }} className="view-detail-btn">
+                  <div
+                    onClick={() => {
+                      window.location = event.event.regLink;
+                    }}
+                    className="view-detail-btn"
+                  >
                     <p className="organiser-col-text view-detail-btn-text">
                       View Details
                     </p>

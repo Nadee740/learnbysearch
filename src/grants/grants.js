@@ -58,7 +58,7 @@ const GrantsPage = () => {
     <div className="events">
       {/* ADd graphics */}
       <h2 className="events-head">Grants</h2>
-      <img src="/images/grants.svg" alt="" className="events-head-img" />
+      <img src="/images/grants.svg" alt="Grants" className="events-head-img" />
       <div className="events-row">
         <div className="events-filter">
           <div className="">
