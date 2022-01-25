@@ -1,6 +1,11 @@
 .grant-col-text {
   font-size: 1.7rem;
 }
-.grant-eligibility-text{
+.grant-eligibility-text {
   margin-top: 1rem;
+}
+.events-head-img {
+  height: 15rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }

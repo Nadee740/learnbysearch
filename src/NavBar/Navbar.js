@@ -207,7 +207,6 @@ const Navbar = (props) => {
                 Home
               </Link>
             </li>
-
             <li className="nav-item div-dropdwn">
               <Link
                 to="/openprogrammes"
@@ -240,6 +239,24 @@ const Navbar = (props) => {
                 onClick={closeMobileMenu}
               >
                 Articles
+              </Link>
+            </li>{" "}
+            <li className="nav-item">
+              <Link
+                to="/contactus"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Events
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/contactus"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Grants
               </Link>
             </li>
             <li className="nav-item">
@@ -403,6 +420,26 @@ const Navbar = (props) => {
               to="/allblogs"
             >
               Articles
+            </Link>
+          </li>{" "}
+          <li className="mobnav-item">
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/contactus"
+            >
+              Events
+            </Link>
+          </li>{" "}
+          <li className="mobnav-item">
+            <Link
+              onClick={() => {
+                setNav(false);
+              }}
+              to="/contactus"
+            >
+              Grants
             </Link>
           </li>
           <li className="mobnav-item">
