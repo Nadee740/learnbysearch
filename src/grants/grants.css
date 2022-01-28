@@ -9,3 +9,24 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+.mob-filter-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 1rem;
+  display: none;
+}
+.mob-filter-holder p {
+  margin-right: 1rem;
+}
+@media screen and (max-width: 960px) {
+  .events-filter-mobhide {
+    display: none !important;
+  }
+  .mob-filter-holder {
+    display: flex;
+  }
+}

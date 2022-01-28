@@ -24,6 +24,7 @@ import WebinarSlider from "./Webinarslider/Webinar";
 import StudentTask from "./studentsTasks/studentTask";
 import BannerBtn from "./banner/banner";
 import Publishedprograms from "./publishedResearchProgram/publishedProgarm";
+import BannerBtnCompletedResearch from "./bannerCompleted/banner";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -429,6 +430,7 @@ const LandingPage = () => {
           </section>
           <Activities /> <StudentTask />
           <Colleges logos={collegelogos} />
+          <BannerBtnCompletedResearch />
           {/* <Publishedprograms rpdata={pgmsData} />*/}
           <MentorCarusel mentors={mentors} />
           {/**<section className="about">

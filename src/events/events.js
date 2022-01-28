@@ -1,7 +1,8 @@
 import "./events.css";
-import React, { Component } from "react";
+import React from "react";
 import Select from "react-select";
 import { useEffect, useState } from "react";
+import { BsSortDown } from "react-icons/bs";
 import {
   IoCalendarClearSharp,
   IoChevronForward,
@@ -45,6 +46,7 @@ const EventsPage = () => {
     { value: "Management", label: "Management" },
     { value: "Pure Science", label: "Pure Science" },
   ];
+  const [filter, setFilter] = useState(false);
   const customStyles = {
     container: (provided, state) => ({
       ...provided,
@@ -79,12 +81,20 @@ const EventsPage = () => {
       </div>
     );
   }
+
   return (
     <div className="events">
       <h2 className="events-head">Events</h2>{" "}
       <img src="/images/events.svg" alt="Events" className="events-head-img" />
       <div className="events-row">
-        <div className="events-filter">
+        <div className="mob-filter-holder" onClick={() => setFilter(!filter)}>
+          <BsSortDown size={"2em"} />
+        </div>
+        <div
+          className={
+            filter ? "events-filter " : "events-filter events-filter-mobhide"
+          }
+        >
           <div className="">
             <p className="events-filter-text">Category</p>
             <div className="">

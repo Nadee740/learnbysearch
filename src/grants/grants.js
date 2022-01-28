@@ -7,6 +7,7 @@ import {
   IoGolfSharp,
   IoTimeOutline,
 } from "react-icons/io5";
+import { BsSortDown } from "react-icons/bs";
 import Researchpgms from "../Backend/Researchpgms";
 const GrantsPage = () => {
   const [isLoading, setisLoading] = useState(true);
@@ -43,6 +44,7 @@ const GrantsPage = () => {
     { value: "Management", label: "Management" },
     { value: "Pure Science", label: "Pure Science" },
   ];
+  const [filter, setFilter] = useState(false);
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
@@ -60,7 +62,14 @@ const GrantsPage = () => {
       <h2 className="events-head">Grants</h2>
       <img src="/images/grants.svg" alt="Grants" className="events-head-img" />
       <div className="events-row">
-        <div className="events-filter">
+        <div className="mob-filter-holder" onClick={() => setFilter(!filter)}>
+          <BsSortDown size={"2em"} />
+        </div>
+        <div
+          className={
+            filter ? "events-filter " : "events-filter events-filter-mobhide"
+          }
+        >
           <div className="">
             <p className="events-filter-text">Category</p>
             <div className="">
