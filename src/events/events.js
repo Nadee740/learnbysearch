@@ -2,7 +2,7 @@ import "./events.css";
 import React from "react";
 import Select from "react-select";
 import { useEffect, useState } from "react";
-import { BsSortDown } from "react-icons/bs";
+
 import {
   IoCalendarClearSharp,
   IoChevronForward,
@@ -11,6 +11,7 @@ import {
 } from "react-icons/io5";
 import Researchpgms from "../Backend/Researchpgms";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
+import { BsSortDown } from "react-icons/bs";
 const EventsPage = () => {
   const [isLoading, setisLoading] = useState(true);
   const [allevents, setallevents] = useState([]);
@@ -57,10 +58,10 @@ const EventsPage = () => {
     let arr = [];
     setisLoading(true);
     Researchpgms(`${window.name}events`).then((data) => {
-    if(data.data.length==0)
-    {   setisLoading(false)
+      if (data.data.length == 0) {
+        setisLoading(false);
         return;
-    }
+      }
       setallevents(data.data);
       setfilteredevents(data.data);
       data.data.map(async (evnt, index) => {
@@ -70,7 +71,6 @@ const EventsPage = () => {
         arr.push({ event: evnt, organizer: Datass });
 
         if (arr.length == data.data.length) {
-            
           setallevents(arr);
           setfilteredevents(arr);
           setisLoading(false);
