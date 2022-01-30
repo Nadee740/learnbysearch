@@ -57,6 +57,10 @@ const EventsPage = () => {
     let arr = [];
     setisLoading(true);
     Researchpgms(`${window.name}events`).then((data) => {
+    if(data.data.length==0)
+    {   setisLoading(false)
+        return;
+    }
       setallevents(data.data);
       setfilteredevents(data.data);
       data.data.map(async (evnt, index) => {
@@ -66,6 +70,7 @@ const EventsPage = () => {
         arr.push({ event: evnt, organizer: Datass });
 
         if (arr.length == data.data.length) {
+            
           setallevents(arr);
           setfilteredevents(arr);
           setisLoading(false);

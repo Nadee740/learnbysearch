@@ -241,7 +241,7 @@ const Navbar = (props) => {
                 Articles
               </Link>
             </li>{" "}
-            <li className="nav-item">
+            {isLoggedIn?(<li className="nav-item">
               <Link
                 to="/events"
                 className="nav-links"
@@ -249,8 +249,8 @@ const Navbar = (props) => {
               >
                 Events
               </Link>
-            </li>
-            <li className="nav-item">
+            </li>):""}
+            {isLoggedIn?( <li className="nav-item">
               <Link
                 to="/grants"
                 className="nav-links"
@@ -258,7 +258,8 @@ const Navbar = (props) => {
               >
                 Grants
               </Link>
-            </li>
+            </li>):""}
+           
             <li className="nav-item">
               <Link
                 to="/contactus"
@@ -422,26 +423,8 @@ const Navbar = (props) => {
               Articles
             </Link>
           </li>{" "}
-          <li className="mobnav-item">
-            <Link
-              onClick={() => {
-                setNav(false);
-              }}
-              to="/events"
-            >
-              Events
-            </Link>
-          </li>{" "}
-          <li className="mobnav-item">
-            <Link
-              onClick={() => {
-                setNav(false);
-              }}
-              to="/grants"
-            >
-              Grants
-            </Link>
-          </li>
+      
+       
           <li className="mobnav-item">
             <Link
               onClick={() => {
@@ -485,6 +468,24 @@ const Navbar = (props) => {
         </ul>
         {isLoggedIn ? (
           <>
+          <Link
+              to="/grants"
+              onClick={() => {
+                setNav(false);
+              }}
+              className="mob-signbtn"
+            >
+              Grants
+            </Link>
+          <Link
+              to="/events"
+              onClick={() => {
+                setNav(false);
+              }}
+              className="mob-signbtn"
+            >
+              Events
+            </Link>
             {!referalcodeexist ? (
               <Link
                 onClick={() => {
