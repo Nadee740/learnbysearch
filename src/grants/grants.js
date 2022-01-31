@@ -6,8 +6,9 @@ import {
   IoChevronForward,
   IoGolfSharp,
   IoTimeOutline,
+  IoOptionsSharp,
 } from "react-icons/io5";
-import { BsSortDown } from "react-icons/bs";
+
 import Researchpgms from "../Backend/Researchpgms";
 const GrantsPage = () => {
   const [isLoading, setisLoading] = useState(true);
@@ -63,7 +64,7 @@ const GrantsPage = () => {
       <img src="/images/grants.svg" alt="Grants" className="events-head-img" />
       <div className="events-row">
         <div className="mob-filter-holder" onClick={() => setFilter(!filter)}>
-          <BsSortDown size={"2em"} />
+          <IoOptionsSharp size={"2em"} />
         </div>
         <div
           className={
