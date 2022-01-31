@@ -8,10 +8,11 @@ import {
   IoChevronForward,
   IoGolfSharp,
   IoTimeOutline,
+  IoOptionsSharp,
 } from "react-icons/io5";
 import Researchpgms from "../Backend/Researchpgms";
 import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
-import { BsSortDown } from "react-icons/bs";
+
 const EventsPage = () => {
   const [isLoading, setisLoading] = useState(true);
   const [allevents, setallevents] = useState([]);
@@ -93,7 +94,7 @@ const EventsPage = () => {
       <img src="/images/events.svg" alt="Events" className="events-head-img" />
       <div className="events-row">
         <div className="mob-filter-holder" onClick={() => setFilter(!filter)}>
-          <BsSortDown size={"2em"} />
+          <IoOptionsSharp size={"2em"} />
         </div>
         <div
           className={
