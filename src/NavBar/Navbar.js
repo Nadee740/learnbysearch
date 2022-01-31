@@ -241,25 +241,32 @@ const Navbar = (props) => {
                 Articles
               </Link>
             </li>{" "}
-            {isLoggedIn?(<li className="nav-item">
-              <Link
-                to="/events"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Events
-              </Link>
-            </li>):""}
-            {isLoggedIn?( <li className="nav-item">
-              <Link
-                to="/grants"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Grants
-              </Link>
-            </li>):""}
-           
+            {isLoggedIn ? (
+              <li className="nav-item">
+                <Link
+                  to="/events"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Events
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
+            {isLoggedIn ? (
+              <li className="nav-item">
+                <Link
+                  to="/grants"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Grants
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
             <li className="nav-item">
               <Link
                 to="/contactus"
@@ -423,8 +430,6 @@ const Navbar = (props) => {
               Articles
             </Link>
           </li>{" "}
-      
-       
           <li className="mobnav-item">
             <Link
               onClick={() => {
@@ -468,7 +473,7 @@ const Navbar = (props) => {
         </ul>
         {isLoggedIn ? (
           <>
-          <Link
+            <Link
               to="/grants"
               onClick={() => {
                 setNav(false);
@@ -477,7 +482,7 @@ const Navbar = (props) => {
             >
               Grants
             </Link>
-          <Link
+            <Link
               to="/events"
               onClick={() => {
                 setNav(false);
@@ -499,7 +504,7 @@ const Navbar = (props) => {
             ) : (
               ""
             )}
-            <Link
+            {/** <Link
               to="/paymentstatus"
               onClick={() => {
                 setNav(false);
@@ -507,7 +512,7 @@ const Navbar = (props) => {
               className="mob-signbtn"
             >
               PAYMENTS
-            </Link>
+            </Link> */}
             <Link
               to="/editprofile"
               onClick={() => {
@@ -517,7 +522,7 @@ const Navbar = (props) => {
             >
               EDIT PROFILE
             </Link>
-            <Link
+            {/* <Link
               to="/editprofile"
               onClick={() => {
                 setNav(false);
@@ -525,7 +530,7 @@ const Navbar = (props) => {
               className="mob-signbtn"
             >
               REQUEST RESEARCH PROGRAMME
-            </Link>
+            </Link>*/}
             <button
               onClick={() => {
                 setNav(false);
