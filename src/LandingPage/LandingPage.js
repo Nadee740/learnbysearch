@@ -38,6 +38,8 @@ const LandingPage = () => {
   const [visible, setvisible] = useState(false);
   const [loginvisible, setloginvisible] = useState(false);
   const [selectedwebinardata, setselectedwebinardata] = useState("");
+  const [allevents, setallevents] = useState([]);
+  const [allgrants, setallgrants] = useState([]);
   useEffect(() => {
     getopenPgmgs();
   }, []);
@@ -109,6 +111,31 @@ const LandingPage = () => {
     setisLoggedin(isloggedin);
     getwebinardata();
   };
+
+  const getallEvents=async()=>{
+    let arr = [];
+    setisLoading(true);
+    Researchpgms(`${window.name}events`).then((data) => {
+      if (data.data.length == 0) {
+        setisLoading(false);
+        return;
+      }
+       data.data.map(async (evnt, index) => {
+        const { data: Datass } = await Researchpgms(
+          `${window.name}organizer/${evnt.organizerId}`
+        );
+        arr.push({ event: evnt, organizer: Datass });
+
+        if (arr.length == data.data.length) {
+          setallevents(arr);
+          }
+      });
+    });
+  }
+const getAllGrants=async()=>{
+    const { data: Datass } = await Researchpgms(`${window.name}grants`);
+    setallgrants(Datass);
+}
 
   const getwebinardata = async () => {
     setisLoading(true);
