@@ -458,12 +458,12 @@ const LandingPage = () => {
             </div>
           </section>
           <Activities /> <StudentTask />
-          <BannerGrants />
+         {isLoggedIn?(<BannerGrants />):""} 
           <Colleges logos={collegelogos} />
           <BannerBtnCompletedResearch />
           {/* <Publishedprograms rpdata={pgmsData} />*/}
           <MentorCarusel mentors={mentors} />
-          <BannerEvents />
+         {isLoggedIn?(<BannerEvents />):""} 
           {/**<section className="about">
             <div className="about-content">
               <h2>How our students work?</h2>
