@@ -172,17 +172,15 @@ const GrantsPage = () => {
         </div>
         <div className="events-cards">
           {filteredgrants.map((grant, index) => {
-              let className="";
-            if(grant.category.toLowerCase()=="fellowship"){
-                       className="events-cat webinar-chip"
-              }
-              else if(grant.category.toLowerCase()=="scholarship"){
-                className="events-cat workshop-chip"
-              }            
-              else if(grant.category.toLowerCase()=="research grant"){
-                className="events-cat training-chip"
-              }
-              return (
+            let className = "";
+            if (grant.category.toLowerCase() == "fellowship") {
+              className = "events-cat webinar-chip";
+            } else if (grant.category.toLowerCase() == "scholarship") {
+              className = "events-cat workshop-chip";
+            } else if (grant.category.toLowerCase() == "research grant") {
+              className = "events-cat training-chip";
+            }
+            return (
               <div className="events-card">
                 <div className={className}>{grant.category}</div>
                 <h3 className="events-card-title">{grant.title}</h3>

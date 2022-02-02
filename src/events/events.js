@@ -240,7 +240,9 @@ const EventsPage = () => {
                 </div>
                 <div className="organiser">
                   <div className="organiser-col">
-                    <p className="organiser-col-text">{event.organizer.name}</p>
+                    <p className="organiser-col-text ">
+                      {event.organizer.name}
+                    </p>
                     <img
                       src={event.organizer.logoUrl}
                       alt=""

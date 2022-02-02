@@ -1,9 +1,24 @@
-Webinar,
-Workshop,
-Training,
-Conference Fellowship,
-Research Grant,
-Scholarship,
+.color-1 {
+  background-color: #ffab00;
+}
+.color-2 {
+  background-color: #00ff9d;
+}
+.color-2 {
+  background-color: #00ffb3;
+}
+.color-4 {
+  background-color: #2f00ff;
+}
+.color-5 {
+  background-color: #ff00f2;
+}
+.color-6 {
+  background-color: #ff0022;
+}
+.color-7 {
+  background-color: #ffa600;
+}
 .webinar-chip {
   background-color: #ffab00;
 }
@@ -13,7 +28,7 @@ Scholarship,
 .training-chip {
   background-color: #6200ff;
 }
-.Conference {
+.conference {
   background-color: #ff004c;
 }
 .events {

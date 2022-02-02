@@ -1,0 +1,23 @@
+.bannergrants-circle-c1-2 {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  height: 17rem;
+}
+
+.bannergrants-circle-c4 {
+  bottom: 3rem;
+  left: 60%;
+  transform: translate(-50%, 50%);
+  height: 5rem;
+}
+
+@media screen and (max-width: 960px) {
+  .bannergrants-circle-c1-2 {
+    height: 12rem;
+  }
+
+  .bannergrants-circle-c4 {
+    height: 10rem;
+  }
+}

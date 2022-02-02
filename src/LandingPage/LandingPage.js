@@ -25,6 +25,8 @@ import StudentTask from "./studentsTasks/studentTask";
 import BannerBtn from "./banner/banner";
 import Publishedprograms from "./publishedResearchProgram/publishedProgarm";
 import BannerBtnCompletedResearch from "./bannerCompleted/banner";
+import BannerGrants from "./bannerGrants/bannergrants";
+import BannerEvents from "./bannerEvents/bannerevents";
 const LandingPage = () => {
   const [blogsData, setblogData] = useState("");
   const [isLoading, setisLoading] = useState(true);
@@ -112,7 +114,7 @@ const LandingPage = () => {
     getwebinardata();
   };
 
-  const getallEvents=async()=>{
+  const getallEvents = async () => {
     let arr = [];
     setisLoading(true);
     Researchpgms(`${window.name}events`).then((data) => {
@@ -120,7 +122,7 @@ const LandingPage = () => {
         setisLoading(false);
         return;
       }
-       data.data.map(async (evnt, index) => {
+      data.data.map(async (evnt, index) => {
         const { data: Datass } = await Researchpgms(
           `${window.name}organizer/${evnt.organizerId}`
         );
@@ -128,14 +130,14 @@ const LandingPage = () => {
 
         if (arr.length == data.data.length) {
           setallevents(arr);
-          }
+        }
       });
     });
-  }
-const getAllGrants=async()=>{
+  };
+  const getAllGrants = async () => {
     const { data: Datass } = await Researchpgms(`${window.name}grants`);
     setallgrants(Datass);
-}
+  };
 
   const getwebinardata = async () => {
     setisLoading(true);
@@ -456,10 +458,12 @@ const getAllGrants=async()=>{
             </div>
           </section>
           <Activities /> <StudentTask />
+          <BannerGrants />
           <Colleges logos={collegelogos} />
           <BannerBtnCompletedResearch />
           {/* <Publishedprograms rpdata={pgmsData} />*/}
           <MentorCarusel mentors={mentors} />
+          <BannerEvents />
           {/**<section className="about">
             <div className="about-content">
               <h2>How our students work?</h2>
