@@ -30,3 +30,16 @@
     display: flex;
   }
 }
+
+.webinar-chip {
+    background-color: #ffab00;
+  }
+  .workshop-chip {
+    background-color: #00ff6a;
+  }
+  .training-chip {
+    background-color: #6200ff;
+  }
+  .Conference {
+    background-color: #ff004c;
+  }
