@@ -77,15 +77,17 @@ const GrantsPage = () => {
               <Select
                 onChange={(selected) => {
                   setfiteredgrants(allgrants);
-                  let a = [];
+                   if(selected.length>0)
+                 { let a = [];
                   selected.map((selct) => {
                     a.push(selct.value.toLowerCase());
                   });
                   setfiteredgrants(
-                    filteredgrants.filter((grant) =>
+                    allgrants.filter((grant) =>
                       a.includes(grant.category.toLowerCase())
                     )
                   );
+                }
                 }}
                 styles={customStyles}
                 options={category}

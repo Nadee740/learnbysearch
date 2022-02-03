@@ -107,6 +107,7 @@ const EventsPage = () => {
               <Select
                 onChange={(selected) => {
                   setfilteredevents(allevents);
+                  console.log(filteredevents.event.category)
                   let a = [];
                   if (selected.length > 0) {
                     selected.map((selct) => {
