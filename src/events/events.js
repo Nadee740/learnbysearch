@@ -205,6 +205,20 @@ const EventsPage = () => {
 
         <div className="events-cards">
           {filteredevents.map((event) => {
+              let className=""
+              if(event.event.category.toLowerCase()=="webinar")
+              {
+                  className="events-cat webinar-chip color-1"
+              }
+              else if(event.event.category.toLowerCase()=="workshop"){
+                className="events-cat webinar-chip color-3"
+              }
+              else if(event.event.category.toLowerCase()=="training"){
+                className="events-cat webinar-chip color-2"
+                }
+                else if(event.event.category.toLowerCase()=="conference"){
+                    className="events-cat webinar-chip color-4"
+                }
             return (
               <div className="events-card">
                 <div className="events-cat webinar-chip">

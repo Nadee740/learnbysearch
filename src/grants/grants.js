@@ -38,7 +38,7 @@ const GrantsPage = () => {
   ];
   const AreaofInterest = [
     { value: "Engineering & Technology", label: "Engineering & Technology" },
-    { value: "Art & Literature", label: "DeadlinArt & Literature" },
+    { value: "Art & Literature", label: "Art & Literature" },
     { value: "Biotechnology", label: "Biotechnology" },
     { value: "Biology", label: "Biology" },
     { value: "Medicine", label: "Medicine" },
@@ -172,7 +172,7 @@ const GrantsPage = () => {
         </div>
         <div className="events-cards">
           {filteredgrants.map((grant, index) => {
-              console.log(grant)
+            let classnamearea="";
             let className = "";
             if (grant.category.toLowerCase() == "fellowship") {
               className = "events-cat webinar-chip";
@@ -180,6 +180,26 @@ const GrantsPage = () => {
               className = "events-cat workshop-chip";
             } else if (grant.category.toLowerCase() == "research grant") {
               className = "events-cat training-chip";
+            }
+            if(grant.areaOfInterest.toLowerCase()=="engineering & technology")
+            {
+                classnamearea="chips color-2"
+            }
+            else if(grant.areaOfInterest.toLowerCase()=="art & literature")
+            {
+                classnamearea="chips color-1"
+            }
+            else if(grant.areaOfInterest.toLowerCase()=="pure science")
+            {
+                classnamearea="chips color-3"
+            }
+            else if(grant.areaOfInterest.toLowerCase()=="biotechnology")
+            {
+                classnamearea="chips color-4"
+            }
+            else if(grant.areaOfInterest.toLowerCase()=="medicine")
+            {
+                classnamearea="chips color-5"
             }
             return (
               <div className="events-card">
@@ -221,7 +241,7 @@ const GrantsPage = () => {
                     <IoChevronForward size={"1.5em"} />
                   </div>
                 </div>
-                <div className="chips">{grant.areaOfInterest}</div>
+                <div className={classnamearea}>{grant.areaOfInterest}</div>
               </div>
             );
           })}
