@@ -107,14 +107,14 @@ const EventsPage = () => {
               <Select
                 onChange={(selected) => {
                   setfilteredevents(allevents);
-                  console.log(filteredevents.event.category)
+
                   let a = [];
                   if (selected.length > 0) {
                     selected.map((selct) => {
                       a.push(selct.value.toLowerCase());
                     });
                     setfilteredevents(
-                      filteredevents.filter((evnt) =>
+                      allevents.filter((evnt) =>
                         a.includes(evnt.event.category.toLowerCase())
                       )
                     );
