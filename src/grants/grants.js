@@ -172,6 +172,7 @@ const GrantsPage = () => {
         </div>
         <div className="events-cards">
           {filteredgrants.map((grant, index) => {
+              console.log(grant)
             let className = "";
             if (grant.category.toLowerCase() == "fellowship") {
               className = "events-cat webinar-chip";
@@ -211,7 +212,9 @@ const GrantsPage = () => {
                       ₹ {grant.amount}
                     </p>
                   </div>
-                  <div className="view-detail-btn">
+                  <div className="view-detail-btn" onClick={()=>{
+                   window.location=grant.applicationLink
+                  }}>
                     <p className="organiser-col-text view-detail-btn-text">
                       View Details
                     </p>
