@@ -106,31 +106,31 @@ const GrantsPage = () => {
                   if (slct.value == "Date") {
                     setfiteredgrants(
                       filteredgrants.sort(function (a, b) {
-                        return a.event.date - b.event.date;
+                        return a.date - b.date;
                       })
                     );
                   } else if ((slct.value = "Location")) {
                     setfiteredgrants(
                       filteredgrants.sort(function (a, b) {
-                        return a.event.location - b.event.location;
+                        return a.location - b.location;
                       })
                     );
                   } else if ((slct.value = "Area of interst")) {
                     setfiteredgrants(
                       filteredgrants.sort(function (a, b) {
-                        return a.event.areaOfInterest - b.event.areaOfInterest;
+                        return a.areaOfInterest - b.areaOfInterest;
                       })
                     );
                   } else if ((slct.value = "Category")) {
                     setfiteredgrants(
                       filteredgrants.sort(function (a, b) {
-                        return a.event.category - b.event.category;
+                        return a.category - b.category;
                       })
                     );
                   } else if ((slct.value = "Organiser")) {
                     setfiteredgrants(
                       filteredgrants.sort(function (a, b) {
-                        return a.organizer.name - b.organizer.name;
+                        return a.name - b.name;
                       })
                     );
                   }
@@ -160,9 +160,11 @@ const GrantsPage = () => {
                     selected.map((selct) => {
                       a.push(selct.value.toLowerCase());
                     });
+                    
+                
                     setfiteredgrants(
-                      filteredgrants.filter((evnt) =>
-                        a.includes(evnt.event.areaOfInterest.toLowerCase())
+                      allgrants.filter((evnt) =>
+                        a.includes(evnt.areaOfInterest.toLowerCase())
                       )
                     );
                   }
