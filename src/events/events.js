@@ -134,31 +134,45 @@ const EventsPage = () => {
                 styles={customStyles}
                 options={sortby}
                 onChange={(slct) => {
+                  let arr = filteredevents;
+
                   if (slct.value == "Date") {
-                    setfilteredevents(
-                      filteredevents.sort(function (a, b) {
-                        return a.event.date - b.event.date;
-                      })
+                    arr.sort(function (a, b) {
+                      return (
+                        Date.parse(b.event.date) - Date.parse(a.event.date)
+                      );
+                    });
+
+                    setfilteredevents(arr);
+                  } else if (slct.value == "Location") {
+                    arr.sort(function (a, b) {
+                      let var1 = a.event.location.toLowerCase();
+                      let var2 = b.event.location.toLowerCase();
+                      if (var1 < var2) {
+                        console.log("hy");
+                        return 1;
+                      } else return -1;
+                      
+                    });
+                    console.log(
+                      arr[0].event.location,
+                      filteredevents[0].event.location,
+                      "hyy"
                     );
-                  } else if ((slct.value = "Location")) {
-                    setfilteredevents(
-                      filteredevents.sort(function (a, b) {
-                        return a.event.location - b.event.location;
-                      })
-                    );
-                  } else if ((slct.value = "Area of interst")) {
+                    setfilteredevents(arr);
+                  } else if (slct.value == "Area of interst") {
                     setfilteredevents(
                       filteredevents.sort(function (a, b) {
                         return a.event.areaOfInterest - b.event.areaOfInterest;
                       })
                     );
-                  } else if ((slct.value = "Category")) {
+                  } else if (slct.value == "Category") {
                     setfilteredevents(
                       filteredevents.sort(function (a, b) {
                         return a.event.category - b.event.category;
                       })
                     );
-                  } else if ((slct.value = "Organiser")) {
+                  } else if (slct.value == "Organiser") {
                     setfilteredevents(
                       filteredevents.sort(function (a, b) {
                         return a.organizer.name - b.organizer.name;
@@ -192,7 +206,7 @@ const EventsPage = () => {
                       a.push(selct.value.toLowerCase());
                     });
                     setfilteredevents(
-                      filteredevents.filter((evnt) =>
+                      allevents.filter((evnt) =>
                         a.includes(evnt.event.areaOfInterest.toLowerCase())
                       )
                     );
@@ -206,20 +220,16 @@ const EventsPage = () => {
 
         <div className="events-cards">
           {filteredevents.map((event) => {
-              let className=""
-              if(event.event.category.toLowerCase()=="webinar")
-              {
-                  className="events-cat webinar-chip color-1"
-              }
-              else if(event.event.category.toLowerCase()=="workshop"){
-                className="events-cat webinar-chip color-3"
-              }
-              else if(event.event.category.toLowerCase()=="training"){
-                className="events-cat webinar-chip color-2"
-                }
-                else if(event.event.category.toLowerCase()=="conference"){
-                    className="events-cat webinar-chip color-4"
-                }
+            let className = "";
+            if (event.event.category.toLowerCase() == "webinar") {
+              className = "events-cat webinar-chip color-1";
+            } else if (event.event.category.toLowerCase() == "workshop") {
+              className = "events-cat webinar-chip color-3";
+            } else if (event.event.category.toLowerCase() == "training") {
+              className = "events-cat webinar-chip color-2";
+            } else if (event.event.category.toLowerCase() == "conference") {
+              className = "events-cat webinar-chip color-4";
+            }
             return (
               <div className="events-card">
                 <div className="events-cat webinar-chip">

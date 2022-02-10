@@ -33,10 +33,10 @@ const QuizSection = () => {
       let a=selected
       data.questions.map((question,index)=>{
         
-        a.push([false,false,false,false])
+        a.push([false,false,false,false,false])
       })
       setselected(a)
-      console.log(selected)
+      
       setisLoading(false);
     }
     else
@@ -89,7 +89,7 @@ const QuizSection = () => {
                     let win = 0;
                     let lose = 0;
                     closeModal();
-                    console.log(result);
+                   
                     result.map((re) => {
                       if (re) win++;
                       else lose++;
@@ -141,6 +141,7 @@ const QuizSection = () => {
                   a[index][1]=false
                   a[index][2]=false
                   a[index][3]=false
+                  a[index][4]=false
                   setselected(a)
                   if (question.correctOption == 1) {
                     let r = result;
@@ -152,7 +153,7 @@ const QuizSection = () => {
                     r[index] = false;
                     setresult(r);
                   }
-                  console.log(selected)
+                 
                 }}
               >
                 <div className="quiz-option-circle">A</div> {question.option1}
@@ -165,6 +166,7 @@ const QuizSection = () => {
                   a[index][0]=false
                   a[index][2]=false
                   a[index][3]=false
+                  a[index][4]=false
                   setselected(a)
                   if (question.correctOption == 2) {
                     let r = result;
@@ -210,6 +212,7 @@ const QuizSection = () => {
                   a[index][1]=false
                   a[index][2]=false
                   a[index][0]=false
+                  a[index][4]=false
                   setselected(a)
                   if (question.correctOption == 4) {
                     let r = result;
@@ -224,6 +227,30 @@ const QuizSection = () => {
               >
                 <div className="quiz-option-circle">D</div>
                 {question.option4}
+              </button>
+              <button
+                className={selected[index][4]?"quiz-option-selected-green":"quiz-option"}
+                onClick={() => {
+                  let a=[...selected]
+                  a[index][4]=!a[index][4]
+                  a[index][1]=false
+                  a[index][2]=false
+                  a[index][0]=false
+                  a[index][3]=false
+                  setselected(a)
+                  if (question.correctOption == 5) {
+                    let r = result;
+                    r[index] = true;
+                    setresult(r);
+                  } else {
+                    let r = result;
+                    r[index] = false;
+                    setresult(r);
+                  }
+                }}
+              >
+                <div className="quiz-option-circle">E</div>
+                OTHER CHOICE
               </button>
             </div>
           );
