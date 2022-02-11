@@ -27,22 +27,17 @@ const QuizSection = () => {
     const { data } = await Researchpgms(
       `${window.name}quiz?rpId=${rpid}&positionId=${positionid}`
     );
-    if (data != null)
-    {
+    if (data != null) {
       setquizdata(data);
-      let a=selected
-      data.questions.map((question,index)=>{
-        
-        a.push([false,false,false,false,false])
-      })
-      setselected(a)
-      
+      let a = selected;
+      data.questions.map((question, index) => {
+        a.push([false, false, false, false, false]);
+      });
+      setselected(a);
+
       setisLoading(false);
-    }
-    else
-    {
-      
-      setisempty(true)
+    } else {
+      setisempty(true);
       setisLoading(false);
     }
   }, []);
@@ -52,18 +47,17 @@ const QuizSection = () => {
         <SolarSystemLoading />
       </div>
     );
-    if(empty)
-    {return (
+  if (empty) {
+    return (
       <div className="oopps">
         <h1>Ooops no quiz data found ...</h1>
       </div>
     );
-
-    }
+  }
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Quiz || LearnByResearch</title>
       </Helmet>
@@ -89,7 +83,7 @@ const QuizSection = () => {
                     let win = 0;
                     let lose = 0;
                     closeModal();
-                   
+
                     result.map((re) => {
                       if (re) win++;
                       else lose++;
@@ -107,7 +101,7 @@ const QuizSection = () => {
                     if (Json.status == "ok") {
                       let len = result.length;
                       // window.location='/myapplications'
-                     window.location = `/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`;
+                      window.location = `/quiz/result/${rpid}/${positionid}/${win}/${lose}/${len}`;
                     }
                   } else {
                     closeModal();
@@ -133,41 +127,46 @@ const QuizSection = () => {
                 {index + 1 + ".  " + question.question}
               </p>
               <button
-                className={selected[index][0]?"quiz-option-selected-green":"quiz-option"}
+                className={
+                  selected[index][0]
+                    ? "quiz-option-selected-green"
+                    : "quiz-option"
+                }
                 onClick={() => {
-                  
-                  let a=[...selected]
-                  a[index][0]=!a[index][0]
-                  a[index][1]=false
-                  a[index][2]=false
-                  a[index][3]=false
-                  a[index][4]=false
-                  setselected(a)
+                  let a = [...selected];
+                  a[index][0] = !a[index][0];
+                  a[index][1] = false;
+                  a[index][2] = false;
+                  a[index][3] = false;
+                  a[index][4] = false;
+                  setselected(a);
                   if (question.correctOption == 1) {
                     let r = result;
                     r[index] = true;
                     setresult(r);
-
                   } else {
                     let r = result;
                     r[index] = false;
                     setresult(r);
                   }
-                 
                 }}
               >
                 <div className="quiz-option-circle">A</div> {question.option1}
               </button>
               <button
-                className={selected[index][1]?"quiz-option-selected-green":"quiz-option"}
+                className={
+                  selected[index][1]
+                    ? "quiz-option-selected-green"
+                    : "quiz-option"
+                }
                 onClick={() => {
-                  let a=[...selected]
-                  a[index][1]=!a[index][1]
-                  a[index][0]=false
-                  a[index][2]=false
-                  a[index][3]=false
-                  a[index][4]=false
-                  setselected(a)
+                  let a = [...selected];
+                  a[index][1] = !a[index][1];
+                  a[index][0] = false;
+                  a[index][2] = false;
+                  a[index][3] = false;
+                  a[index][4] = false;
+                  setselected(a);
                   if (question.correctOption == 2) {
                     let r = result;
                     r[index] = true;
@@ -182,14 +181,18 @@ const QuizSection = () => {
                 <div className="quiz-option-circle">B</div> {question.option2}
               </button>
               <button
-                className={selected[index][2]?"quiz-option-selected-green":"quiz-option"}
+                className={
+                  selected[index][2]
+                    ? "quiz-option-selected-green"
+                    : "quiz-option"
+                }
                 onClick={() => {
-                  let a=[...selected]
-                  a[index][2]=!a[index][2]
-                  a[index][1]=false
-                  a[index][0]=false
-                  a[index][3]=false
-                  setselected(a)
+                  let a = [...selected];
+                  a[index][2] = !a[index][2];
+                  a[index][1] = false;
+                  a[index][0] = false;
+                  a[index][3] = false;
+                  setselected(a);
                   if (question.correctOption == 3) {
                     let r = result;
                     r[index] = true;
@@ -205,15 +208,19 @@ const QuizSection = () => {
                 {question.option3}
               </button>
               <button
-                className={selected[index][3]?"quiz-option-selected-green":"quiz-option"}
+                className={
+                  selected[index][3]
+                    ? "quiz-option-selected-green"
+                    : "quiz-option"
+                }
                 onClick={() => {
-                  let a=[...selected]
-                  a[index][3]=!a[index][3]
-                  a[index][1]=false
-                  a[index][2]=false
-                  a[index][0]=false
-                  a[index][4]=false
-                  setselected(a)
+                  let a = [...selected];
+                  a[index][3] = !a[index][3];
+                  a[index][1] = false;
+                  a[index][2] = false;
+                  a[index][0] = false;
+                  a[index][4] = false;
+                  setselected(a);
                   if (question.correctOption == 4) {
                     let r = result;
                     r[index] = true;
@@ -229,15 +236,19 @@ const QuizSection = () => {
                 {question.option4}
               </button>
               <button
-                className={selected[index][4]?"quiz-option-selected-green":"quiz-option"}
+                className={
+                  selected[index][4]
+                    ? "quiz-option-selected-green"
+                    : "quiz-option"
+                }
                 onClick={() => {
-                  let a=[...selected]
-                  a[index][4]=!a[index][4]
-                  a[index][1]=false
-                  a[index][2]=false
-                  a[index][0]=false
-                  a[index][3]=false
-                  setselected(a)
+                  let a = [...selected];
+                  a[index][4] = !a[index][4];
+                  a[index][1] = false;
+                  a[index][2] = false;
+                  a[index][0] = false;
+                  a[index][3] = false;
+                  setselected(a);
                   if (question.correctOption == 5) {
                     let r = result;
                     r[index] = true;
@@ -250,7 +261,7 @@ const QuizSection = () => {
                 }}
               >
                 <div className="quiz-option-circle">E</div>
-                OTHER CHOICE
+                <input type={"text"} placeholder="Give your answer" />
               </button>
             </div>
           );
