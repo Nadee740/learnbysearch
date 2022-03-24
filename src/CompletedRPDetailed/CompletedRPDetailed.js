@@ -17,125 +17,123 @@ import { Helmet } from "react-helmet";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import { Check } from "@material-ui/icons";
 const CompltetedRpDetailedPage = () => {
-    const { slug } = useParams();
-    let arr = [];
-    let array = [];
-    let count = 0;
-  
-    const [isLoading, setisLoading] = useState(true);
-    const [blogsData, setblogData] = useState();
-    const [positions, setPosition] = useState("");
-    const [mentors, setmentors] = useState("");
-    const [error, seterror] = useState(false);
-    const [visible, setvisible] = useState(false);
-    const [appliedvisible, setappliedvisible] = useState(false);
-    const [htmlpart, sethtmlpart] = useState();
-    const [htmlpartobjective, sethtmlpartobjective] = useState();
-    const [htmlpartoutcomes, sethtmlpartoutcomes] = useState();
-    const [isLoggedIn, setisLoggedin] = useState(false);
-    const [userdata, setuserdata] = useState();
-  
-    const closeModal = () => {
-      setvisible(false);
-    };
-    const closeAppliedModal = () => {
-      setappliedvisible(false);
-    };
-    ///////////////////////////POSITIONS OF RP////////////////////////////////
-    // const getPositions = async (rpdata) => {
-    //   setisLoading(true);
-  
-    //   rpdata.positions.map(async (position, index) => {
-    //     const { data } = await Researchpgms(
-    //       `${window.name}position/${position.positionId}`
-    //     );
-  
-    //     arr.push(data);
-  
-    //     setPosition(arr);
-    //     if (rpdata.positions.length == arr.length) await getMentors(rpdata);
-    //   });
-    // };
-  
-    ////////////////////////////////////////////////////////////
-  
-    ////////////////////////////MENTORS OF RP////////////////////////////////////
-  
-    // const getMentors = async (rpdata) => {
-    //   setisLoading(true);
-  
-    //   rpdata.mentors.map(async (mentor, index) => {
-    //     const { data } = await Researchpgms(`${window.name}mentor/${mentor}`);
-    //     array.push(data);
-    //     setmentors(array);
-    //     if (array.length == rpdata.mentors.length) {
-    //       setloaded();
-    //     }
-    //   });
-    // };
-    /////////////////////////////////////////////////////////////////
-    const setloaded = () => {
-      setisLoading(false);
-    };
-  
-    ///////////////////////FUNCTION FOR APPLY NOW////////////////////////////////////////
-    const applicationform = () => {
-      if (isLoggedIn) {
-        window.location = "/applicationform/" + slug;
-      } else {
-        window.location = "/signup/" + slug;
-      }
-    };
-  
-    //////////////////////////////////////////////////////////////////////////
-  
-    //////////////////// FOR USERS RP DATAAAS/////////////////////////////
-  
- 
-  
-    ///////////////////////////// FOR USERS RP DATAAAS////////////////////////////////////
-  
-    //////////////////////////////FOR GETTING THE DATA FOR RP///////////////////////////////////////
-    const getRPS = async () => {
-      setisLoading(true);
-      const { data } = await Researchpgms(
-        `${window.name}research-program/${slug}`
-      );
-      if (!data) return seterror(true), setisLoading(false);
-      console.log(data);
-      setblogData(data);
-      sethtmlpart(data.description);
-      sethtmlpartobjective(data.objective);
-      sethtmlpartoutcomes(data.outcomes);
-      setisLoading(false)
-      // await getPositions(data);
-    };
-  
-    //////////////////////////////////////////////////////////////////////////
-  
-    useEffect(async () => {
-      setisLoading(true);
-      const { isLoggedIn, data } = await Authverifier(`${window.name}users/me`);
-      setisLoggedin(isLoggedIn);
-      setuserdata(data);
-      getRPS();
-    }, []);
-  
-    if (isLoading)
-      return (
-        <div className="isLoading">
-          <SolarSystemLoading />
-        </div>
-      );
-    if (error)
-      return (
-        <div className="isLoading">
-          <h1>Ooops an error occured...</h1>
-        </div>
-      );
-    return ( 
-<>
-<Helmet>
+  const { slug } = useParams();
+  let arr = [];
+  let array = [];
+  let count = 0;
+
+  const [isLoading, setisLoading] = useState(true);
+  const [blogsData, setblogData] = useState();
+  const [positions, setPosition] = useState("");
+  const [mentors, setmentors] = useState("");
+  const [error, seterror] = useState(false);
+  const [visible, setvisible] = useState(false);
+  const [appliedvisible, setappliedvisible] = useState(false);
+  const [htmlpart, sethtmlpart] = useState();
+  const [htmlpartobjective, sethtmlpartobjective] = useState();
+  const [htmlpartoutcomes, sethtmlpartoutcomes] = useState();
+  const [isLoggedIn, setisLoggedin] = useState(false);
+  const [userdata, setuserdata] = useState();
+
+  const closeModal = () => {
+    setvisible(false);
+  };
+  const closeAppliedModal = () => {
+    setappliedvisible(false);
+  };
+  ///////////////////////////POSITIONS OF RP////////////////////////////////
+  // const getPositions = async (rpdata) => {
+  //   setisLoading(true);
+
+  //   rpdata.positions.map(async (position, index) => {
+  //     const { data } = await Researchpgms(
+  //       `${window.name}position/${position.positionId}`
+  //     );
+
+  //     arr.push(data);
+
+  //     setPosition(arr);
+  //     if (rpdata.positions.length == arr.length) await getMentors(rpdata);
+  //   });
+  // };
+
+  ////////////////////////////////////////////////////////////
+
+  ////////////////////////////MENTORS OF RP////////////////////////////////////
+
+  // const getMentors = async (rpdata) => {
+  //   setisLoading(true);
+
+  //   rpdata.mentors.map(async (mentor, index) => {
+  //     const { data } = await Researchpgms(`${window.name}mentor/${mentor}`);
+  //     array.push(data);
+  //     setmentors(array);
+  //     if (array.length == rpdata.mentors.length) {
+  //       setloaded();
+  //     }
+  //   });
+  // };
+  /////////////////////////////////////////////////////////////////
+  const setloaded = () => {
+    setisLoading(false);
+  };
+
+  ///////////////////////FUNCTION FOR APPLY NOW////////////////////////////////////////
+  const applicationform = () => {
+    if (isLoggedIn) {
+      window.location = "/applicationform/" + slug;
+    } else {
+      window.location = "/signup/" + slug;
+    }
+  };
+
+  //////////////////////////////////////////////////////////////////////////
+
+  //////////////////// FOR USERS RP DATAAAS/////////////////////////////
+
+  ///////////////////////////// FOR USERS RP DATAAAS////////////////////////////////////
+
+  //////////////////////////////FOR GETTING THE DATA FOR RP///////////////////////////////////////
+  const getRPS = async () => {
+    setisLoading(true);
+    const { data } = await Researchpgms(
+      `${window.name}research-program/${slug}`
+    );
+    if (!data) return seterror(true), setisLoading(false);
+    console.log(data);
+    setblogData(data);
+    sethtmlpart(data.description);
+    sethtmlpartobjective(data.objective);
+    sethtmlpartoutcomes(data.outcomes);
+    setisLoading(false);
+    // await getPositions(data);
+  };
+
+  //////////////////////////////////////////////////////////////////////////
+
+  useEffect(async () => {
+    setisLoading(true);
+    const { isLoggedIn, data } = await Authverifier(`${window.name}users/me`);
+    setisLoggedin(isLoggedIn);
+    setuserdata(data);
+    getRPS();
+  }, []);
+
+  if (isLoading)
+    return (
+      <div className="isLoading">
+        <SolarSystemLoading />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="isLoading">
+        <h1>Ooops an error occured...</h1>
+      </div>
+    );
+  return (
+    <>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>{blogsData.title} || LearnByResearch</title>
       </Helmet>
@@ -252,9 +250,12 @@ publishedLink: "http://ijiset.com/vol8/v8s12/IJISET_V8_I12_06.pdf"
 slug: "development_of_low_cost_lidar_scanner_for_indoor_mapping"
 title: "Development of Low-cost LiDAR Scanner for Indoor Mapping" */}
                 {blogsData.publishedLink ? (
-                  <button onClick={()=>{
-                      window.location=blogsData.publishedLink
-                  }} className="applybtn">
+                  <button
+                    onClick={() => {
+                      window.location = blogsData.publishedLink;
+                    }}
+                    className="applybtn"
+                  >
                     View Publication
                   </button>
                 ) : (
@@ -322,7 +323,9 @@ title: "Development of Low-cost LiDAR Scanner for Indoor Mapping" */}
                   blogsData.positions.map((position, index) => (
                     <div className="vaccency-holder-row">
                       <div className="vaccency-item" key={index}>
-                        <p className="vaccency-item-title">{position.positionId.title}</p>
+                        <p className="vaccency-item-title">
+                          {position.positionId.title}
+                        </p>
                         <p className="vaccency-item-text">
                           Number of Students Required:{" "}
                           <span>{position.openings}</span>
@@ -332,7 +335,6 @@ title: "Development of Low-cost LiDAR Scanner for Indoor Mapping" */}
                           Eligibility Criterion:
                           <span>{position.positionId.criterion}</span>
                         </p>
-                     
                       </div>
                       <div className="vaccency-holder-sponsered">
                         {blogsData.isSponsered ? (
@@ -346,10 +348,10 @@ title: "Development of Low-cost LiDAR Scanner for Indoor Mapping" */}
                             <p className="vaccency-offerprice-item-text">
                               Fees:{" "}
                               <strike className="vaccency-offerprice-item-text-span">
-                                ₹ 25000
+                                ₹ 13000
                               </strike>
                               <br />
-                              53% off <span>₹ 11800</span>
+                              53% off <span>₹ 7080</span>
                             </p>
                           </div>
                         )}
@@ -461,8 +463,8 @@ title: "Development of Low-cost LiDAR Scanner for Indoor Mapping" */}
         <Footer />
       </div>
       )
-</>
-     );
-}
- 
+    </>
+  );
+};
+
 export default CompltetedRpDetailedPage;

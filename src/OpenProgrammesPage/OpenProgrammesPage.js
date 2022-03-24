@@ -146,7 +146,7 @@ function OpenProgrammesPage() {
     sethtmlpart(data.description);
     sethtmlpartobjective(data.objective);
     sethtmlpartoutcomes(data.outcomes);
-    setisLoading(false)
+    setisLoading(false);
     // await getPositions(data);
   };
 
@@ -346,7 +346,9 @@ function OpenProgrammesPage() {
                   blogsData.positions.map((position, index) => (
                     <div className="vaccency-holder-row">
                       <div className="vaccency-item" key={index}>
-                        <p className="vaccency-item-title">{position.positionId.title}</p>
+                        <p className="vaccency-item-title">
+                          {position.positionId.title}
+                        </p>
                         <p className="vaccency-item-text">
                           Number of Students Required:{" "}
                           <span>{position.openings}</span>
@@ -379,10 +381,10 @@ function OpenProgrammesPage() {
                             <p className="vaccency-offerprice-item-text">
                               Fees:{" "}
                               <strike className="vaccency-offerprice-item-text-span">
-                                ₹ 25000
+                                ₹ 13000
                               </strike>
                               <br />
-                              53% off <span>₹ 11800</span>
+                              53% off <span>₹ 7080</span>
                             </p>
                           </div>
                         )}
@@ -498,4 +500,4 @@ function OpenProgrammesPage() {
   );
 }
 
-export default OpenProgrammesPage
+export default OpenProgrammesPage;
