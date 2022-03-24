@@ -19,7 +19,7 @@ const QuizSection = () => {
   const [selected, setselected] = useState([]);
   const [result, setresult] = useState([false]);
   const [chumma, setchumma] = useState(false);
-
+  const [otherchoice,setotherchoice]=useState([]);
   const closeModal = () => {
     setvisible(false);
   };
@@ -192,6 +192,7 @@ const QuizSection = () => {
                   a[index][1] = false;
                   a[index][0] = false;
                   a[index][3] = false;
+                  a[index][4] = false;
                   setselected(a);
                   if (question.correctOption == 3) {
                     let r = result;
@@ -261,7 +262,25 @@ const QuizSection = () => {
                 }}
               >
                 <div className="quiz-option-circle">E</div>
-                <input type={"text"} placeholder="Give your answer" />
+                <input onChange={(e) => {
+                    console.log(e.target.value)
+                  let a = [...selected];
+                  a[index][4] = !a[index][4];
+                  a[index][1] = false;
+                  a[index][2] = false;
+                  a[index][0] = false;
+                  a[index][3] = false;
+                  setselected(a);
+                  if (question.correctOption == e.target.value) {
+                    let r = result;
+                    r[index] = true;
+                    setresult(r);
+                  } else {
+                    let r = result;
+                    r[index] = false;
+                    setresult(r);
+                  }
+                }} type={"text"} placeholder="Other choice" />
               </button>
             </div>
           );
