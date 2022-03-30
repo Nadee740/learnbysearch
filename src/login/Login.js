@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdDoneAll, MdClear } from "react-icons/md";
@@ -90,7 +89,7 @@ const Login = () => {
     // stylefunction("2px solid #81818128", "usernameholder");
     setpassrerror();
     const log_data = {
-      email:username,
+      email: username,
       password,
     };
     const { message: messagee } = await Tokenlesssendpost(
@@ -145,7 +144,9 @@ const Login = () => {
                 Verification email already sent on <br /> email address.
               </p>
               <br />
-              <Link to="/login" onClick={closeModal}>Resend verification mail</Link>
+              <Link to="/login" onClick={closeModal}>
+                Resend verification mail
+              </Link>
             </div>
           </Modal>
         </section>
@@ -309,7 +310,7 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <Footer/>
+          <Footer />
         </section>
       )}
     </>

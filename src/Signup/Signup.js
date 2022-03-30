@@ -21,7 +21,6 @@ const Signup = () => {
   const [LastName, setLastName] = useState("");
   const [MiddleName, setMiddleName] = useState("");
 
-  
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [confirmpass, setConfrpass] = useState("");
@@ -249,11 +248,10 @@ const Signup = () => {
         `${window.name}create-college`,
         colldata
       );
-           
+
       if (message.includes("updated")) {
         window.location = "/applicationform/" + slug;
-      }
-      else console.log(message)
+      } else console.log(message);
     }
   };
   const output = async () => {
@@ -305,8 +303,7 @@ const Signup = () => {
           if (message.includes("verification")) {
             SetStep(step + 1);
           } else if (message.includes("email")) {
-            if(message=="email already exists")
-              setemailalrdyexist(true)
+            if (message == "email already exists") setemailalrdyexist(true);
             setemailerror(message);
             stylefunction("2px outset red", "email");
             setcursor("email");
@@ -329,21 +326,19 @@ const Signup = () => {
     } else {
       if (FirstName.length < 3) stylefunction("2px outset red", "firstname");
       if (LastName.length < 3) stylefunction("2px outset red", "lastname");
-      if (!reemail.test(String(email).toLowerCase()))
-        {stylefunction("2px outset red", "email");
-    setemailerror("Invalid mail")
-    
+      if (!reemail.test(String(email).toLowerCase())) {
+        stylefunction("2px outset red", "email");
+        setemailerror("Invalid mail");
       }
-      if (phoneNumber.length <= 6)
-      { stylefunction("2px outset red", "phone");
-    setphoneerror("invalid phone number")
-    }
+      if (phoneNumber.length <= 6) {
+        stylefunction("2px outset red", "phone");
+        setphoneerror("invalid phone number");
+      }
     }
   };
   const closeOtpModal = () => {
     setotpsend(false);
   };
-
 
   const VerifyOtp = async () => {
     setotperr();
@@ -512,7 +507,6 @@ const Signup = () => {
       </div>
 
       <section className="sign-up">
-    
         <div className="container">
           <div className="signup-content">
             <div className="signup-image">
@@ -525,7 +519,7 @@ const Signup = () => {
                 </p>
               </Link>
               <h2 className="form-title">REGISTRATION</h2>
-              
+
               <div className="stepperdiv">
                 <Stepper
                   activeStep={step}
@@ -582,49 +576,48 @@ const Signup = () => {
                             }}
                           />
                         </div>
-                        <label onClick={()=>{
-                          window.location='/login'
-                        }} className="label" htmlFor="">
-                          {emailalrdyexist?"Email already exist click here to Login":emailerror && emailerror}
+                        <label
+                          onClick={() => {
+                            window.location = "/login";
+                          }}
+                          className="label"
+                          htmlFor=""
+                        >
+                          {emailalrdyexist
+                            ? "Email already exist click here to Login"
+                            : emailerror && emailerror}
                         </label>
-                        
                       </div>
                       {/* isoCode: 'IN', name: 'India', phonecode: '91' */}
                       <Tooltip title="Country">
-                    <>
-                      <p className="inputtext">Country</p>
-                      <div className="inputholder">
-                        <div className="inputholder-top">
-                          <select
-                            className="selectBox"
-                            required
-                            name="country"
-                            id="country"
-                            onChange={(e) => {
-                              const data = JSON.parse(e.target.value);
-                              if(data.phonecode.charAt(0)=='+')
-                               setPhone(data.phonecode)
-                              else
-                               setPhone('+'+data.phonecode)
-                              
-                              
-                        
-                            }}
-                          >
-                            <option>
-                              Select country
-                            </option>
-                            {allcountry &&
-                              allcountry.map((country) => (
-                                <option value={JSON.stringify(country)}>
-                                  {country.name+" " + country.phonecode}
-                                </option>
-                              ))}
-                          </select>
-                        </div>
-                      </div>
-                    </>
-                  </Tooltip>
+                        <>
+                          <p className="inputtext">Country</p>
+                          <div className="inputholder">
+                            <div className="inputholder-top">
+                              <select
+                                className="selectBox"
+                                required
+                                name="country"
+                                id="country"
+                                onChange={(e) => {
+                                  const data = JSON.parse(e.target.value);
+                                  if (data.phonecode.charAt(0) == "+")
+                                    setPhone(data.phonecode);
+                                  else setPhone("+" + data.phonecode);
+                                }}
+                              >
+                                <option>Select country</option>
+                                {allcountry &&
+                                  allcountry.map((country) => (
+                                    <option value={JSON.stringify(country)}>
+                                      {country.name + " " + country.phonecode}
+                                    </option>
+                                  ))}
+                              </select>
+                            </div>
+                          </div>
+                        </>
+                      </Tooltip>
                       <div className="inputholder" id="phone">
                         <div className="inputholder-top">
                           <input
@@ -635,8 +628,8 @@ const Signup = () => {
                             defaultValue="+91"
                             onChange={(e) => {
                               stylefunction("2px solid #81818128", "phone");
-                              if ((/[a-zA-Z]/).test(e.target.value))
-                              stylefunction("2px outset red", "phone");
+                              if (/[a-zA-Z]/.test(e.target.value))
+                                stylefunction("2px outset red", "phone");
 
                               setPhone(e.target.value);
                             }}
@@ -759,7 +752,7 @@ const Signup = () => {
                                 autoComplete="off"
                                 required
                                 onChange={(e) => {
-                                  console.log(e.target.value)
+                                  console.log(e.target.value);
                                   setDegree(e.target.value);
                                 }}
                               >
@@ -887,7 +880,7 @@ const Signup = () => {
           </div>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </>
   );
 };
