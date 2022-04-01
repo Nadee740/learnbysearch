@@ -3,7 +3,7 @@ import Footer from "../LandingPage/footer/footer";
 import { BsCalendarFill, BsFillBellFill } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import { SiGooglescholar } from "react-icons/si";
-
+import { AiFillClockCircle } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -16,7 +16,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import GetRequest from "../Backend/getRequest";
-import './a.css';
+import "./a.css";
 import avatar from "./avatar.png";
 
 function OngoingresearchPage() {
@@ -35,7 +35,7 @@ function OngoingresearchPage() {
   const htmlpartobjective = blogsData.objective;
   const htmlpartoutcomes = blogsData.outcomes;
   const [isLoggedIn, setisLoggedin] = useState(false);
-  const [enrolledStudents, setenrolledStudents] = useState([])
+  const [enrolledStudents, setenrolledStudents] = useState([]);
   const [userdata, setuserdata] = useState();
 
   const closeModal = () => {
@@ -61,22 +61,24 @@ function OngoingresearchPage() {
   };
 
   useEffect(() => {
-    if(!blogsData){
-      return
+    if (!blogsData) {
+      return;
     }
-    console.log('|||||||||||||||||||||||||')
-    console.log(blogsData._id)
-    GetRequest(`${window.name}get-enrolled-students?rpId=${blogsData._id}`).then(res => {
-      console.log(res)
-      if(res.status === 'ok'){
-        setenrolledStudents(res.applications)
-      } else {
-        console.log(res)
-      }
-    }).catch(e => {
-      console.log(e)
-    })
-  }, [blogsData])
+    console.log("|||||||||||||||||||||||||");
+    console.log(blogsData._id);
+    GetRequest(`${window.name}get-enrolled-students?rpId=${blogsData._id}`)
+      .then((res) => {
+        console.log(res);
+        if (res.status === "ok") {
+          setenrolledStudents(res.applications);
+        } else {
+          console.log(res);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [blogsData]);
 
   ////////////////////////////////////////////////////////////
 
@@ -170,7 +172,7 @@ function OngoingresearchPage() {
 
     setblogData(rpdata);
 
-    setisLoading(false)
+    setisLoading(false);
   };
 
   //////////////////////////////////////////////////////////////////////////
@@ -296,29 +298,28 @@ function OngoingresearchPage() {
               </div>
             </div>
           </div>
-          
-          <div className="openprogrammespage-holder">
 
-              <div className="openprogrammespage-section">
+          <div className="openprogrammespage-holder">
+            <div className="openprogrammespage-section">
               <div className="studentsListContainer">
                 <p className="openprogrammespage-head">Enrolled Students</p>
                 <div className="studentsList">
-                  {enrolledStudents.map(application => (
+                  {enrolledStudents.map((application) => (
                     <div className="student">
-                    <div className="avatar">
-                      <img src={avatar} alt="avatar" />
-                    </div>
-                    <div className="studentname">{application.studentId.FirstName} {application.studentId.LastName}</div>
-
+                      <div className="avatar">
+                        <img src={avatar} alt="avatar" />
+                      </div>
+                      <div className="studentname">
+                        {application.studentId.FirstName}{" "}
+                        {application.studentId.LastName}
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
-
-              </div>
-              <div className="line"></div>
+            </div>
+            <div className="line"></div>
             <div className="openprogrammespage-section">
-            
               <p className="openprogrammespage-head"> Objective</p>
               <p className="openprogrammespage-text">
                 <div
@@ -346,6 +347,56 @@ function OngoingresearchPage() {
             <div className="line"></div>
             <div className="openprogrammespage-section">
               <p className="openprogrammespage-head">
+                Syllabus - What you will learn from this course
+              </p>
+
+              <div className="syllabus-row">
+                <div className="syllabus-row-col1">
+                  <p className="syllabus-text">WEEK</p>
+                  <p className="syllabus-text-count">1</p>
+                </div>
+                <div className="syllabus-row-col2">
+                  <div className="syllabus-row-col2-top">
+                    <AiFillClockCircle size={"1.5rem"} color="#ef6c00" />
+                    <p className="syllabus-duration">5 hours to complete</p>
+                  </div>
+                  <p className="syllabus-head">Introducing data analytics</p>{" "}
+                  <p className="syllabus-text">
+                    Data helps us make decisions in everyday life and in
+                    business. In this first part of the course, you’ll learn how
+                    data analysts use data analytics and the tools of their
+                    trade to inform those decisions. You’ll also discover more
+                    about this course and the overall program expectations.
+                  </p>
+                  <div className="line line-light"></div>
+                </div>
+              </div>
+
+              <div className="syllabus-row">
+                <div className="syllabus-row-col1">
+                  <p className="syllabus-text">WEEK</p>
+                  <p className="syllabus-text-count">2</p>
+                </div>
+                <div className="syllabus-row-col2">
+                  <div className="syllabus-row-col2-top">
+                    <AiFillClockCircle size={"1.5rem"} color="#ef6c00" />
+                    <p className="syllabus-duration">2.5 hours to complete</p>
+                  </div>
+                  <p className="syllabus-head">All about analytical thinking</p>{" "}
+                  <p className="syllabus-text">
+                    Data analysts balance many different roles in their work. In
+                    this part of the course, you’ll learn about some of these
+                    roles and the key skills used by analysts. You’ll also
+                    explore analytical thinking and how it relates to
+                    data-driven decision-making.
+                  </p>
+                  <div className="line line-light"></div>
+                </div>
+              </div>
+            </div>
+            <div className="line"></div>
+            <div className="openprogrammespage-section">
+              <p className="openprogrammespage-head">
                 Applications Open for following Positions
               </p>
               <p className="openprogrammespage-text">
@@ -357,9 +408,12 @@ function OngoingresearchPage() {
                 {blogsData &&
                   blogsData.positions.map((position, index) => (
                     <div className="vaccency-item" key={index}>
-                      <p className="vaccency-item-title">{position.positionId.title}</p>
+                      <p className="vaccency-item-title">
+                        {position.positionId.title}
+                      </p>
                       <p className="vaccency-item-text">
-                        Number of Students Required: <span>{position.openings}</span>
+                        Number of Students Required:{" "}
+                        <span>{position.openings}</span>
                       </p>
 
                       <p className="vaccency-item-text">
@@ -404,7 +458,7 @@ function OngoingresearchPage() {
                 </div>
               </div>
 
-            
+              <div className="syllabus"></div>
               <div className="mentors">
                 <p className="openprogrammespage-head">Mentors</p>
 
@@ -477,11 +531,7 @@ function OngoingresearchPage() {
                     );
                   })}
               </div>
-
-              
             </div>
-
-           
 
             <div className="line"></div>
           </div>
