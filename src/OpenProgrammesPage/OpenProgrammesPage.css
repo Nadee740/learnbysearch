@@ -172,104 +172,10 @@
   font-size: 16px;
   animation: sponserAnim 2s ease-in infinite;
 }
-.syllabus-row {
-  display: flex;
-  flex-direction: row;
-  padding-top: 2rem;
-}
-.syllabus-row-col1 {
-  width: 40%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-}
-.syllabus-text {
-  font-size: 1.2rem;
-  font-weight: 300;
-}
-.syllabus-text-count {
-  font-size: 2.2rem;
-  font-weight: 500;
-  width: 4rem;
-  height: 4rem;
-  background: #fc4a1a; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #f7b733,
-    #fc4a1a
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #f7b733,
-    #fc4a1a
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-radius: 50%;
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-}
-.syllabus-row-col2-top {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.syllabus-duration {
-  margin-left: 1rem;
-}
 
-.syllabus-duration {
-  font-size: 1.1rem;
-  color: #9e9e9e;
-}
-.syllabus-head {
-  font-size: 1.6rem;
-  font-weight: 300;
-  margin-top: 1.3rem;
-}
-.syllabus-text {
-  margin-top: 0.4rem;
-  font-weight: 400;
-  font-size: 1rem;
-}
-.line-light {
-  opacity: 0.5;
-  margin-top: 1.5rem !important;
-}
 @media screen and (max-width: 800px) {
-  .syllabus-head {
-    font-size: 1.3rem;
-
-    margin-top: 1rem;
-  }
-
-  .syllabus-text-count {
-    font-size: 2rem;
-    font-weight: 500;
-    width: auto;
-    height: auto;
-    background: #ffffff;
-
-    margin-top: 1rem;
-
-    color: #2d2d2d;
-  }
-  .syllabus-row-col1 {
-    padding: 1rem;
-    padding-top: 0;
-  }
-  .syllabus-row {
-    padding-top: 1rem;
-  }
   .course-sponser-page {
     left: 20px;
-  }
-  .syllabus-duration {
-    margin-left: 0.3rem;
-    font-size: 0.9rem;
   }
 
   .vaccency-item {
