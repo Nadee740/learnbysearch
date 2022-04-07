@@ -5,7 +5,8 @@ import {
   AiFillCaretUp,
 } from "react-icons/ai";
 import "./syllabus.css";
-const Syllabus = () => {
+const Syllabus = ({datas}) => {
+    console.log(datas);
   const [stateIndex, setselectedIndex] = useState(0);
   const itemSelected = (index) => {
     setselectedIndex(index);
@@ -28,7 +29,7 @@ const Syllabus = () => {
       <p className="openprogrammespage-head">
         Syllabus - What you will learn from this course
       </p>
-      {data.map((item, index) => {
+      {datas.map((item, index) => {
         return (
           <div key={index}>
             <div className="syllabus-row">
@@ -38,7 +39,7 @@ const Syllabus = () => {
               </div>
               <div className="syllabus-row-col2">
                 <div className="syllabus-head-holder">
-                  <p className="syllabus-head">{item.head}</p>
+                  <p className="syllabus-head">{item.title}</p>
 
                   {stateIndex === index ? (
                     <div onClick={() => itemSelected(5)} className="xcx">
@@ -51,7 +52,7 @@ const Syllabus = () => {
                   )}
                 </div>
                 {index === stateIndex ? (
-                  <p className={"syllabus-content-text"}>{item.descr}</p>
+                  <p className={"syllabus-content-text"}>{item.description}</p>
                 ) : null}
               </div>
             </div>

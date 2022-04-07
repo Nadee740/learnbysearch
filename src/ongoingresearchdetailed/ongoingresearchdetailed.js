@@ -62,11 +62,11 @@ function OngoingresearchPage() {
   };
 
   useEffect(() => {
+      console.log(blogsData)
     if (!blogsData) {
       return;
     }
-    console.log("|||||||||||||||||||||||||");
-    console.log(blogsData._id);
+ 
     GetRequest(`${window.name}get-enrolled-students?rpId=${blogsData._id}`)
       .then((res) => {
         console.log(res);
@@ -346,7 +346,7 @@ function OngoingresearchPage() {
               </p>
             </div>
             <div className="line"></div>
-            <Syllabus />
+            {blogsData.syllabus?<Syllabus datas={blogsData.syllabus} />:""}
             <div className="line"></div>
             <div className="openprogrammespage-section">
               <p className="openprogrammespage-head">

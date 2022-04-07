@@ -16,6 +16,7 @@ import SolarSystemLoading from "react-loadingg/lib/SolarSystemLoading";
 import { Helmet } from "react-helmet";
 import Tokenlesssendpost from "../Backend/tokenlesssendpost";
 import { Check } from "@material-ui/icons";
+import Syllabus from "../Components/syllabus";
 
 function OpenProgrammesPage() {
   const { slug } = useParams();
@@ -141,7 +142,7 @@ function OpenProgrammesPage() {
       `${window.name}research-program/${slug}`
     );
     if (!data) return seterror(true), setisLoading(false);
-    console.log(data);
+    console.log(data,"hyyy");
     setblogData(data);
     sethtmlpart(data.description);
     sethtmlpartobjective(data.objective);
@@ -331,7 +332,9 @@ function OpenProgrammesPage() {
                 </div>
               </div>
             </div>
-
+            <div className="line"></div>
+            {blogsData.syllabus?<Syllabus datas={blogsData.syllabus} />:""}
+            <div className="line"></div>
             <div className="openprogrammespage-section">
               <p className="openprogrammespage-head">
                 Applications Open for following Positions
